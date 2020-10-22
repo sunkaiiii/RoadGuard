@@ -76,6 +76,7 @@
 		B13CEFC62540FAF900957E84 /* FIT5140Assignment3iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B13CF0012541766000957E84 /* Views */,
 				B13CEFF625410D4E00957E84 /* ControllerHelper */,
 				B13CEFEB25410C8200957E84 /* ImageHelper */,
 				B13CEFDC2540FD4A00957E84 /* Network */,
@@ -127,6 +128,13 @@
 				B13CEFFE25410D9200957E84 /* AlertControllerHelper.swift */,
 			);
 			path = ControllerHelper;
+			sourceTree = "<group>";
+		};
+		B13CF0012541766000957E84 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
