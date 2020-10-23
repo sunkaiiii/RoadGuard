@@ -7,14 +7,6 @@
 
 import Foundation
 
-extension HTTPRequestAction{
-    func requestRestfulService(api:RestfulAPI, model:RequestModel){
-        NetworkRequestTask(helper: RequestHelper(api: api, model: model), action: self).fetchDataFromSever()
-    }
-
-}
-
-
 extension NSObject{
     func getJsonDecoder()->JSONDecoder{
         let jsonDecoder = JSONDecoder()

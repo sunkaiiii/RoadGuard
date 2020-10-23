@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NetworkRequestTask: NSObject {
+class NetworkRequestTask<T> : NSObject where T:Decodable{
     let requestHelper:RequestHelper
     let requestAction:HTTPRequestAction
     
@@ -34,7 +34,14 @@ class NetworkRequestTask: NSObject {
 //                        self.requestAction.executionFailed(helper: requestHelper, message: "InvalidResponse", error: )
                         return
                     }
-                    self.requestAction.afterExecution(helper: self.requestHelper,url: urlAndComponents.1, response: data)
+                    do{
+                        let decoder = JSONDecoder()
+                        let convertedData = try decoder.decode(T.self, from: data)
+                        self.requestAction.afterExecution(helper: self.requestHelper, url: urlAndComponents.1, response: convertedData, rawData: data)
+                    }catch let error{
+                        print(error)
+                    }
+                    //self.requestAction.afterExecution(helper: self.requestHelper,url: urlAndComponents.1, response: data)
                     break
                 case .failure(let error):
                     self.requestAction.executionFailed(helper: self.requestHelper, message: "Error happened", error: error)

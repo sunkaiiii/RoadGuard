@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="312"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u6q-qU-kR7" customClass="SpeedAlertView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
+                    <rect key="frame" x="129.5" y="0.0" width="155" height="155"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="155" id="IVT-r6-ee1"/>
+                        <constraint firstAttribute="height" constant="155" id="Z5r-cb-pcZ"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sob-Dx-8qi" customClass="CircleShapeView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
+                    <rect key="frame" x="199" y="125" width="16" height="16"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uGd-bc-Ard">
+                            <rect key="frame" x="6" y="2" width="4" height="12"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="3GU-Ie-xKu"/>
+                        <constraint firstAttribute="width" constant="16" id="ENn-lH-Ysq"/>
+                        <constraint firstItem="uGd-bc-Ard" firstAttribute="centerY" secondItem="sob-Dx-8qi" secondAttribute="centerY" id="L7b-Tb-jHL"/>
+                        <constraint firstItem="uGd-bc-Ard" firstAttribute="centerX" secondItem="sob-Dx-8qi" secondAttribute="centerX" id="LL5-lF-19b"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zMi-0A-W27" customClass="CircleShapeView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
+                    <rect key="frame" x="185.5" y="174" width="43" height="43"/>
+                    <color key="backgroundColor" red="1" green="0.34901967644691467" blue="0.37647062540054321" alpha="0.84705882352941175" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="Ysm-5c-JXv"/>
+                        <constraint firstAttribute="width" constant="43" id="hOb-AI-A0F"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hbm-QM-gGa" customClass="CircleShapeView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
+                    <rect key="frame" x="189.5" y="178" width="35" height="35"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="WmQ-QU-698"/>
+                        <constraint firstAttribute="width" constant="35" id="x14-9B-feE"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtP-1O-3Ve">
+                    <rect key="frame" x="196.5" y="185.5" width="21" height="20"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="sob-Dx-8qi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="EuA-6e-CMy"/>
+                <constraint firstItem="sob-Dx-8qi" firstAttribute="bottom" secondItem="u6q-qU-kR7" secondAttribute="bottom" constant="-14" id="HyO-Io-jEZ"/>
+                <constraint firstItem="HtP-1O-3Ve" firstAttribute="centerY" secondItem="hbm-QM-gGa" secondAttribute="centerY" id="PdX-kl-aEV"/>
+                <constraint firstItem="u6q-qU-kR7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Wjw-57-pVc"/>
+                <constraint firstItem="hbm-QM-gGa" firstAttribute="centerY" secondItem="zMi-0A-W27" secondAttribute="centerY" id="ZqE-wA-2kq"/>
+                <constraint firstItem="hbm-QM-gGa" firstAttribute="centerX" secondItem="zMi-0A-W27" secondAttribute="centerX" id="ksq-Gp-X8g"/>
+                <constraint firstItem="u6q-qU-kR7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lA9-NL-nKE"/>
+                <constraint firstItem="HtP-1O-3Ve" firstAttribute="centerX" secondItem="hbm-QM-gGa" secondAttribute="centerX" id="tC6-Bn-2ff"/>
+                <constraint firstItem="zMi-0A-W27" firstAttribute="top" secondItem="u6q-qU-kR7" secondAttribute="bottom" constant="19" id="ty1-CY-Rkb"/>
+                <constraint firstItem="zMi-0A-W27" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="u7n-a3-AV2"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="137.68115942028987" y="286.60714285714283"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -20,7 +20,7 @@ protocol RequestModel {
 protocol HTTPRequestAction {
     func beforeExecution(helper:RequestHelper)
     func executionFailed(helper:RequestHelper, message:String, error:Error)
-    func afterExecution(helper:RequestHelper,url:URLComponents, response:Data)
+    func afterExecution<T>(helper:RequestHelper,url:URLComponents,response:T, rawData:Data)
 }
 
 class RequestHelper: NSObject {
