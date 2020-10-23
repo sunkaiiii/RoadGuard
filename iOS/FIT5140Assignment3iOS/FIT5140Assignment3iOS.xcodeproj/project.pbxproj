@@ -26,6 +26,7 @@
 		B13CF0072541A8F200957E84 /* SpeedAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B13CF0062541A8F200957E84 /* SpeedAlertView.xib */; };
 		B13CF00A2541A9B700957E84 /* SpeedAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CF0092541A9B700957E84 /* SpeedAlertView.swift */; };
 		B13CF00E2541AA2000957E84 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CF00D2541AA2000957E84 /* HomeViewController.swift */; };
+		B170FC6E25428CC20086F1D9 /* BaseUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170FC6D25428CC20086F1D9 /* BaseUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,8 @@
 		B13CF0062541A8F200957E84 /* SpeedAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeedAlertView.xib; sourceTree = "<group>"; };
 		B13CF0092541A9B700957E84 /* SpeedAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedAlertView.swift; sourceTree = "<group>"; };
 		B13CF00D2541AA2000957E84 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B170FC6D25428CC20086F1D9 /* BaseUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIView.swift; sourceTree = "<group>"; };
+		B170FC7025428F660086F1D9 /* FIT5140Assignment3iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FIT5140Assignment3iOS.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +85,7 @@
 		B13CEFC62540FAF900957E84 /* FIT5140Assignment3iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B170FC7025428F660086F1D9 /* FIT5140Assignment3iOS.entitlements */,
 				B13CF00C2541A9FE00957E84 /* Controller */,
 				B13CF0012541766000957E84 /* Views */,
 				B13CEFF625410D4E00957E84 /* ControllerHelper */,
@@ -142,6 +146,7 @@
 			children = (
 				B13CF0062541A8F200957E84 /* SpeedAlertView.xib */,
 				B13CF0092541A9B700957E84 /* SpeedAlertView.swift */,
+				B170FC6D25428CC20086F1D9 /* BaseUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 				B13CEFFF25410D9200957E84 /* AlertControllerHelper.swift in Sources */,
 				B13CEFCA2540FAF900957E84 /* SceneDelegate.swift in Sources */,
 				B13CF00A2541A9B700957E84 /* SpeedAlertView.swift in Sources */,
+				B170FC6E25428CC20086F1D9 /* BaseUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,7 +392,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YNQ45Z475P;
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -394,6 +402,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.datong.FIT5140Assignment3iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -404,7 +413,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YNQ45Z475P;
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -412,6 +423,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.datong.FIT5140Assignment3iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
