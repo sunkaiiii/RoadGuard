@@ -27,6 +27,9 @@
 		B13CF00A2541A9B700957E84 /* SpeedAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CF0092541A9B700957E84 /* SpeedAlertView.swift */; };
 		B13CF00E2541AA2000957E84 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CF00D2541AA2000957E84 /* HomeViewController.swift */; };
 		B170FC6E25428CC20086F1D9 /* BaseUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170FC6D25428CC20086F1D9 /* BaseUIView.swift */; };
+		B170FC74254290D00086F1D9 /* SpeedNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170FC73254290D00086F1D9 /* SpeedNotificationView.swift */; };
+		B170FC77254290D90086F1D9 /* SpeedNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B170FC76254290D90086F1D9 /* SpeedNotificationView.xib */; };
+		B170FC7E254291B60086F1D9 /* SpeedLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170FC7D254291B60086F1D9 /* SpeedLimitView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +56,9 @@
 		B13CF00D2541AA2000957E84 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B170FC6D25428CC20086F1D9 /* BaseUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIView.swift; sourceTree = "<group>"; };
 		B170FC7025428F660086F1D9 /* FIT5140Assignment3iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FIT5140Assignment3iOS.entitlements; sourceTree = "<group>"; };
+		B170FC73254290D00086F1D9 /* SpeedNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedNotificationView.swift; sourceTree = "<group>"; };
+		B170FC76254290D90086F1D9 /* SpeedNotificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeedNotificationView.xib; sourceTree = "<group>"; };
+		B170FC7D254291B60086F1D9 /* SpeedLimitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLimitView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +153,9 @@
 				B13CF0062541A8F200957E84 /* SpeedAlertView.xib */,
 				B13CF0092541A9B700957E84 /* SpeedAlertView.swift */,
 				B170FC6D25428CC20086F1D9 /* BaseUIView.swift */,
+				B170FC73254290D00086F1D9 /* SpeedNotificationView.swift */,
+				B170FC76254290D90086F1D9 /* SpeedNotificationView.xib */,
+				B170FC7D254291B60086F1D9 /* SpeedLimitView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -216,6 +225,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B170FC77254290D90086F1D9 /* SpeedNotificationView.xib in Resources */,
 				B13CEFD42540FAFB00957E84 /* LaunchScreen.storyboard in Resources */,
 				B13CEFD12540FAFB00957E84 /* Assets.xcassets in Resources */,
 				B13CEFCF2540FAF900957E84 /* Main.storyboard in Resources */,
@@ -234,8 +244,10 @@
 				B13CEFE32540FDC900957E84 /* RestfulModel.swift in Sources */,
 				B13CEFE625410B6F00957E84 /* NetworkExtension.swift in Sources */,
 				B13CEFC82540FAF900957E84 /* AppDelegate.swift in Sources */,
+				B170FC7E254291B60086F1D9 /* SpeedLimitView.swift in Sources */,
 				B13CEFE925410BA100957E84 /* NetworkRequestTask.swift in Sources */,
 				B13CF00E2541AA2000957E84 /* HomeViewController.swift in Sources */,
+				B170FC74254290D00086F1D9 /* SpeedNotificationView.swift in Sources */,
 				B13CEFF825410D5F00957E84 /* UITextFieldHelper.swift in Sources */,
 				B13CEFDF2540FD7A00957E84 /* RestfulAPI.swift in Sources */,
 				B13CEFFC25410D7400957E84 /* ToastHelper.swift in Sources */,
