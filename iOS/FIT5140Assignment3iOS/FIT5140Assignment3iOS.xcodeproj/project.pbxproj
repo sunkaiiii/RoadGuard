@@ -33,7 +33,7 @@
 		B170FC812542B40F0086F1D9 /* CurrentSpeedInformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B170FC802542B40F0086F1D9 /* CurrentSpeedInformationView.xib */; };
 		B1AB3A752542B70D0082B004 /* CurrentSpeedInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A742542B70D0082B004 /* CurrentSpeedInformationView.swift */; };
 		B1AB3A782542B9480082B004 /* RoadInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A772542B9480082B004 /* RoadInformationViewController.swift */; };
-		B1AB3A7B2542BC4A0082B004 /* BaseNetworkRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestController.swift */; };
+		B1AB3A7B2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +66,7 @@
 		B170FC802542B40F0086F1D9 /* CurrentSpeedInformationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentSpeedInformationView.xib; sourceTree = "<group>"; };
 		B1AB3A742542B70D0082B004 /* CurrentSpeedInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSpeedInformationView.swift; sourceTree = "<group>"; };
 		B1AB3A772542B9480082B004 /* RoadInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadInformationViewController.swift; sourceTree = "<group>"; };
-		B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkRequestController.swift; sourceTree = "<group>"; };
+		B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkRequestControllerProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +175,7 @@
 			children = (
 				B13CF00D2541AA2000957E84 /* HomeViewController.swift */,
 				B1AB3A772542B9480082B004 /* RoadInformationViewController.swift */,
-				B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestController.swift */,
+				B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -272,7 +272,7 @@
 				B13CEFFF25410D9200957E84 /* AlertControllerHelper.swift in Sources */,
 				B13CEFCA2540FAF900957E84 /* SceneDelegate.swift in Sources */,
 				B13CF00A2541A9B700957E84 /* SpeedAlertView.swift in Sources */,
-				B1AB3A7B2542BC4A0082B004 /* BaseNetworkRequestController.swift in Sources */,
+				B1AB3A7B2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift in Sources */,
 				B170FC6E25428CC20086F1D9 /* BaseUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

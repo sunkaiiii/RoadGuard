@@ -7,7 +7,12 @@
 
 import UIKit
 
-class RoadInformationViewController: BaseNetworkRequestController {
+class RoadInformationViewController: UIViewController,DefaultHttpRequestAction {
+
+    func handleData(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
+        let a:String? = accessibleData.retriveData(helper: helper)
+    }
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
