@@ -43,8 +43,7 @@
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FIT5140Assignment3iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="HomeViewController" customModule="FIT5140Assignment3iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,12 +51,12 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7WR-42-bGo">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </mapView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gs3-0x-2Hu">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4aK-1w-1bx" customClass="SpeedAlertView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
                                 <rect key="frame" x="143" y="579" width="128" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="Zvg-YQ-KkD"/>
-                                    <constraint firstAttribute="width" constant="128" id="bW7-Qy-bdb"/>
+                                    <constraint firstAttribute="width" constant="128" id="QpL-zH-3rf"/>
+                                    <constraint firstAttribute="height" constant="128" id="eyp-gu-ytn"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -67,13 +66,14 @@
                             <constraint firstAttribute="trailing" secondItem="7WR-42-bGo" secondAttribute="trailing" id="038-KL-Epz"/>
                             <constraint firstItem="7WR-42-bGo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LcX-ep-id1"/>
                             <constraint firstAttribute="bottom" secondItem="7WR-42-bGo" secondAttribute="bottom" id="X1c-Aw-9Gr"/>
+                            <constraint firstItem="4aK-1w-1bx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="axQ-Iv-gfS"/>
                             <constraint firstItem="7WR-42-bGo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="bIq-Cn-ZYF"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gs3-0x-2Hu" secondAttribute="bottom" constant="106" id="eV5-90-ZA0"/>
-                            <constraint firstItem="gs3-0x-2Hu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="p0H-zA-ZMu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4aK-1w-1bx" secondAttribute="bottom" constant="106" id="kv9-L5-LVb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="NIn-EC-qBH"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1163.768115942029" y="-1092.1875"/>
         </scene>
@@ -83,6 +83,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="yqt-wA-kKl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Hnw-W4-d0R">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

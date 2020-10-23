@@ -23,6 +23,9 @@
 		B13CEFF825410D5F00957E84 /* UITextFieldHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CEFF725410D5F00957E84 /* UITextFieldHelper.swift */; };
 		B13CEFFC25410D7400957E84 /* ToastHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CEFFB25410D7400957E84 /* ToastHelper.swift */; };
 		B13CEFFF25410D9200957E84 /* AlertControllerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CEFFE25410D9200957E84 /* AlertControllerHelper.swift */; };
+		B13CF0072541A8F200957E84 /* SpeedAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B13CF0062541A8F200957E84 /* SpeedAlertView.xib */; };
+		B13CF00A2541A9B700957E84 /* SpeedAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CF0092541A9B700957E84 /* SpeedAlertView.swift */; };
+		B13CF00E2541AA2000957E84 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CF00D2541AA2000957E84 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +47,9 @@
 		B13CEFF725410D5F00957E84 /* UITextFieldHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldHelper.swift; sourceTree = "<group>"; };
 		B13CEFFB25410D7400957E84 /* ToastHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastHelper.swift; sourceTree = "<group>"; };
 		B13CEFFE25410D9200957E84 /* AlertControllerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertControllerHelper.swift; sourceTree = "<group>"; };
+		B13CF0062541A8F200957E84 /* SpeedAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeedAlertView.xib; sourceTree = "<group>"; };
+		B13CF0092541A9B700957E84 /* SpeedAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedAlertView.swift; sourceTree = "<group>"; };
+		B13CF00D2541AA2000957E84 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,7 @@
 		B13CEFC62540FAF900957E84 /* FIT5140Assignment3iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B13CF00C2541A9FE00957E84 /* Controller */,
 				B13CF0012541766000957E84 /* Views */,
 				B13CEFF625410D4E00957E84 /* ControllerHelper */,
 				B13CEFEB25410C8200957E84 /* ImageHelper */,
@@ -133,8 +140,18 @@
 		B13CF0012541766000957E84 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B13CF0062541A8F200957E84 /* SpeedAlertView.xib */,
+				B13CF0092541A9B700957E84 /* SpeedAlertView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B13CF00C2541A9FE00957E84 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				B13CF00D2541AA2000957E84 /* HomeViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,6 +214,7 @@
 				B13CEFD42540FAFB00957E84 /* LaunchScreen.storyboard in Resources */,
 				B13CEFD12540FAFB00957E84 /* Assets.xcassets in Resources */,
 				B13CEFCF2540FAF900957E84 /* Main.storyboard in Resources */,
+				B13CF0072541A8F200957E84 /* SpeedAlertView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +230,7 @@
 				B13CEFE625410B6F00957E84 /* NetworkExtension.swift in Sources */,
 				B13CEFC82540FAF900957E84 /* AppDelegate.swift in Sources */,
 				B13CEFE925410BA100957E84 /* NetworkRequestTask.swift in Sources */,
+				B13CF00E2541AA2000957E84 /* HomeViewController.swift in Sources */,
 				B13CEFF825410D5F00957E84 /* UITextFieldHelper.swift in Sources */,
 				B13CEFDF2540FD7A00957E84 /* RestfulAPI.swift in Sources */,
 				B13CEFFC25410D7400957E84 /* ToastHelper.swift in Sources */,
@@ -220,6 +239,7 @@
 				B13CEFF125410D1500957E84 /* ImageExtension.swift in Sources */,
 				B13CEFFF25410D9200957E84 /* AlertControllerHelper.swift in Sources */,
 				B13CEFCA2540FAF900957E84 /* SceneDelegate.swift in Sources */,
+				B13CF00A2541A9B700957E84 /* SpeedAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
