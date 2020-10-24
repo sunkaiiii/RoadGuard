@@ -14,12 +14,11 @@ class NetworkRequestTask<T> : NSObject where T:Decodable{
     
     //references on https://learnappmaking.com/codable-json-swift-how-to/
     //references on https://medium.com/@alfianlosari/building-simple-async-api-request-with-swift-5-result-type-alfian-losari-e92f4e9ab412
-    init(helper:RequestHelper, action:HTTPRequestAction){
-        self.requestHelper = helper
-        self.requestAction = action
+    convenience init(helper:RequestHelper, action:HTTPRequestAction){
+        self.init(helper: helper, action: action, onCompleted: nil)
     }
     
-    init(helper:RequestHelper, action:HTTPRequestAction, onCompleted:@escaping (RequestHelper,URLComponents,T)->Void) {
+    init(helper:RequestHelper, action:HTTPRequestAction, onCompleted: ((RequestHelper,URLComponents,T)->Void)?) {
         self.requestHelper = helper
         self.requestAction = action
         self.onCompltedAction = onCompleted
