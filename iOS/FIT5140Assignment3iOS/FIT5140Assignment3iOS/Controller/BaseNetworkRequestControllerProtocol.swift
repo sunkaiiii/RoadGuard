@@ -8,7 +8,8 @@
 import UIKit
 
 protocol DefaultHttpRequestAction:HTTPRequestAction {
-    func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T) where T:Decodable
+    func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T.Type) where T:Decodable
+    func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T.Type, onDataReturned:@escaping(RequestHelper,URLComponents,T)->Void) where T:Decodable
     func handleData(helper:RequestHelper,url:URLComponents,accessibleData:AccessibleNetworkData)
 }
 
@@ -27,8 +28,12 @@ class DataResult:AccessibleNetworkData{
 }
 
 extension DefaultHttpRequestAction{
-    func requestRestfulService<T>(api: RestfulAPI, model: RequestModel,jsonType:T) where T:Decodable {
+    func requestRestfulService<T>(api: RestfulAPI, model: RequestModel,jsonType:T.Type) where T:Decodable {
         NetworkRequestTask<T>(helper: RequestHelper(api: api, model: model), action: self).fetchDataFromSever()
+    }
+    
+    func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T.Type, onDataReturned:@escaping(RequestHelper,URLComponents,T)->Void) where T:Decodable{
+        NetworkRequestTask<T>(helper: RequestHelper(api: api, model: model), action: self, onCompleted: onDataReturned).fetchDataFromSever()
     }
     
     func beforeExecution(helper: RequestHelper) {

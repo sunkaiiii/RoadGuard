@@ -10,12 +10,19 @@ import UIKit
 class NetworkRequestTask<T> : NSObject where T:Decodable{
     let requestHelper:RequestHelper
     let requestAction:HTTPRequestAction
+    let onCompltedAction:((RequestHelper,URLComponents,T)->Void)?
     
     //references on https://learnappmaking.com/codable-json-swift-how-to/
     //references on https://medium.com/@alfianlosari/building-simple-async-api-request-with-swift-5-result-type-alfian-losari-e92f4e9ab412
     init(helper:RequestHelper, action:HTTPRequestAction){
         self.requestHelper = helper
         self.requestAction = action
+    }
+    
+    init(helper:RequestHelper, action:HTTPRequestAction, onCompleted:@escaping (RequestHelper,URLComponents,T)->Void) {
+        self.requestHelper = helper
+        self.requestAction = action
+        self.onCompltedAction = onCompleted
     }
     
     func fetchDataFromSever(){
@@ -38,6 +45,9 @@ class NetworkRequestTask<T> : NSObject where T:Decodable{
                         let decoder = JSONDecoder()
                         let convertedData = try decoder.decode(T.self, from: data)
                         self.requestAction.afterExecution(helper: self.requestHelper, url: urlAndComponents.1, response: convertedData, rawData: data)
+                        if let onCompleted = self.onCompltedAction{
+                            onCompleted(self.requestHelper,urlAndComponents.1,convertedData)
+                        }
                     }catch let error{
                         print(error)
                     }

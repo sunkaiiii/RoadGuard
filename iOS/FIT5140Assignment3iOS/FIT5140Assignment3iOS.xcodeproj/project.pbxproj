@@ -119,6 +119,8 @@
 		B13CEFDC2540FD4A00957E84 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B1AB3A8B2544608D0082B004 /* Response */,
+				B1AB3A8625445FD50082B004 /* RequestModel */,
 				B13CEFDD2540FD5100957E84 /* Protocol */,
 				B13CEFE525410B6F00957E84 /* NetworkExtension.swift */,
 				B13CEFE825410BA100957E84 /* NetworkRequestTask.swift */,
@@ -178,6 +180,20 @@
 				B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		B1AB3A8625445FD50082B004 /* RequestModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RequestModel;
+			sourceTree = "<group>";
+		};
+		B1AB3A8B2544608D0082B004 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
