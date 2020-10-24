@@ -34,6 +34,8 @@
 		B1AB3A752542B70D0082B004 /* CurrentSpeedInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A742542B70D0082B004 /* CurrentSpeedInformationView.swift */; };
 		B1AB3A782542B9480082B004 /* RoadInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A772542B9480082B004 /* RoadInformationViewController.swift */; };
 		B1AB3A7B2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */; };
+		E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */; };
+		E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +69,8 @@
 		B1AB3A742542B70D0082B004 /* CurrentSpeedInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSpeedInformationView.swift; sourceTree = "<group>"; };
 		B1AB3A772542B9480082B004 /* RoadInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadInformationViewController.swift; sourceTree = "<group>"; };
 		B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkRequestControllerProtocol.swift; sourceTree = "<group>"; };
+		E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchAddressBottomCard.xib; sourceTree = "<group>"; };
+		E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressBottomCard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +172,8 @@
 				B170FC7D254291B60086F1D9 /* SpeedLimitView.swift */,
 				B170FC802542B40F0086F1D9 /* CurrentSpeedInformationView.xib */,
 				B1AB3A742542B70D0082B004 /* CurrentSpeedInformationView.swift */,
+				E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */,
+				E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -258,6 +264,7 @@
 				B13CEFD12540FAFB00957E84 /* Assets.xcassets in Resources */,
 				B170FC812542B40F0086F1D9 /* CurrentSpeedInformationView.xib in Resources */,
 				B13CEFCF2540FAF900957E84 /* Main.storyboard in Resources */,
+				E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */,
 				B13CF0072541A8F200957E84 /* SpeedAlertView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +283,7 @@
 				B170FC7E254291B60086F1D9 /* SpeedLimitView.swift in Sources */,
 				B1AB3A782542B9480082B004 /* RoadInformationViewController.swift in Sources */,
 				B1AB3A752542B70D0082B004 /* CurrentSpeedInformationView.swift in Sources */,
+				E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */,
 				B13CEFE925410BA100957E84 /* NetworkRequestTask.swift in Sources */,
 				B13CF00E2541AA2000957E84 /* HomeViewController.swift in Sources */,
 				B170FC74254290D00086F1D9 /* SpeedNotificationView.swift in Sources */,
@@ -438,7 +446,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YNQ45Z475P;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -446,7 +454,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.datong.FIT5140Assignment3iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -459,7 +467,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YNQ45Z475P;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -467,7 +475,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.datong.FIT5140Assignment3iOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
