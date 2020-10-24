@@ -10,6 +10,10 @@ import UIKit
 
 open class BaseUIView:UIView{
     
+    internal func XibName()->String{
+        fatalError("This function must be overridden")
+    }
+    
     open override func awakeFromNib() {
         super.awakeFromNib()
         addXibView()
@@ -18,9 +22,10 @@ open class BaseUIView:UIView{
     func addXibView(){
 //        print(self.classForCoder.class())
 //        print("\(self.classForCoder.class())")
-        if let speedAlertView = Bundle(for: self.classForCoder.class()).loadNibNamed("\(self.classForCoder.class())", owner: nil, options: nil)?.first as? UIView{
+        if let speedAlertView = Bundle(for: self.classForCoder.class()).loadNibNamed(XibName(), owner: nil, options: nil)?.first as? UIView{
             self.addSubview(speedAlertView)
             speedAlertView.frame=bounds
+            self.backgroundColor = nil
         }
     }
     open override func prepareForInterfaceBuilder() {
@@ -28,3 +33,8 @@ open class BaseUIView:UIView{
         addXibView()
     }
 }
+
+protocol XibLoadedView {
+    func XibName()->String
+}
+

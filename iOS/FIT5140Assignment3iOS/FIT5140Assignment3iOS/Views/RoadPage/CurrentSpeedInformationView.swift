@@ -7,6 +7,6 @@
 
 import UIKit
 
-@IBDesignable class CurrentSpeedInformationView: BaseUIView {
+class CurrentSpeedInformationView: UIView {
 
 }

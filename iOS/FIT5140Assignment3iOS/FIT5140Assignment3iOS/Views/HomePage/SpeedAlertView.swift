@@ -8,12 +8,13 @@
 
 import UIKit
 
-@IBDesignable class SpeedAlertView: BaseUIView {
-    @IBOutlet weak var speedLabel: UILabel!
+class SpeedAlertView: UIView {
     
+    @IBOutlet weak var speedLabel: UILabel!
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = bounds.size.width/2
         layer.masksToBounds = true
+        speedLabel.text = "100"
     }
 }

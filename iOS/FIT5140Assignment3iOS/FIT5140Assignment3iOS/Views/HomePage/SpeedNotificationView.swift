@@ -7,7 +7,7 @@
 
 import UIKit
 
-@IBDesignable class SpeedNotificationView: BaseUIView {
+class SpeedNotificationView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.shadowColor = CGColor.init(srgbRed: 0, green: 0, blue: 0, alpha: 73)
