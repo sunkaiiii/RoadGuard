@@ -10,29 +10,56 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchAddressBottomCard" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
             <connections>
-                <outlet property="searchAddressBottomCardHandleAreaOutlet" destination="jBY-Ei-Zl0" id="2JH-pK-Djf"/>
-                <outlet property="searchAddressBottomCardTableViewOutlet" destination="15D-0Z-sMx" id="8Rh-QX-8NU"/>
+                <outlet property="searchAddressBottomCardHandleAreaOutlet" destination="viQ-sC-L2j" id="4wa-yS-cvI"/>
+                <outlet property="searchAddressBottomCardTableViewOutlet" destination="vtl-bb-Z6W" id="Tpk-IK-mVy"/>
                 <outlet property="view" destination="clf-VL-sia" id="Qjh-gg-BsJ"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="clf-VL-sia">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="500"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="490"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="15D-0Z-sMx">
-                    <rect key="frame" x="0.0" y="189" width="375" height="311"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viQ-sC-L2j">
+                    <rect key="frame" x="0.0" y="31" width="375" height="35"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MIa-B4-RDJ">
+                            <rect key="frame" x="157" y="14" width="61" height="7"/>
+                            <color key="backgroundColor" systemColor="systemGray3Color"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="61" id="V9H-aC-tHi"/>
+                                <constraint firstAttribute="height" constant="7" id="uw4-s8-ZU5"/>
+                            </constraints>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jBY-Ei-Zl0" userLabel="handleAreaView">
-                    <rect key="frame" x="39" y="10" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="MIa-B4-RDJ" firstAttribute="centerX" secondItem="viQ-sC-L2j" secondAttribute="centerX" id="JJZ-JO-RZZ"/>
+                        <constraint firstAttribute="height" constant="35" id="W4w-E6-N03"/>
+                        <constraint firstItem="MIa-B4-RDJ" firstAttribute="centerY" secondItem="viQ-sC-L2j" secondAttribute="centerY" id="lOW-uY-gVf"/>
+                    </constraints>
                 </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vtl-bb-Z6W">
+                    <rect key="frame" x="0.0" y="66" width="375" height="424"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <searchBar key="tableHeaderView" contentMode="redraw" id="aB1-nM-q31">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </searchBar>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="cRn-qn-5zq"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="cRn-qn-5zq" firstAttribute="trailing" secondItem="viQ-sC-L2j" secondAttribute="trailing" id="IYO-nw-Wy0"/>
+                <constraint firstItem="cRn-qn-5zq" firstAttribute="trailing" secondItem="vtl-bb-Z6W" secondAttribute="trailing" id="Jlm-Ha-CEU"/>
+                <constraint firstItem="vtl-bb-Z6W" firstAttribute="top" secondItem="viQ-sC-L2j" secondAttribute="bottom" id="TEi-fw-OYg"/>
+                <constraint firstItem="vtl-bb-Z6W" firstAttribute="leading" secondItem="cRn-qn-5zq" secondAttribute="leading" id="Zbw-0z-hVE"/>
+                <constraint firstItem="cRn-qn-5zq" firstAttribute="bottom" secondItem="vtl-bb-Z6W" secondAttribute="bottom" id="hD7-xY-4mo"/>
+                <constraint firstItem="cRn-qn-5zq" firstAttribute="top" secondItem="viQ-sC-L2j" secondAttribute="top" constant="13" id="kgs-kt-V0P"/>
+                <constraint firstItem="viQ-sC-L2j" firstAttribute="leading" secondItem="cRn-qn-5zq" secondAttribute="leading" id="twV-y4-cUd"/>
+            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-686.23188405797111" y="75.669642857142847"/>
         </view>
@@ -40,6 +67,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
