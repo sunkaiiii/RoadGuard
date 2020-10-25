@@ -11,7 +11,7 @@ class RoadsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //initialise the BottomCard/FloatPanel
-        setupCard()
+        setupBottomCard()
     }
 
     // MARK: - BottomCard/FloatPanel Related fields
@@ -36,7 +36,7 @@ class RoadsViewController: UIViewController {
 
 
     // MARK: - BottomCard/FloatPanel Related functions
-    func setupCard() {
+    func setupBottomCard() {
         visualEffectView = UIVisualEffectView()
         visualEffectView.frame = self.view.frame
         self.view.addSubview(visualEffectView)
@@ -54,8 +54,6 @@ class RoadsViewController: UIViewController {
 
         searchAddressBottomCard.searchAddressBottomCardHandleAreaOutlet.addGestureRecognizer(tapGestureRecognizer)
         searchAddressBottomCard.searchAddressBottomCardHandleAreaOutlet.addGestureRecognizer(panGestureRecognizer)
-
-
     }
 
     @objc

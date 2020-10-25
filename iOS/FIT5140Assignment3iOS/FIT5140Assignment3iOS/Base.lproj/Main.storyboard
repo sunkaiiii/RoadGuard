@@ -81,13 +81,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4aK-1w-1bx" secondAttribute="bottom" constant="106" id="kv9-L5-LVb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="NIn-EC-qBH">
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="WWn-bR-us3">
-                            <connections>
-                                <segue destination="EBy-VD-lzW" kind="show" id="HT0-ZB-n5n"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Home" id="NIn-EC-qBH"/>
                     <connections>
                         <outlet property="speedNotificationView" destination="y8c-qU-NFh" id="TOF-o0-3sv"/>
                     </connections>
@@ -103,14 +97,25 @@
                     <view key="view" contentMode="scaleToFill" id="o8c-kg-YKY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="kUO-mi-J81">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="hau-nK-7qU"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kUO-mi-J81" firstAttribute="top" secondItem="o8c-kg-YKY" secondAttribute="top" constant="88" id="91Q-xH-ofQ"/>
+                            <constraint firstAttribute="trailing" secondItem="kUO-mi-J81" secondAttribute="trailing" id="eDK-oi-6LJ"/>
+                            <constraint firstAttribute="bottom" secondItem="kUO-mi-J81" secondAttribute="bottom" constant="83" id="pQH-45-0p2"/>
+                            <constraint firstItem="kUO-mi-J81" firstAttribute="leading" secondItem="o8c-kg-YKY" secondAttribute="leading" id="vyF-9q-ERN"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xHD-IM-659"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rws-mn-LWD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1969" y="-1074"/>
+            <point key="canvasLocation" x="2088" y="-368"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="xEK-xT-szd">
@@ -160,6 +165,9 @@
                     <navigationItem key="navigationItem" id="6F2-DO-CZ2">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Tmz-lr-wjZ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="EBy-VD-lzW" kind="show" id="bYt-oF-Tf2"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
@@ -247,9 +255,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

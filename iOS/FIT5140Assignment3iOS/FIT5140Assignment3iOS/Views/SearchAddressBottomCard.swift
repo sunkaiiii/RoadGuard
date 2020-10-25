@@ -32,6 +32,7 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
         searchAddressBottomCardTableViewOutlet.register(UITableViewCell.self, forCellReuseIdentifier: DEFAULT_CELL_ID)
         searchAddressBottomCardTableViewOutlet.register(BottomCardSpecifyCell.nib(), forCellReuseIdentifier: BOTTOM_CARD_CELL_ID)
         //        searchAddressBottomCardTableViewOutlet.register(UINib(nibName: "nibFileName", bundle: nil), forCellReuseIdentifier: "CellFromNib")
+        
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

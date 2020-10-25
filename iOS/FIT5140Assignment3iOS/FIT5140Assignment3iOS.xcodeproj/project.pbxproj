@@ -42,6 +42,10 @@
 		E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */; };
 		E4BA6E7F25450307001D0CD7 /* BottomCardSpecifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BA6E7D25450307001D0CD7 /* BottomCardSpecifyCell.xib */; };
 		E4BA6E8825452BF8001D0CD7 /* RoadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA6E8725452BF8001D0CD7 /* RoadsViewController.swift */; };
+		E4D865E125458CB600465243 /* RoadInfoBottomCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D865E025458CB600465243 /* RoadInfoBottomCard.xib */; };
+		E4D865E425458CE400465243 /* RoadInfoBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */; };
+		E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */; };
+		E4D865E9254591B600465243 /* BottomCardImportantRoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +87,10 @@
 		E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardSpecifyCell.swift; sourceTree = "<group>"; };
 		E4BA6E7D25450307001D0CD7 /* BottomCardSpecifyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomCardSpecifyCell.xib; sourceTree = "<group>"; };
 		E4BA6E8725452BF8001D0CD7 /* RoadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadsViewController.swift; sourceTree = "<group>"; };
+		E4D865E025458CB600465243 /* RoadInfoBottomCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RoadInfoBottomCard.xib; sourceTree = "<group>"; };
+		E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadInfoBottomCard.swift; sourceTree = "<group>"; };
+		E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardImportantRoadCell.swift; sourceTree = "<group>"; };
+		E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomCardImportantRoadCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +193,10 @@
 				E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */,
 				E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */,
 				E4BA6E7D25450307001D0CD7 /* BottomCardSpecifyCell.xib */,
+				E4D865E025458CB600465243 /* RoadInfoBottomCard.xib */,
+				E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */,
+				E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */,
+				E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -304,7 +316,9 @@
 				B170FC77254290D90086F1D9 /* SpeedNotificationView.xib in Resources */,
 				B13CEFD42540FAFB00957E84 /* LaunchScreen.storyboard in Resources */,
 				B13CEFD12540FAFB00957E84 /* Assets.xcassets in Resources */,
+				E4D865E125458CB600465243 /* RoadInfoBottomCard.xib in Resources */,
 				B170FC812542B40F0086F1D9 /* CurrentSpeedInformationView.xib in Resources */,
+				E4D865E9254591B600465243 /* BottomCardImportantRoadCell.xib in Resources */,
 				E4BA6E7F25450307001D0CD7 /* BottomCardSpecifyCell.xib in Resources */,
 				B13CEFCF2540FAF900957E84 /* Main.storyboard in Resources */,
 				E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */,
@@ -326,6 +340,7 @@
 				B13CEFC82540FAF900957E84 /* AppDelegate.swift in Sources */,
 				B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */,
 				E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */,
+				E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */,
 				B1AB3A782542B9480082B004 /* RoadInformationViewController.swift in Sources */,
 				B1AB3A752542B70D0082B004 /* CurrentSpeedInformationView.swift in Sources */,
 				B1AB3A9925446A580082B004 /* SpeedAlertSuperView.swift in Sources */,
@@ -335,6 +350,7 @@
 				B190D3CD25447113002249BA /* CurrentSpeedInformationSuperView.swift in Sources */,
 				B170FC74254290D00086F1D9 /* SpeedNotificationView.swift in Sources */,
 				B13CEFF825410D5F00957E84 /* UITextFieldHelper.swift in Sources */,
+				E4D865E425458CE400465243 /* RoadInfoBottomCard.swift in Sources */,
 				B13CEFDF2540FD7A00957E84 /* RestfulAPI.swift in Sources */,
 				B13CEFFC25410D7400957E84 /* ToastHelper.swift in Sources */,
 				B13CEFED25410C9000957E84 /* ImageLoader.swift in Sources */,
