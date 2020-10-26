@@ -2,9 +2,12 @@ import boto3
 import json
 import ntpath
 import os
+from mongodb import MongodbSaver
 
 bucket_name = "photo-collection-monash"
-# filename = '/home/pi/Documents/FIT5140_Assignment3/Python/20170527_172911.jpg'
+filename = '/home/pi/Documents/FIT5140_Assignment3/Python/IMG_20170331_175726.jpg'
+database_name = "FIT5140Ass3"
+facial_collection = "facial"
 def upload_image(file_name, bucket_name):
     s3 =boto3.resource('s3')
 
@@ -19,14 +22,13 @@ def detect_face(photo, bucket):
     photo = ntpath.basename(photo)
     client = boto3.client('rekognition')
     response = client.detect_faces(Image={'S3Object':{'Bucket':bucket,'Name':photo}},Attributes=['ALL'])
-    print('Detected faces for ' + photo)    
-    for faceDetail in response['FaceDetails']:
-        print('The detected face is between ' + str(faceDetail['AgeRange']['Low']) 
-              + ' and ' + str(faceDetail['AgeRange']['High']) + ' years old')
-        print('Here are the other attributes:')
-        print(json.dumps(faceDetail, indent=4, sort_keys=True))
-    return len(response['FaceDetails'])
+    response["ImageUrl"] = "https://"+bucket_name+".s3.amazonaws.com/"+photo
+    print(response)
+    return response
+
 
 # upload_image(filename,bucket_name)
-# detect_face(filename,bucket_name)
-# delete_file(filename)
+data = detect_face(filename,bucket_name)
+saver = MongodbSaver(database_name,facial_collection)
+saver.save_to_mongodb(data)
+# //delete_file(filename)
