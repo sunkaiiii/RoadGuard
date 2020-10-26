@@ -4,7 +4,7 @@ import datetime
 import time
 import os
 import uploadImageToS3
-from mongodb import MongodbSaver
+from firebase import FireStoreSaver
 bucket_name = "photo-collection-monash"
 database_name = "FIT5140Ass3"
 facial_collection = "facial"
@@ -21,8 +21,8 @@ def analyse(filename):
     print(filename)
     uploadImageToS3.upload_image(filename,bucket_name)
     data = uploadImageToS3.detect_face(filename,bucket_name)
-    saver = MongodbSaver(database_name,facial_collection)
-    saver.save_to_mongodb(data)
+    saver = FireStoreSaver(facial_collection)
+    saver.save_to_firestore(data)
     uploadImageToS3.delete_file(filename)
 
 def start_sertvice():
