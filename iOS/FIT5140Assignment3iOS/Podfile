@@ -1,0 +1,5 @@
+source 'https://github.com/CocoaPods/Specs.git'
+target  'FIT5140Assignment3iOS' do
+  pod 'GoogleMaps', '4.0.0'
+  pod 'GooglePlaces', '4.0.0'
+end

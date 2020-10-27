@@ -25,8 +25,11 @@ protocol Host {
 enum RequestHost:Host{
     case aws
     case firebase
+    case roads_api
     func getHostUrl() -> String {
         switch self {
+        case .roads_api:
+            return "roads.googleapis.com"
         default:
             return ""
         }
@@ -34,6 +37,8 @@ enum RequestHost:Host{
     
     func getPort() -> Int {
         switch self {
+        case .roads_api:
+            return DEFAULT_HTTPS_PORT
         default:
             return 0
         }
@@ -41,6 +46,8 @@ enum RequestHost:Host{
     
     func getScheme() -> String {
         switch self {
+        case .roads_api:
+            return HTTPS
         default:
             return HTTPS
         }
@@ -54,4 +61,38 @@ protocol RestfulAPI {
     func getRequestHost()->RequestHost
 }
 
+
+enum GoogleApi:RestfulAPI{
+    
+    case speedLimit
+    
+    func getRequestName() -> String {
+        switch self {
+        case .speedLimit:
+            return "SpeedLimit"
+        }
+    }
+    
+    func getRoute() -> String {
+        switch self {
+        case .speedLimit:
+            return "/v1/speedLimits"
+        }
+    }
+    
+    func getRequestType() -> RequestType {
+        switch self {
+        case .speedLimit:
+            return RequestType.GET
+        }
+    }
+    
+    func getRequestHost() -> RequestHost {
+        switch self {
+        case .speedLimit:
+            return RequestHost.roads_api
+        }
+    }
+    
+}
 
