@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,6 +34,7 @@
 		B170FC812542B40F0086F1D9 /* CurrentSpeedInformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B170FC802542B40F0086F1D9 /* CurrentSpeedInformationView.xib */; };
 		B190D3C825447029002249BA /* SpeedNotificationSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B190D3C725447029002249BA /* SpeedNotificationSuperView.swift */; };
 		B190D3CD25447113002249BA /* CurrentSpeedInformationSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B190D3CC25447113002249BA /* CurrentSpeedInformationSuperView.swift */; };
+		B1A5E47A2547C59A00D8CCB0 /* GoogleAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A5E4792547C59A00D8CCB0 /* GoogleAPIKey.swift */; };
 		B1AB3A752542B70D0082B004 /* CurrentSpeedInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A742542B70D0082B004 /* CurrentSpeedInformationView.swift */; };
 		B1AB3A782542B9480082B004 /* RoadInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A772542B9480082B004 /* RoadInformationViewController.swift */; };
 		B1AB3A7B2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */; };
@@ -82,6 +83,7 @@
 		B170FC802542B40F0086F1D9 /* CurrentSpeedInformationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentSpeedInformationView.xib; sourceTree = "<group>"; };
 		B190D3C725447029002249BA /* SpeedNotificationSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedNotificationSuperView.swift; sourceTree = "<group>"; };
 		B190D3CC25447113002249BA /* CurrentSpeedInformationSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSpeedInformationSuperView.swift; sourceTree = "<group>"; };
+		B1A5E4792547C59A00D8CCB0 /* GoogleAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIKey.swift; sourceTree = "<group>"; };
 		B1AB3A742542B70D0082B004 /* CurrentSpeedInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSpeedInformationView.swift; sourceTree = "<group>"; };
 		B1AB3A772542B9480082B004 /* RoadInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadInformationViewController.swift; sourceTree = "<group>"; };
 		B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkRequestControllerProtocol.swift; sourceTree = "<group>"; };
@@ -115,7 +117,6 @@
 				61BD52B6593E674829C6363C /* Pods-FIT5140Assignment3iOS.debug.xcconfig */,
 				80FBCD77DA47232EA3362492 /* Pods-FIT5140Assignment3iOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -161,6 +162,7 @@
 				B13CEFD02540FAFB00957E84 /* Assets.xcassets */,
 				B13CEFD22540FAFB00957E84 /* LaunchScreen.storyboard */,
 				B13CEFD52540FAFB00957E84 /* Info.plist */,
+				B1A5E4792547C59A00D8CCB0 /* GoogleAPIKey.swift */,
 			);
 			path = FIT5140Assignment3iOS;
 			sourceTree = "<group>";
@@ -407,6 +409,7 @@
 				B190D3C825447029002249BA /* SpeedNotificationSuperView.swift in Sources */,
 				B13CEFE625410B6F00957E84 /* NetworkExtension.swift in Sources */,
 				B13CEFC82540FAF900957E84 /* AppDelegate.swift in Sources */,
+				B1A5E47A2547C59A00D8CCB0 /* GoogleAPIKey.swift in Sources */,
 				B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */,
 				E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */,
 				E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */,
@@ -580,7 +583,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YNQ45Z475P;
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -602,7 +605,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YNQ45Z475P;
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
