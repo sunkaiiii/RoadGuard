@@ -41,8 +41,15 @@ class NetworkRequestTask<T> : NSObject where T:Decodable{
                         return
                     }
                     do{
-                        let decoder = JSONDecoder()
-                        let convertedData = try decoder.decode(T.self, from: data)
+                        let convertedData:T
+                        if(self.requestHelper.restfulAPI.getReturnedDataFormat() == .json){
+                            let decoder = JSONDecoder()
+                            convertedData = try decoder.decode(T.self, from: data)
+                        }else{
+                            let str = String(decoding: data, as: UTF8.self)
+                            convertedData = str as! T
+                        }
+
                         self.requestAction.afterExecution(helper: self.requestHelper, url: urlAndComponents.1, response: convertedData, rawData: data)
                         if let onCompleted = self.onCompltedAction{
                             onCompleted(self.requestHelper,urlAndComponents.1,convertedData)

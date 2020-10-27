@@ -8,7 +8,8 @@
 import UIKit
 import GoogleMaps
 
-class HomeViewController: UIViewController,CLLocationManagerDelegate {
+class HomeViewController: UIViewController,CLLocationManagerDelegate, DefaultHttpRequestAction {
+    
     let manager = CLLocationManager.init()
     var mapview:GMSMapView?
     let marker = GMSMarker()
@@ -50,11 +51,16 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
         guard let loationInformation = locations.last else {
             return
         }
+        print(loationInformation.coordinate.latitude,loationInformation.coordinate.longitude)
         let speed = loationInformation.speed
         speedAlertView.setCurrentSpeed(speed: String(format: "%d", abs(speed*3.6)))
         marker.position = loationInformation.coordinate
         marker.map = mapview
         let gmsCamera = GMSCameraPosition.camera(withLatitude: loationInformation.coordinate.latitude, longitude: loationInformation.coordinate.longitude, zoom: 19)
         mapview?.camera = gmsCamera
+    }
+    
+    func handleData(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
+        
     }
 }

@@ -16,6 +16,11 @@ enum RequestType{
     case DELETE
 }
 
+enum DataFormat {
+    case json
+    case xml
+}
+
 protocol Host {
     func getHostUrl()->String
     func getPort()->Int
@@ -26,10 +31,13 @@ enum RequestHost:Host{
     case aws
     case firebase
     case roads_api
+    case overpass
     func getHostUrl() -> String {
         switch self {
         case .roads_api:
             return "roads.googleapis.com"
+        case .overpass:
+            return "www.overpass-api.de"
         default:
             return ""
         }
@@ -38,6 +46,8 @@ enum RequestHost:Host{
     func getPort() -> Int {
         switch self {
         case .roads_api:
+            return DEFAULT_HTTPS_PORT
+        case .overpass:
             return DEFAULT_HTTPS_PORT
         default:
             return 0
@@ -59,8 +69,40 @@ protocol RestfulAPI {
     func getRoute()->String
     func getRequestType()->RequestType
     func getRequestHost()->RequestHost
+    func getReturnedDataFormat()->DataFormat
 }
 
+
+enum OpenMap:RestfulAPI {
+    
+    case getSpeedLimit
+    
+    func getRequestName() -> String {
+        switch self {
+        case .getSpeedLimit:
+            return "getSpeedLimit"
+        }
+    }
+    
+    func getRoute() -> String {
+        switch self{
+        case .getSpeedLimit:
+            return "/api/xapi"
+        }
+    }
+    
+    func getRequestType() -> RequestType {
+        return RequestType.GET
+    }
+    
+    func getRequestHost() -> RequestHost {
+        return RequestHost.overpass
+    }
+    
+    func getReturnedDataFormat() -> DataFormat {
+        return .xml
+    }
+}
 
 enum GoogleApi:RestfulAPI{
     
@@ -85,6 +127,10 @@ enum GoogleApi:RestfulAPI{
         case .speedLimit:
             return RequestType.GET
         }
+    }
+    
+    func getReturnedDataFormat() -> DataFormat {
+        return .json
     }
     
     func getRequestHost() -> RequestHost {
