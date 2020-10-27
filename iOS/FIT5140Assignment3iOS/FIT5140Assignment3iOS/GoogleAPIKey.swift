@@ -7,4 +7,4 @@
 
 import Foundation
 
-static let GoogleMapAPI = ""
+let GoogleMapAPI = ""
