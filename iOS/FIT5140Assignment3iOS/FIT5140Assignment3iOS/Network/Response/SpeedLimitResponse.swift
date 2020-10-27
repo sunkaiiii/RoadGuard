@@ -13,6 +13,8 @@ struct SpeedLimit{
 }
 
 
+//parse xml
+//references on https://www.ioscreator.com/tutorials/parse-xml-ios-tutorial
 class SpeedLimitResponse:NSObject,XMLParserDelegate{
     var ways:[SpeedLimit] = []
     var elementName: String = String()
