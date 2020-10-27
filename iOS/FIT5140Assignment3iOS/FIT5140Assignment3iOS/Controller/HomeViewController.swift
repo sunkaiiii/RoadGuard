@@ -8,15 +8,25 @@
 import UIKit
 import GoogleMaps
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController,CLLocationManagerDelegate {
     let manager = CLLocationManager.init()
-    @IBOutlet weak var speedNotificationView: SpeedNotificationView!
+    var mapview:GMSMapView?
+    let marker = GMSMarker()
+    @IBOutlet weak var speedAlertView: SpeedAlertSuperView!
+    @IBOutlet weak var speedNotificationView: SpeedNotificationSuperView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initLocationPermission()
+        initGoogleMap()
+    }
+    
+    func initLocationPermission() {
         manager.requestAlwaysAuthorization()
-
         manager.allowsBackgroundLocationUpdates = true
+        manager.delegate = self
+        manager.distanceFilter = 30
+        manager.desiredAccuracy = kCLLocationAccuracyBest
         manager.requestTemporaryFullAccuracyAuthorization(withPurposeKey: "wantAccurateLocation", completion: {
             error in
             if let error = error{
@@ -24,15 +34,27 @@ class HomeViewController: UIViewController {
             }
             self.manager.startUpdatingLocation()
         })
-        let gmsCamera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
-        let mapview = GMSMapView.map(withFrame: self.view.frame, camera: gmsCamera)
-        self.view.addSubview(mapview)
-        mapview.layer.zPosition = -.greatestFiniteMagnitude
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
-        marker.title = "Sydney"
-        marker.snippet = "Australia"
-        marker.map = mapview
     }
 
+    func initGoogleMap(){
+        let gmsCamera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        mapview = GMSMapView.map(withFrame: self.view.frame, camera: gmsCamera)
+        if let mapview = mapview{
+            self.view.addSubview(mapview)
+            mapview.layer.zPosition = -.greatestFiniteMagnitude
+        }
+
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let loationInformation = locations.last else {
+            return
+        }
+        let speed = loationInformation.speed
+        speedAlertView.setCurrentSpeed(speed: String(format: "%d", abs(speed*3.6)))
+        marker.position = loationInformation.coordinate
+        marker.map = mapview
+        let gmsCamera = GMSCameraPosition.camera(withLatitude: loationInformation.coordinate.latitude, longitude: loationInformation.coordinate.longitude, zoom: 19)
+        mapview?.camera = gmsCamera
+    }
 }

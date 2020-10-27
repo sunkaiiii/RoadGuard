@@ -9,7 +9,7 @@
 import UIKit
 
 open class BaseUIView:UIView{
-    
+    var childView:UIView?
     internal func XibName()->String{
         fatalError("This function must be overridden")
     }
@@ -22,10 +22,11 @@ open class BaseUIView:UIView{
     func addXibView(){
 //        print(self.classForCoder.class())
 //        print("\(self.classForCoder.class())")
-        if let speedAlertView = Bundle(for: self.classForCoder.class()).loadNibNamed(XibName(), owner: nil, options: nil)?.first as? UIView{
-            self.addSubview(speedAlertView)
-            speedAlertView.frame=bounds
+        if let view = Bundle(for: self.classForCoder.class()).loadNibNamed(XibName(), owner: nil, options: nil)?.first as? UIView{
+            self.addSubview(view)
+            view.frame=bounds
             self.backgroundColor = nil
+            childView=view
         }
     }
     open override func prepareForInterfaceBuilder() {

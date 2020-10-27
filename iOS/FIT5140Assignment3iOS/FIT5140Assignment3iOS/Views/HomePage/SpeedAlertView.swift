@@ -17,4 +17,8 @@ class SpeedAlertView: UIView {
         layer.masksToBounds = true
         speedLabel.text = "100"
     }
+    
+    func setSpeedLabel(speed:String){
+        speedLabel.text = speed
+    }
 }

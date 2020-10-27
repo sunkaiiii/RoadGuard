@@ -11,5 +11,9 @@ import UIKit
     override func XibName() -> String {
         return "\(SpeedAlertView.classForCoder().class())"
     }
+    
+    func setCurrentSpeed(speed:String){
+        (childView as? SpeedAlertView)?.setSpeedLabel(speed: speed)
+    }
 }
 

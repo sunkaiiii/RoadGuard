@@ -76,7 +76,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="NIn-EC-qBH"/>
                     <connections>
-                        <outlet property="speedNotificationView" destination="y8c-qU-NFh" id="TOF-o0-3sv"/>
+                        <outlet property="speedAlertView" destination="4aK-1w-1bx" id="UM6-ib-FJl"/>
+                        <outlet property="speedNotificationView" destination="y8c-qU-NFh" id="Pe7-QN-UF4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
