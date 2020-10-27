@@ -15,6 +15,8 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate, DefaultHtt
     let marker = GMSMarker()
     @IBOutlet weak var speedAlertView: SpeedAlertSuperView!
     @IBOutlet weak var speedNotificationView: SpeedNotificationSuperView!
+    
+    var lastPosition:CLLocationCoordinate2D?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -58,9 +60,31 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate, DefaultHtt
         marker.map = mapview
         let gmsCamera = GMSCameraPosition.camera(withLatitude: loationInformation.coordinate.latitude, longitude: loationInformation.coordinate.longitude, zoom: 19)
         mapview?.camera = gmsCamera
+        let coordinate = loationInformation.coordinate
+        if lastPosition == nil{
+            lastPosition = loationInformation.coordinate
+        }else{
+            let left = lastPosition!.longitude < coordinate.longitude ? lastPosition!.longitude:coordinate.longitude
+            let bottom = lastPosition!.latitude < coordinate.latitude ? lastPosition!.latitude:coordinate.latitude
+            let right = lastPosition!.longitude > coordinate.longitude ? lastPosition!.longitude:coordinate.longitude
+            let top = lastPosition!.latitude > coordinate.latitude ? lastPosition!.latitude:coordinate.latitude
+            let request = SpeedLimitRequest(left: left, right: right, top: top, bottom: bottom)
+            request.RequestSpeedLimit(onCompleted: {(response) in
+                if !response.ways.isEmpty{
+                    let way = response.ways[0]
+                    self.speedNotificationView.setSpeedNotification("\(way.speedMaxSpeed)")
+                }
+            })
+        }
     }
     
     func handleData(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
-        
+        let data:Data? = accessibleData.retriveData(helper: helper)
+        if let data = data{
+            let speedLimits = SpeedLimitResponse(xmlData: data)
+            for way in speedLimits.ways{
+                print(way.speedName,way.speedMaxSpeed)
+            }
+        }
     }
 }

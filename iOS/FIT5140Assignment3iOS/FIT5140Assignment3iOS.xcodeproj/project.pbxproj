@@ -39,6 +39,8 @@
 		B1AB3A782542B9480082B004 /* RoadInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A772542B9480082B004 /* RoadInformationViewController.swift */; };
 		B1AB3A7B2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */; };
 		B1AB3A9925446A580082B004 /* SpeedAlertSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A9825446A580082B004 /* SpeedAlertSuperView.swift */; };
+		B1C10EBA25483C8B008BDC64 /* SpeedLimitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C10EB925483C8B008BDC64 /* SpeedLimitResponse.swift */; };
+		B1C10EBD2548458A008BDC64 /* SpeedLimitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C10EBC2548458A008BDC64 /* SpeedLimitRequest.swift */; };
 		E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */; };
 		E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */; };
 		E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */; };
@@ -88,6 +90,8 @@
 		B1AB3A772542B9480082B004 /* RoadInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadInformationViewController.swift; sourceTree = "<group>"; };
 		B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkRequestControllerProtocol.swift; sourceTree = "<group>"; };
 		B1AB3A9825446A580082B004 /* SpeedAlertSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedAlertSuperView.swift; sourceTree = "<group>"; };
+		B1C10EB925483C8B008BDC64 /* SpeedLimitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLimitResponse.swift; sourceTree = "<group>"; };
+		B1C10EBC2548458A008BDC64 /* SpeedLimitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLimitRequest.swift; sourceTree = "<group>"; };
 		E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchAddressBottomCard.xib; sourceTree = "<group>"; };
 		E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressBottomCard.swift; sourceTree = "<group>"; };
 		E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardSpecifyCell.swift; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 		B1AB3A8625445FD50082B004 /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
+				B1C10EBC2548458A008BDC64 /* SpeedLimitRequest.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 		B1AB3A8B2544608D0082B004 /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				B1C10EB925483C8B008BDC64 /* SpeedLimitResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -415,6 +421,7 @@
 				E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */,
 				B1AB3A782542B9480082B004 /* RoadInformationViewController.swift in Sources */,
 				B1AB3A752542B70D0082B004 /* CurrentSpeedInformationView.swift in Sources */,
+				B1C10EBD2548458A008BDC64 /* SpeedLimitRequest.swift in Sources */,
 				B1AB3A9925446A580082B004 /* SpeedAlertSuperView.swift in Sources */,
 				E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */,
 				B13CEFE925410BA100957E84 /* NetworkRequestTask.swift in Sources */,
@@ -430,6 +437,7 @@
 				B13CEFF425410D2B00957E84 /* ImagePicker.swift in Sources */,
 				B13CEFF125410D1500957E84 /* ImageExtension.swift in Sources */,
 				B13CEFFF25410D9200957E84 /* AlertControllerHelper.swift in Sources */,
+				B1C10EBA25483C8B008BDC64 /* SpeedLimitResponse.swift in Sources */,
 				B13CEFCA2540FAF900957E84 /* SceneDelegate.swift in Sources */,
 				B13CF00A2541A9B700957E84 /* SpeedAlertView.swift in Sources */,
 				B1AB3A7B2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift in Sources */,

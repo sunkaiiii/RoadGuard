@@ -11,4 +11,10 @@ import UIKit
     override func XibName() -> String {
         return "\(SpeedNotificationView.classForCoder().class())"
     }
+    
+    func setSpeedNotification(_ speed:String){
+        if let view = childView as? SpeedNotificationView{
+            view.setSpeedNotification(speed)
+        }
+    }
 }

@@ -16,11 +16,6 @@ enum RequestType{
     case DELETE
 }
 
-enum DataFormat {
-    case json
-    case xml
-}
-
 protocol Host {
     func getHostUrl()->String
     func getPort()->Int
@@ -69,39 +64,6 @@ protocol RestfulAPI {
     func getRoute()->String
     func getRequestType()->RequestType
     func getRequestHost()->RequestHost
-    func getReturnedDataFormat()->DataFormat
-}
-
-
-enum OpenMap:RestfulAPI {
-    
-    case getSpeedLimit
-    
-    func getRequestName() -> String {
-        switch self {
-        case .getSpeedLimit:
-            return "getSpeedLimit"
-        }
-    }
-    
-    func getRoute() -> String {
-        switch self{
-        case .getSpeedLimit:
-            return "/api/xapi"
-        }
-    }
-    
-    func getRequestType() -> RequestType {
-        return RequestType.GET
-    }
-    
-    func getRequestHost() -> RequestHost {
-        return RequestHost.overpass
-    }
-    
-    func getReturnedDataFormat() -> DataFormat {
-        return .xml
-    }
 }
 
 enum GoogleApi:RestfulAPI{
@@ -129,9 +91,6 @@ enum GoogleApi:RestfulAPI{
         }
     }
     
-    func getReturnedDataFormat() -> DataFormat {
-        return .json
-    }
     
     func getRequestHost() -> RequestHost {
         switch self {

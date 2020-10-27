@@ -68,6 +68,9 @@
                 <constraint firstItem="g3S-Ua-hCW" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="xqb-V7-M0G"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="speedNotification" destination="vN0-ue-Pqs" id="Awt-Cc-py5"/>
+            </connections>
             <point key="canvasLocation" x="-49.275362318840585" y="230.69196428571428"/>
         </view>
     </objects>
