@@ -13,16 +13,22 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
     let manager = CLLocationManager.init()
     var mapview:GMSMapView?
     let marker = GMSMarker()
+    weak var firebaseController:DatabaseProtocol?
     @IBOutlet weak var speedAlertView: SpeedAlertSuperView!
     @IBOutlet weak var speedNotificationView: SpeedNotificationSuperView!
     
     var lastPosition:CLLocationCoordinate2D?
+    var limitSpeed:Int = -1
     override func viewDidLoad() {
         super.viewDidLoad()
         
         initLocationPermission()
         initGoogleMap()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        firebaseController = appDelegate.firebaseController
+        
     }
+
     
     func initLocationPermission() {
         manager.requestAlwaysAuthorization()
@@ -54,8 +60,8 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
             return
         }
         print(locationInformation.coordinate.latitude,locationInformation.coordinate.longitude)
-        let speed = locationInformation.speed
-        speedAlertView.setCurrentSpeed(speed: String(format: "%d", abs(speed*3.6)))
+        let speed = Int(fabs(locationInformation.speed * 3.6))
+        speedAlertView.setCurrentSpeed(speed: String(format: "%d", speed))
         marker.position = locationInformation.coordinate
         marker.map = mapview
         let gmsCamera = GMSCameraPosition.camera(withLatitude: locationInformation.coordinate.latitude, longitude: locationInformation.coordinate.longitude, zoom: 19)
@@ -65,6 +71,9 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
             requestMeasureTheSpeed(lastPosition: lastPosition, location: locationInformation)
         }else{
             lastPosition = locationInformation.coordinate
+            if limitSpeed > 0 && speed > limitSpeed{
+                self.recordOverSpeed(currentSpeed: speed, limitedSpeed: limitSpeed, location: locationInformation)
+            }
         }
     }
     
@@ -80,6 +89,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
                 let way = response.ways[0]
                 self.speedNotificationView.setSpeedNotification("\(way.speedMaxSpeed)")
                 let speed = fabs(location.speed * 3.6)
+                self.limitSpeed = Int(speed)
                 if Int(speed) > way.speedMaxSpeed{
                     self.recordOverSpeed(currentSpeed: Int(speed), limitedSpeed: way.speedMaxSpeed, location: location)
                 }
@@ -88,6 +98,9 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
     }
 
     func recordOverSpeed(currentSpeed:Int, limitedSpeed:Int, location:CLLocation){
+        print("Over speed is record speed limit is \(limitedSpeed), current speed is \(currentSpeed)")
+        var overSpeedRecord = OverSpeedRecord(recordSpeed: currentSpeed, limitedSpeed: limitedSpeed, lat: location.coordinate.latitude, log: location.coordinate.longitude, roadName: "")
+        firebaseController?.addOverSpeedRecord(overSpeedRecord)
         
     }
 }
