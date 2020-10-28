@@ -73,6 +73,8 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
             lastPosition = locationInformation.coordinate
             if limitSpeed > 0 && speed > limitSpeed{
                 self.recordOverSpeed(currentSpeed: speed, limitedSpeed: limitSpeed, location: locationInformation)
+            }else if limitSpeed > 0{
+                self.recordNormalSpeed(currentSpeed: Int(speed), limitedSpeed: limitSpeed, location: locationInformation)
             }
         }
     }
@@ -90,8 +92,10 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
                 self.speedNotificationView.setSpeedNotification("\(way.speedMaxSpeed)")
                 let speed = fabs(location.speed * 3.6)
                 self.limitSpeed = Int(speed)
-                if Int(speed) > way.speedMaxSpeed{
+                if Int(speed) > way.speedMaxSpeed && way.speedMaxSpeed>0{
                     self.recordOverSpeed(currentSpeed: Int(speed), limitedSpeed: way.speedMaxSpeed, location: location)
+                }else if way.speedMaxSpeed > 0{
+                    self.recordNormalSpeed(currentSpeed: Int(speed), limitedSpeed: way.speedMaxSpeed, location: location)
                 }
             }
         })
@@ -99,8 +103,14 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
 
     func recordOverSpeed(currentSpeed:Int, limitedSpeed:Int, location:CLLocation){
         print("Over speed is record speed limit is \(limitedSpeed), current speed is \(currentSpeed)")
-        var overSpeedRecord = OverSpeedRecord(recordSpeed: currentSpeed, limitedSpeed: limitedSpeed, lat: location.coordinate.latitude, log: location.coordinate.longitude, roadName: "")
+        var overSpeedRecord = SpeedRecord(recordSpeed: currentSpeed, limitedSpeed: limitedSpeed, lat: location.coordinate.latitude, log: location.coordinate.longitude, roadName: "")
         firebaseController?.addOverSpeedRecord(overSpeedRecord)
         
+    }
+    
+    func recordNormalSpeed(currentSpeed:Int, limitedSpeed:Int, location:CLLocation){
+        print("normal speed is reocrded, limited speed is \(limitedSpeed), current speed is \(currentSpeed)")
+        var normalSpeed = SpeedRecord(recordSpeed: currentSpeed, limitedSpeed: limitedSpeed, lat: location.coordinate.latitude, log: location.coordinate.longitude, roadName: "")
+        firebaseController?.addOverSpeedRecord(normalSpeed)
     }
 }

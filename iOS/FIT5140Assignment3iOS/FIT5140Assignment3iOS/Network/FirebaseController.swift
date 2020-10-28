@@ -16,6 +16,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
     var authController:Auth
     var database:Firestore
     var speedLimitRef:CollectionReference?
+    var normalSpeedRef:CollectionReference?
     
     
     override init(){
@@ -29,12 +30,24 @@ class FirebaseController: NSObject,DatabaseProtocol {
             }
             print("authResult.user.displayName")
             self.speedLimitRef = self.database.collection("speedLimitRecord")
+            self.normalSpeedRef = self.database.collection("normalSpeedRecord")
         })
     }
     
-    func addOverSpeedRecord(_ record: OverSpeedRecord)->OverSpeedRecord {
+    func addOverSpeedRecord(_ record: SpeedRecord)->SpeedRecord {
         do{
             if let overspeedRef = try speedLimitRef?.addDocument(from: record){
+                record.id = overspeedRef.documentID
+            }
+        }catch{
+            print("Failed to serilise over speed record")
+        }
+        return record
+    }
+    
+    func addNormalSpeedRecord(_ record: SpeedRecord) -> SpeedRecord {
+        do{
+            if let overspeedRef = try normalSpeedRef?.addDocument(from: record){
                 record.id = overspeedRef.documentID
             }
         }catch{
@@ -46,5 +59,6 @@ class FirebaseController: NSObject,DatabaseProtocol {
 }
 
 protocol DatabaseProtocol:NSObject {
-    func addOverSpeedRecord(_ record:OverSpeedRecord)->OverSpeedRecord
+    func addOverSpeedRecord(_ record:SpeedRecord)->SpeedRecord
+    func addNormalSpeedRecord(_ record:SpeedRecord)->SpeedRecord
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OverSpeedRecord: Codable {
+class SpeedRecord: Codable {
     var id:String?
     let recordSpeed:Int
     let limitedSpeed:Int
