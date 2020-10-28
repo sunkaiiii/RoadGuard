@@ -8,7 +8,7 @@
 import UIKit
 import GoogleMaps
 
-class HomeViewController: UIViewController,CLLocationManagerDelegate, DefaultHttpRequestAction {
+class HomeViewController: UIViewController,CLLocationManagerDelegate {
     
     let manager = CLLocationManager.init()
     var mapview:GMSMapView?
@@ -50,41 +50,44 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate, DefaultHtt
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let loationInformation = locations.last else {
+        guard let locationInformation = locations.last else {
             return
         }
-        print(loationInformation.coordinate.latitude,loationInformation.coordinate.longitude)
-        let speed = loationInformation.speed
+        print(locationInformation.coordinate.latitude,locationInformation.coordinate.longitude)
+        let speed = locationInformation.speed
         speedAlertView.setCurrentSpeed(speed: String(format: "%d", abs(speed*3.6)))
-        marker.position = loationInformation.coordinate
+        marker.position = locationInformation.coordinate
         marker.map = mapview
-        let gmsCamera = GMSCameraPosition.camera(withLatitude: loationInformation.coordinate.latitude, longitude: loationInformation.coordinate.longitude, zoom: 19)
+        let gmsCamera = GMSCameraPosition.camera(withLatitude: locationInformation.coordinate.latitude, longitude: locationInformation.coordinate.longitude, zoom: 19)
         mapview?.camera = gmsCamera
-        let coordinate = loationInformation.coordinate
-        if lastPosition == nil{
-            lastPosition = loationInformation.coordinate
+        
+        if let lastPosition = lastPosition{
+            requestMeasureTheSpeed(lastPosition: lastPosition, location: locationInformation)
         }else{
-            let left = lastPosition!.longitude < coordinate.longitude ? lastPosition!.longitude:coordinate.longitude
-            let bottom = lastPosition!.latitude < coordinate.latitude ? lastPosition!.latitude:coordinate.latitude
-            let right = lastPosition!.longitude > coordinate.longitude ? lastPosition!.longitude:coordinate.longitude
-            let top = lastPosition!.latitude > coordinate.latitude ? lastPosition!.latitude:coordinate.latitude
-            let request = SpeedLimitRequest(left: left, right: right, top: top, bottom: bottom)
-            request.RequestSpeedLimit(onCompleted: {(response) in
-                if !response.ways.isEmpty{
-                    let way = response.ways[0]
-                    self.speedNotificationView.setSpeedNotification("\(way.speedMaxSpeed)")
-                }
-            })
+            lastPosition = locationInformation.coordinate
         }
     }
     
-    func handleData(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
-        let data:Data? = accessibleData.retriveData(helper: helper)
-        if let data = data{
-            let speedLimits = SpeedLimitResponse(xmlData: data)
-            for way in speedLimits.ways{
-                print(way.speedName,way.speedMaxSpeed)
+    func requestMeasureTheSpeed(lastPosition:CLLocationCoordinate2D, location:CLLocation){
+        let coordinate = location.coordinate
+        let left = lastPosition.longitude < coordinate.longitude ? lastPosition.longitude:coordinate.longitude
+        let bottom = lastPosition.latitude < coordinate.latitude ? lastPosition.latitude:coordinate.latitude
+        let right = lastPosition.longitude > coordinate.longitude ? lastPosition.longitude:coordinate.longitude
+        let top = lastPosition.latitude > coordinate.latitude ? lastPosition.latitude:coordinate.latitude
+        let request = SpeedLimitRequest(left: left, right: right, top: top, bottom: bottom)
+        request.RequestSpeedLimit(onCompleted: {(response) in
+            if !response.ways.isEmpty{
+                let way = response.ways[0]
+                self.speedNotificationView.setSpeedNotification("\(way.speedMaxSpeed)")
+                let speed = fabs(location.speed * 3.6)
+                if Int(speed) > way.speedMaxSpeed{
+                    self.recordOverSpeed(currentSpeed: Int(speed), limitedSpeed: way.speedMaxSpeed, location: location)
+                }
             }
-        }
+        })
+    }
+
+    func recordOverSpeed(currentSpeed:Int, limitedSpeed:Int, location:CLLocation){
+        
     }
 }
