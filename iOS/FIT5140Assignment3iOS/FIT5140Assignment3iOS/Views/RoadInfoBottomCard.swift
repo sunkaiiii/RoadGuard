@@ -8,9 +8,12 @@
 import Foundation
 import UIKit
 
-class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController {
+    var areaOutlet: UIView?
+    
+    
     @IBOutlet weak var roadInfoBottomCardHandleAreaOutlet: UIView!
+    
 
     @IBOutlet weak var searchAddressBottomCardTableViewOutlet: UITableView!
 
@@ -24,6 +27,7 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        areaOutlet = roadInfoBottomCardHandleAreaOutlet
         searchAddressBottomCardTableViewOutlet.delegate = self
         searchAddressBottomCardTableViewOutlet.dataSource = self
         searchAddressBottomCardTableViewOutlet.register(UITableViewCell.self, forCellReuseIdentifier: DEFAULT_CELL_ID)

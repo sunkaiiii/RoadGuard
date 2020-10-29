@@ -10,11 +10,12 @@ import UIKit
 protocol DefaultHttpRequestAction:HTTPRequestAction {
     func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T.Type) where T:Decodable
     func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T.Type, onDataReturned:@escaping(RequestHelper,URLComponents,T)->Void) where T:Decodable
+    func requestRestfulServiceForXmlResult(api:RestfulAPI, model:RequestModel)
     func handleData(helper:RequestHelper,url:URLComponents,accessibleData:AccessibleNetworkData)
 }
 
 protocol AccessibleNetworkData{
-    func retriveData<T>(helper:RequestHelper)->T? where T:Decodable
+    func retriveData<T>(helper:RequestHelper)->T?
 }
 
 class DataResult:AccessibleNetworkData{
@@ -22,7 +23,7 @@ class DataResult:AccessibleNetworkData{
     init(data:Any) {
         self.data = data
     }
-    func retriveData<T>(helper:RequestHelper) -> T? where T:Decodable {
+    func retriveData<T>(helper:RequestHelper) -> T? {
         return data as? T
     }
 }
@@ -34,6 +35,10 @@ extension DefaultHttpRequestAction{
     
     func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T.Type, onDataReturned:@escaping(RequestHelper,URLComponents,T)->Void) where T:Decodable{
         NetworkRequestTask<T>(helper: RequestHelper(api: api, model: model), action: self, onCompleted: onDataReturned).fetchDataFromSever()
+    }
+    
+    func requestRestfulServiceForXmlResult(api:RestfulAPI, model:RequestModel){
+        NetworkRequestTask<Data>(helper: RequestHelper(api: api, model: model), action: self).fetchDataFromSever()
     }
     
     func beforeExecution(helper: RequestHelper) {

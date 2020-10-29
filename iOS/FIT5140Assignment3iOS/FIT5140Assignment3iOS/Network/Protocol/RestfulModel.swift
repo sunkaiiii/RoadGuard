@@ -8,7 +8,7 @@
 import Foundation
 
 let HTTP_PORT = 80
-let HTTPS_PORT = 443
+let DEFAULT_HTTPS_PORT = 443
 
 protocol RequestModel {
     func getPathParameter()->[String]
