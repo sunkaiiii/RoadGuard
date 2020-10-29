@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B13C25FB254936B1008EBDE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */; };
+		B13C2609254AAA69008EBDE3 /* ScrollableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13C2608254AAA69008EBDE3 /* ScrollableViewController.swift */; };
+		B13C260F254AB8AA008EBDE3 /* BottomScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13C260E254AB8AA008EBDE3 /* BottomScrollableView.swift */; };
 		B13CEFC82540FAF900957E84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CEFC72540FAF900957E84 /* AppDelegate.swift */; };
 		B13CEFCA2540FAF900957E84 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CEFC92540FAF900957E84 /* SceneDelegate.swift */; };
 		B13CEFCC2540FAF900957E84 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CEFCB2540FAF900957E84 /* ViewController.swift */; };
@@ -60,6 +62,8 @@
 		61BD52B6593E674829C6363C /* Pods-FIT5140Assignment3iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIT5140Assignment3iOS.debug.xcconfig"; path = "Target Support Files/Pods-FIT5140Assignment3iOS/Pods-FIT5140Assignment3iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		80FBCD77DA47232EA3362492 /* Pods-FIT5140Assignment3iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIT5140Assignment3iOS.release.xcconfig"; path = "Target Support Files/Pods-FIT5140Assignment3iOS/Pods-FIT5140Assignment3iOS.release.xcconfig"; sourceTree = "<group>"; };
 		B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B13C2608254AAA69008EBDE3 /* ScrollableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableViewController.swift; sourceTree = "<group>"; };
+		B13C260E254AB8AA008EBDE3 /* BottomScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomScrollableView.swift; sourceTree = "<group>"; };
 		B13CEFC42540FAF900957E84 /* FIT5140Assignment3iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FIT5140Assignment3iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B13CEFC72540FAF900957E84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B13CEFC92540FAF900957E84 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +140,15 @@
 				2FE65A1651A941B17AEF61CC /* Pods_FIT5140Assignment3iOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B13C2602254AA0E7008EBDE3 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				B13C2608254AAA69008EBDE3 /* ScrollableViewController.swift */,
+				B13C260E254AB8AA008EBDE3 /* BottomScrollableView.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 		B13CEFBB2540FAF900957E84 = {
@@ -223,6 +236,7 @@
 		B13CF0012541766000957E84 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B13C2602254AA0E7008EBDE3 /* CustomView */,
 				B190D3CB25447102002249BA /* RoadPage */,
 				B190D3C525446FFE002249BA /* HomePage */,
 				B1AB3AA025446D0B0082B004 /* SuperViews */,
@@ -439,6 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B13CEFCC2540FAF900957E84 /* ViewController.swift in Sources */,
+				B13C2609254AAA69008EBDE3 /* ScrollableViewController.swift in Sources */,
 				B13CEFE32540FDC900957E84 /* RestfulModel.swift in Sources */,
 				B190D3C825447029002249BA /* SpeedNotificationSuperView.swift in Sources */,
 				B13CEFE625410B6F00957E84 /* NetworkExtension.swift in Sources */,
@@ -453,6 +468,7 @@
 				B1C10EBD2548458A008BDC64 /* SpeedLimitRequest.swift in Sources */,
 				B1AB3A9925446A580082B004 /* SpeedAlertSuperView.swift in Sources */,
 				E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */,
+				B13C260F254AB8AA008EBDE3 /* BottomScrollableView.swift in Sources */,
 				B13CEFE925410BA100957E84 /* NetworkRequestTask.swift in Sources */,
 				B13CF00E2541AA2000957E84 /* HomeViewController.swift in Sources */,
 				B190D3CD25447113002249BA /* CurrentSpeedInformationSuperView.swift in Sources */,

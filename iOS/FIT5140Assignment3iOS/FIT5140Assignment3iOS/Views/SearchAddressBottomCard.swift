@@ -8,7 +8,8 @@
 import Foundation
 import UIKit
 
-class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController {
+    var areaOutlet: UIView?
 
     @IBOutlet weak var searchAddressBottomCardHandleAreaOutlet: UIView!
 
@@ -27,6 +28,7 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.areaOutlet = searchAddressBottomCardTableViewOutlet
         searchAddressBottomCardTableViewOutlet.delegate = self
         searchAddressBottomCardTableViewOutlet.dataSource = self
         searchAddressBottomCardTableViewOutlet.register(UITableViewCell.self, forCellReuseIdentifier: DEFAULT_CELL_ID)
