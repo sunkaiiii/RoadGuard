@@ -36,8 +36,10 @@ class BottomScrollableView: UIView {
         super.init(coder: aDecoder)
     }
     
-    override func didMoveToSuperview() {
-        setupBottomCard(superview: self.superview!)
+    override func willMove(toSuperview newSuperview: UIView?) {
+        if let superview = newSuperview{
+            setupBottomCard(superview: superview)
+        }
     }
 
     
