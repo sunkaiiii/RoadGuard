@@ -13,7 +13,8 @@ class BottomCardImportantRoadCell: UITableViewCell {
     @IBOutlet var contentLabel : UILabel!
     @IBOutlet var distanceLabel : UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var backGroundOutlet: UIImageView!
+    @IBOutlet weak var backgroundColorView: UIView!
+
 
     static let identifier = "BottomCardImportantRoadCell"
     static func nib()->UINib{
@@ -31,7 +32,7 @@ class BottomCardImportantRoadCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         iconImageView.contentMode = .scaleAspectFit
-        backGroundOutlet.layer.cornerRadius = 12
+        backgroundColorView.layer.cornerRadius = 24
         // Initialization code
     }
 

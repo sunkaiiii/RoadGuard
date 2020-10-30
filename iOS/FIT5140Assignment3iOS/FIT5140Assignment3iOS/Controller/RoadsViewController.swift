@@ -15,17 +15,19 @@ class RoadsViewController: UIViewController {
         //initialise the BottomCard/FloatPanel
         setupBottomCard()
     }
-    
+
+    // MARK: - Google Map Related functions
     func initGoogleMap(){
         let gmsCamera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
         let mapview = GMSMapView.map(withFrame: self.view.frame, camera: gmsCamera)
         self.view.addSubview(mapview)
     }
-    
+
+    // MARK: - BottomCard/FloatPanel Related functions
     func setupBottomCard(){
         let contentController = SearchAddressBottomCard(nibName:"SearchAddressBottomCard", bundle:nil)
         let bototmScrollableViewController = BottomScrollableView(contentViewController: contentController, superview: self.view)
-        bototmScrollableViewController.cardHandleAreaHeight = 150
+        bototmScrollableViewController.cardHandleAreaHeight = 180
         self.view.addSubview(bototmScrollableViewController)
     }
 }
