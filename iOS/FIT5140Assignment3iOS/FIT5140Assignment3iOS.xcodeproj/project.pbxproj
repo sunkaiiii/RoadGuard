@@ -45,8 +45,14 @@
 		B1AB3A9925446A580082B004 /* SpeedAlertSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A9825446A580082B004 /* SpeedAlertSuperView.swift */; };
 		B1C10EBA25483C8B008BDC64 /* SpeedLimitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C10EB925483C8B008BDC64 /* SpeedLimitResponse.swift */; };
 		B1C10EBD2548458A008BDC64 /* SpeedLimitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C10EBC2548458A008BDC64 /* SpeedLimitRequest.swift */; };
+		E40448EC254C278700341510 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40448EB254C278700341510 /* RecordViewController.swift */; };
 		E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */; };
 		E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */; };
+		E45B486D254CF66E00692A2E /* WormTabStripButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B486B254CF66D00692A2E /* WormTabStripButton.swift */; };
+		E45B486E254CF66E00692A2E /* WormTabStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B486C254CF66E00692A2E /* WormTabStrip.swift */; };
+		E45B4875254CFF7600692A2E /* RecordBreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B4874254CFF7600692A2E /* RecordBreakdownViewController.swift */; };
+		E45B4879254D023600692A2E /* RecordBkdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B4877254D023600692A2E /* RecordBkdTableViewCell.swift */; };
+		E45B487A254D023600692A2E /* RecordBkdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E45B4878254D023600692A2E /* RecordBkdTableViewCell.xib */; };
 		E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */; };
 		E4BA6E7F25450307001D0CD7 /* BottomCardSpecifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BA6E7D25450307001D0CD7 /* BottomCardSpecifyCell.xib */; };
 		E4BA6E8825452BF8001D0CD7 /* RoadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA6E8725452BF8001D0CD7 /* RoadsViewController.swift */; };
@@ -102,8 +108,14 @@
 		B1AB3A9825446A580082B004 /* SpeedAlertSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedAlertSuperView.swift; sourceTree = "<group>"; };
 		B1C10EB925483C8B008BDC64 /* SpeedLimitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLimitResponse.swift; sourceTree = "<group>"; };
 		B1C10EBC2548458A008BDC64 /* SpeedLimitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLimitRequest.swift; sourceTree = "<group>"; };
+		E40448EB254C278700341510 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchAddressBottomCard.xib; sourceTree = "<group>"; };
 		E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressBottomCard.swift; sourceTree = "<group>"; };
+		E45B486B254CF66D00692A2E /* WormTabStripButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WormTabStripButton.swift; sourceTree = "<group>"; };
+		E45B486C254CF66E00692A2E /* WormTabStrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WormTabStrip.swift; sourceTree = "<group>"; };
+		E45B4874254CFF7600692A2E /* RecordBreakdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBreakdownViewController.swift; sourceTree = "<group>"; };
+		E45B4877254D023600692A2E /* RecordBkdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBkdTableViewCell.swift; sourceTree = "<group>"; };
+		E45B4878254D023600692A2E /* RecordBkdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordBkdTableViewCell.xib; sourceTree = "<group>"; };
 		E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardSpecifyCell.swift; sourceTree = "<group>"; };
 		E4BA6E7D25450307001D0CD7 /* BottomCardSpecifyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomCardSpecifyCell.xib; sourceTree = "<group>"; };
 		E4BA6E8725452BF8001D0CD7 /* RoadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadsViewController.swift; sourceTree = "<group>"; };
@@ -236,20 +248,14 @@
 		B13CF0012541766000957E84 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B170FC6D25428CC20086F1D9 /* BaseUIView.swift */,
+				B170FC7D254291B60086F1D9 /* CircleShapeView.swift */,
 				B13C2602254AA0E7008EBDE3 /* CustomView */,
 				B190D3CB25447102002249BA /* RoadPage */,
 				B190D3C525446FFE002249BA /* HomePage */,
 				B1AB3AA025446D0B0082B004 /* SuperViews */,
-				B170FC6D25428CC20086F1D9 /* BaseUIView.swift */,
-				B170FC7D254291B60086F1D9 /* CircleShapeView.swift */,
-				E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */,
-				E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */,
-				E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */,
-				E4BA6E7D25450307001D0CD7 /* BottomCardSpecifyCell.xib */,
-				E4D865E025458CB600465243 /* RoadInfoBottomCard.xib */,
-				E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */,
-				E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */,
-				E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */,
+				E45B486A254CF60100692A2E /* BottomCard */,
+				E45B4869254CF5F400692A2E /* TopScrollTabBar */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -261,6 +267,7 @@
 				B1AB3A772542B9480082B004 /* RoadInformationViewController.swift */,
 				B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */,
 				E4BA6E8725452BF8001D0CD7 /* RoadsViewController.swift */,
+				E40448EB254C278700341510 /* RecordViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -310,6 +317,33 @@
 				B190D3C725447029002249BA /* SpeedNotificationSuperView.swift */,
 			);
 			path = SuperViews;
+			sourceTree = "<group>";
+		};
+		E45B4869254CF5F400692A2E /* TopScrollTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				E45B486C254CF66E00692A2E /* WormTabStrip.swift */,
+				E45B486B254CF66D00692A2E /* WormTabStripButton.swift */,
+				E45B4874254CFF7600692A2E /* RecordBreakdownViewController.swift */,
+				E45B4877254D023600692A2E /* RecordBkdTableViewCell.swift */,
+				E45B4878254D023600692A2E /* RecordBkdTableViewCell.xib */,
+			);
+			path = TopScrollTabBar;
+			sourceTree = "<group>";
+		};
+		E45B486A254CF60100692A2E /* BottomCard */ = {
+			isa = PBXGroup;
+			children = (
+				E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */,
+				E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */,
+				E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */,
+				E4BA6E7D25450307001D0CD7 /* BottomCardSpecifyCell.xib */,
+				E4D865E025458CB600465243 /* RoadInfoBottomCard.xib */,
+				E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */,
+				E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */,
+				E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */,
+			);
+			path = BottomCard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,6 +412,7 @@
 				E4D865E125458CB600465243 /* RoadInfoBottomCard.xib in Resources */,
 				B170FC812542B40F0086F1D9 /* CurrentSpeedInformationView.xib in Resources */,
 				E4D865E9254591B600465243 /* BottomCardImportantRoadCell.xib in Resources */,
+				E45B487A254D023600692A2E /* RecordBkdTableViewCell.xib in Resources */,
 				E4BA6E7F25450307001D0CD7 /* BottomCardSpecifyCell.xib in Resources */,
 				B13CEFCF2540FAF900957E84 /* Main.storyboard in Resources */,
 				B13C25FB254936B1008EBDE3 /* GoogleService-Info.plist in Resources */,
@@ -452,9 +487,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E45B486E254CF66E00692A2E /* WormTabStrip.swift in Sources */,
 				B13CEFCC2540FAF900957E84 /* ViewController.swift in Sources */,
 				B13C2609254AAA69008EBDE3 /* ScrollableViewController.swift in Sources */,
 				B13CEFE32540FDC900957E84 /* RestfulModel.swift in Sources */,
+				E45B486D254CF66E00692A2E /* WormTabStripButton.swift in Sources */,
 				B190D3C825447029002249BA /* SpeedNotificationSuperView.swift in Sources */,
 				B13CEFE625410B6F00957E84 /* NetworkExtension.swift in Sources */,
 				B13CEFC82540FAF900957E84 /* AppDelegate.swift in Sources */,
@@ -470,14 +507,17 @@
 				E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */,
 				B13C260F254AB8AA008EBDE3 /* BottomScrollableView.swift in Sources */,
 				B13CEFE925410BA100957E84 /* NetworkRequestTask.swift in Sources */,
+				E40448EC254C278700341510 /* RecordViewController.swift in Sources */,
 				B13CF00E2541AA2000957E84 /* HomeViewController.swift in Sources */,
 				B190D3CD25447113002249BA /* CurrentSpeedInformationSuperView.swift in Sources */,
 				B170FC74254290D00086F1D9 /* SpeedNotificationView.swift in Sources */,
 				B13CEFF825410D5F00957E84 /* UITextFieldHelper.swift in Sources */,
+				E45B4875254CFF7600692A2E /* RecordBreakdownViewController.swift in Sources */,
 				E4D865E425458CE400465243 /* RoadInfoBottomCard.swift in Sources */,
 				B13CEFDF2540FD7A00957E84 /* RestfulAPI.swift in Sources */,
 				B13CEFFC25410D7400957E84 /* ToastHelper.swift in Sources */,
 				B13CEFED25410C9000957E84 /* ImageLoader.swift in Sources */,
+				E45B4879254D023600692A2E /* RecordBkdTableViewCell.swift in Sources */,
 				E4BA6E8825452BF8001D0CD7 /* RoadsViewController.swift in Sources */,
 				B13CEFF425410D2B00957E84 /* ImagePicker.swift in Sources */,
 				B1466EA62548EF16008ED039 /* SpeedRecord.swift in Sources */,

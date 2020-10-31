@@ -104,13 +104,12 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
     func recordOverSpeed(currentSpeed:Int, limitedSpeed:Int, location:CLLocation){
         print("Over speed is record speed limit is \(limitedSpeed), current speed is \(currentSpeed)")
         var overSpeedRecord = SpeedRecord(recordSpeed: currentSpeed, limitedSpeed: limitedSpeed, lat: location.coordinate.latitude, log: location.coordinate.longitude, roadName: "")
-        firebaseController?.addOverSpeedRecord(overSpeedRecord)
-        
+        let _ = firebaseController?.addOverSpeedRecord(overSpeedRecord)
     }
     
     func recordNormalSpeed(currentSpeed:Int, limitedSpeed:Int, location:CLLocation){
         print("normal speed is reocrded, limited speed is \(limitedSpeed), current speed is \(currentSpeed)")
         var normalSpeed = SpeedRecord(recordSpeed: currentSpeed, limitedSpeed: limitedSpeed, lat: location.coordinate.latitude, log: location.coordinate.longitude, roadName: "")
-        firebaseController?.addOverSpeedRecord(normalSpeed)
+        let _ = firebaseController?.addOverSpeedRecord(normalSpeed)
     }
 }

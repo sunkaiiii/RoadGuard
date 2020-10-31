@@ -74,6 +74,19 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
             return 80
         }
     }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == SECTION_HEADER{
+            return false
+        }
+        return true
+    }
+
+    func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == SECTION_HEADER{
+            searchAddressBottomCardTableViewOutlet.deselectRow(at:indexPath,animated:true)
+        }
+    }
 }
 
 

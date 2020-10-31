@@ -4,6 +4,7 @@
 //
 //  Created by sunkai on 29/10/20.
 //
+//Basing on the BottomCard/FloatPanel from //http://www.brianadvent.com/
 
 import UIKit
 class BottomScrollableView: UIView {

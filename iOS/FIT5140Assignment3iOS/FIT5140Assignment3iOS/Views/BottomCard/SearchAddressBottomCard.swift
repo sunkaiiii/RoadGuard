@@ -92,7 +92,22 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             return 80
         }
     }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section == SECTION_HEADER_SPECIFY || indexPath.section == SECTION_HEADER_NEARBY{
+            return false
+        }
+        return true
+    }
+
+    func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == SECTION_HEADER_SPECIFY || indexPath.section == SECTION_HEADER_NEARBY{
+            searchAddressBottomCardTableViewOutlet.deselectRow(at:indexPath,animated:true)}
+    }
+
 }
+
+
 
 
 
