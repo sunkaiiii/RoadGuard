@@ -34,8 +34,13 @@ class RecordViewController: UIViewController, WormTabStripDelegate {
         viewPager.eyStyle.wormStyel = .line
         viewPager.eyStyle.isWormEnable = true
         viewPager.eyStyle.spacingBetweenTabs = 15
-        viewPager.eyStyle.dividerBackgroundColor = .red
-        viewPager.eyStyle.tabItemSelectedColor = .yellow
+        viewPager.eyStyle.dividerBackgroundColor = .white
+        viewPager.eyStyle.WormColor = .blue
+        viewPager.eyStyle.tabItemDefaultColor = .blue
+        viewPager.eyStyle.tabItemSelectedColor = .blue
+        viewPager.eyStyle.topScrollViewBackgroundColor = .white
+        viewPager.eyStyle.tabItemDefaultFont = UIFont.boldSystemFont(ofSize: 16.0)
+        viewPager.eyStyle.tabItemSelectedFont = UIFont.boldSystemFont(ofSize: 16.0)
         viewPager.currentTabIndex = 0
         viewPager.buildUI()
     }
