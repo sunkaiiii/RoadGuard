@@ -31,6 +31,7 @@
 		B13CF00E2541AA2000957E84 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CF00D2541AA2000957E84 /* HomeViewController.swift */; };
 		B1466EA32548EEE1008ED039 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1466EA22548EEE1008ED039 /* FirebaseController.swift */; };
 		B1466EA62548EF16008ED039 /* SpeedRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1466EA52548EF16008ED039 /* SpeedRecord.swift */; };
+		B1560241254EDB91003EF6B7 /* FacialInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1560240254EDB91003EF6B7 /* FacialInfoResponse.swift */; };
 		B170FC6E25428CC20086F1D9 /* BaseUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170FC6D25428CC20086F1D9 /* BaseUIView.swift */; };
 		B170FC74254290D00086F1D9 /* SpeedNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170FC73254290D00086F1D9 /* SpeedNotificationView.swift */; };
 		B170FC77254290D90086F1D9 /* SpeedNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B170FC76254290D90086F1D9 /* SpeedNotificationView.xib */; };
@@ -93,6 +94,7 @@
 		B13CF00D2541AA2000957E84 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B1466EA22548EEE1008ED039 /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		B1466EA52548EF16008ED039 /* SpeedRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedRecord.swift; sourceTree = "<group>"; };
+		B1560240254EDB91003EF6B7 /* FacialInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialInfoResponse.swift; sourceTree = "<group>"; };
 		B170FC6D25428CC20086F1D9 /* BaseUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIView.swift; sourceTree = "<group>"; };
 		B170FC7025428F660086F1D9 /* FIT5140Assignment3iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FIT5140Assignment3iOS.entitlements; sourceTree = "<group>"; };
 		B170FC73254290D00086F1D9 /* SpeedNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedNotificationView.swift; sourceTree = "<group>"; };
@@ -305,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				B1C10EB925483C8B008BDC64 /* SpeedLimitResponse.swift */,
+				B1560240254EDB91003EF6B7 /* FacialInfoResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				B1AB3A782542B9480082B004 /* RoadInformationViewController.swift in Sources */,
 				B1AB3A752542B70D0082B004 /* CurrentSpeedInformationView.swift in Sources */,
 				B1C10EBD2548458A008BDC64 /* SpeedLimitRequest.swift in Sources */,
+				B1560241254EDB91003EF6B7 /* FacialInfoResponse.swift in Sources */,
 				B1AB3A9925446A580082B004 /* SpeedAlertSuperView.swift in Sources */,
 				E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */,
 				B13C260F254AB8AA008EBDE3 /* BottomScrollableView.swift in Sources */,
