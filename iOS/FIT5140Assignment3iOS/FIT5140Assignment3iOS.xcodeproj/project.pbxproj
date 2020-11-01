@@ -48,6 +48,8 @@
 		E40448EC254C278700341510 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40448EB254C278700341510 /* RecordViewController.swift */; };
 		E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */; };
 		E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */; };
+		E41FE640254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41FE63E254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift */; };
+		E41FE641254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41FE63F254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib */; };
 		E45B486D254CF66E00692A2E /* WormTabStripButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B486B254CF66D00692A2E /* WormTabStripButton.swift */; };
 		E45B486E254CF66E00692A2E /* WormTabStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B486C254CF66E00692A2E /* WormTabStrip.swift */; };
 		E45B4875254CFF7600692A2E /* RecordBreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B4874254CFF7600692A2E /* RecordBreakdownViewController.swift */; };
@@ -111,6 +113,8 @@
 		E40448EB254C278700341510 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchAddressBottomCard.xib; sourceTree = "<group>"; };
 		E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressBottomCard.swift; sourceTree = "<group>"; };
+		E41FE63E254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPageHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		E41FE63F254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordPageHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		E45B486B254CF66D00692A2E /* WormTabStripButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WormTabStripButton.swift; sourceTree = "<group>"; };
 		E45B486C254CF66E00692A2E /* WormTabStrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WormTabStrip.swift; sourceTree = "<group>"; };
 		E45B4874254CFF7600692A2E /* RecordBreakdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBreakdownViewController.swift; sourceTree = "<group>"; };
@@ -327,6 +331,8 @@
 				E45B4874254CFF7600692A2E /* RecordBreakdownViewController.swift */,
 				E45B4877254D023600692A2E /* RecordBkdTableViewCell.swift */,
 				E45B4878254D023600692A2E /* RecordBkdTableViewCell.xib */,
+				E41FE63E254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift */,
+				E41FE63F254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib */,
 			);
 			path = TopScrollTabBar;
 			sourceTree = "<group>";
@@ -409,6 +415,7 @@
 				B170FC77254290D90086F1D9 /* SpeedNotificationView.xib in Resources */,
 				B13CEFD42540FAFB00957E84 /* LaunchScreen.storyboard in Resources */,
 				B13CEFD12540FAFB00957E84 /* Assets.xcassets in Resources */,
+				E41FE641254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib in Resources */,
 				E4D865E125458CB600465243 /* RoadInfoBottomCard.xib in Resources */,
 				B170FC812542B40F0086F1D9 /* CurrentSpeedInformationView.xib in Resources */,
 				E4D865E9254591B600465243 /* BottomCardImportantRoadCell.xib in Resources */,
@@ -499,6 +506,7 @@
 				B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */,
 				E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */,
 				E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */,
+				E41FE640254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift in Sources */,
 				B1466EA32548EEE1008ED039 /* FirebaseController.swift in Sources */,
 				B1AB3A782542B9480082B004 /* RoadInformationViewController.swift in Sources */,
 				B1AB3A752542B70D0082B004 /* CurrentSpeedInformationView.swift in Sources */,
