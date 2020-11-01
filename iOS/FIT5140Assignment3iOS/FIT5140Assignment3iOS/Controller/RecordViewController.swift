@@ -12,7 +12,8 @@ class RecordViewController: UIViewController, WormTabStripDelegate {
 
 
 
-
+    @IBOutlet weak var viewPager: WormTabStrip!
+    
     // MARK: - Top Scroll Tab Bar Related Fields
     var tabs:[UIViewController] = []
     //这里需要根据传入的record数据，替换下这个数组
@@ -29,9 +30,6 @@ class RecordViewController: UIViewController, WormTabStripDelegate {
 
     //This is from https://github.com/EzimetYusup/WormTabStrip
     func setUpViewPager(){
-        let frame =  CGRect(x: 0, y: 40, width: self.view.frame.size.width, height: self.view.frame.size.height - 40)
-        let viewPager:WormTabStrip = WormTabStrip(frame: frame)
-        self.view.addSubview(viewPager)
         viewPager.delegate = self
         viewPager.eyStyle.wormStyel = .line
         viewPager.eyStyle.isWormEnable = true
