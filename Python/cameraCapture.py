@@ -5,6 +5,7 @@ import time
 import os
 import uploadImageToS3
 from firebase import FireStoreSaver
+from PIL import Image
 bucket_name = "photo-collection-monash"
 database_name = "FIT5140Ass3"
 facial_collection = "facial"
@@ -15,7 +16,12 @@ def camera_capturing():
         camera.start_preview()
         camera.capture(filename)
     full_path = os.getcwd()+"/"+filename
+    compress_image(full_path)
     analyse(full_path)
+
+def compress_image(file_name):
+    image = Image.open(file_name)
+    image.save(file_name,quality=60,optimize=True)
 
 def analyse(filename):
     print(filename)
@@ -28,6 +34,6 @@ def analyse(filename):
 def start_sertvice():
     while(True):
         camera_capturing()
-        sleep(5)
+        sleep(2)
 
 start_sertvice()
