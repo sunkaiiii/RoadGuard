@@ -141,8 +141,9 @@ public class WormTabStrip: UIView,UIScrollViewDelegate {
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-        
+        super.init(coder: aDecoder)
+        self.Width = self.frame.width
+        self.Height = self.frame.height
     }
     
     
