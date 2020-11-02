@@ -8,7 +8,7 @@
 import UIKit
 import Charts
 
-class AnalysisViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AnalysisViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,ChartViewDelegate {
 
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var analysisPageTableView: UITableView!
@@ -16,20 +16,23 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     let SECTION_UPPER = 0
     let SECTION_LOWER = 1
     let DRIVINGSTATUS_CELL_ID = "DrivingStatusTableViewCell"
+    let DRIVING_DISTANC_CELL_ID = "DrienDistanceTableViewCell"
 
     var allGoodDataEntry = PieChartDataEntry(value: 0)
     var likelyFocusDataEntry = PieChartDataEntry(value: 0)
     var distractionDataEntry = PieChartDataEntry(value: 0)
     var overSpeedDataEntry = PieChartDataEntry(value: 0)
-    var dataEnties = [PieChartDataEntry]()
+    var pieChartDataEnties = [PieChartDataEntry]()
+    var barChartDataEntries = [BarChartDataEntry]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         analysisPageTableView.delegate = self
         analysisPageTableView.dataSource = self
         analysisPageTableView.register(DrivingStatusTableViewCell.nib(), forCellReuseIdentifier: DRIVINGSTATUS_CELL_ID)
-//        analysisPageTableView.rowHeight = UITableView.automaticDimension
-//        analysisPageTableView.estimatedRowHeight = UITableView.automaticDimension
+        analysisPageTableView.register(DrienDistanceTableViewCell.nib(), forCellReuseIdentifier: DRIVING_DISTANC_CELL_ID)
+        //        analysisPageTableView.rowHeight = UITableView.automaticDimension
+        //        analysisPageTableView.estimatedRowHeight = UITableView.automaticDimension
         // Do any additional setup after loading the view.
     }
     
@@ -44,49 +47,71 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == SECTION_UPPER {
             let cell = tableView.dequeueReusableCell(withIdentifier: DRIVINGSTATUS_CELL_ID, for: indexPath) as! DrivingStatusTableViewCell
-            cell.pieChart.chartDescription?.text = "test"
+            cell.pieChart.delegate = self
+            cell.pieChart.chartDescription?.text = ""
             allGoodDataEntry.value = 89
             likelyFocusDataEntry.value = 4
             distractionDataEntry.value = 1
             overSpeedDataEntry.value = 6
-            dataEnties = [allGoodDataEntry,likelyFocusDataEntry,distractionDataEntry,overSpeedDataEntry]
-            updateChartData(pieChart: cell.pieChart)
+            pieChartDataEnties = [allGoodDataEntry,likelyFocusDataEntry,distractionDataEntry,overSpeedDataEntry]
+            updatePieChartData(pieChart: cell.pieChart)
             return cell
 
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: DRIVINGSTATUS_CELL_ID, for: indexPath) as! DrivingStatusTableViewCell
-            cell.pieChart.chartDescription?.text = "test"
-            allGoodDataEntry.value = 89
-            likelyFocusDataEntry.value = 4
-            distractionDataEntry.value = 1
-            overSpeedDataEntry.value = 6
-            dataEnties = [allGoodDataEntry,likelyFocusDataEntry,distractionDataEntry,overSpeedDataEntry]
-            updateChartData(pieChart: cell.pieChart)
+            let cell = tableView.dequeueReusableCell(withIdentifier: DRIVING_DISTANC_CELL_ID, for: indexPath) as! DrienDistanceTableViewCell
+            let barChart = cell.barChart
+            barChart!.delegate = self
+            barChart!.chartDescription?.text = ""
+
+            //这里写个循环调用数据放进BarChartDataEntry
+            for i in 1...5{
+                let dataEntry = BarChartDataEntry(x: Double(i), y: Double(i*100))
+                barChartDataEntries.append(dataEntry)
+            }
+            let set = BarChartDataSet(barChartDataEntries)
+            set.colors = ChartColorTemplates.colorful()
+            let data = BarChartData(dataSet: set)
+            barChart!.data = data
+            barChart!.rightAxis.enabled = false
+
+            let yAxis = barChart!.leftAxis
+            yAxis.labelFont = .boldSystemFont(ofSize: 12)
+            yAxis.labelPosition = .outsideChart
+
+            let xAxis = barChart?.xAxis
+            xAxis?.labelPosition = .bottom
+            xAxis?.labelFont = .boldSystemFont(ofSize: 12)
+            xAxis?.setLabelCount(10, force: false)
+            barChart?.animate(xAxisDuration: 2.5)
+            barChartDataEntries.removeAll()
             return cell
         }
     }
 
-    //考虑是否在这里调高度
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//      return
-//    }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.view.frame.width
+        if indexPath.section == SECTION_UPPER{
+            return self.view.frame.width
+        } else {
+            return self.view.frame.width
+        }
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
 
-    func updateChartData(pieChart : PieChartView) {
+    func updatePieChartData(pieChart : PieChartView) {
 
-        let chartDataSet = PieChartDataSet(entries: dataEnties, label: nil)
+        let chartDataSet = PieChartDataSet(entries: pieChartDataEnties, label: nil)
         let chartData = PieChartData(dataSet: chartDataSet)
 
-       
+
         let colors = [UIColor.red, UIColor.blue, UIColor.yellow, UIColor.black]
         chartDataSet.colors = colors
         pieChart.data = chartData
     }
+
+
 
 }
