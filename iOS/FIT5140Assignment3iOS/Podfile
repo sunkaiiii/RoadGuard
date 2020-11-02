@@ -12,4 +12,6 @@ target 'FIT5140Assignment3iOS' do
 	pod 'Firebase/Auth'
 	pod 'Firebase/Firestore'
 	pod 'FirebaseFirestoreSwift'
+    pod 'Charts'
+    pod 'TinyConstraints'
 end

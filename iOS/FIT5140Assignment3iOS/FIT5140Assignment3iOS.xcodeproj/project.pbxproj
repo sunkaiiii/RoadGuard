@@ -63,6 +63,11 @@
 		E4D865E425458CE400465243 /* RoadInfoBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */; };
 		E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */; };
 		E4D865E9254591B600465243 /* BottomCardImportantRoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */; };
+		E4FECFB3254F9ECF0072555F /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */; };
+		E4FECFBE254FAEC90072555F /* DrienDistanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FECFBC254FAEC90072555F /* DrienDistanceTableViewCell.swift */; };
+		E4FECFBF254FAEC90072555F /* DrienDistanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4FECFBD254FAEC90072555F /* DrienDistanceTableViewCell.xib */; };
+		E4FECFC3254FAEE60072555F /* DrivingStatusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FECFC1254FAEE60072555F /* DrivingStatusTableViewCell.swift */; };
+		E4FECFC4254FAEE60072555F /* DrivingStatusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4FECFC2254FAEE60072555F /* DrivingStatusTableViewCell.xib */; };
 		E8D955A137BC189A0A93AC31 /* Pods_FIT5140Assignment3iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FE65A1651A941B17AEF61CC /* Pods_FIT5140Assignment3iOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +134,11 @@
 		E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadInfoBottomCard.swift; sourceTree = "<group>"; };
 		E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardImportantRoadCell.swift; sourceTree = "<group>"; };
 		E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomCardImportantRoadCell.xib; sourceTree = "<group>"; };
+		E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
+		E4FECFBC254FAEC90072555F /* DrienDistanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrienDistanceTableViewCell.swift; sourceTree = "<group>"; };
+		E4FECFBD254FAEC90072555F /* DrienDistanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrienDistanceTableViewCell.xib; sourceTree = "<group>"; };
+		E4FECFC1254FAEE60072555F /* DrivingStatusTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingStatusTableViewCell.swift; sourceTree = "<group>"; };
+		E4FECFC2254FAEE60072555F /* DrivingStatusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrivingStatusTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +266,7 @@
 			children = (
 				B170FC6D25428CC20086F1D9 /* BaseUIView.swift */,
 				B170FC7D254291B60086F1D9 /* CircleShapeView.swift */,
+				E4FECFBB254FAE8F0072555F /* AnalysisPageCells */,
 				B13C2602254AA0E7008EBDE3 /* CustomView */,
 				B190D3CB25447102002249BA /* RoadPage */,
 				B190D3C525446FFE002249BA /* HomePage */,
@@ -274,6 +285,7 @@
 				B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */,
 				E4BA6E8725452BF8001D0CD7 /* RoadsViewController.swift */,
 				E40448EB254C278700341510 /* RecordViewController.swift */,
+				E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -355,6 +367,17 @@
 			path = BottomCard;
 			sourceTree = "<group>";
 		};
+		E4FECFBB254FAE8F0072555F /* AnalysisPageCells */ = {
+			isa = PBXGroup;
+			children = (
+				E4FECFBC254FAEC90072555F /* DrienDistanceTableViewCell.swift */,
+				E4FECFBD254FAEC90072555F /* DrienDistanceTableViewCell.xib */,
+				E4FECFC1254FAEE60072555F /* DrivingStatusTableViewCell.swift */,
+				E4FECFC2254FAEE60072555F /* DrivingStatusTableViewCell.xib */,
+			);
+			path = AnalysisPageCells;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -415,6 +438,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4FECFC4254FAEE60072555F /* DrivingStatusTableViewCell.xib in Resources */,
 				B170FC77254290D90086F1D9 /* SpeedNotificationView.xib in Resources */,
 				B13CEFD42540FAFB00957E84 /* LaunchScreen.storyboard in Resources */,
 				B13CEFD12540FAFB00957E84 /* Assets.xcassets in Resources */,
@@ -428,6 +452,7 @@
 				B13C25FB254936B1008EBDE3 /* GoogleService-Info.plist in Resources */,
 				E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */,
 				B13CF0072541A8F200957E84 /* SpeedAlertView.xib in Resources */,
+				E4FECFBF254FAEC90072555F /* DrienDistanceTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +522,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4FECFBE254FAEC90072555F /* DrienDistanceTableViewCell.swift in Sources */,
 				E45B486E254CF66E00692A2E /* WormTabStrip.swift in Sources */,
 				B13CEFCC2540FAF900957E84 /* ViewController.swift in Sources */,
 				B13C2609254AAA69008EBDE3 /* ScrollableViewController.swift in Sources */,
@@ -511,6 +537,7 @@
 				E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */,
 				E41FE640254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift in Sources */,
 				B1466EA32548EEE1008ED039 /* FirebaseController.swift in Sources */,
+				E4FECFB3254F9ECF0072555F /* AnalysisViewController.swift in Sources */,
 				B1AB3A782542B9480082B004 /* RoadInformationViewController.swift in Sources */,
 				B1AB3A752542B70D0082B004 /* CurrentSpeedInformationView.swift in Sources */,
 				B1C10EBD2548458A008BDC64 /* SpeedLimitRequest.swift in Sources */,
@@ -529,6 +556,7 @@
 				B13CEFDF2540FD7A00957E84 /* RestfulAPI.swift in Sources */,
 				B13CEFFC25410D7400957E84 /* ToastHelper.swift in Sources */,
 				B13CEFED25410C9000957E84 /* ImageLoader.swift in Sources */,
+				E4FECFC3254FAEE60072555F /* DrivingStatusTableViewCell.swift in Sources */,
 				E45B4879254D023600692A2E /* RecordBkdTableViewCell.swift in Sources */,
 				E4BA6E8825452BF8001D0CD7 /* RoadsViewController.swift in Sources */,
 				B13CEFF425410D2B00957E84 /* ImagePicker.swift in Sources */,
