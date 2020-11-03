@@ -33,6 +33,6 @@ struct NearestRoadsRequest:SimpleRequestModel {
             i+=1
         }
         print("points: \(content)")
-        return ["points":content,"key":GoogleMapAPI]
+        return ["points":content,"key":GoogleMapAPIKey]
     }
 }

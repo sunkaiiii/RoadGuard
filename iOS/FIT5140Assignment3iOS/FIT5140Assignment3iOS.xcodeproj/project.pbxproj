@@ -34,6 +34,8 @@
 		B1560241254EDB91003EF6B7 /* FacialInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1560240254EDB91003EF6B7 /* FacialInfoResponse.swift */; };
 		B15602602551654B003EF6B7 /* NearestRoadsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B156025F2551654B003EF6B7 /* NearestRoadsRequest.swift */; };
 		B1560263255169AA003EF6B7 /* NearestRoadsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1560262255169AA003EF6B7 /* NearestRoadsResponse.swift */; };
+		B1560268255188E6003EF6B7 /* PlaceDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1560267255188E6003EF6B7 /* PlaceDetailResponse.swift */; };
+		B156026B25518A1A003EF6B7 /* PlaceDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B156026A25518A1A003EF6B7 /* PlaceDetailRequest.swift */; };
 		B170FC6E25428CC20086F1D9 /* BaseUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170FC6D25428CC20086F1D9 /* BaseUIView.swift */; };
 		B170FC74254290D00086F1D9 /* SpeedNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170FC73254290D00086F1D9 /* SpeedNotificationView.swift */; };
 		B170FC77254290D90086F1D9 /* SpeedNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B170FC76254290D90086F1D9 /* SpeedNotificationView.xib */; };
@@ -106,6 +108,8 @@
 		B1560240254EDB91003EF6B7 /* FacialInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialInfoResponse.swift; sourceTree = "<group>"; };
 		B156025F2551654B003EF6B7 /* NearestRoadsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestRoadsRequest.swift; sourceTree = "<group>"; };
 		B1560262255169AA003EF6B7 /* NearestRoadsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestRoadsResponse.swift; sourceTree = "<group>"; };
+		B1560267255188E6003EF6B7 /* PlaceDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailResponse.swift; sourceTree = "<group>"; };
+		B156026A25518A1A003EF6B7 /* PlaceDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailRequest.swift; sourceTree = "<group>"; };
 		B170FC6D25428CC20086F1D9 /* BaseUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIView.swift; sourceTree = "<group>"; };
 		B170FC7025428F660086F1D9 /* FIT5140Assignment3iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FIT5140Assignment3iOS.entitlements; sourceTree = "<group>"; };
 		B170FC73254290D00086F1D9 /* SpeedNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedNotificationView.swift; sourceTree = "<group>"; };
@@ -320,6 +324,7 @@
 				B1C10EBC2548458A008BDC64 /* SpeedLimitRequest.swift */,
 				B1466EA52548EF16008ED039 /* SpeedRecord.swift */,
 				B156025F2551654B003EF6B7 /* NearestRoadsRequest.swift */,
+				B156026A25518A1A003EF6B7 /* PlaceDetailRequest.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 				B1C10EB925483C8B008BDC64 /* SpeedLimitResponse.swift */,
 				B1560240254EDB91003EF6B7 /* FacialInfoResponse.swift */,
 				B1560262255169AA003EF6B7 /* NearestRoadsResponse.swift */,
+				B1560267255188E6003EF6B7 /* PlaceDetailResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -528,6 +534,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B156026B25518A1A003EF6B7 /* PlaceDetailRequest.swift in Sources */,
 				E4FECFBE254FAEC90072555F /* DrienDistanceTableViewCell.swift in Sources */,
 				E45B486E254CF66E00692A2E /* WormTabStrip.swift in Sources */,
 				B13CEFCC2540FAF900957E84 /* ViewController.swift in Sources */,
@@ -538,6 +545,7 @@
 				B13CEFE625410B6F00957E84 /* NetworkExtension.swift in Sources */,
 				B13CEFC82540FAF900957E84 /* AppDelegate.swift in Sources */,
 				B1A5E47A2547C59A00D8CCB0 /* GoogleAPIKey.swift in Sources */,
+				B1560268255188E6003EF6B7 /* PlaceDetailResponse.swift in Sources */,
 				B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */,
 				E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */,
 				B15602602551654B003EF6B7 /* NearestRoadsRequest.swift in Sources */,

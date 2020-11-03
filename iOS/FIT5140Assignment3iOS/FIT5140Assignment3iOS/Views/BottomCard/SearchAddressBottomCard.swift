@@ -26,7 +26,7 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
 
     //根据需要展示的内容，更改数据类型和内容
     var tableViewDataSourceSpecify : [String]  = ["d","e","f"]
-    var tableViewDataSourceNearby : [SnappedPoint] =  []
+    var tableViewDataSourceNearby : [PlaceDetail] =  []
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +46,6 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
         })
     }
 
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        locationManager.stopUpdatingLocation()
-    }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first  else {
@@ -101,8 +96,8 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
         } else {
             //for nearby-content section
             let cell = tableView.dequeueReusableCell(withIdentifier: BOTTOM_CARD_CELL_ID, for: indexPath) as! BottomCardSpecifyCell
-            //调用cell.configure给图片和label赋值
-            cell.iconImageView.image = UIImage(systemName: "plus")
+            let placeDetail = tableViewDataSourceNearby[indexPath.row]
+            cell.initWithPlaceDetail(placeDetail)
             return cell
         }
     }
@@ -134,7 +129,19 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             guard let nearestRoads:NearestRoadResponse = accessibleData.retriveData(helper: helper) else {
                 return
             }
-            tableViewDataSourceNearby = nearestRoads.snappedPoints
+            //TODO place id对比
+            locationManager.stopUpdatingLocation()
+            //Todo 刷新位置按钮
+            self.tableViewDataSourceNearby.removeAll()
+            nearestRoads.snappedPoints.forEach({(points) in
+                requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self)
+            })
+            
+        case .placeDetail:
+            guard let placeDetail:PlaceDetailResponse = accessibleData.retriveData(helper: helper) else {
+                return
+            }
+            self.tableViewDataSourceNearby.append(placeDetail.result)
             self.searchAddressBottomCardTableViewOutlet.reloadSections([SECTION_CONTENT_NEARBY], with: .automatic)
         case .none:
             return

@@ -25,14 +25,17 @@ protocol Host {
 enum RequestHost:Host{
     case aws
     case firebase
-    case roads_api
+    case roadsApi
     case overpass
+    case placeApi
     func getHostUrl() -> String {
         switch self {
-        case .roads_api:
+        case .roadsApi:
             return "roads.googleapis.com"
         case .overpass:
             return "www.overpass-api.de"
+        case .placeApi:
+            return "maps.googleapis.com"
         default:
             return ""
         }
@@ -40,19 +43,13 @@ enum RequestHost:Host{
     
     func getPort() -> Int {
         switch self {
-        case .roads_api:
-            return DEFAULT_HTTPS_PORT
-        case .overpass:
-            return DEFAULT_HTTPS_PORT
         default:
-            return 0
+            return DEFAULT_HTTPS_PORT
         }
     }
     
     func getScheme() -> String {
         switch self {
-        case .roads_api:
-            return HTTPS
         default:
             return HTTPS
         }
@@ -69,11 +66,14 @@ protocol RestfulAPI {
 enum GoogleApi:RestfulAPI{
     
     case nearestRoads
+    case placeDetail
     
     func getRequestName() -> String {
         switch self {
         case .nearestRoads:
             return "NearestRoads"
+        case .placeDetail:
+            return "PlaceDetail"
         }
     }
     
@@ -81,13 +81,17 @@ enum GoogleApi:RestfulAPI{
         switch self {
         case .nearestRoads:
             return "/v1/nearestRoads"
+        case .placeDetail:
+            return "/maps/api/place/details"
         }
     }
     
     func getRequestType() -> RequestType {
         switch self {
         case .nearestRoads:
-            return RequestType.GET
+            return .GET
+        case .placeDetail:
+            return .GET
         }
     }
     
@@ -95,7 +99,9 @@ enum GoogleApi:RestfulAPI{
     func getRequestHost() -> RequestHost {
         switch self {
         case .nearestRoads:
-            return RequestHost.roads_api
+            return .roadsApi
+        case .placeDetail:
+            return .placeApi
         }
     }
     
