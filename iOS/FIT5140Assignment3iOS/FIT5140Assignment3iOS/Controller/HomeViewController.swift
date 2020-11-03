@@ -67,6 +67,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
         let gmsCamera = GMSCameraPosition.camera(withLatitude: locationInformation.coordinate.latitude, longitude: locationInformation.coordinate.longitude, zoom: 19)
         mapview?.camera = gmsCamera
         
+        //TODO 逻辑有问题
         if let lastPosition = lastPosition{
             requestMeasureTheSpeed(lastPosition: lastPosition, location: locationInformation)
         }else{

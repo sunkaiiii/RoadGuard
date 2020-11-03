@@ -68,25 +68,25 @@ protocol RestfulAPI {
 
 enum GoogleApi:RestfulAPI{
     
-    case speedLimit
+    case nearestRoads
     
     func getRequestName() -> String {
         switch self {
-        case .speedLimit:
-            return "SpeedLimit"
+        case .nearestRoads:
+            return "NearestRoads"
         }
     }
     
     func getRoute() -> String {
         switch self {
-        case .speedLimit:
-            return "/v1/speedLimits"
+        case .nearestRoads:
+            return "/v1/nearestRoads"
         }
     }
     
     func getRequestType() -> RequestType {
         switch self {
-        case .speedLimit:
+        case .nearestRoads:
             return RequestType.GET
         }
     }
@@ -94,7 +94,7 @@ enum GoogleApi:RestfulAPI{
     
     func getRequestHost() -> RequestHost {
         switch self {
-        case .speedLimit:
+        case .nearestRoads:
             return RequestHost.roads_api
         }
     }

@@ -10,11 +10,27 @@ import Foundation
 let HTTP_PORT = 80
 let DEFAULT_HTTPS_PORT = 443
 
+
 protocol RequestModel {
     func getPathParameter()->[String]
     func getHeader()->[String:String]
     func getQueryParameter()->[String:String]
     func getBody()->[String]
+}
+
+protocol SimpleRequestModel:RequestModel{
+    
+}
+extension SimpleRequestModel{
+    func getPathParameter() -> [String] {
+        return []
+    }
+    func getBody() -> [String] {
+        return []
+    }
+    func getHeader() -> [String : String] {
+        return [:]
+    }
 }
 
 protocol HTTPRequestAction {
