@@ -29,6 +29,9 @@
                                     <segment title="Focus"/>
                                     <segment title="Speed"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentControlClicked:" destination="rdT-ma-8Dx" eventType="valueChanged" id="mCx-2H-HOD"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GSP-VA-Gru">
                                 <rect key="frame" x="20" y="151" width="374" height="647"/>

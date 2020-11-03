@@ -45,47 +45,61 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == SECTION_UPPER {
-            let cell = tableView.dequeueReusableCell(withIdentifier: DRIVINGSTATUS_CELL_ID, for: indexPath) as! DrivingStatusTableViewCell
-            cell.pieChart.delegate = self
-            cell.pieChart.chartDescription?.text = ""
-            allGoodDataEntry.value = 89
-            likelyFocusDataEntry.value = 4
-            distractionDataEntry.value = 1
-            overSpeedDataEntry.value = 6
-            pieChartDataEnties = [allGoodDataEntry,likelyFocusDataEntry,distractionDataEntry,overSpeedDataEntry]
-            updatePieChartData(pieChart: cell.pieChart)
-            return cell
+        if segmentControl.selectedSegmentIndex == 0{
+            if indexPath.section == SECTION_UPPER {
+                let cell = tableView.dequeueReusableCell(withIdentifier: DRIVINGSTATUS_CELL_ID, for: indexPath) as! DrivingStatusTableViewCell
+                cell.pieChart.delegate = self
+                cell.pieChart.chartDescription?.text = ""
+                allGoodDataEntry.value = 89
+                likelyFocusDataEntry.value = 4
+                distractionDataEntry.value = 1
+                overSpeedDataEntry.value = 6
+                pieChartDataEnties = [allGoodDataEntry,likelyFocusDataEntry,distractionDataEntry,overSpeedDataEntry]
+                updatePieChartData(pieChart: cell.pieChart)
+                return cell
 
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: DRIVING_DISTANC_CELL_ID, for: indexPath) as! DrienDistanceTableViewCell
-            let barChart = cell.barChart
-            barChart!.delegate = self
-            barChart!.chartDescription?.text = ""
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: DRIVING_DISTANC_CELL_ID, for: indexPath) as! DrienDistanceTableViewCell
+                let barChart = cell.barChart
+                barChart!.delegate = self
+                barChart!.chartDescription?.text = ""
 
-            //这里写个循环调用数据放进BarChartDataEntry
-            for i in 1...5{
-                let dataEntry = BarChartDataEntry(x: Double(i), y: Double(i*100))
-                barChartDataEntries.append(dataEntry)
+                //这里写个循环调用数据放进BarChartDataEntry
+                for i in 1...5{
+                    let dataEntry = BarChartDataEntry(x: Double(i), y: Double(i*100))
+                    barChartDataEntries.append(dataEntry)
+                }
+                let set = BarChartDataSet(barChartDataEntries)
+                set.colors = ChartColorTemplates.colorful()
+                let data = BarChartData(dataSet: set)
+                barChart!.data = data
+                barChart!.rightAxis.enabled = false
+
+                let yAxis = barChart!.leftAxis
+                yAxis.labelFont = .boldSystemFont(ofSize: 12)
+                yAxis.labelPosition = .outsideChart
+
+                let xAxis = barChart?.xAxis
+                xAxis?.labelPosition = .bottom
+                xAxis?.labelFont = .boldSystemFont(ofSize: 12)
+                xAxis?.setLabelCount(10, force: false)
+                barChart?.animate(xAxisDuration: 2.5)
+                barChartDataEntries.removeAll()
+                return cell
             }
-            let set = BarChartDataSet(barChartDataEntries)
-            set.colors = ChartColorTemplates.colorful()
-            let data = BarChartData(dataSet: set)
-            barChart!.data = data
-            barChart!.rightAxis.enabled = false
 
-            let yAxis = barChart!.leftAxis
-            yAxis.labelFont = .boldSystemFont(ofSize: 12)
-            yAxis.labelPosition = .outsideChart
-
-            let xAxis = barChart?.xAxis
-            xAxis?.labelPosition = .bottom
-            xAxis?.labelFont = .boldSystemFont(ofSize: 12)
-            xAxis?.setLabelCount(10, force: false)
-            barChart?.animate(xAxisDuration: 2.5)
-            barChartDataEntries.removeAll()
-            return cell
         }
+        let cell = tableView.dequeueReusableCell(withIdentifier: DRIVINGSTATUS_CELL_ID, for: indexPath) as! DrivingStatusTableViewCell
+        cell.pieChart.delegate = self
+        cell.pieChart.chartDescription?.text = ""
+        allGoodDataEntry.value = 89
+        likelyFocusDataEntry.value = 4
+        distractionDataEntry.value = 1
+        overSpeedDataEntry.value = 6
+        pieChartDataEnties = [allGoodDataEntry,likelyFocusDataEntry,distractionDataEntry,overSpeedDataEntry]
+        updatePieChartData(pieChart: cell.pieChart)
+        return cell
+
     }
 
 
@@ -113,5 +127,8 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
 
+    @IBAction func segmentControlClicked(_ sender: Any) {
+        analysisPageTableView.reloadData()
+    }
 
 }
