@@ -10,7 +10,6 @@ import UIKit
 class RoadInformationViewController: UIViewController,DefaultHttpRequestAction {
 
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         initNavigationBar()
@@ -23,9 +22,7 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.isTranslucent = true
         self.navigationController?.view.backgroundColor = .clear
-//        requestRestfulService(api: AWS.face, model: TestModel(), jsonType: TestModel2.self){(a,b,c)->Void in
-//            
-//        }
+
     }
     
     func handleData(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {

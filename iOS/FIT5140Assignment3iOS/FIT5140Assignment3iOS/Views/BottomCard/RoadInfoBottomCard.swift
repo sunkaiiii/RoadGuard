@@ -7,8 +7,11 @@
 
 import Foundation
 import UIKit
+import MapKit
 
 class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController {
+
+    
     var areaOutlet: UIView?
     
     
@@ -33,8 +36,10 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
         searchAddressBottomCardTableViewOutlet.register(UITableViewCell.self, forCellReuseIdentifier: DEFAULT_CELL_ID)
         searchAddressBottomCardTableViewOutlet.register(BottomCardImportantRoadCell.nib(), forCellReuseIdentifier: BOTTOM_CARD_CELL_ID)
         //        searchAddressBottomCardTableViewOutlet.register(UINib(nibName: "nibFileName", bundle: nil), forCellReuseIdentifier: "CellFromNib")
-
+        
     }
+
+
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -87,6 +92,7 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
             searchAddressBottomCardTableViewOutlet.deselectRow(at:indexPath,animated:true)
         }
     }
+    
 }
 
 

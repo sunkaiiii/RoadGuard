@@ -18,12 +18,17 @@ class BottomCardSpecifyCell: UITableViewCell {
     static func nib()->UINib{
         return UINib(nibName: "BottomCardSpecifyCell", bundle: nil)
     }
-
-    public func configure(iconImageViewName: String,headerLabel: String, contentLabel: String, distanceLabel: String){
-        self.iconImageView.image = UIImage(systemName: iconImageViewName)
-        self.headerLabel.text = headerLabel
-        self.contentLabel.text = contentLabel
-        self.distanceLabel.text = distanceLabel
+    
+    func initWithPlaceDetail(_ placeDetail:PlaceDetail){
+        headerLabel.text = placeDetail.name
+        var subContent = ""
+        placeDetail.addressComponents.forEach{(component) in
+            if component.types.contains("locality") || component.types.contains("postal_code") || component.types.contains("administrative_area_level_1"){
+                subContent += component.shortName + " "
+            }
+        }
+        contentLabel.text = subContent
+        ImageLoader.simpleLoad(placeDetail.icon, imageView: iconImageView)
     }
 
     override func awakeFromNib() {

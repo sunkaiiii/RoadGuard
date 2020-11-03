@@ -2,6 +2,8 @@ import boto3
 import json
 import ntpath
 import os
+import time
+from firebase_admin import firestore
 
 bucket_name = "photo-collection-monash"
 
@@ -20,6 +22,7 @@ def detect_face(photo, bucket):
     client = boto3.client('rekognition')
     response = client.detect_faces(Image={'S3Object':{'Bucket':bucket,'Name':photo}},Attributes=['ALL'])
     response["ImageUrl"] = "https://"+bucket_name+".s3.amazonaws.com/"+photo
+    response["CapturedTime"] = firestore.SERVER_TIMESTAMP
     del response["ResponseMetadata"]
     response = _simplify_json(response)
     print(response)

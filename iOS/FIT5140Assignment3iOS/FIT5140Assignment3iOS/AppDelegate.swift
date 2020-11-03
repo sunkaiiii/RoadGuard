@@ -14,8 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var firebaseController:DatabaseProtocol?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        GMSServices.provideAPIKey(GoogleMapAPI)
-        GMSPlacesClient.provideAPIKey(GoogleMapAPI)
+        GMSServices.provideAPIKey(GoogleMapAPIKey)
+        GMSPlacesClient.provideAPIKey(GoogleMapAPIKey)
         firebaseController = FirebaseController()
         return true
     }
