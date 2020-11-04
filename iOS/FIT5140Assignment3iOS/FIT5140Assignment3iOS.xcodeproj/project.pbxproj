@@ -69,6 +69,7 @@
 		E4D865E425458CE400465243 /* RoadInfoBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */; };
 		E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */; };
 		E4D865E9254591B600465243 /* BottomCardImportantRoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */; };
+		E4F59EC72552DA8300286BE7 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F59EC62552DA8300286BE7 /* MulticastDelegate.swift */; };
 		E4FECFB3254F9ECF0072555F /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */; };
 		E4FECFBE254FAEC90072555F /* DrienDistanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FECFBC254FAEC90072555F /* DrienDistanceTableViewCell.swift */; };
 		E4FECFBF254FAEC90072555F /* DrienDistanceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4FECFBD254FAEC90072555F /* DrienDistanceTableViewCell.xib */; };
@@ -146,6 +147,7 @@
 		E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadInfoBottomCard.swift; sourceTree = "<group>"; };
 		E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardImportantRoadCell.swift; sourceTree = "<group>"; };
 		E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomCardImportantRoadCell.xib; sourceTree = "<group>"; };
+		E4F59EC62552DA8300286BE7 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		E4FECFBC254FAEC90072555F /* DrienDistanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrienDistanceTableViewCell.swift; sourceTree = "<group>"; };
 		E4FECFBD254FAEC90072555F /* DrienDistanceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrienDistanceTableViewCell.xib; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				B13CEFE525410B6F00957E84 /* NetworkExtension.swift */,
 				B13CEFE825410BA100957E84 /* NetworkRequestTask.swift */,
 				B1466EA22548EEE1008ED039 /* FirebaseController.swift */,
+				E4F59EC62552DA8300286BE7 /* MulticastDelegate.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				B190D3CD25447113002249BA /* CurrentSpeedInformationSuperView.swift in Sources */,
 				B170FC74254290D00086F1D9 /* SpeedNotificationView.swift in Sources */,
 				B13CEFF825410D5F00957E84 /* UITextFieldHelper.swift in Sources */,
+				E4F59EC72552DA8300286BE7 /* MulticastDelegate.swift in Sources */,
 				E45B4875254CFF7600692A2E /* RecordBreakdownViewController.swift in Sources */,
 				B1560263255169AA003EF6B7 /* NearestRoadsResponse.swift in Sources */,
 				E4D865E425458CE400465243 /* RoadInfoBottomCard.swift in Sources */,

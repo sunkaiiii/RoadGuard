@@ -12,7 +12,9 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var analysisPageTableView: UITableView!
-    
+
+    var listenerType: ListenerType = .facial
+
     let SECTION_UPPER = 0
     let SECTION_LOWER = 1
     let DRIVINGSTATUS_CELL_ID = "DrivingStatusTableViewCell"
@@ -24,9 +26,14 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     var overSpeedDataEntry = PieChartDataEntry(value: 0)
     var pieChartDataEnties = [PieChartDataEntry]()
     var barChartDataEntries = [BarChartDataEntry]()
+    var facialInfoList:[FacialInfo] = []
+
+    weak var firebaseController: DatabaseProtocol?
 
     override func viewDidLoad() {
+
         super.viewDidLoad()
+        firebaseController = (UIApplication.shared.delegate as! AppDelegate).firebaseController
         analysisPageTableView.delegate = self
         analysisPageTableView.dataSource = self
         analysisPageTableView.register(DrivingStatusTableViewCell.nib(), forCellReuseIdentifier: DRIVINGSTATUS_CELL_ID)
@@ -35,7 +42,17 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         //        analysisPageTableView.estimatedRowHeight = UITableView.automaticDimension
         // Do any additional setup after loading the view.
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        firebaseController?.addListener(listener: self)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        firebaseController?.removeListener(listener: self)
+    }
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -130,5 +147,16 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     @IBAction func segmentControlClicked(_ sender: Any) {
         analysisPageTableView.reloadData()
     }
+
+}
+
+
+extension AnalysisViewController: DatabaseListener{
+
+    func onFacialInfoChange(change: DatabaseChange, facialInfos: [FacialInfo]) {
+        facialInfoList = facialInfos
+        analysisPageTableView.reloadData()
+    }
+    //需要写一个简单算法，在tableView刷新时，根据facialInfoList，归类出chart所需数据
 
 }
