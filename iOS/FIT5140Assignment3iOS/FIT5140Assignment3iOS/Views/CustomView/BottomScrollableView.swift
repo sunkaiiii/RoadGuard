@@ -54,11 +54,23 @@ class BottomScrollableView: UIView {
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BottomScrollableView.handleCardTap(recognzier:)))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(BottomScrollableView.handleCardPan(recognizer:)))
-
+        contentViewController.view.layer.cornerRadius = 32
         contentViewController.areaOutlet?.addGestureRecognizer(tapGestureRecognizer)
         contentViewController.areaOutlet?.addGestureRecognizer(panGestureRecognizer)
         self.addSubview(visualEffectView)
         self.addSubview(contentViewController.view)
+    }
+    
+    //handle the touch event distribution
+    //references on https://gist.github.com/siberian1967/ab1e15f46b5ed30d0e3060079f090ae8
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        if cardVisible{
+            return true
+        }
+        if(point.y > self.contentViewController.view.frame.origin.y){
+            return true
+        }
+        return false
     }
 
     @objc
@@ -112,9 +124,9 @@ class BottomScrollableView: UIView {
             let cornerRadiusAnimator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
                 switch state {
                     case .expanded:
-                        self.contentViewController.view.layer.cornerRadius = 12
+                        self.contentViewController.view.layer.cornerRadius = 32
                     case .collapsed:
-                        self.contentViewController.view.layer.cornerRadius = 0
+                        self.contentViewController.view.layer.cornerRadius = 32
                 }
             }
 
