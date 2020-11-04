@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -130,10 +130,32 @@
                     <view key="view" contentMode="scaleToFill" id="o8c-kg-YKY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DP-rm-HlC" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="hau-nK-7qU"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="7DP-rm-HlC" secondAttribute="bottom" id="LaB-qC-N4y"/>
+                            <constraint firstAttribute="trailing" secondItem="7DP-rm-HlC" secondAttribute="trailing" id="QJv-G8-hex"/>
+                            <constraint firstItem="7DP-rm-HlC" firstAttribute="top" secondItem="o8c-kg-YKY" secondAttribute="top" id="RPm-3S-TQ9"/>
+                            <constraint firstItem="7DP-rm-HlC" firstAttribute="leading" secondItem="o8c-kg-YKY" secondAttribute="leading" id="gam-LR-bvV"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="xHD-IM-659"/>
+                    <navigationItem key="navigationItem" id="xHD-IM-659">
+                        <barButtonItem key="rightBarButtonItem" title="Select" id="5UR-bv-20o">
+                            <connections>
+                                <action selector="onSelectButtonClick:" destination="EBy-VD-lzW" id="hJn-mi-qZL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="googleMapView" destination="7DP-rm-HlC" id="fKV-pN-Fh3"/>
+                        <outlet property="selectMapItem" destination="5UR-bv-20o" id="c9h-Ti-zDV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rws-mn-LWD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

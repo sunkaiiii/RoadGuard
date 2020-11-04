@@ -63,7 +63,6 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
         let speed = Int(fabs(locationInformation.speed * 3.6))
         speedAlertView.setCurrentSpeed(speed: String(format: "%d", speed))
         marker.position = locationInformation.coordinate
-        marker.map = mapview
         let gmsCamera = GMSCameraPosition.camera(withLatitude: locationInformation.coordinate.latitude, longitude: locationInformation.coordinate.longitude, zoom: 19)
         mapview?.camera = gmsCamera
         
