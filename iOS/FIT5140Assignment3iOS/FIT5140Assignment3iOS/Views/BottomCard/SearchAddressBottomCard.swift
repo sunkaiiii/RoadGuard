@@ -143,7 +143,7 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             }
             self.tableViewDataSourceNearby.append(placeDetail.result)
             self.searchAddressBottomCardTableViewOutlet.reloadSections([SECTION_CONTENT_NEARBY], with: .automatic)
-        case .none:
+        default:
             return
         }
     }

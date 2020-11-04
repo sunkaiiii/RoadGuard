@@ -36,6 +36,8 @@
 		B1560263255169AA003EF6B7 /* NearestRoadsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1560262255169AA003EF6B7 /* NearestRoadsResponse.swift */; };
 		B1560268255188E6003EF6B7 /* PlaceDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1560267255188E6003EF6B7 /* PlaceDetailResponse.swift */; };
 		B156026B25518A1A003EF6B7 /* PlaceDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B156026A25518A1A003EF6B7 /* PlaceDetailRequest.swift */; };
+		B15602742552E0F7003EF6B7 /* SnapToRoadsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15602732552E0F7003EF6B7 /* SnapToRoadsResponse.swift */; };
+		B15602772552E18B003EF6B7 /* SnapToRoadsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15602762552E18B003EF6B7 /* SnapToRoadsRequest.swift */; };
 		B170FC6E25428CC20086F1D9 /* BaseUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170FC6D25428CC20086F1D9 /* BaseUIView.swift */; };
 		B170FC74254290D00086F1D9 /* SpeedNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170FC73254290D00086F1D9 /* SpeedNotificationView.swift */; };
 		B170FC77254290D90086F1D9 /* SpeedNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B170FC76254290D90086F1D9 /* SpeedNotificationView.xib */; };
@@ -110,6 +112,8 @@
 		B1560262255169AA003EF6B7 /* NearestRoadsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestRoadsResponse.swift; sourceTree = "<group>"; };
 		B1560267255188E6003EF6B7 /* PlaceDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailResponse.swift; sourceTree = "<group>"; };
 		B156026A25518A1A003EF6B7 /* PlaceDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailRequest.swift; sourceTree = "<group>"; };
+		B15602732552E0F7003EF6B7 /* SnapToRoadsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapToRoadsResponse.swift; sourceTree = "<group>"; };
+		B15602762552E18B003EF6B7 /* SnapToRoadsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapToRoadsRequest.swift; sourceTree = "<group>"; };
 		B170FC6D25428CC20086F1D9 /* BaseUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIView.swift; sourceTree = "<group>"; };
 		B170FC7025428F660086F1D9 /* FIT5140Assignment3iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FIT5140Assignment3iOS.entitlements; sourceTree = "<group>"; };
 		B170FC73254290D00086F1D9 /* SpeedNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedNotificationView.swift; sourceTree = "<group>"; };
@@ -323,6 +327,7 @@
 			children = (
 				B1C10EBC2548458A008BDC64 /* SpeedLimitRequest.swift */,
 				B1466EA52548EF16008ED039 /* SpeedRecord.swift */,
+				B15602762552E18B003EF6B7 /* SnapToRoadsRequest.swift */,
 				B156025F2551654B003EF6B7 /* NearestRoadsRequest.swift */,
 				B156026A25518A1A003EF6B7 /* PlaceDetailRequest.swift */,
 			);
@@ -336,6 +341,7 @@
 				B1560240254EDB91003EF6B7 /* FacialInfoResponse.swift */,
 				B1560262255169AA003EF6B7 /* NearestRoadsResponse.swift */,
 				B1560267255188E6003EF6B7 /* PlaceDetailResponse.swift */,
+				B15602732552E0F7003EF6B7 /* SnapToRoadsResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -555,6 +561,7 @@
 				E4FECFB3254F9ECF0072555F /* AnalysisViewController.swift in Sources */,
 				B1AB3A782542B9480082B004 /* RoadInformationViewController.swift in Sources */,
 				B1AB3A752542B70D0082B004 /* CurrentSpeedInformationView.swift in Sources */,
+				B15602742552E0F7003EF6B7 /* SnapToRoadsResponse.swift in Sources */,
 				B1C10EBD2548458A008BDC64 /* SpeedLimitRequest.swift in Sources */,
 				B1560241254EDB91003EF6B7 /* FacialInfoResponse.swift in Sources */,
 				B1AB3A9925446A580082B004 /* SpeedAlertSuperView.swift in Sources */,
@@ -575,6 +582,7 @@
 				E4FECFC3254FAEE60072555F /* DrivingStatusTableViewCell.swift in Sources */,
 				E45B4879254D023600692A2E /* RecordBkdTableViewCell.swift in Sources */,
 				E4BA6E8825452BF8001D0CD7 /* RoadsViewController.swift in Sources */,
+				B15602772552E18B003EF6B7 /* SnapToRoadsRequest.swift in Sources */,
 				B13CEFF425410D2B00957E84 /* ImagePicker.swift in Sources */,
 				B1466EA62548EF16008ED039 /* SpeedRecord.swift in Sources */,
 				B13CEFF125410D1500957E84 /* ImageExtension.swift in Sources */,
