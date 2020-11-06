@@ -4,14 +4,15 @@
 target 'FIT5140Assignment3iOS' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  
   # Pods for FIT5140Assignment3iOS
-	pod 'GoogleMaps'
-	pod 'GooglePlaces'
- 	pod 'Firebase/Core'
-	pod 'Firebase/Auth'
-	pod 'Firebase/Firestore'
-	pod 'FirebaseFirestoreSwift'
-    pod 'Charts'
-    pod 'TinyConstraints'
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'Charts'
+  pod 'TinyConstraints'
+  pod 'RealmSwift'
 end

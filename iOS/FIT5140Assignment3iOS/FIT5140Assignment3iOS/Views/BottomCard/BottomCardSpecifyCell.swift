@@ -24,7 +24,7 @@ class BottomCardSpecifyCell: UITableViewCell {
         var subContent = ""
         placeDetail.addressComponents.forEach{(component) in
             if component.types.contains("locality") || component.types.contains("postal_code") || component.types.contains("administrative_area_level_1"){
-                subContent += component.shortName + " "
+                subContent += component.shortName! + " "
             }
         }
         contentLabel.text = subContent

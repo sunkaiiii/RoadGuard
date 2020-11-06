@@ -57,6 +57,7 @@
 		E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */; };
 		E41FE640254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41FE63E254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift */; };
 		E41FE641254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41FE63F254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib */; };
+		E42A6C0A2553742E001A288D /* CoreDataSchema.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E42A6C082553742E001A288D /* CoreDataSchema.xcdatamodeld */; };
 		E45B486D254CF66E00692A2E /* WormTabStripButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B486B254CF66D00692A2E /* WormTabStripButton.swift */; };
 		E45B486E254CF66E00692A2E /* WormTabStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B486C254CF66E00692A2E /* WormTabStrip.swift */; };
 		E45B4875254CFF7600692A2E /* RecordBreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B4874254CFF7600692A2E /* RecordBreakdownViewController.swift */; };
@@ -69,6 +70,7 @@
 		E4D865E425458CE400465243 /* RoadInfoBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */; };
 		E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */; };
 		E4D865E9254591B600465243 /* BottomCardImportantRoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */; };
+		E4EE85152554FBEF00208C71 /* RealmExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EE85142554FBEF00208C71 /* RealmExtension.swift */; };
 		E4F59EC72552DA8300286BE7 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F59EC62552DA8300286BE7 /* MulticastDelegate.swift */; };
 		E4FECFB3254F9ECF0072555F /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */; };
 		E4FECFBE254FAEC90072555F /* DrienDistanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FECFBC254FAEC90072555F /* DrienDistanceTableViewCell.swift */; };
@@ -135,6 +137,7 @@
 		E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressBottomCard.swift; sourceTree = "<group>"; };
 		E41FE63E254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPageHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		E41FE63F254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordPageHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		E42A6C092553742E001A288D /* CoreDataSchema.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataSchema.xcdatamodel; sourceTree = "<group>"; };
 		E45B486B254CF66D00692A2E /* WormTabStripButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WormTabStripButton.swift; sourceTree = "<group>"; };
 		E45B486C254CF66E00692A2E /* WormTabStrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WormTabStrip.swift; sourceTree = "<group>"; };
 		E45B4874254CFF7600692A2E /* RecordBreakdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBreakdownViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +150,7 @@
 		E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadInfoBottomCard.swift; sourceTree = "<group>"; };
 		E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardImportantRoadCell.swift; sourceTree = "<group>"; };
 		E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomCardImportantRoadCell.xib; sourceTree = "<group>"; };
+		E4EE85142554FBEF00208C71 /* RealmExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmExtension.swift; sourceTree = "<group>"; };
 		E4F59EC62552DA8300286BE7 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		E4FECFBC254FAEC90072555F /* DrienDistanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrienDistanceTableViewCell.swift; sourceTree = "<group>"; };
@@ -214,13 +218,14 @@
 		B13CEFC62540FAF900957E84 /* FIT5140Assignment3iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B13CEFDC2540FD4A00957E84 /* Network */,
 				B170FC7025428F660086F1D9 /* FIT5140Assignment3iOS.entitlements */,
 				B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */,
 				B13CF00C2541A9FE00957E84 /* Controller */,
 				B13CF0012541766000957E84 /* Views */,
 				B13CEFF625410D4E00957E84 /* ControllerHelper */,
 				B13CEFEB25410C8200957E84 /* ImageHelper */,
-				B13CEFDC2540FD4A00957E84 /* Network */,
+				E42A6C0725537298001A288D /* CoreData */,
 				B13CEFC72540FAF900957E84 /* AppDelegate.swift */,
 				B13CEFC92540FAF900957E84 /* SceneDelegate.swift */,
 				B13CEFCB2540FAF900957E84 /* ViewController.swift */,
@@ -272,6 +277,7 @@
 				B13CEFF725410D5F00957E84 /* UITextFieldHelper.swift */,
 				B13CEFFB25410D7400957E84 /* ToastHelper.swift */,
 				B13CEFFE25410D9200957E84 /* AlertControllerHelper.swift */,
+				E4EE85142554FBEF00208C71 /* RealmExtension.swift */,
 			);
 			path = ControllerHelper;
 			sourceTree = "<group>";
@@ -357,6 +363,14 @@
 				B190D3C725447029002249BA /* SpeedNotificationSuperView.swift */,
 			);
 			path = SuperViews;
+			sourceTree = "<group>";
+		};
+		E42A6C0725537298001A288D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E42A6C082553742E001A288D /* CoreDataSchema.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		E45B4869254CF5F400692A2E /* TopScrollTabBar */ = {
@@ -547,6 +561,7 @@
 				E4FECFBE254FAEC90072555F /* DrienDistanceTableViewCell.swift in Sources */,
 				E45B486E254CF66E00692A2E /* WormTabStrip.swift in Sources */,
 				B13CEFCC2540FAF900957E84 /* ViewController.swift in Sources */,
+				E4EE85152554FBEF00208C71 /* RealmExtension.swift in Sources */,
 				B13C2609254AAA69008EBDE3 /* ScrollableViewController.swift in Sources */,
 				B13CEFE32540FDC900957E84 /* RestfulModel.swift in Sources */,
 				E45B486D254CF66E00692A2E /* WormTabStripButton.swift in Sources */,
@@ -564,6 +579,7 @@
 				E4FECFB3254F9ECF0072555F /* AnalysisViewController.swift in Sources */,
 				B1AB3A782542B9480082B004 /* RoadInformationViewController.swift in Sources */,
 				B1AB3A752542B70D0082B004 /* CurrentSpeedInformationView.swift in Sources */,
+				E42A6C0A2553742E001A288D /* CoreDataSchema.xcdatamodeld in Sources */,
 				B15602742552E0F7003EF6B7 /* SnapToRoadsResponse.swift in Sources */,
 				B1C10EBD2548458A008BDC64 /* SpeedLimitRequest.swift in Sources */,
 				B1560241254EDB91003EF6B7 /* FacialInfoResponse.swift in Sources */,
@@ -803,6 +819,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E42A6C082553742E001A288D /* CoreDataSchema.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E42A6C092553742E001A288D /* CoreDataSchema.xcdatamodel */,
+			);
+			currentVersion = E42A6C092553742E001A288D /* CoreDataSchema.xcdatamodel */;
+			path = CoreDataSchema.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B13CEFBC2540FAF900957E84 /* Project object */;
 }
