@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -113,7 +113,9 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="4aK-1w-1bx" secondAttribute="bottom" constant="106" id="kv9-L5-LVb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Home" id="NIn-EC-qBH"/>
+                    <navigationItem key="navigationItem" title="Home" id="NIn-EC-qBH">
+                        <barButtonItem key="rightBarButtonItem" title="test" id="yHD-Je-wb9"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="speedAlertView" destination="4aK-1w-1bx" id="UM6-ib-FJl"/>
                         <outlet property="speedNotificationView" destination="y8c-qU-NFh" id="Pe7-QN-UF4"/>

@@ -154,7 +154,8 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
                         requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self)
                     }
                 })
-                
+                //考虑for each循环完再reaload的话, case placeDetail 里是否还需要reaload,  以及这里会不会造成线程异步问题?
+                //这里要不要把更新UI明确放在主线程？（不太清楚现在是什么线程）
                 //after updating table view data source, reload table view
                 searchAddressBottomCardTableViewOutlet.reloadData()
 
@@ -164,6 +165,7 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
                     return
                 }
 
+                //这里要不要把存入数据库明确放入背景线程？（不太清楚现在是什么线程）
                 //store into realm
                 do{
                     try realm?.write{
@@ -173,6 +175,7 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
                     print(error)
                 }
 
+                //这里要不要把更新UI明确放在主线程？（不太清楚现在是什么线程）
                 //attach into tableView and reload view
                 self.tableViewDataSourceNearby.append(placeDetailResponse.result!)
                 self.searchAddressBottomCardTableViewOutlet.reloadSections([SECTION_CONTENT_NEARBY], with: .automatic)
@@ -184,6 +187,19 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
 }
 
 
+
+//
+//func play(tag: Int){
+//    //找到音频文件（类似于拿出一张CD光盘）-局部变量
+//    let url = Bundle.main.url(forResource: sounds[tag-1], withExtension: "wav")
+//
+//    do{
+//        player = try AVAudioPlayer(contentsOf: url!)//在CD机里面放入CD光盘
+//        player.play()//按下播放按钮
+//    }catch{
+//        print(error)//放入的CD光盘可能有损坏导致CD机读不出来，我们需要用docatch来捕捉可能的错误，防止App闪退
+//    }
+//}
 
 //从realm取数
 
