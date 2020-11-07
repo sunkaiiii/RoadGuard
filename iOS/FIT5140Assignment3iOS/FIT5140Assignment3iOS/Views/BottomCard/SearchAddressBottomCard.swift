@@ -38,7 +38,6 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
         searchAddressBottomCardTableViewOutlet.dataSource = self
         searchAddressBottomCardTableViewOutlet.register(UITableViewCell.self, forCellReuseIdentifier: DEFAULT_CELL_ID)
         searchAddressBottomCardTableViewOutlet.register(BottomCardSpecifyCell.nib(), forCellReuseIdentifier: BOTTOM_CARD_CELL_ID)
-        //        searchAddressBottomCardTableViewOutlet.register(UINib(nibName: "nibFileName", bundle: nil), forCellReuseIdentifier: "CellFromNib")
 
         realm = (UIApplication.shared.delegate as! AppDelegate).realm
 
@@ -98,7 +97,7 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
         } else if indexPath.section == SECTION_CONTENT_SPECIFY {
             let cell = tableView.dequeueReusableCell(withIdentifier: BOTTOM_CARD_CELL_ID, for: indexPath) as! BottomCardSpecifyCell
             //这里需要根据传入的数据，给cell的控件赋值
-//            cell.iconImageView.image = UIImage(systemName: "mappin.circle.fill")
+            //            cell.iconImageView.image = UIImage(systemName: "mappin.circle.fill")
             return cell
         } else {
             //for nearby-content section
@@ -134,47 +133,51 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
     //action after request execution 
     func handleData(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
         switch helper.restfulAPI as? GoogleApi {
-        case .nearestRoads:
-            guard let nearestRoads:NearestRoadResponse = accessibleData.retriveData(helper: helper) else {
-                return
-            }
-            //TODO place id对比
-            locationManager.stopUpdatingLocation()
-            //Todo 刷新位置按钮
-            self.tableViewDataSourceNearby.removeAll()
-
-            //从realm取数
-
-
-            //监听器方法，考虑放在哪
-//            result.addNotificationBlock{
-//                (changes:RealmColletionChange) in
-//                //刷星数据库
-//            }
-            //这个方法好像过时了
-
-            nearestRoads.snappedPoints.forEach({(points) in
-                requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self)
-            })
-
-            
-        case .placeDetail:
-            guard let placeDetail:PlaceDetailResponse = accessibleData.retriveData(helper: helper) else {
-                return
-            }
-
-            do{
-                try realm?.write{
-                    realm?.add(placeDetail.result!)
+            case .nearestRoads:
+                guard let nearestRoads:NearestRoadResponse = accessibleData.retriveData(helper: helper) else {
+                    return
                 }
-            } catch {
-                print(error)
-            }
-            //存入Realm
-            self.tableViewDataSourceNearby.append(placeDetail.result!)
-            self.searchAddressBottomCardTableViewOutlet.reloadSections([SECTION_CONTENT_NEARBY], with: .automatic)
-        default:
-            return
+                //TODO place id对比
+                locationManager.stopUpdatingLocation()
+                //Todo 刷新位置按钮
+                self.tableViewDataSourceNearby.removeAll()
+
+                let results = realm?.objects(PlaceDetail.self)
+
+                //first fetch data from Realm DB, if not exist, then make a Network Request
+                nearestRoads.snappedPoints.forEach({(points) in
+                    let predicate = NSPredicate(format: "placeID = %@",points.placeID)
+                    let oneResult = results!.filter(predicate).first
+                    if oneResult != nil {
+                        self.tableViewDataSourceNearby.append(oneResult!)
+                    }else {
+                        requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self)
+                    }
+                })
+                
+                //after updating table view data source, reload table view
+                searchAddressBottomCardTableViewOutlet.reloadData()
+
+            case .placeDetail:
+                //decode JSON response
+                guard let placeDetailResponse:PlaceDetailResponse = accessibleData.retriveData(helper: helper) else {
+                    return
+                }
+
+                //store into realm
+                do{
+                    try realm?.write{
+                        realm?.add(placeDetailResponse.result!)
+                    }
+                } catch {
+                    print(error)
+                }
+
+                //attach into tableView and reload view
+                self.tableViewDataSourceNearby.append(placeDetailResponse.result!)
+                self.searchAddressBottomCardTableViewOutlet.reloadSections([SECTION_CONTENT_NEARBY], with: .automatic)
+            default:
+                return
         }
     }
 
@@ -182,6 +185,14 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
 
 
 
+//从realm取数
 
+
+//监听器方法，考虑放在哪
+//            result.addNotificationBlock{
+//                (changes:RealmColletionChange) in
+//                //刷星数据库
+//            }
+//这个方法好像过时了
 
 

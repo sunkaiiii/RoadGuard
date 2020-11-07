@@ -44,8 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             realm  = try Realm()
             // Get our Realm file's parent directory
             let folderPath = realm?.configuration.fileURL!.deletingLastPathComponent().path
-//            print("foldre path is coming")
-//            print("\(String(describing: folderPath))")
+            print("foldre path is coming")
+            print("\(String(describing: folderPath))")
 
             // Disable file protection for this directory
             try! FileManager.default.setAttributes([FileAttributeKey(rawValue: FileAttributeKey.protectionKey.rawValue): FileProtectionType.none], ofItemAtPath: folderPath!)
