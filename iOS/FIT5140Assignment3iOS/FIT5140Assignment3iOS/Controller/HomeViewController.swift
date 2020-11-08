@@ -30,15 +30,15 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
         
     }
 
-//    @IBAction func testSound(_ sender: Any) {
-//        let url = Bundle.main.url(forResource: "overspeed", withExtension: "wav")
-//        do{
-//            player =  try AVAudioPlayer(contentsOf: url!)
-//            player.play()
-//        }catch{
-//            print(error)
-//        }
-//    }
+    //    @IBAction func testSound(_ sender: Any) {
+    //        let url = Bundle.main.url(forResource: "overspeed", withExtension: "wav")
+    //        do{
+    //            player =  try AVAudioPlayer(contentsOf: url!)
+    //            player.play()
+    //        }catch{
+    //            print(error)
+    //        }
+    //    }
 
     func initLocationPermission() {
         manager.requestAlwaysAuthorization()
@@ -106,7 +106,6 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
         let bottom = lastPosition.latitude < coordinate.latitude ? lastPosition.latitude:coordinate.latitude
         let right = lastPosition.longitude > coordinate.longitude ? lastPosition.longitude:coordinate.longitude
         let top = lastPosition.latitude > coordinate.latitude ? lastPosition.latitude:coordinate.latitude
-        self.limitSpeed = 1
 
         let request = SpeedLimitRequest(left: left, right: right, top: top, bottom: bottom)
         request.RequestSpeedLimit(onCompleted: { [self](response) in
