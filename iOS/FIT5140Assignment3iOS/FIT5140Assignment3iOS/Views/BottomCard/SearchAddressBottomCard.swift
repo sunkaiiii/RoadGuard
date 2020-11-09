@@ -10,12 +10,14 @@ import UIKit
 import MapKit
 import RealmSwift
 
-class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController,DefaultHttpRequestAction,CLLocationManagerDelegate{
+class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController,DefaultHttpRequestAction,CLLocationManagerDelegate,UISearchBarDelegate,UITextViewDelegate{
     var areaOutlet: UIView?
 
     @IBOutlet weak var searchAddressBottomCardHandleAreaOutlet: UIView!
 
     @IBOutlet weak var searchAddressBottomCardTableViewOutlet: UITableView!
+    
+    @IBOutlet weak var searchAddressBar: UISearchBar!
     let locationManager = CLLocationManager.init()
 
     var realm : Realm?
@@ -49,7 +51,19 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             }
             self.locationManager.startUpdatingLocation()
         })
+        searchAddressBar.delegate = self
+        searchAddressBar.searchTextField.delegate = self
     }
+    
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            return true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats:false, block: {(timer) in } )
+    }
+
 
     // MARK: - core location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

@@ -101,11 +101,11 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
         switch helper.restfulAPI as? GoogleApi {
         case .snapToRoads:
             let response:SnapToRoadsResponse? = accessibleData.retriveData(helper: helper)
-            guard var points = response?.snappedPoints else {
+            guard let points = response?.snappedPoints else {
                 return
             }
             let path = GMSMutablePath()
-            points.forEach({(points) in path.add(CLLocationCoordinate2D(latitude: points.location.latitude, longitude: points.location.longitude))})
+            points.forEach({(point) in path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))})
             let polyline = GMSPolyline(path: path)
             polyline.map = googleMapView
         default:
