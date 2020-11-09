@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B10185D42553D4B000A5A11A /* SearchPlaceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10185D32553D4B000A5A11A /* SearchPlaceRequest.swift */; };
+		B10185D72553D6DF00A5A11A /* SearchPlaceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10185D62553D6DF00A5A11A /* SearchPlaceResponse.swift */; };
 		B13C25FB254936B1008EBDE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */; };
 		B13C2609254AAA69008EBDE3 /* ScrollableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13C2608254AAA69008EBDE3 /* ScrollableViewController.swift */; };
 		B13C260F254AB8AA008EBDE3 /* BottomScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13C260E254AB8AA008EBDE3 /* BottomScrollableView.swift */; };
@@ -82,6 +84,8 @@
 		2FE65A1651A941B17AEF61CC /* Pods_FIT5140Assignment3iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FIT5140Assignment3iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61BD52B6593E674829C6363C /* Pods-FIT5140Assignment3iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIT5140Assignment3iOS.debug.xcconfig"; path = "Target Support Files/Pods-FIT5140Assignment3iOS/Pods-FIT5140Assignment3iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		80FBCD77DA47232EA3362492 /* Pods-FIT5140Assignment3iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIT5140Assignment3iOS.release.xcconfig"; path = "Target Support Files/Pods-FIT5140Assignment3iOS/Pods-FIT5140Assignment3iOS.release.xcconfig"; sourceTree = "<group>"; };
+		B10185D32553D4B000A5A11A /* SearchPlaceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceRequest.swift; sourceTree = "<group>"; };
+		B10185D62553D6DF00A5A11A /* SearchPlaceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceResponse.swift; sourceTree = "<group>"; };
 		B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B13C2608254AAA69008EBDE3 /* ScrollableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableViewController.swift; sourceTree = "<group>"; };
 		B13C260E254AB8AA008EBDE3 /* BottomScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomScrollableView.swift; sourceTree = "<group>"; };
@@ -333,6 +337,7 @@
 				B15602762552E18B003EF6B7 /* SnapToRoadsRequest.swift */,
 				B156025F2551654B003EF6B7 /* NearestRoadsRequest.swift */,
 				B156026A25518A1A003EF6B7 /* PlaceDetailRequest.swift */,
+				B10185D32553D4B000A5A11A /* SearchPlaceRequest.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 				B1560262255169AA003EF6B7 /* NearestRoadsResponse.swift */,
 				B1560267255188E6003EF6B7 /* PlaceDetailResponse.swift */,
 				B15602732552E0F7003EF6B7 /* SnapToRoadsResponse.swift */,
+				B10185D62553D6DF00A5A11A /* SearchPlaceResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -547,6 +553,7 @@
 				E4FECFBE254FAEC90072555F /* DrienDistanceTableViewCell.swift in Sources */,
 				E45B486E254CF66E00692A2E /* WormTabStrip.swift in Sources */,
 				B13CEFCC2540FAF900957E84 /* ViewController.swift in Sources */,
+				B10185D72553D6DF00A5A11A /* SearchPlaceResponse.swift in Sources */,
 				B13C2609254AAA69008EBDE3 /* ScrollableViewController.swift in Sources */,
 				B13CEFE32540FDC900957E84 /* RestfulModel.swift in Sources */,
 				E45B486D254CF66E00692A2E /* WormTabStripButton.swift in Sources */,
@@ -588,6 +595,7 @@
 				E4BA6E8825452BF8001D0CD7 /* RoadsViewController.swift in Sources */,
 				B15602772552E18B003EF6B7 /* SnapToRoadsRequest.swift in Sources */,
 				B13CEFF425410D2B00957E84 /* ImagePicker.swift in Sources */,
+				B10185D42553D4B000A5A11A /* SearchPlaceRequest.swift in Sources */,
 				B1466EA62548EF16008ED039 /* SpeedRecord.swift in Sources */,
 				B13CEFF125410D1500957E84 /* ImageExtension.swift in Sources */,
 				B13CEFFF25410D9200957E84 /* AlertControllerHelper.swift in Sources */,

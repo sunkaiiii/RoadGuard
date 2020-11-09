@@ -9,12 +9,14 @@ import Foundation
 import UIKit
 import MapKit
 
-class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController,DefaultHttpRequestAction,CLLocationManagerDelegate{
+class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController,DefaultHttpRequestAction,CLLocationManagerDelegate,UISearchBarDelegate,UITextViewDelegate{
     var areaOutlet: UIView?
 
     @IBOutlet weak var searchAddressBottomCardHandleAreaOutlet: UIView!
 
     @IBOutlet weak var searchAddressBottomCardTableViewOutlet: UITableView!
+    
+    @IBOutlet weak var searchAddressBar: UISearchBar!
     let locationManager = CLLocationManager.init()
 
     let SECTION_HEADER_SPECIFY = 0
@@ -44,7 +46,19 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             }
             self.locationManager.startUpdatingLocation()
         })
+        searchAddressBar.delegate = self
+        searchAddressBar.searchTextField.delegate = self
     }
+    
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            return true
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats:false, block: {(timer) in } )
+    }
+
 
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -133,6 +147,9 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             locationManager.stopUpdatingLocation()
             //Todo 刷新位置按钮
             self.tableViewDataSourceNearby.removeAll()
+            //TODO search cache if the detail is exists
+            
+            //else reqeust network
             nearestRoads.snappedPoints.forEach({(points) in
                 requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self)
             })
@@ -141,6 +158,7 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             guard let placeDetail:PlaceDetailResponse = accessibleData.retriveData(helper: helper) else {
                 return
             }
+            //TODO add detail into core data
             self.tableViewDataSourceNearby.append(placeDetail.result)
             self.searchAddressBottomCardTableViewOutlet.reloadSections([SECTION_CONTENT_NEARBY], with: .automatic)
         default:

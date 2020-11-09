@@ -68,6 +68,7 @@ enum GoogleApi:RestfulAPI{
     case nearestRoads
     case placeDetail
     case snapToRoads
+    case searchPlace
     
     func getRequestName() -> String {
         switch self {
@@ -77,6 +78,8 @@ enum GoogleApi:RestfulAPI{
             return "PlaceDetail"
         case .snapToRoads:
             return "SnapToRoads"
+        case .searchPlace:
+            return "SearchPlace"
         }
     }
     
@@ -88,16 +91,14 @@ enum GoogleApi:RestfulAPI{
             return "/maps/api/place/details"
         case .snapToRoads:
             return "/v1/snapToRoads"
+        case .searchPlace:
+            return "/maps/api/place/textsearch"
         }
     }
     
     func getRequestType() -> RequestType {
         switch self {
-        case .nearestRoads:
-            return .GET
-        case .placeDetail:
-            return .GET
-        case .snapToRoads:
+        default:
             return .GET
         }
     }
@@ -111,6 +112,8 @@ enum GoogleApi:RestfulAPI{
             return .placeApi
         case .snapToRoads:
             return .roadsApi
+        case .searchPlace:
+            return .placeApi
         }
     }
     
