@@ -7,9 +7,10 @@
 
 import UIKit
 import GoogleMaps
+import AVFoundation
 
 class HomeViewController: UIViewController,CLLocationManagerDelegate {
-    
+    var player:AVAudioPlayer!
     let manager = CLLocationManager.init()
     var mapview:GMSMapView?
     let marker = GMSMarker()
@@ -29,7 +30,16 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
         
     }
 
-    
+    //    @IBAction func testSound(_ sender: Any) {
+    //        let url = Bundle.main.url(forResource: "overspeed", withExtension: "wav")
+    //        do{
+    //            player =  try AVAudioPlayer(contentsOf: url!)
+    //            player.play()
+    //        }catch{
+    //            print(error)
+    //        }
+    //    }
+
     func initLocationPermission() {
         manager.requestAlwaysAuthorization()
         manager.allowsBackgroundLocationUpdates = true
@@ -72,6 +82,17 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
         }else{
             lastPosition = locationInformation.coordinate
             if limitSpeed > 0 && speed > limitSpeed{
+
+                //play an alert sound
+                //play() method is already async
+                let url = Bundle.main.url(forResource: "overspeed", withExtension: "wav")
+                do{
+                    player =  try AVAudioPlayer(contentsOf: url!)
+                    player.play()
+                }catch{
+                    print(error)
+                }
+
                 self.recordOverSpeed(currentSpeed: speed, limitedSpeed: limitSpeed, location: locationInformation)
             }else if limitSpeed > 0{
                 self.recordNormalSpeed(currentSpeed: Int(speed), limitedSpeed: limitSpeed, location: locationInformation)
@@ -85,14 +106,26 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
         let bottom = lastPosition.latitude < coordinate.latitude ? lastPosition.latitude:coordinate.latitude
         let right = lastPosition.longitude > coordinate.longitude ? lastPosition.longitude:coordinate.longitude
         let top = lastPosition.latitude > coordinate.latitude ? lastPosition.latitude:coordinate.latitude
+
         let request = SpeedLimitRequest(left: left, right: right, top: top, bottom: bottom)
-        request.RequestSpeedLimit(onCompleted: {(response) in
+        request.RequestSpeedLimit(onCompleted: { [self](response) in
             if !response.ways.isEmpty{
                 let way = response.ways[0]
                 self.speedNotificationView.setSpeedNotification("\(way.speedMaxSpeed)")
                 let speed = fabs(location.speed * 3.6)
                 self.limitSpeed = Int(speed)
                 if Int(speed) > way.speedMaxSpeed && way.speedMaxSpeed>0{
+
+                    //play an alert sound
+                    //play() method is already async
+                    let url = Bundle.main.url(forResource: "overspeed", withExtension: "wav")
+                    do{
+                        self.player =  try AVAudioPlayer(contentsOf: url!)
+                        self.player.play()
+                    }catch{
+                        print(error)
+                    }
+
                     self.recordOverSpeed(currentSpeed: Int(speed), limitedSpeed: way.speedMaxSpeed, location: location)
                 }else if way.speedMaxSpeed > 0{
                     self.recordNormalSpeed(currentSpeed: Int(speed), limitedSpeed: way.speedMaxSpeed, location: location)

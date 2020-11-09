@@ -64,6 +64,7 @@
 		E45B4875254CFF7600692A2E /* RecordBreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B4874254CFF7600692A2E /* RecordBreakdownViewController.swift */; };
 		E45B4879254D023600692A2E /* RecordBkdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B4877254D023600692A2E /* RecordBkdTableViewCell.swift */; };
 		E45B487A254D023600692A2E /* RecordBkdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E45B4878254D023600692A2E /* RecordBkdTableViewCell.xib */; };
+		E47A9E5C2556ECAF00A815B7 /* overspeed.wav in Resources */ = {isa = PBXBuildFile; fileRef = E47A9E5B2556ECAF00A815B7 /* overspeed.wav */; };
 		E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */; };
 		E4BA6E7F25450307001D0CD7 /* BottomCardSpecifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BA6E7D25450307001D0CD7 /* BottomCardSpecifyCell.xib */; };
 		E4BA6E8825452BF8001D0CD7 /* RoadsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA6E8725452BF8001D0CD7 /* RoadsViewController.swift */; };
@@ -71,6 +72,7 @@
 		E4D865E425458CE400465243 /* RoadInfoBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */; };
 		E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */; };
 		E4D865E9254591B600465243 /* BottomCardImportantRoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */; };
+		E4EE85152554FBEF00208C71 /* RealmExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EE85142554FBEF00208C71 /* RealmExtension.swift */; };
 		E4F59EC72552DA8300286BE7 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F59EC62552DA8300286BE7 /* MulticastDelegate.swift */; };
 		E4FECFB3254F9ECF0072555F /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */; };
 		E4FECFBE254FAEC90072555F /* DrienDistanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FECFBC254FAEC90072555F /* DrienDistanceTableViewCell.swift */; };
@@ -144,6 +146,7 @@
 		E45B4874254CFF7600692A2E /* RecordBreakdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBreakdownViewController.swift; sourceTree = "<group>"; };
 		E45B4877254D023600692A2E /* RecordBkdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBkdTableViewCell.swift; sourceTree = "<group>"; };
 		E45B4878254D023600692A2E /* RecordBkdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordBkdTableViewCell.xib; sourceTree = "<group>"; };
+		E47A9E5B2556ECAF00A815B7 /* overspeed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = overspeed.wav; sourceTree = "<group>"; };
 		E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardSpecifyCell.swift; sourceTree = "<group>"; };
 		E4BA6E7D25450307001D0CD7 /* BottomCardSpecifyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomCardSpecifyCell.xib; sourceTree = "<group>"; };
 		E4BA6E8725452BF8001D0CD7 /* RoadsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadsViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +154,7 @@
 		E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadInfoBottomCard.swift; sourceTree = "<group>"; };
 		E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardImportantRoadCell.swift; sourceTree = "<group>"; };
 		E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomCardImportantRoadCell.xib; sourceTree = "<group>"; };
+		E4EE85142554FBEF00208C71 /* RealmExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmExtension.swift; sourceTree = "<group>"; };
 		E4F59EC62552DA8300286BE7 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		E4FECFBC254FAEC90072555F /* DrienDistanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrienDistanceTableViewCell.swift; sourceTree = "<group>"; };
@@ -220,11 +224,12 @@
 			children = (
 				B170FC7025428F660086F1D9 /* FIT5140Assignment3iOS.entitlements */,
 				B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */,
+				E47A9E4F2556BF7100A815B7 /* SoundFile */,
+				B13CEFDC2540FD4A00957E84 /* Network */,
 				B13CF00C2541A9FE00957E84 /* Controller */,
 				B13CF0012541766000957E84 /* Views */,
 				B13CEFF625410D4E00957E84 /* ControllerHelper */,
 				B13CEFEB25410C8200957E84 /* ImageHelper */,
-				B13CEFDC2540FD4A00957E84 /* Network */,
 				B13CEFC72540FAF900957E84 /* AppDelegate.swift */,
 				B13CEFC92540FAF900957E84 /* SceneDelegate.swift */,
 				B13CEFCB2540FAF900957E84 /* ViewController.swift */,
@@ -276,6 +281,7 @@
 				B13CEFF725410D5F00957E84 /* UITextFieldHelper.swift */,
 				B13CEFFB25410D7400957E84 /* ToastHelper.swift */,
 				B13CEFFE25410D9200957E84 /* AlertControllerHelper.swift */,
+				E4EE85142554FBEF00208C71 /* RealmExtension.swift */,
 			);
 			path = ControllerHelper;
 			sourceTree = "<group>";
@@ -394,6 +400,14 @@
 			path = BottomCard;
 			sourceTree = "<group>";
 		};
+		E47A9E4F2556BF7100A815B7 /* SoundFile */ = {
+			isa = PBXGroup;
+			children = (
+				E47A9E5B2556ECAF00A815B7 /* overspeed.wav */,
+			);
+			path = SoundFile;
+			sourceTree = "<group>";
+		};
 		E4FECFBB254FAE8F0072555F /* AnalysisPageCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -471,6 +485,7 @@
 				B13CEFD12540FAFB00957E84 /* Assets.xcassets in Resources */,
 				E41FE641254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib in Resources */,
 				E4D865E125458CB600465243 /* RoadInfoBottomCard.xib in Resources */,
+				E47A9E5C2556ECAF00A815B7 /* overspeed.wav in Resources */,
 				B170FC812542B40F0086F1D9 /* CurrentSpeedInformationView.xib in Resources */,
 				E4D865E9254591B600465243 /* BottomCardImportantRoadCell.xib in Resources */,
 				E45B487A254D023600692A2E /* RecordBkdTableViewCell.xib in Resources */,
@@ -554,6 +569,7 @@
 				E45B486E254CF66E00692A2E /* WormTabStrip.swift in Sources */,
 				B13CEFCC2540FAF900957E84 /* ViewController.swift in Sources */,
 				B10185D72553D6DF00A5A11A /* SearchPlaceResponse.swift in Sources */,
+				E4EE85152554FBEF00208C71 /* RealmExtension.swift in Sources */,
 				B13C2609254AAA69008EBDE3 /* ScrollableViewController.swift in Sources */,
 				B13CEFE32540FDC900957E84 /* RestfulModel.swift in Sources */,
 				E45B486D254CF66E00692A2E /* WormTabStripButton.swift in Sources */,
@@ -753,7 +769,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YNQ45Z475P;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -775,7 +791,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YNQ45Z475P;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

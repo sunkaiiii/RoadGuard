@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17507" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AddressComponentLocal" representedClassName="AddressComponentLocal" syncable="YES" codeGenerationType="class">
+        <attribute name="longName" optional="YES" attributeType="String"/>
+        <attribute name="shortName" optional="YES" attributeType="String"/>
+        <relationship name="addressComponent_PlaceDetail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PlaceDetailLocal" inverseName="placeDetail_AddressComponent" inverseEntity="PlaceDetailLocal"/>
+    </entity>
+    <entity name="AddressTypeLocal" representedClassName="AddressTypeLocal" syncable="YES" codeGenerationType="class">
+        <attribute name="typeName" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="PlaceDetailLocal" representedClassName="PlaceDetailLocal" syncable="YES" codeGenerationType="class">
+        <attribute name="formattedAddress" optional="YES" attributeType="String"/>
+        <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="placeID" optional="YES" attributeType="String"/>
+        <relationship name="placeDetail_AddressComponent" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="AddressComponentLocal" inverseName="addressComponent_PlaceDetail" inverseEntity="AddressComponentLocal"/>
+    </entity>
+    <elements>
+        <element name="PlaceDetailLocal" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="AddressComponentLocal" positionX="-54" positionY="18" width="128" height="88"/>
+        <element name="AddressTypeLocal" positionX="-36" positionY="36" width="128" height="58"/>
+    </elements>
+</model>
