@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -149,13 +149,21 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="xHD-IM-659">
-                        <barButtonItem key="rightBarButtonItem" title="Select" id="5UR-bv-20o">
-                            <connections>
-                                <action selector="onSelectButtonClick:" destination="EBy-VD-lzW" id="hJn-mi-qZL"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Select" id="5UR-bv-20o">
+                                <connections>
+                                    <action selector="onSelectButtonClick:" destination="EBy-VD-lzW" id="hJn-mi-qZL"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Cancel" id="6lc-6I-Z2J">
+                                <connections>
+                                    <action selector="cancelSelection:" destination="EBy-VD-lzW" id="eyf-Z5-uPG"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="cancelItem" destination="6lc-6I-Z2J" id="hCq-5y-nAs"/>
                         <outlet property="googleMapView" destination="7DP-rm-HlC" id="fKV-pN-Fh3"/>
                         <outlet property="selectMapItem" destination="5UR-bv-20o" id="c9h-Ti-zDV"/>
                     </connections>
