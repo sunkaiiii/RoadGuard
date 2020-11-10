@@ -52,10 +52,8 @@ class BottomScrollableView: UIView {
 
         contentViewController.view.clipsToBounds = true
 
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BottomScrollableView.handleCardTap(recognzier:)))
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(BottomScrollableView.handleCardPan(recognizer:)))
         contentViewController.view.layer.cornerRadius = 32
-        contentViewController.areaOutlet?.addGestureRecognizer(tapGestureRecognizer)
         contentViewController.areaOutlet?.addGestureRecognizer(panGestureRecognizer)
         self.addSubview(visualEffectView)
         self.addSubview(contentViewController.view)

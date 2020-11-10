@@ -34,6 +34,8 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
     //根据需要展示的内容，更改数据类型和内容
     var tableViewDataSourceSpecify : [SearchPlaceDetail]  = []
     var tableViewDataSourceNearby : [PlaceDetail] =  []
+    
+    var searchAddressDelegate:BottomCardSpeicifyCellDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,12 +131,14 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             let cell = tableView.dequeueReusableCell(withIdentifier: BOTTOM_CARD_CELL_ID, for: indexPath) as! BottomCardSpecifyCell
             let detail = tableViewDataSourceSpecify[indexPath.row]
             cell.initWithSearchRestul(detail)
+            cell.delegate = searchAddressDelegate
             return cell
         } else {
             //for nearby-content section
             let cell = tableView.dequeueReusableCell(withIdentifier: BOTTOM_CARD_CELL_ID, for: indexPath) as! BottomCardSpecifyCell
             let placeDetail = tableViewDataSourceNearby[indexPath.row]
             cell.initWithPlaceDetail(placeDetail)
+            cell.delegate = searchAddressDelegate
             return cell
         }
     }
@@ -148,18 +152,6 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
         }
     }
 
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section == SECTION_HEADER_SPECIFY || indexPath.section == SECTION_HEADER_NEARBY{
-            return false
-        }
-        return true
-    }
-
-    func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == SECTION_HEADER_SPECIFY || indexPath.section == SECTION_HEADER_NEARBY{
-            searchAddressBottomCardTableViewOutlet.deselectRow(at:indexPath,animated:true)}
-    }
-
     // MARK: - Network Request
     //action after request execution 
     func handleData(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
@@ -170,7 +162,6 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
                 }
                 handleNearByRoadResponse(nearestRoads)
             case .placeDetail:
-                //decode JSON response
                 guard let placeDetailResponse:PlaceDetailResponse = accessibleData.retriveData(helper: helper) else {
                     return
                 }
@@ -193,38 +184,38 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
         //Todo 刷新位置按钮
         self.tableViewDataSourceNearby.removeAll()
 
-        let results = realm?.objects(PlaceDetail.self)
+        //let results = realm?.objects(PlaceDetail.self)
 
         //first fetch data from Realm DB, if not exist, then make a Network Request
         nearestRoads.snappedPoints.forEach({(points) in
-            let predicate = NSPredicate(format: "placeID = %@",points.placeID)
-            let oneResult = results!.filter(predicate).first
-            if oneResult != nil {
-                self.tableViewDataSourceNearby.append(oneResult!)
-            }else {
-                requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self)
-            }
+            requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self)
+//            let predicate = NSPredicate(format: "placeID = %@",points.placeID)
+//            if  let oneResult = results!.filter(predicate).first {
+//                self.tableViewDataSourceNearby.append(oneResult)
+//            }else {
+//                requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self)
+//            }
         })
         //考虑for each循环完再reaload的话, case placeDetail 里是否还需要reaload,  以及这里会不会造成线程异步问题?
         //这里要不要把更新UI明确放在主线程？（不太清楚现在是什么线程）
         //after updating table view data source, reload table view
-        searchAddressBottomCardTableViewOutlet.reloadData()
+//        searchAddressBottomCardTableViewOutlet.reloadData()
     }
     
     func handlePlaceDetailResponse(_ placeDetailResponse:PlaceDetailResponse){
         //这里要不要把存入数据库明确放入背景线程？（不太清楚现在是什么线程）
         //store into realm
-        do{
-            try realm?.write{
-                realm?.add(placeDetailResponse.result!)
-            }
-        } catch {
-            print(error)
-        }
+//        do{
+//            try realm?.write{
+//                realm?.add(placeDetailResponse.result!)
+//            }
+//        } catch {
+//            print(error)
+//        }
 
         //这里要不要把更新UI明确放在主线程？（不太清楚现在是什么线程）
         //attach into tableView and reload view
-        self.tableViewDataSourceNearby.append(placeDetailResponse.result!)
+        self.tableViewDataSourceNearby.append(placeDetailResponse.result)
         self.searchAddressBottomCardTableViewOutlet.reloadSections([SECTION_CONTENT_NEARBY], with: .automatic)
     }
     
@@ -235,29 +226,5 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
 }
 
 
-
-
-//
-//func play(tag: Int){
-//    //找到音频文件（类似于拿出一张CD光盘）-局部变量
-//    let url = Bundle.main.url(forResource: sounds[tag-1], withExtension: "wav")
-//
-//    do{
-//        player = try AVAudioPlayer(contentsOf: url!)//在CD机里面放入CD光盘
-//        player.play()//按下播放按钮
-//    }catch{
-//        print(error)//放入的CD光盘可能有损坏导致CD机读不出来，我们需要用docatch来捕捉可能的错误，防止App闪退
-//    }
-//}
-
-//从realm取数
-
-
-//监听器方法，考虑放在哪
-//            result.addNotificationBlock{
-//                (changes:RealmColletionChange) in
-//                //刷星数据库
-//            }
-//这个方法好像过时了
 
 
