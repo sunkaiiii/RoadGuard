@@ -11,6 +11,7 @@ import GoogleMaps
 
 class ImportantPathDetailViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
 
+    @IBOutlet weak var visualEffectForTablViewBackground: UIVisualEffectView!
     @IBOutlet weak var totalLengthNumberLabel: UILabel!
     @IBOutlet weak var passTimesLabel: UILabel!
     @IBOutlet weak var importantPathTableView: UITableView!
@@ -36,6 +37,10 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
         let blurEffect = UIBlurEffect(style: .light)
         totalLengthVisualEffectView.effect = blurEffect
         passTimesVisualEffectView.effect = blurEffect
+        visualEffectForTablViewBackground.effect = blurEffect
+        visualEffectForTablViewBackground.layer.cornerRadius = 24
+        visualEffectForTablViewBackground.contentView.layer.cornerRadius = 24
+        visualEffectForTablViewBackground.clipsToBounds = true
         totalLengthVisualEffectView.layer.cornerRadius = 24
         totalLengthVisualEffectView.contentView.layer.cornerRadius = 24
         totalLengthVisualEffectView.clipsToBounds = true
@@ -47,6 +52,9 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
 
         importantPathTableView.delegate = self
         importantPathTableView.dataSource = self
+
+        self.navigationController?.navigationBar.tintColor = .white
+
     }
 
     // MARK: - TableView
@@ -107,7 +115,8 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
     // MARK: - Gesture Action
     @objc func editIconOnClick(_ gestureRecognizer: UITapGestureRecognizer){
 
-        //icon触发事件有待更新，现在只是放个dummy的在这测试用
+        //TODO，icon触发事件有待更新，现在只是放个dummy的在这测试用
+
         let actionOptions = UIAlertController(title: "Chose a User", message: "Chose a User", preferredStyle: .actionSheet)
         //这里考虑写个循环 根据用户数量添加
         actionOptions.addAction(UIAlertAction(title: "User1", style: .default, handler: { (action: UIAlertAction) in

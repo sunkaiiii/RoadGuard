@@ -9,7 +9,6 @@ import UIKit
 
 class ImportantPathTableViewContentCell: UITableViewCell {
 
-    @IBOutlet weak var pathDetailContentCellEffectView: UIVisualEffectView!
     @IBOutlet weak var roadNameLabel: UILabel!
     @IBOutlet weak var meterLabel: UILabel!
 
@@ -22,8 +21,6 @@ class ImportantPathTableViewContentCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
-        let blurEffect = UIBlurEffect(style: .light)
-        pathDetailContentCellEffectView.effect = blurEffect
     }
 
 }

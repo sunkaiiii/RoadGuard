@@ -9,7 +9,7 @@ import UIKit
 
 class ImportantPathTableViewHeaderCell: UITableViewCell {
 
-    @IBOutlet weak var pathDetailCellVIsualEffectView: UIVisualEffectView!
+
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var editIconOutlet: UIImageView!
 
@@ -17,8 +17,7 @@ class ImportantPathTableViewHeaderCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
 
-        let blurEffect = UIBlurEffect(style: .light)
-        pathDetailCellVIsualEffectView.effect = blurEffect
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
