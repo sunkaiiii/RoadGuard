@@ -9,11 +9,16 @@ import Foundation
 import UIKit
 import MapKit
 
+protocol RoadInfoBottomCardDelegate: class {
+    //这里回头需要改下传值的类型
+    func jumpToSelectedRowDetailPage(selectedRow: String)
+}
+
 class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController {
 
     
     var areaOutlet: UIView?
-    
+    weak var delegateParent: RoadInfoBottomCardDelegate?
     
     @IBOutlet weak var roadInfoBottomCardHandleAreaOutlet: UIView!
     
@@ -40,7 +45,7 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
     }
 
 
-
+    // MARK: - TableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -65,7 +70,7 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
             cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
             return cell
         } else {
-            //for nearby-content section
+            //for content section
             let cell = tableView.dequeueReusableCell(withIdentifier: BOTTOM_CARD_CELL_ID, for: indexPath) as! BottomCardImportantRoadCell
             //调用cell.configure给图片和label赋值
             cell.iconImageView.image = UIImage(systemName: "tray.circle")
@@ -91,8 +96,13 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
         if indexPath.section == SECTION_HEADER{
             searchAddressBottomCardTableViewOutlet.deselectRow(at:indexPath,animated:true)
         }
+        if indexPath.section == SECTION_CONTENT{
+            //这里传值以后需要改下
+            self.delegateParent?.jumpToSelectedRowDetailPage(selectedRow: "test road")
+        }
     }
-    
+
+
 }
 
 

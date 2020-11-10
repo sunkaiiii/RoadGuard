@@ -7,8 +7,9 @@
 
 import UIKit
 
-class RoadInformationViewController: UIViewController,DefaultHttpRequestAction {
+class RoadInformationViewController: UIViewController,DefaultHttpRequestAction , RoadInfoBottomCardDelegate{
 
+    let DETAIL_PAGE_SEGUE_ID = "importantPathsSegue"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,23 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction {
         let contentController = RoadInfoBottomCard(nibName:"RoadInfoBottomCard", bundle:nil)
         let bototmScrollableViewController = BottomScrollableView(contentViewController: contentController, superview: self.view)
         self.view.addSubview(bototmScrollableViewController)
+        contentController.delegateParent = self
+    }
+
+
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == DETAIL_PAGE_SEGUE_ID {
+            let des = segue.destination as! ImportantPathDetailViewController
+            //传值
+            des.selectedRow = sender as? String
+        }
+    }
+
+
+    // MARK: - RoadInfoBottomCardDelegate
+    func jumpToSelectedRowDetailPage(selectedRow: String){
+        performSegue(withIdentifier: DETAIL_PAGE_SEGUE_ID, sender: selectedRow)
     }
 
 }

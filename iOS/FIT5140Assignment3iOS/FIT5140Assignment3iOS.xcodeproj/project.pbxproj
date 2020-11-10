@@ -72,6 +72,9 @@
 		E4D865E425458CE400465243 /* RoadInfoBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */; };
 		E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */; };
 		E4D865E9254591B600465243 /* BottomCardImportantRoadCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */; };
+		E4DF3AE3255A140D004B96C5 /* ImportantPathTableViewContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF3AE2255A140D004B96C5 /* ImportantPathTableViewContentCell.swift */; };
+		E4DF3AE7255A141F004B96C5 /* ImportantPathTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF3AE6255A141F004B96C5 /* ImportantPathTableViewHeaderCell.swift */; };
+		E4E6FE872559711000DC8050 /* ImportantPathDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E6FE862559711000DC8050 /* ImportantPathDetailViewController.swift */; };
 		E4EE85152554FBEF00208C71 /* RealmExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EE85142554FBEF00208C71 /* RealmExtension.swift */; };
 		E4F59EC72552DA8300286BE7 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F59EC62552DA8300286BE7 /* MulticastDelegate.swift */; };
 		E4FECFB3254F9ECF0072555F /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */; };
@@ -154,6 +157,9 @@
 		E4D865E325458CE400465243 /* RoadInfoBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadInfoBottomCard.swift; sourceTree = "<group>"; };
 		E4D865E6254591B600465243 /* BottomCardImportantRoadCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardImportantRoadCell.swift; sourceTree = "<group>"; };
 		E4D865E7254591B600465243 /* BottomCardImportantRoadCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomCardImportantRoadCell.xib; sourceTree = "<group>"; };
+		E4DF3AE2255A140D004B96C5 /* ImportantPathTableViewContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantPathTableViewContentCell.swift; sourceTree = "<group>"; };
+		E4DF3AE6255A141F004B96C5 /* ImportantPathTableViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantPathTableViewHeaderCell.swift; sourceTree = "<group>"; };
+		E4E6FE862559711000DC8050 /* ImportantPathDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantPathDetailViewController.swift; sourceTree = "<group>"; };
 		E4EE85142554FBEF00208C71 /* RealmExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmExtension.swift; sourceTree = "<group>"; };
 		E4F59EC62552DA8300286BE7 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +295,7 @@
 		B13CF0012541766000957E84 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E4DF3AE1255A13DE004B96C5 /* ImportantPathDetailCells */,
 				B170FC6D25428CC20086F1D9 /* BaseUIView.swift */,
 				B170FC7D254291B60086F1D9 /* CircleShapeView.swift */,
 				E4FECFBB254FAE8F0072555F /* AnalysisPageCells */,
@@ -311,6 +318,7 @@
 				E4BA6E8725452BF8001D0CD7 /* RoadsViewController.swift */,
 				E40448EB254C278700341510 /* RecordViewController.swift */,
 				E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */,
+				E4E6FE862559711000DC8050 /* ImportantPathDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -406,6 +414,15 @@
 				E47A9E5B2556ECAF00A815B7 /* overspeed.wav */,
 			);
 			path = SoundFile;
+			sourceTree = "<group>";
+		};
+		E4DF3AE1255A13DE004B96C5 /* ImportantPathDetailCells */ = {
+			isa = PBXGroup;
+			children = (
+				E4DF3AE2255A140D004B96C5 /* ImportantPathTableViewContentCell.swift */,
+				E4DF3AE6255A141F004B96C5 /* ImportantPathTableViewHeaderCell.swift */,
+			);
+			path = ImportantPathDetailCells;
 			sourceTree = "<group>";
 		};
 		E4FECFBB254FAE8F0072555F /* AnalysisPageCells */ = {
@@ -580,6 +597,7 @@
 				B1560268255188E6003EF6B7 /* PlaceDetailResponse.swift in Sources */,
 				B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */,
 				E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */,
+				E4DF3AE7255A141F004B96C5 /* ImportantPathTableViewHeaderCell.swift in Sources */,
 				B15602602551654B003EF6B7 /* NearestRoadsRequest.swift in Sources */,
 				E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */,
 				E41FE640254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift in Sources */,
@@ -589,6 +607,7 @@
 				B1AB3A752542B70D0082B004 /* CurrentSpeedInformationView.swift in Sources */,
 				B15602742552E0F7003EF6B7 /* SnapToRoadsResponse.swift in Sources */,
 				B1C10EBD2548458A008BDC64 /* SpeedLimitRequest.swift in Sources */,
+				E4DF3AE3255A140D004B96C5 /* ImportantPathTableViewContentCell.swift in Sources */,
 				B1560241254EDB91003EF6B7 /* FacialInfoResponse.swift in Sources */,
 				B1AB3A9925446A580082B004 /* SpeedAlertSuperView.swift in Sources */,
 				E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */,
@@ -616,6 +635,7 @@
 				B13CEFF125410D1500957E84 /* ImageExtension.swift in Sources */,
 				B13CEFFF25410D9200957E84 /* AlertControllerHelper.swift in Sources */,
 				B1C10EBA25483C8B008BDC64 /* SpeedLimitResponse.swift in Sources */,
+				E4E6FE872559711000DC8050 /* ImportantPathDetailViewController.swift in Sources */,
 				B13CEFCA2540FAF900957E84 /* SceneDelegate.swift in Sources */,
 				B13CF00A2541A9B700957E84 /* SpeedAlertView.swift in Sources */,
 				B1AB3A7B2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift in Sources */,
