@@ -8,7 +8,7 @@
 import UIKit
 import GoogleMaps
 
-class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapViewDelegate,DefaultHttpRequestAction {
+class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapViewDelegate,DefaultHttpRequestAction,BottomCardSpeicifyCellDelegate {
 
     
     @IBOutlet weak var googleMapView: GMSMapView!
@@ -19,6 +19,7 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
     let marker = GMSMarker()
     let locationManager = CLLocationManager.init()
     var selectMarkers:[GMSMarker] = []
+    var selectedRoads:[RoadInformation] = []
     var backItem:UINavigationItem?
     var bottomContentView:UIView?
     override func viewDidLoad() {
@@ -116,9 +117,28 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
     // MARK: - BottomCard/FloatPanel Related functions
     func setupBottomCard(){
         let contentView = SearchAddressBottomCard(nibName:"SearchAddressBottomCard", bundle:nil)
+        contentView.searchAddressDelegate = self
         let bototmScrollableViewController = BottomScrollableView(contentViewController: contentView, superview: self.view)
         bottomContentView = bototmScrollableViewController
         bototmScrollableViewController.cardHandleAreaHeight = 180
         self.view.addSubview(bototmScrollableViewController)
+    }
+    
+    func addRoad(roadInfo: RoadInformation) {
+        selectedRoads.append(roadInfo)
+        requestPathBySelectedRoads()
+    }
+    
+    func removeRoad(roadInfo: RoadInformation) {
+        guard let index = selectedRoads.firstIndex(where: {(road) in road.placeID == roadInfo.placeID}) else {
+            return
+        }
+        selectedRoads.remove(at: index)
+        requestPathBySelectedRoads()
+    }
+    
+    func requestPathBySelectedRoads(){
+        let points = selectedRoads.map({(road)->CLLocationCoordinate2D in CLLocationCoordinate2D(latitude: road.latitude, longitude: road.longitude)})
+        requestRestfulService(api: GoogleApi.snapToRoads, model: SnapToRoadsRequest(points: points), jsonType: SnapToRoadsResponse.self)
     }
 }
