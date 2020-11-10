@@ -30,6 +30,13 @@ class BottomCardSpecifyCell: UITableViewCell {
         contentLabel.text = subContent
         ImageLoader.simpleLoad(placeDetail.icon, imageView: iconImageView)
     }
+    
+    func initWithSearchRestul(_ placeDetail:SearchPlaceDetail){
+        headerLabel.text = placeDetail.name
+        contentLabel.text = placeDetail.formattedAddress
+        ImageLoader.simpleLoad(placeDetail.icon, imageView: iconImageView)
+    }
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

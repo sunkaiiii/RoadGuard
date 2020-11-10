@@ -7,48 +7,67 @@
 
 import Foundation
 
-import Foundation
+// MARK: - SearchPlaceResponse
+class SearchPlaceResponse: Codable {
+    let results: [SearchPlaceDetail]
 
-// MARK: - SnapToRoads
-struct SnapToRoads: Codable {
-    let results: [SearchPlaceResult]
+    init(results: [SearchPlaceDetail]) {
+        self.results = results
+    }
 }
 
 // MARK: - Result
-struct SearchPlaceResult: Codable {
-    let geometry: PlaceGeometry
+class SearchPlaceDetail: Codable {
+    let formattedAddress: String
+    let geometry: SearchPlaceGeometry
     let icon: String
-    let id, name, placeID, reference: String
-    let vicinity: String
-    let photos: [Photo]?
-    let types: [String]?
+    let name, placeID: String
+    let types: [String]
 
     enum CodingKeys: String, CodingKey {
-        case geometry, icon, id, name
+        case formattedAddress = "formatted_address"
+        case geometry, icon, name
         case placeID = "place_id"
-        case reference, vicinity, photos, types
+        case types
+    }
+
+    init(formattedAddress: String, geometry: SearchPlaceGeometry, icon: String, name: String, placeID: String, types: [String]) {
+        self.formattedAddress = formattedAddress
+        self.geometry = geometry
+        self.icon = icon
+        self.name = name
+        self.placeID = placeID
+        self.types = types
     }
 }
 
 // MARK: - Geometry
-struct PlaceGeometry: Codable {
-    let location: PlaceLocationInformation
+class SearchPlaceGeometry: Codable {
+    let location: SearchPlaceLocation
+    let viewport: SearchPlaceViewport
+
+    init(location: SearchPlaceLocation, viewport: SearchPlaceViewport) {
+        self.location = location
+        self.viewport = viewport
+    }
 }
 
 // MARK: - Location
-struct PlaceLocationInformation: Codable {
+class SearchPlaceLocation: Codable {
     let lat, lng: Double
+
+    init(lat: Double, lng: Double) {
+        self.lat = lat
+        self.lng = lng
+    }
 }
 
-// MARK: - Photo
-struct Photo: Codable {
-    let height: Int
-    let photoReference: String
-    let width: Int
+// MARK: - Viewport
+class SearchPlaceViewport: Codable {
+    let northeast, southwest: SearchPlaceLocation
 
-    enum CodingKeys: String, CodingKey {
-        case height
-        case photoReference = "photo_reference"
-        case width
+    init(northeast: SearchPlaceLocation, southwest: SearchPlaceLocation) {
+        self.northeast = northeast
+        self.southwest = southwest
     }
 }

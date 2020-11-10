@@ -21,6 +21,8 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
     let locationManager = CLLocationManager.init()
 
     var realm : Realm?
+    var searchAddressTimer:Timer?
+    var currentSearchPlaceReqeust:SearchPlaceRequest?
 
     let SECTION_HEADER_SPECIFY = 0
     let SECTION_CONTENT_SPECIFY = 1
@@ -30,7 +32,7 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
     let BOTTOM_CARD_CELL_ID = BottomCardSpecifyCell.identifier
 
     //根据需要展示的内容，更改数据类型和内容
-    var tableViewDataSourceSpecify : [String]  = ["d","e","f"]
+    var tableViewDataSourceSpecify : [SearchPlaceDetail]  = []
     var tableViewDataSourceNearby : [PlaceDetail] =  []
 
     override func viewDidLoad() {
@@ -61,7 +63,22 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats:false, block: {(timer) in } )
+        if let timer = searchAddressTimer{
+            if timer.isValid{
+                timer.invalidate()
+            }
+        }
+        searchAddressTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats:false, block: {(timer) in
+            self.requestSearchAddress(searchText)
+        } )
+
+    }
+    
+    func requestSearchAddress(_ searchText:String)
+    {
+        let request = SearchPlaceRequest(query: searchText)
+        self.currentSearchPlaceReqeust = request
+        requestRestfulService(api: GoogleApi.searchPlace, model: request, jsonType: SearchPlaceResponse.self)
     }
 
 
@@ -110,8 +127,8 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             return cell
         } else if indexPath.section == SECTION_CONTENT_SPECIFY {
             let cell = tableView.dequeueReusableCell(withIdentifier: BOTTOM_CARD_CELL_ID, for: indexPath) as! BottomCardSpecifyCell
-            //这里需要根据传入的数据，给cell的控件赋值
-            //            cell.iconImageView.image = UIImage(systemName: "mappin.circle.fill")
+            let detail = tableViewDataSourceSpecify[indexPath.row]
+            cell.initWithSearchRestul(detail)
             return cell
         } else {
             //for nearby-content section
@@ -151,54 +168,72 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
                 guard let nearestRoads:NearestRoadResponse = accessibleData.retriveData(helper: helper) else {
                     return
                 }
-                //TODO place id对比
-                locationManager.stopUpdatingLocation()
-                //Todo 刷新位置按钮
-                self.tableViewDataSourceNearby.removeAll()
-
-                let results = realm?.objects(PlaceDetail.self)
-
-                //first fetch data from Realm DB, if not exist, then make a Network Request
-                nearestRoads.snappedPoints.forEach({(points) in
-                    let predicate = NSPredicate(format: "placeID = %@",points.placeID)
-                    let oneResult = results!.filter(predicate).first
-                    if oneResult != nil {
-                        self.tableViewDataSourceNearby.append(oneResult!)
-                    }else {
-                        requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self)
-                    }
-                })
-                //考虑for each循环完再reaload的话, case placeDetail 里是否还需要reaload,  以及这里会不会造成线程异步问题?
-                //这里要不要把更新UI明确放在主线程？（不太清楚现在是什么线程）
-                //after updating table view data source, reload table view
-                searchAddressBottomCardTableViewOutlet.reloadData()
-
+                handleNearByRoadResponse(nearestRoads)
             case .placeDetail:
                 //decode JSON response
                 guard let placeDetailResponse:PlaceDetailResponse = accessibleData.retriveData(helper: helper) else {
                     return
                 }
-
-                //这里要不要把存入数据库明确放入背景线程？（不太清楚现在是什么线程）
-                //store into realm
-                do{
-                    try realm?.write{
-                        realm?.add(placeDetailResponse.result!)
-                    }
-                } catch {
-                    print(error)
+                handlePlaceDetailResponse(placeDetailResponse)
+            case .searchPlace:
+                guard let searchPlaceResponse:SearchPlaceResponse = accessibleData.retriveData(helper: helper) else {
+                    return
                 }
-
-                //这里要不要把更新UI明确放在主线程？（不太清楚现在是什么线程）
-                //attach into tableView and reload view
-                self.tableViewDataSourceNearby.append(placeDetailResponse.result!)
-                self.searchAddressBottomCardTableViewOutlet.reloadSections([SECTION_CONTENT_NEARBY], with: .automatic)
+                if helper.requestModel as? SearchPlaceRequest == currentSearchPlaceReqeust{
+                    handleSearchPlaceResponse(searchPlaceResponse)
+                }
             default:
                 return
         }
     }
 
+    func handleNearByRoadResponse(_ nearestRoads:NearestRoadResponse){
+        //TODO place id对比
+        locationManager.stopUpdatingLocation()
+        //Todo 刷新位置按钮
+        self.tableViewDataSourceNearby.removeAll()
+
+        let results = realm?.objects(PlaceDetail.self)
+
+        //first fetch data from Realm DB, if not exist, then make a Network Request
+        nearestRoads.snappedPoints.forEach({(points) in
+            let predicate = NSPredicate(format: "placeID = %@",points.placeID)
+            let oneResult = results!.filter(predicate).first
+            if oneResult != nil {
+                self.tableViewDataSourceNearby.append(oneResult!)
+            }else {
+                requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self)
+            }
+        })
+        //考虑for each循环完再reaload的话, case placeDetail 里是否还需要reaload,  以及这里会不会造成线程异步问题?
+        //这里要不要把更新UI明确放在主线程？（不太清楚现在是什么线程）
+        //after updating table view data source, reload table view
+        searchAddressBottomCardTableViewOutlet.reloadData()
+    }
+    
+    func handlePlaceDetailResponse(_ placeDetailResponse:PlaceDetailResponse){
+        //这里要不要把存入数据库明确放入背景线程？（不太清楚现在是什么线程）
+        //store into realm
+        do{
+            try realm?.write{
+                realm?.add(placeDetailResponse.result!)
+            }
+        } catch {
+            print(error)
+        }
+
+        //这里要不要把更新UI明确放在主线程？（不太清楚现在是什么线程）
+        //attach into tableView and reload view
+        self.tableViewDataSourceNearby.append(placeDetailResponse.result!)
+        self.searchAddressBottomCardTableViewOutlet.reloadSections([SECTION_CONTENT_NEARBY], with: .automatic)
+    }
+    
+    func handleSearchPlaceResponse(_ searchPlaceResponse:SearchPlaceResponse){
+        tableViewDataSourceSpecify = searchPlaceResponse.results
+        searchAddressBottomCardTableViewOutlet.reloadSections([SECTION_CONTENT_SPECIFY], with: .automatic)
+    }
 }
+
 
 
 

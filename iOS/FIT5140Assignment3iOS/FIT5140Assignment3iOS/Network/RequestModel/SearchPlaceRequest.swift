@@ -10,7 +10,7 @@ import Foundation
 
 //search format references on https://developers.google.com/places/web-service/search
 
-struct SearchPlaceRequest:SimpleRequestModel {
+struct SearchPlaceRequest:SimpleRequestModel, Equatable {
     let query:String
     
     func getQueryParameter() -> [String : String] {
@@ -19,6 +19,10 @@ struct SearchPlaceRequest:SimpleRequestModel {
     
     func getPathParameter() -> [String] {
         return ["json"]
+    }
+    
+    static func == (lhs: Self, rhs: Self) -> Bool{
+        return lhs.query == rhs.query
     }
 }
 
