@@ -9,6 +9,8 @@ import UIKit
 
 class RoadInformationViewController: UIViewController,DefaultHttpRequestAction , RoadInfoBottomCardDelegate{
 
+    
+
     let DETAIL_PAGE_SEGUE_ID = "importantPathsSegue"
     
     override func viewDidLoad() {
@@ -42,15 +44,16 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction ,
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == DETAIL_PAGE_SEGUE_ID {
-            let des = segue.destination as! ImportantPathDetailViewController
-            //传值
-            des.selectedRow = sender as? String
+            if let des = segue.destination as? ImportantPathDetailViewController{
+                des.selectedRoad = sender as? UserSelectedRoadResponse
+            }
+
         }
     }
 
 
     // MARK: - RoadInfoBottomCardDelegate
-    func jumpToSelectedRowDetailPage(selectedRow: String){
+    func jumpToSelectedRowDetailPage(selectedRow: UserSelectedRoadResponse) {
         performSegue(withIdentifier: DETAIL_PAGE_SEGUE_ID, sender: selectedRow)
     }
 

@@ -11,7 +11,7 @@ import MapKit
 
 protocol RoadInfoBottomCardDelegate: class {
     //这里回头需要改下传值的类型
-    func jumpToSelectedRowDetailPage(selectedRow: String)
+    func jumpToSelectedRowDetailPage(selectedRow: UserSelectedRoadResponse)
 }
 
 class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController, DatabaseListener {
@@ -110,7 +110,7 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
         }
         if indexPath.section == SECTION_CONTENT{
             //这里传值以后需要改下
-            self.delegateParent?.jumpToSelectedRowDetailPage(selectedRow: "test road")
+            self.delegateParent?.jumpToSelectedRowDetailPage(selectedRow: selectRoadDataSource[indexPath.row])
         }
     }
 
