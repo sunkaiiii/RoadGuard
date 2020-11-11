@@ -11,11 +11,11 @@ protocol DefaultHttpRequestAction:HTTPRequestAction {
     func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T.Type) where T:Decodable
     func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T.Type, onDataReturned:@escaping(RequestHelper,URLComponents,T)->Void) where T:Decodable
     func requestRestfulServiceForXmlResult(api:RestfulAPI, model:RequestModel)
-    func handleData(helper:RequestHelper,url:URLComponents,accessibleData:AccessibleNetworkData)
+    func handleResponseDataFromRestfulRequest(helper:RequestHelper,url:URLComponents,accessibleData:AccessibleNetworkData)
 }
 
 protocol AccessibleNetworkData{
-    func retriveData<T>(helper:RequestHelper)->T?
+    func retriveData<T>()->T
 }
 
 class DataResult:AccessibleNetworkData{
@@ -23,8 +23,8 @@ class DataResult:AccessibleNetworkData{
     init(data:Any) {
         self.data = data
     }
-    func retriveData<T>(helper:RequestHelper) -> T? {
-        return data as? T
+    func retriveData<T>() -> T {
+        return data as! T
     }
 }
 
@@ -49,7 +49,7 @@ extension DefaultHttpRequestAction{
         
     }
     func afterExecution<T>(helper: RequestHelper, url: URLComponents, response: T, rawData: Data) {
-        handleData(helper: helper, url: url, accessibleData: DataResult(data: response))
+        handleResponseDataFromRestfulRequest(helper: helper, url: url, accessibleData: DataResult(data: response))
     }
 
 }

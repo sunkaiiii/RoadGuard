@@ -29,12 +29,10 @@ class ImportantPathTableViewContentCell: UITableViewCell,DefaultHttpRequestActio
         requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: placeId), jsonType: PlaceDetailResponse.self)
     }
     
-    func handleData(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
+    func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
         if let api = helper.restfulAPI as? GoogleApi, api == .placeDetail {
-            let placeDetailResponse:PlaceDetailResponse? = accessibleData.retriveData(helper: helper)
-            guard let placeDetail = placeDetailResponse?.result else {
-                return
-            }
+            let placeDetailResponse:PlaceDetailResponse = accessibleData.retriveData()
+            let placeDetail = placeDetailResponse.result
             roadNameLabel.text = placeDetail.name
         }
     }

@@ -28,7 +28,7 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction ,
 
     }
     
-    func handleData(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
+    func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
         
     }
 

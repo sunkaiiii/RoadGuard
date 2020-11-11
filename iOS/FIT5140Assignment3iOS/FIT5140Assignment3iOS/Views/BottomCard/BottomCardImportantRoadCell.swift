@@ -54,14 +54,11 @@ class BottomCardImportantRoadCell: UITableViewCell,DefaultHttpRequestAction {
         // Configure the view for the selected state
     }
     
-    func handleData(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
+    func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
         switch helper.restfulAPI as? GoogleApi {
         case .placeDetail:
-            let response:PlaceDetailResponse? = accessibleData.retriveData(helper: helper)
-            guard let placeDetail = response  else{
-                return
-            }
-            initContentLabel(placeDetail)
+            let response:PlaceDetailResponse = accessibleData.retriveData()
+            initContentLabel(response)
         default:
             return
         }

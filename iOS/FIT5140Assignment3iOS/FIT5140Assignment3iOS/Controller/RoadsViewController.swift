@@ -127,13 +127,11 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
     }
     
     //draw a line in the google map view, references on the usage of javescript api https://developers.google.com/maps/documentation/roads/snap
-    func handleData(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
+    func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
         switch helper.restfulAPI as? GoogleApi {
         case .snapToRoads:
-            let response:SnapToRoadsResponse? = accessibleData.retriveData(helper: helper)
-            guard let points = response?.snappedPoints else {
-                return
-            }
+            let response:SnapToRoadsResponse = accessibleData.retriveData()
+            let points = response.snappedPoints
             drawPathIntoMap(points: points)
             self.snapPoints = points
         default:

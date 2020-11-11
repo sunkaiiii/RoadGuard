@@ -154,22 +154,16 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
 
     // MARK: - Network Request
     //action after request execution 
-    func handleData(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
+    func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
         switch helper.restfulAPI as? GoogleApi {
             case .nearestRoads:
-                guard let nearestRoads:NearestRoadResponse = accessibleData.retriveData(helper: helper) else {
-                    return
-                }
+                let nearestRoads:NearestRoadResponse = accessibleData.retriveData()
                 handleNearByRoadResponse(nearestRoads)
             case .placeDetail:
-                guard let placeDetailResponse:PlaceDetailResponse = accessibleData.retriveData(helper: helper) else {
-                    return
-                }
+                let placeDetailResponse:PlaceDetailResponse = accessibleData.retriveData()
                 handlePlaceDetailResponse(placeDetailResponse)
             case .searchPlace:
-                guard let searchPlaceResponse:SearchPlaceResponse = accessibleData.retriveData(helper: helper) else {
-                    return
-                }
+                let searchPlaceResponse:SearchPlaceResponse = accessibleData.retriveData()
                 if helper.requestModel as? SearchPlaceRequest == currentSearchPlaceReqeust{
                     handleSearchPlaceResponse(searchPlaceResponse)
                 }
