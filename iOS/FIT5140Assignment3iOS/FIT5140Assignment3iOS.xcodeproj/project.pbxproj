@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		B10185D42553D4B000A5A11A /* SearchPlaceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10185D32553D4B000A5A11A /* SearchPlaceRequest.swift */; };
 		B10185D72553D6DF00A5A11A /* SearchPlaceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10185D62553D6DF00A5A11A /* SearchPlaceResponse.swift */; };
+		B1139AC0255BD560002EA26E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1139ABF255BD560002EA26E /* AppDelegate.swift */; };
 		B13C25FB254936B1008EBDE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */; };
 		B13C2609254AAA69008EBDE3 /* ScrollableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13C2608254AAA69008EBDE3 /* ScrollableViewController.swift */; };
 		B13C260F254AB8AA008EBDE3 /* BottomScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13C260E254AB8AA008EBDE3 /* BottomScrollableView.swift */; };
-		B13CEFC82540FAF900957E84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CEFC72540FAF900957E84 /* AppDelegate.swift */; };
 		B13CEFCA2540FAF900957E84 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CEFC92540FAF900957E84 /* SceneDelegate.swift */; };
 		B13CEFCC2540FAF900957E84 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CEFCB2540FAF900957E84 /* ViewController.swift */; };
 		B13CEFCF2540FAF900957E84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B13CEFCD2540FAF900957E84 /* Main.storyboard */; };
@@ -92,11 +92,11 @@
 		80FBCD77DA47232EA3362492 /* Pods-FIT5140Assignment3iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIT5140Assignment3iOS.release.xcconfig"; path = "Target Support Files/Pods-FIT5140Assignment3iOS/Pods-FIT5140Assignment3iOS.release.xcconfig"; sourceTree = "<group>"; };
 		B10185D32553D4B000A5A11A /* SearchPlaceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceRequest.swift; sourceTree = "<group>"; };
 		B10185D62553D6DF00A5A11A /* SearchPlaceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceResponse.swift; sourceTree = "<group>"; };
+		B1139ABF255BD560002EA26E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B13C2608254AAA69008EBDE3 /* ScrollableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableViewController.swift; sourceTree = "<group>"; };
 		B13C260E254AB8AA008EBDE3 /* BottomScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomScrollableView.swift; sourceTree = "<group>"; };
 		B13CEFC42540FAF900957E84 /* FIT5140Assignment3iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FIT5140Assignment3iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B13CEFC72540FAF900957E84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B13CEFC92540FAF900957E84 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B13CEFCB2540FAF900957E84 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B13CEFCE2540FAF900957E84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -244,6 +244,7 @@
 				B13CEFD02540FAFB00957E84 /* Assets.xcassets */,
 				B13CEFD22540FAFB00957E84 /* LaunchScreen.storyboard */,
 				B13CEFD52540FAFB00957E84 /* Info.plist */,
+				B1139ABF255BD560002EA26E /* AppDelegate.swift */,
 				B1A5E4792547C59A00D8CCB0 /* GoogleAPIKey.swift */,
 			);
 			path = FIT5140Assignment3iOS;
@@ -252,7 +253,6 @@
 		B13CEFDC2540FD4A00957E84 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				B13CEFC72540FAF900957E84 /* AppDelegate.swift */,
 				B1AB3A8B2544608D0082B004 /* Response */,
 				B1AB3A8625445FD50082B004 /* RequestModel */,
 				B13CEFDD2540FD5100957E84 /* Protocol */,
@@ -595,7 +595,6 @@
 				E45B486D254CF66E00692A2E /* WormTabStripButton.swift in Sources */,
 				B190D3C825447029002249BA /* SpeedNotificationSuperView.swift in Sources */,
 				B13CEFE625410B6F00957E84 /* NetworkExtension.swift in Sources */,
-				B13CEFC82540FAF900957E84 /* AppDelegate.swift in Sources */,
 				B1A5E47A2547C59A00D8CCB0 /* GoogleAPIKey.swift in Sources */,
 				B1560268255188E6003EF6B7 /* PlaceDetailResponse.swift in Sources */,
 				B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */,
@@ -633,6 +632,7 @@
 				E45B4879254D023600692A2E /* RecordBkdTableViewCell.swift in Sources */,
 				E4BA6E8825452BF8001D0CD7 /* RoadsViewController.swift in Sources */,
 				B15602772552E18B003EF6B7 /* SnapToRoadsRequest.swift in Sources */,
+				B1139AC0255BD560002EA26E /* AppDelegate.swift in Sources */,
 				B13CEFF425410D2B00957E84 /* ImagePicker.swift in Sources */,
 				B10185D42553D4B000A5A11A /* SearchPlaceRequest.swift in Sources */,
 				B1466EA62548EF16008ED039 /* SpeedRecord.swift in Sources */,
