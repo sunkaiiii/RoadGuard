@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PlaceDetailRequest:SimpleRequestModel {
+class PlaceDetailRequest:NSObject,SimpleRequestModel {
     let placeId:String
     func getQueryParameter() -> [String : String] {
         return ["place_id":placeId,"fields":"formatted_address,address_components,place_id,name,icon,geometry,types","key":GoogleMapAPIKey]
@@ -15,4 +15,9 @@ struct PlaceDetailRequest:SimpleRequestModel {
     func getPathParameter() -> [String] {
         return ["json"]
     }
+    
+    init(placeId:String) {
+        self.placeId = placeId
+    }
+
 }

@@ -88,7 +88,10 @@ final class ImageLoader: NSObject {
                 if let imageTask = taskMap[downloadTask]{
                     let renamedUrl =  imageTask.url.replacingOccurrences(of: "/", with: "_")
                     imageCache.setObject(data as AnyObject, forKey: renamedUrl as AnyObject)
-                    taskMap.removeValue(forKey: downloadTask)
+                    if taskMap[downloadTask] != nil{
+                        taskMap.removeValue(forKey: downloadTask)
+                    }
+
                     let image = UIImage(data: data)
                     if let image = image{
                         storeImage(image: image, forKey: renamedUrl, wtihStorageType: .fileSystem)

@@ -22,6 +22,7 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
     let locationManager = CLLocationManager.init()
     var selectMarkers:[GMSMarker] = []
     var selectedRoads:[RoadInformation] = []
+    var snapPoints:[SnappedPointResponse] = []
     var backItem:UINavigationItem?
     var bottomContentView:UIView?
     var polyLine:GMSPolyline?
@@ -63,6 +64,7 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
 
     @IBAction func onSelectButtonClick(_ sender: Any) {
         if selectMapItem.title == SELECT_TEXT{
+            selectMarkers.forEach({(markers) in markers.map = nil})
             selectMapItem.title = DONE_TEXT
             setBottomContentViewHidden(true)
             googleMapView.delegate = self
@@ -73,19 +75,29 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
             selectMapItem.title = SELECT_TEXT
             setBottomContentViewHidden(false)
             googleMapView.delegate = nil
+            selectedRoads = []
             let points = selectMarkers.map({(marker)->CLLocationCoordinate2D in marker.position})
             selectMarkers.forEach({(marker) in marker.map = nil})
             if selectMarkers.count > 0{
                 requestRestfulService(api: GoogleApi.snapToRoads, model: SnapToRoadsRequest(points: points), jsonType: SnapToRoadsResponse.self)
             }
         }else if selectMapItem.title == SAVE_ROAD_TEXT{
-            
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate, snapPoints.count > 0 else {
+                return
+            }
+            let firebaseController = appDelegate.firebaseController
+            let response = firebaseController?.addSelectedeRoad(UserSelectedRoadResponse(roadInformation:self.snapPoints))
+            print(response)
+            snapPoints = []
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
     @IBAction func cancelSelection(_ sender: Any) {
+        selectMarkers.forEach({(markers) in markers.map = nil})
         selectMarkers = []
         selectedRoads = []
+        snapPoints = []
         polyLine?.map = nil
         setBottomContentViewHidden(false)
         selectMapItem.title = SELECT_TEXT
@@ -122,14 +134,20 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
             guard let points = response?.snappedPoints else {
                 return
             }
-            let path = GMSMutablePath()
-            points.forEach({(point) in path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))})
-            polyLine = GMSPolyline(path: path)
-            polyLine?.map = googleMapView
-            selectMapItem.title = SAVE_ROAD_TEXT
+            drawPathIntoMap(points: points)
+            self.snapPoints = points
         default:
             return
         }
+    }
+    
+    
+    func drawPathIntoMap(points:[SnappedPointResponse]){
+        let path = GMSMutablePath()
+        points.forEach({(point) in path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))})
+        polyLine = GMSPolyline(path: path)
+        polyLine?.map = googleMapView
+        selectMapItem.title = SAVE_ROAD_TEXT
     }
     
     // MARK: - BottomCard/FloatPanel Related functions

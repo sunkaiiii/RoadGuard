@@ -152,6 +152,10 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
 
 extension AnalysisViewController: DatabaseListener{
+    func onSelectedRoadInfoChange(change: DatabaseChange, selectRoads: [UserSelectedRoadResponse]) {
+        
+    }
+    
 
     func onFacialInfoChange(change: DatabaseChange, facialInfos: [FacialInfo]) {
         facialInfoList = facialInfos

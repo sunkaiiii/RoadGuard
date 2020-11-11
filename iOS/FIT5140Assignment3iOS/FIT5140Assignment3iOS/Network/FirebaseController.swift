@@ -20,9 +20,11 @@ class FirebaseController: NSObject,DatabaseProtocol {
     var speedLimitRef:CollectionReference?
     var normalSpeedRef:CollectionReference?
     var facialRef:CollectionReference?
+    var selectedRoadRef:CollectionReference?
 
     var speedInforList:[SpeedRecord] = []
     var facialInfoList:[FacialInfo] = []
+    var selectedRoadaList:[UserSelectedRoadResponse] = []
     
     override init(){
         FirebaseApp.configure()
@@ -37,7 +39,9 @@ class FirebaseController: NSObject,DatabaseProtocol {
             self.speedLimitRef = self.database.collection("speedLimitRecord")
             self.normalSpeedRef = self.database.collection("normalSpeedRecord")
             self.facialRef = self.database.collection("facial")
+            self.selectedRoadRef = self.database.collection("selectedRoad")
             self.setUpSpeedLimitListeners()
+            self.setUpSelectedRoadListener()
         })
     }
 
@@ -155,7 +159,69 @@ class FirebaseController: NSObject,DatabaseProtocol {
         }
         return record
     }
+    
+    func addSelectedeRoad(_ record: UserSelectedRoadResponse) -> UserSelectedRoadResponse {
+        var record = record
+        do{
+            if let selectedRoad = try selectedRoadRef?.addDocument(from: record){
+                record.id = selectedRoad.documentID
+            }
+        }catch{
+            print("Failed to serilise selected road record")
+        }
+        return record
+    }
 
+    func setUpSelectedRoadListener(){
+        self.selectedRoadRef?.addSnapshotListener({(querySnapshot,error) in
+            guard let querySnapshot = querySnapshot else{
+                print("Error fetching road documents")
+                return
+            }
+            self.parseSelectedRoadData(querySnapshot: querySnapshot)
+        })
+    }
+    
+    func parseSelectedRoadData(querySnapshot:QuerySnapshot){
+        querySnapshot.documentChanges.forEach({(document) in
+            var selectedRoadDocument:UserSelectedRoadResponse?
+            do{
+                selectedRoadDocument = try document.document.data(as: UserSelectedRoadResponse.self)
+            }catch{
+                print("Unable to decode the selected road document")
+                return
+            }
+            guard let selectRoad = selectedRoadDocument else{
+                print("Document does not exist")
+                return
+            }
+            switch document.type{
+            case .added:
+                self.selectedRoadaList.append(selectRoad)
+            case .modified,.removed:
+                self.findIndexAndModifySpeedList(selectRoad,document.type)
+            }
+        })
+        listeners.invoke(invocation: {(listener) in
+            if listener.listenerType == .selectedRoad || listener.listenerType == .all{
+                listener.onSelectedRoadInfoChange(change: .add, selectRoads:selectedRoadaList)
+            }
+        })
+    }
+    
+    func findIndexAndModifySpeedList(_ selectedRoad:UserSelectedRoadResponse, _ type:DocumentChangeType){
+        guard let index = selectedRoadaList.firstIndex(where: {(road) in
+            road.id == selectedRoad.id
+        }) else {
+            return
+        }
+        if type == .modified {
+            selectedRoadaList[index] = selectedRoad
+        }else if type == .removed{
+            selectedRoadaList.remove(at: index)
+        }
+    }
+    
     func addListener(listener: DatabaseListener) {
         listeners.addDelegate(listener)
 
@@ -174,14 +240,16 @@ protocol DatabaseProtocol:NSObject {
     func removeListener(listener: DatabaseListener)
     func addOverSpeedRecord(_ record:SpeedRecord)->SpeedRecord
     func addNormalSpeedRecord(_ record:SpeedRecord)->SpeedRecord
+    func addSelectedeRoad(_ record:UserSelectedRoadResponse)->UserSelectedRoadResponse
 }
 protocol DatabaseListener:AnyObject {
     var listenerType:ListenerType{get set}
     func onFacialInfoChange(change:DatabaseChange, facialInfos:[FacialInfo])
+    func onSelectedRoadInfoChange(change:DatabaseChange, selectRoads:[UserSelectedRoadResponse])
 }
 enum ListenerType {
     case facial
-
+    case selectedRoad
     case all
 }
 enum DatabaseChange {

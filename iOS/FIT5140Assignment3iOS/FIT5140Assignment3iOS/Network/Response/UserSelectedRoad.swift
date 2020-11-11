@@ -7,58 +7,26 @@
 
 import Foundation
 
-struct UserSelectedRoadResponse:CodeableRoadInforamtion {
+
+struct UserSelectedRoadResponse:Codable {
     var id:String?
-    
-    let placeID: String
-    
-    let name: String
-    
-    let formatName: String
-    
-    let latitude: Double
-    
-    let longitude: Double
-    
-    let icon: String?
-    
     var userCustomImage:String?
-    
     let createTime:Date
-    
     var passedTime:[SelectedRoadPassDetail]?
+    var selectedRoads:[SnappedPointResponse]
     
-    var roadLimitedSpeed:Int?
-    
-    init(roadDetail:RoadInformation) {
-        self.placeID = roadDetail.placeID
-        self.name = roadDetail.name
-        self.formatName = roadDetail.formatName
-        self.latitude = roadDetail.latitude
-        self.longitude = roadDetail.longitude
-        self.icon = roadDetail.icon
-        self.createTime = Date.init()
-        self.passedTime = nil
-        self.roadLimitedSpeed = nil
-    }
-    
-    init(roadDetail:UserSelectedRoadResponse) {
-        self.init(roadDetail: roadDetail as RoadInformation)
-        self.passedTime = roadDetail.passedTime
-        self.roadLimitedSpeed = nil
-    }
-    
-    enum CodingKeys: String, CodingKey {
-        case placeID = "PlaceID"
-        case name = "Name"
-        case formatName = "FormatName"
-        case latitude = "Latidude"
-        case longitude = "Longitude"
-        case icon = "Icon"
+    enum CodingKeys:String, CodingKey{
         case userCustomImage = "UserCustomImage"
         case createTime = "CreateTime"
         case passedTime = "PassedTime"
-        case roadLimitedSpeed = "RoadLimitedSpeed"
+        case selectedRoads = "SelectedRoads"
+    }
+    
+    init(roadInformation:[SnappedPointResponse]) {
+        self.createTime = Date.init()
+        self.passedTime = nil
+        self.userCustomImage = nil
+        self.selectedRoads = roadInformation
     }
 }
 
