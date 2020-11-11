@@ -227,6 +227,8 @@ class FirebaseController: NSObject,DatabaseProtocol {
 
         if listener.listenerType == .facial || listener.listenerType == .all{
             listener.onFacialInfoChange(change: .add, facialInfos: facialInfoList)
+        }else if listener.listenerType == .selectedRoad || listener.listenerType == .all{
+            listener.onSelectedRoadInfoChange(change: .add, selectRoads: selectedRoadaList)
         }
     }
 
@@ -246,6 +248,11 @@ protocol DatabaseListener:AnyObject {
     var listenerType:ListenerType{get set}
     func onFacialInfoChange(change:DatabaseChange, facialInfos:[FacialInfo])
     func onSelectedRoadInfoChange(change:DatabaseChange, selectRoads:[UserSelectedRoadResponse])
+}
+
+extension DatabaseListener{
+    func onFacialInfoChange(change:DatabaseChange, facialInfos:[FacialInfo]){}
+    func onSelectedRoadInfoChange(change:DatabaseChange, selectRoads:[UserSelectedRoadResponse]){}
 }
 enum ListenerType {
     case facial

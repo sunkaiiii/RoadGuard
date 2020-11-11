@@ -233,12 +233,11 @@
 				B170FC7025428F660086F1D9 /* FIT5140Assignment3iOS.entitlements */,
 				B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */,
 				E47A9E4F2556BF7100A815B7 /* SoundFile */,
-				B13CEFDC2540FD4A00957E84 /* Network */,
 				B13CF00C2541A9FE00957E84 /* Controller */,
 				B13CF0012541766000957E84 /* Views */,
 				B13CEFF625410D4E00957E84 /* ControllerHelper */,
 				B13CEFEB25410C8200957E84 /* ImageHelper */,
-				B13CEFC72540FAF900957E84 /* AppDelegate.swift */,
+				B13CEFDC2540FD4A00957E84 /* Network */,
 				B13CEFC92540FAF900957E84 /* SceneDelegate.swift */,
 				B13CEFCB2540FAF900957E84 /* ViewController.swift */,
 				B13CEFCD2540FAF900957E84 /* Main.storyboard */,
@@ -253,6 +252,7 @@
 		B13CEFDC2540FD4A00957E84 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B13CEFC72540FAF900957E84 /* AppDelegate.swift */,
 				B1AB3A8B2544608D0082B004 /* Response */,
 				B1AB3A8625445FD50082B004 /* RequestModel */,
 				B13CEFDD2540FD5100957E84 /* Protocol */,

@@ -87,7 +87,7 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
             }
             let firebaseController = appDelegate.firebaseController
             let response = firebaseController?.addSelectedeRoad(UserSelectedRoadResponse(roadInformation:self.snapPoints))
-            print(response)
+            print(response ?? "")
             snapPoints = []
             self.navigationController?.popViewController(animated: true)
         }
