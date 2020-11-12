@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ImportantPathTableViewContentCell: UITableViewCell {
+class ImportantPathTableViewContentCell: UITableViewCell,DefaultHttpRequestAction {
+
+    
 
     @IBOutlet weak var roadNameLabel: UILabel!
     @IBOutlet weak var meterLabel: UILabel!
@@ -21,6 +23,18 @@ class ImportantPathTableViewContentCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func handleWithPlaceId(_ placeId:String){
+        requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: placeId), jsonType: PlaceDetailResponse.self)
+    }
+    
+    func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
+        if let api = helper.restfulAPI as? GoogleApi, api == .placeDetail {
+            let placeDetailResponse:PlaceDetailResponse = accessibleData.retriveData()
+            let placeDetail = placeDetailResponse.result
+            roadNameLabel.text = placeDetail.name
+        }
     }
 
 }

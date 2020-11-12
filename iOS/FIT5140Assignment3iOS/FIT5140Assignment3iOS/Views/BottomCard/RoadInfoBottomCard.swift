@@ -11,11 +11,12 @@ import MapKit
 
 protocol RoadInfoBottomCardDelegate: class {
     //这里回头需要改下传值的类型
-    func jumpToSelectedRowDetailPage(selectedRow: String)
+    func jumpToSelectedRowDetailPage(selectedRow: UserSelectedRoadResponse)
 }
 
-class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController {
-
+class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController, DatabaseListener {
+    var listenerType: ListenerType = .selectedRoad
+    
     
     var areaOutlet: UIView?
     weak var delegateParent: RoadInfoBottomCardDelegate?
@@ -23,7 +24,7 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var roadInfoBottomCardHandleAreaOutlet: UIView!
     
 
-    @IBOutlet weak var searchAddressBottomCardTableViewOutlet: UITableView!
+    @IBOutlet weak var selectedRoadTableView: UITableView!
 
     let SECTION_HEADER = 0
     let SECTION_CONTENT = 1
@@ -31,19 +32,30 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
     let BOTTOM_CARD_CELL_ID = BottomCardImportantRoadCell.identifier
 
     //根据需要展示的内容，更改数据类型和内容
-    var tableViewDataSource : [String]  = ["d","e","f"]
+    var selectRoadDataSource : [UserSelectedRoadResponse]  = []
+    weak var databaseProtocol:DatabaseProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         areaOutlet = roadInfoBottomCardHandleAreaOutlet
-        searchAddressBottomCardTableViewOutlet.delegate = self
-        searchAddressBottomCardTableViewOutlet.dataSource = self
-        searchAddressBottomCardTableViewOutlet.register(UITableViewCell.self, forCellReuseIdentifier: DEFAULT_CELL_ID)
-        searchAddressBottomCardTableViewOutlet.register(BottomCardImportantRoadCell.nib(), forCellReuseIdentifier: BOTTOM_CARD_CELL_ID)
+        selectedRoadTableView.delegate = self
+        selectedRoadTableView.dataSource = self
+        selectedRoadTableView.register(UITableViewCell.self, forCellReuseIdentifier: DEFAULT_CELL_ID)
+        selectedRoadTableView.register(BottomCardImportantRoadCell.nib(), forCellReuseIdentifier: BOTTOM_CARD_CELL_ID)
         //        searchAddressBottomCardTableViewOutlet.register(UINib(nibName: "nibFileName", bundle: nil), forCellReuseIdentifier: "CellFromNib")
-        
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        databaseProtocol = appDelegate?.firebaseController
+        databaseProtocol?.addListener(listener: self)
     }
+    
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        databaseProtocol?.removeListener(listener: self)
+        databaseProtocol = nil
+
+    }
+    
 
     // MARK: - TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -56,7 +68,7 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
             case SECTION_HEADER:
                 return 1
             case SECTION_CONTENT:
-                return tableViewDataSource.count
+                return selectRoadDataSource.count
             default:
                 return 1
         }
@@ -72,8 +84,8 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
         } else {
             //for content section
             let cell = tableView.dequeueReusableCell(withIdentifier: BOTTOM_CARD_CELL_ID, for: indexPath) as! BottomCardImportantRoadCell
-            //调用cell.configure给图片和label赋值
-            cell.iconImageView.image = UIImage(systemName: "tray.circle")
+            let selectedRoad = selectRoadDataSource[indexPath.row]
+            cell.initWithSelectedRoadData(selectedRoad)
             return cell
         }
     }
@@ -94,15 +106,19 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
 
     func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == SECTION_HEADER{
-            searchAddressBottomCardTableViewOutlet.deselectRow(at:indexPath,animated:true)
+            selectedRoadTableView.deselectRow(at:indexPath,animated:true)
         }
         if indexPath.section == SECTION_CONTENT{
             //这里传值以后需要改下
-            self.delegateParent?.jumpToSelectedRowDetailPage(selectedRow: "test road")
+            self.delegateParent?.jumpToSelectedRowDetailPage(selectedRow: selectRoadDataSource[indexPath.row])
         }
     }
 
-
+    
+    func onSelectedRoadInfoChange(change: DatabaseChange, selectRoads: [UserSelectedRoadResponse]) {
+        self.selectRoadDataSource = selectRoads
+        self.selectedRoadTableView.reloadSections([SECTION_CONTENT], with: .automatic)
+    }
 }
 
 

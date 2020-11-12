@@ -13,15 +13,19 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
     
     @IBOutlet weak var googleMapView: GMSMapView!
     @IBOutlet weak var selectMapItem: UIBarButtonItem!
+    @IBOutlet weak var cancelItem: UIBarButtonItem!
     let SELECT_TEXT = "Select"
     let DONE_TEXT = "Done"
     let CANCEL_TEXT = "Cancel"
+    let SAVE_ROAD_TEXT = "Save"
     let marker = GMSMarker()
     let locationManager = CLLocationManager.init()
     var selectMarkers:[GMSMarker] = []
     var selectedRoads:[RoadInformation] = []
+    var snapPoints:[SnappedPointResponse] = []
     var backItem:UINavigationItem?
     var bottomContentView:UIView?
+    var polyLine:GMSPolyline?
     override func viewDidLoad() {
         super.viewDidLoad()
         backItem = navigationController?.navigationBar.backItem
@@ -29,6 +33,8 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
         initLocationManager()
         //initialise the BottomCard/FloatPanel
         setupBottomCard()
+        //hiding the UIBarButtonItems, refrences on https://stackoverflow.com/questions/25492491/make-a-uibarbuttonitem-disappear-using-swift-ios
+        cancelItem.isEnabled = false
     }
     func initGoogleMap(){
         marker.map = googleMapView
@@ -58,21 +64,44 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
 
     @IBAction func onSelectButtonClick(_ sender: Any) {
         if selectMapItem.title == SELECT_TEXT{
+            selectMarkers.forEach({(markers) in markers.map = nil})
             selectMapItem.title = DONE_TEXT
-            setBottomContentViewVisibility(true)
+            setBottomContentViewHidden(true)
             googleMapView.delegate = self
             marker.map = nil
             selectMarkers = []
+            cancelItem.isEnabled = true
         }else if selectMapItem.title == DONE_TEXT{
             selectMapItem.title = SELECT_TEXT
-            setBottomContentViewVisibility(false)
+            setBottomContentViewHidden(false)
             googleMapView.delegate = nil
+            selectedRoads = []
             let points = selectMarkers.map({(marker)->CLLocationCoordinate2D in marker.position})
             selectMarkers.forEach({(marker) in marker.map = nil})
             if selectMarkers.count > 0{
                 requestRestfulService(api: GoogleApi.snapToRoads, model: SnapToRoadsRequest(points: points), jsonType: SnapToRoadsResponse.self)
             }
+        }else if selectMapItem.title == SAVE_ROAD_TEXT{
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate, snapPoints.count > 0 else {
+                return
+            }
+            let firebaseController = appDelegate.firebaseController
+            let response = firebaseController?.addSelectedeRoad(UserSelectedRoadResponse(roadInformation:self.snapPoints))
+            print(response ?? "")
+            snapPoints = []
+            self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    @IBAction func cancelSelection(_ sender: Any) {
+        selectMarkers.forEach({(markers) in markers.map = nil})
+        selectMarkers = []
+        selectedRoads = []
+        snapPoints = []
+        polyLine?.map = nil
+        setBottomContentViewHidden(false)
+        selectMapItem.title = SELECT_TEXT
+        cancelItem.isEnabled = false
     }
     
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
@@ -83,7 +112,7 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
     
     //Hidden view with animition
     //References on https://stackoverflow.com/questions/36340595/uiview-slide-in-animation
-    func setBottomContentViewVisibility(_ isHidden:Bool){
+    func setBottomContentViewHidden(_ isHidden:Bool){
         guard let contentView = bottomContentView else {
             return
         }
@@ -98,20 +127,25 @@ class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapView
     }
     
     //draw a line in the google map view, references on the usage of javescript api https://developers.google.com/maps/documentation/roads/snap
-    func handleData(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
+    func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
         switch helper.restfulAPI as? GoogleApi {
         case .snapToRoads:
-            let response:SnapToRoadsResponse? = accessibleData.retriveData(helper: helper)
-            guard let points = response?.snappedPoints else {
-                return
-            }
-            let path = GMSMutablePath()
-            points.forEach({(point) in path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))})
-            let polyline = GMSPolyline(path: path)
-            polyline.map = googleMapView
+            let response:SnapToRoadsResponse = accessibleData.retriveData()
+            let points = response.snappedPoints
+            drawPathIntoMap(points: points)
+            self.snapPoints = points
         default:
             return
         }
+    }
+    
+    
+    func drawPathIntoMap(points:[SnappedPointResponse]){
+        let path = GMSMutablePath()
+        points.forEach({(point) in path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))})
+        polyLine = GMSPolyline(path: path)
+        polyLine?.map = googleMapView
+        selectMapItem.title = SAVE_ROAD_TEXT
     }
     
     // MARK: - BottomCard/FloatPanel Related functions

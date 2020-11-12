@@ -26,35 +26,16 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
     let HEADER_CELL_ID = "importantPathDetailTableViewHeaderCell"
     let CONTENT_CELL_ID = "importantPathDetailTableViewContentCell"
 
-    //todo需要加一个field 放传入要展示的path信息
-    var selectedRow : String?
+    
+    var selectedRoad:UserSelectedRoadResponse?
+    var roads:[String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        importantPathTableView.layer.cornerRadius = 24
-        importantPathGoogleMapView.layer.cornerRadius = 24
-
-        let blurEffect = UIBlurEffect(style: .light)
-        totalLengthVisualEffectView.effect = blurEffect
-        passTimesVisualEffectView.effect = blurEffect
-        visualEffectForTablViewBackground.effect = blurEffect
-        visualEffectForTablViewBackground.layer.cornerRadius = 24
-        visualEffectForTablViewBackground.contentView.layer.cornerRadius = 24
-        visualEffectForTablViewBackground.clipsToBounds = true
-        totalLengthVisualEffectView.layer.cornerRadius = 24
-        totalLengthVisualEffectView.contentView.layer.cornerRadius = 24
-        totalLengthVisualEffectView.clipsToBounds = true
-        totalLengthVisualEffectView.contentView.clipsToBounds = true
-        passTimesVisualEffectView.layer.cornerRadius = 24
-        passTimesVisualEffectView.contentView.layer.cornerRadius = 24
-        passTimesVisualEffectView.clipsToBounds = true
-        passTimesVisualEffectView.contentView.clipsToBounds = true
-
         importantPathTableView.delegate = self
         importantPathTableView.dataSource = self
-
-        self.navigationController?.navigationBar.tintColor = .white
-
+        initViews()
+        initData(selectedRoad)
     }
 
     // MARK: - TableView
@@ -67,8 +48,7 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
             case SECTION_HEADER:
                 return 1
             case SECTION_CONTENT:
-                //Todo 改为传入值的count
-                return 1
+                return roads.count
             default:
                 return 1
         }
@@ -79,24 +59,18 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
 
         if indexPath.section == SECTION_HEADER {
             let cell = tableView.dequeueReusableCell(withIdentifier: HEADER_CELL_ID, for: indexPath) as! ImportantPathTableViewHeaderCell
-
-            //这里需要根据穿的值 调整下
-            cell.headerLabel.text = selectedRow
-
-
+            cell.headerLabel.text = selectedRoad?.selectedRoadCustomName
             let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(editIconOnClick(_:)))
             gestureRecognizer.numberOfTapsRequired = 1
             gestureRecognizer.numberOfTouchesRequired = 1
             cell.editIconOutlet.addGestureRecognizer(gestureRecognizer)
             cell.editIconOutlet.isUserInteractionEnabled = true
-
-
             return cell
-
         }else{
             //content section
             let cell = tableView.dequeueReusableCell(withIdentifier: CONTENT_CELL_ID, for: indexPath) as! ImportantPathTableViewContentCell
-            //这里需要根据穿的值 调整下
+            let placeId = roads[indexPath.row]
+            cell.handleWithPlaceId(placeId)
             return cell
         }
     }

@@ -9,10 +9,11 @@
 /* Begin PBXBuildFile section */
 		B10185D42553D4B000A5A11A /* SearchPlaceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10185D32553D4B000A5A11A /* SearchPlaceRequest.swift */; };
 		B10185D72553D6DF00A5A11A /* SearchPlaceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10185D62553D6DF00A5A11A /* SearchPlaceResponse.swift */; };
+		B1139AC0255BD560002EA26E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1139ABF255BD560002EA26E /* AppDelegate.swift */; };
+		B1139AC6255C11B4002EA26E /* ImportantPatDetailViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1139AC5255C11B4002EA26E /* ImportantPatDetailViewControllerExtension.swift */; };
 		B13C25FB254936B1008EBDE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */; };
 		B13C2609254AAA69008EBDE3 /* ScrollableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13C2608254AAA69008EBDE3 /* ScrollableViewController.swift */; };
 		B13C260F254AB8AA008EBDE3 /* BottomScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13C260E254AB8AA008EBDE3 /* BottomScrollableView.swift */; };
-		B13CEFC82540FAF900957E84 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CEFC72540FAF900957E84 /* AppDelegate.swift */; };
 		B13CEFCA2540FAF900957E84 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CEFC92540FAF900957E84 /* SceneDelegate.swift */; };
 		B13CEFCC2540FAF900957E84 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CEFCB2540FAF900957E84 /* ViewController.swift */; };
 		B13CEFCF2540FAF900957E84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B13CEFCD2540FAF900957E84 /* Main.storyboard */; };
@@ -54,6 +55,7 @@
 		B1AB3A9925446A580082B004 /* SpeedAlertSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A9825446A580082B004 /* SpeedAlertSuperView.swift */; };
 		B1C10EBA25483C8B008BDC64 /* SpeedLimitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C10EB925483C8B008BDC64 /* SpeedLimitResponse.swift */; };
 		B1C10EBD2548458A008BDC64 /* SpeedLimitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C10EBC2548458A008BDC64 /* SpeedLimitRequest.swift */; };
+		B1DFBC99255AD613000B7256 /* UserSelectedRoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DFBC98255AD613000B7256 /* UserSelectedRoad.swift */; };
 		E40448EC254C278700341510 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40448EB254C278700341510 /* RecordViewController.swift */; };
 		E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */; };
 		E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */; };
@@ -91,11 +93,12 @@
 		80FBCD77DA47232EA3362492 /* Pods-FIT5140Assignment3iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIT5140Assignment3iOS.release.xcconfig"; path = "Target Support Files/Pods-FIT5140Assignment3iOS/Pods-FIT5140Assignment3iOS.release.xcconfig"; sourceTree = "<group>"; };
 		B10185D32553D4B000A5A11A /* SearchPlaceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceRequest.swift; sourceTree = "<group>"; };
 		B10185D62553D6DF00A5A11A /* SearchPlaceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceResponse.swift; sourceTree = "<group>"; };
+		B1139ABF255BD560002EA26E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B1139AC5255C11B4002EA26E /* ImportantPatDetailViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantPatDetailViewControllerExtension.swift; sourceTree = "<group>"; };
 		B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B13C2608254AAA69008EBDE3 /* ScrollableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableViewController.swift; sourceTree = "<group>"; };
 		B13C260E254AB8AA008EBDE3 /* BottomScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomScrollableView.swift; sourceTree = "<group>"; };
 		B13CEFC42540FAF900957E84 /* FIT5140Assignment3iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FIT5140Assignment3iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B13CEFC72540FAF900957E84 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B13CEFC92540FAF900957E84 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		B13CEFCB2540FAF900957E84 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B13CEFCE2540FAF900957E84 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -139,6 +142,7 @@
 		B1AB3A9825446A580082B004 /* SpeedAlertSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedAlertSuperView.swift; sourceTree = "<group>"; };
 		B1C10EB925483C8B008BDC64 /* SpeedLimitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLimitResponse.swift; sourceTree = "<group>"; };
 		B1C10EBC2548458A008BDC64 /* SpeedLimitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLimitRequest.swift; sourceTree = "<group>"; };
+		B1DFBC98255AD613000B7256 /* UserSelectedRoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectedRoad.swift; sourceTree = "<group>"; };
 		E40448EB254C278700341510 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchAddressBottomCard.xib; sourceTree = "<group>"; };
 		E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressBottomCard.swift; sourceTree = "<group>"; };
@@ -198,6 +202,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B1139AC4255C119A002EA26E /* ControllerHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				B1139AC5255C11B4002EA26E /* ImportantPatDetailViewControllerExtension.swift */,
+			);
+			path = ControllerHelpers;
+			sourceTree = "<group>";
+		};
 		B13C2602254AA0E7008EBDE3 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,18 +243,18 @@
 				B170FC7025428F660086F1D9 /* FIT5140Assignment3iOS.entitlements */,
 				B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */,
 				E47A9E4F2556BF7100A815B7 /* SoundFile */,
-				B13CEFDC2540FD4A00957E84 /* Network */,
 				B13CF00C2541A9FE00957E84 /* Controller */,
 				B13CF0012541766000957E84 /* Views */,
 				B13CEFF625410D4E00957E84 /* ControllerHelper */,
 				B13CEFEB25410C8200957E84 /* ImageHelper */,
-				B13CEFC72540FAF900957E84 /* AppDelegate.swift */,
+				B13CEFDC2540FD4A00957E84 /* Network */,
 				B13CEFC92540FAF900957E84 /* SceneDelegate.swift */,
 				B13CEFCB2540FAF900957E84 /* ViewController.swift */,
 				B13CEFCD2540FAF900957E84 /* Main.storyboard */,
 				B13CEFD02540FAFB00957E84 /* Assets.xcassets */,
 				B13CEFD22540FAFB00957E84 /* LaunchScreen.storyboard */,
 				B13CEFD52540FAFB00957E84 /* Info.plist */,
+				B1139ABF255BD560002EA26E /* AppDelegate.swift */,
 				B1A5E4792547C59A00D8CCB0 /* GoogleAPIKey.swift */,
 			);
 			path = FIT5140Assignment3iOS;
@@ -312,6 +324,7 @@
 		B13CF00C2541A9FE00957E84 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				B1139AC4255C119A002EA26E /* ControllerHelpers */,
 				B13CF00D2541AA2000957E84 /* HomeViewController.swift */,
 				B1AB3A772542B9480082B004 /* RoadInformationViewController.swift */,
 				B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */,
@@ -365,6 +378,7 @@
 				B1560267255188E6003EF6B7 /* PlaceDetailResponse.swift */,
 				B15602732552E0F7003EF6B7 /* SnapToRoadsResponse.swift */,
 				B10185D62553D6DF00A5A11A /* SearchPlaceResponse.swift */,
+				B1DFBC98255AD613000B7256 /* UserSelectedRoad.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -592,7 +606,6 @@
 				E45B486D254CF66E00692A2E /* WormTabStripButton.swift in Sources */,
 				B190D3C825447029002249BA /* SpeedNotificationSuperView.swift in Sources */,
 				B13CEFE625410B6F00957E84 /* NetworkExtension.swift in Sources */,
-				B13CEFC82540FAF900957E84 /* AppDelegate.swift in Sources */,
 				B1A5E47A2547C59A00D8CCB0 /* GoogleAPIKey.swift in Sources */,
 				B1560268255188E6003EF6B7 /* PlaceDetailResponse.swift in Sources */,
 				B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */,
@@ -616,10 +629,12 @@
 				E40448EC254C278700341510 /* RecordViewController.swift in Sources */,
 				B13CF00E2541AA2000957E84 /* HomeViewController.swift in Sources */,
 				B190D3CD25447113002249BA /* CurrentSpeedInformationSuperView.swift in Sources */,
+				B1139AC6255C11B4002EA26E /* ImportantPatDetailViewControllerExtension.swift in Sources */,
 				B170FC74254290D00086F1D9 /* SpeedNotificationView.swift in Sources */,
 				B13CEFF825410D5F00957E84 /* UITextFieldHelper.swift in Sources */,
 				E4F59EC72552DA8300286BE7 /* MulticastDelegate.swift in Sources */,
 				E45B4875254CFF7600692A2E /* RecordBreakdownViewController.swift in Sources */,
+				B1DFBC99255AD613000B7256 /* UserSelectedRoad.swift in Sources */,
 				B1560263255169AA003EF6B7 /* NearestRoadsResponse.swift in Sources */,
 				E4D865E425458CE400465243 /* RoadInfoBottomCard.swift in Sources */,
 				B13CEFDF2540FD7A00957E84 /* RestfulAPI.swift in Sources */,
@@ -629,6 +644,7 @@
 				E45B4879254D023600692A2E /* RecordBkdTableViewCell.swift in Sources */,
 				E4BA6E8825452BF8001D0CD7 /* RoadsViewController.swift in Sources */,
 				B15602772552E18B003EF6B7 /* SnapToRoadsRequest.swift in Sources */,
+				B1139AC0255BD560002EA26E /* AppDelegate.swift in Sources */,
 				B13CEFF425410D2B00957E84 /* ImagePicker.swift in Sources */,
 				B10185D42553D4B000A5A11A /* SearchPlaceRequest.swift in Sources */,
 				B1466EA62548EF16008ED039 /* SpeedRecord.swift in Sources */,

@@ -93,11 +93,11 @@ class BottomCardSpecifyCell: UITableViewCell {
         let longitude: Double
         
         let icon: String?
-        
+
     }
 }
 
-
+typealias CodeableRoadInforamtion = RoadInformation & Codable
 
 protocol RoadInformation {
     var placeID:String{get}
@@ -106,6 +106,7 @@ protocol RoadInformation {
     var latitude:Double{get}
     var longitude:Double{get}
     var icon:String?{get}
+
 }
 
 protocol BottomCardSpeicifyCellDelegate {
