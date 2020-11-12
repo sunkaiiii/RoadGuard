@@ -53,5 +53,7 @@ extension ImportantPathDetailViewController{
         selectedRoad.selectedRoads.forEach({(point) in path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))})
         let polyLine = GMSPolyline(path: path)
         polyLine.map = importantPathGoogleMapView
+        //rendering 2 decimal places for a double, references on https://www.codegrepper.com/code-examples/swift/swift+double+2+decimal+places
+        totalLengthNumberLabel.text = String(format: "%.2f", path.length(of: .geodesic)/1000.0)
     }
 }
