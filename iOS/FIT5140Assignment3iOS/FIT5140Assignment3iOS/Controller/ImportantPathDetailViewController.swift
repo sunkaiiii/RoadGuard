@@ -35,7 +35,8 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
         importantPathTableView.delegate = self
         importantPathTableView.dataSource = self
         initViews()
-        initData(selectedRoad)
+        initTopTableData()
+        initGoogleMap()
     }
 
     // MARK: - TableView
@@ -101,10 +102,6 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
         }))
         actionOptions.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(actionOptions,animated: true)
-
-
     }
-
-
 
 }

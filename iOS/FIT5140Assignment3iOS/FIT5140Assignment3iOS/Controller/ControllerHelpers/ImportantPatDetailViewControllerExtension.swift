@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import GoogleMaps
 
 extension ImportantPathDetailViewController{
     func initViews(){
@@ -30,7 +30,7 @@ extension ImportantPathDetailViewController{
         self.navigationController?.navigationBar.tintColor = .white
     }
     
-    func initData(_ selectedRoad:UserSelectedRoadResponse?){
+    func initTopTableData(){
         guard let selectedRoad = selectedRoad else {
             return
         }
@@ -41,5 +41,17 @@ extension ImportantPathDetailViewController{
             }
             lastPlaceId = road.placeID
         }
+    }
+    
+    func initGoogleMap(){
+        guard let selectedRoad = selectedRoad,let firstPlace = selectedRoad.selectedRoads.first else {
+            return
+        }
+        let gmsCamera = GMSCameraPosition.init(latitude:firstPlace.location.latitude , longitude: firstPlace.location.longitude, zoom: 16)
+        importantPathGoogleMapView.camera = gmsCamera
+        let path = GMSMutablePath()
+        selectedRoad.selectedRoads.forEach({(point) in path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))})
+        let polyLine = GMSPolyline(path: path)
+        polyLine.map = importantPathGoogleMapView
     }
 }
