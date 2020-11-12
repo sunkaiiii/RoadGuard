@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -126,10 +126,10 @@
             </objects>
             <point key="canvasLocation" x="1163.768115942029" y="-1092.1875"/>
         </scene>
-        <!--Roads View Controller-->
+        <!--Search Road View Controller-->
         <scene sceneID="MYY-He-Slf">
             <objects>
-                <viewController id="EBy-VD-lzW" customClass="RoadsViewController" customModule="FIT5140Assignment3iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EBy-VD-lzW" customClass="SearchRoadViewController" customModule="FIT5140Assignment3iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="o8c-kg-YKY">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -482,11 +482,46 @@
                     <navigationItem key="navigationItem" title="Record" id="Yg0-I0-3mJ"/>
                     <connections>
                         <outlet property="viewPager" destination="PBX-xr-FNU" id="fyx-6l-hwx"/>
+                        <segue destination="cXS-Aa-XqL" kind="show" identifier="recordDetailSegue" id="u33-10-Sq2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vff-kk-mkh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1164" y="360"/>
+        </scene>
+        <!--Record Detail-->
+        <scene sceneID="lsi-yt-L2o">
+            <objects>
+                <viewController id="cXS-Aa-XqL" customClass="RecordDetailViewController" customModule="FIT5140Assignment3iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xg4-Ob-vqQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="idC-A4-9NG">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="njP-bP-3wy"/>
+                        <color key="backgroundColor" red="0.10196078431372549" green="0.27058823529411763" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="idC-A4-9NG" firstAttribute="top" secondItem="njP-bP-3wy" secondAttribute="top" id="97a-Ue-TMg"/>
+                            <constraint firstItem="njP-bP-3wy" firstAttribute="bottom" secondItem="idC-A4-9NG" secondAttribute="bottom" id="azz-Xg-8GT"/>
+                            <constraint firstItem="idC-A4-9NG" firstAttribute="leading" secondItem="njP-bP-3wy" secondAttribute="leading" id="bAq-DL-1XB"/>
+                            <constraint firstItem="njP-bP-3wy" firstAttribute="trailing" secondItem="idC-A4-9NG" secondAttribute="trailing" id="mRN-tg-4JE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Record Detail" id="oTG-xm-Z5W"/>
+                    <connections>
+                        <outlet property="recordDetailTableView" destination="idC-A4-9NG" id="hTa-R6-5ac"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z6a-mY-p3O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2023" y="626"/>
         </scene>
         <!--Roads-->
         <scene sceneID="56s-p1-vTs">

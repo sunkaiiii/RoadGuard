@@ -7,7 +7,15 @@
 
 import UIKit
 
+protocol RecordBreakdownDelegate: class {
+    //这里回头需要改下传值的类型
+    func jumpToSelectedRowDetailPage(selectedRow: String)
+}
+
 class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+    weak var delegateParent: RecordBreakdownDelegate?
+
     var table:UITableView!
 
     let SECTION_HEADER = 0
@@ -19,10 +27,10 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
     
     //根据需要展示的内容，更改数据类型和内容
     var tableViewDataSource = ["Apple", "Apricot", "Banana", "Blueberry", "Cantaloupe", "Cherry",
-                  "Clementine", "Coconut", "Cranberry", "Fig", "Grape", "Grapefruit",
-                  "Kiwi fruit", "Lemon", "Lime", "Lychee", "Mandarine", "Mango",
-                  "Melon", "Nectarine", "Olive", "Orange", "Papaya", "Peach",
-                  "Pear", "Pineapple", "Raspberry", "Strawberry"]
+                               "Clementine", "Coconut", "Cranberry", "Fig", "Grape", "Grapefruit",
+                               "Kiwi fruit", "Lemon", "Lime", "Lychee", "Mandarine", "Mango",
+                               "Melon", "Nectarine", "Olive", "Orange", "Papaya", "Peach",
+                               "Pear", "Pineapple", "Raspberry", "Strawberry"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,7 +100,12 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
 
     func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == SECTION_HEADER{
-            table.deselectRow(at:indexPath,animated:true)}
+            table.deselectRow(at:indexPath,animated:true)
+        }
+        if indexPath.section == SECTION_CONTENT{
+            //更改穿的值
+            delegateParent?.jumpToSelectedRowDetailPage(selectedRow: "testInfo")
+        }
     }
 
     @objc func showFilterOptions(_ gestureRecognizer: UITapGestureRecognizer){

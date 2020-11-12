@@ -42,7 +42,7 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
         selectedRoadTableView.dataSource = self
         selectedRoadTableView.register(UITableViewCell.self, forCellReuseIdentifier: DEFAULT_CELL_ID)
         selectedRoadTableView.register(BottomCardImportantRoadCell.nib(), forCellReuseIdentifier: BOTTOM_CARD_CELL_ID)
-        //        searchAddressBottomCardTableViewOutlet.register(UINib(nibName: "nibFileName", bundle: nil), forCellReuseIdentifier: "CellFromNib")
+
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseProtocol = appDelegate?.firebaseController
         databaseProtocol?.addListener(listener: self)
@@ -77,7 +77,7 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == SECTION_HEADER {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: DEFAULT_CELL_ID, for: indexPath)
             cell.textLabel?.text = "Important Roads"
             cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
             return cell
@@ -114,7 +114,7 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 
-    
+    // MARK: - DB Listening
     func onSelectedRoadInfoChange(change: DatabaseChange, selectRoads: [UserSelectedRoadResponse]) {
         self.selectRoadDataSource = selectRoads
         self.selectedRoadTableView.reloadSections([SECTION_CONTENT], with: .automatic)
