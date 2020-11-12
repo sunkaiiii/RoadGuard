@@ -34,6 +34,7 @@ extension ImportantPathDetailViewController{
         guard let selectedRoad = selectedRoad else {
             return
         }
+        var roads:[String] = []
         var lastPlaceId:String = ""
         selectedRoad.selectedRoads.forEach{(road) in
             if road.placeID != lastPlaceId{
@@ -41,6 +42,25 @@ extension ImportantPathDetailViewController{
             }
             lastPlaceId = road.placeID
         }
+        if roads.count == 0 || selectedRoad.selectedRoads.count == 0{
+            return
+        }
+        var i = 0
+        var j = 0
+        var path = GMSMutablePath()
+        while(i<selectedRoad.selectedRoads.count){
+            let point = selectedRoad.selectedRoads[i]
+            if roads[j] == point.placeID{
+                path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))
+            }else{
+                roadsInfo.append(RoadInformationDataSource(placeId: roads[j], length: path.length(of: .geodesic)))
+                j += 1
+                path = GMSMutablePath()
+                path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))
+            }
+            i += 1
+        }
+        roadsInfo.append(RoadInformationDataSource(placeId: roads[j], length: path.length(of: .geodesic)))
     }
     
     func initGoogleMap(){
