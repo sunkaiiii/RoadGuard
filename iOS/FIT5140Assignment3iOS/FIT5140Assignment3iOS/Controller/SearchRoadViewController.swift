@@ -1,5 +1,5 @@
 //
-//  RoadsViewController.swift
+//  SearchRoadViewController.swift
 //  FIT5140Assignment3iOS
 //
 //  Created by Shirley on 2020/10/25.
@@ -8,7 +8,7 @@
 import UIKit
 import GoogleMaps
 
-class RoadsViewController: UIViewController,CLLocationManagerDelegate,GMSMapViewDelegate,DefaultHttpRequestAction,BottomCardSpeicifyCellDelegate {
+class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMapViewDelegate,DefaultHttpRequestAction,BottomCardSpeicifyCellDelegate {
 
     
     @IBOutlet weak var googleMapView: GMSMapView!
