@@ -25,8 +25,9 @@ class ImportantPathTableViewContentCell: UITableViewCell,DefaultHttpRequestActio
         // Configure the view for the selected state
     }
     
-    func handleWithPlaceId(_ placeId:String){
-        requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: placeId), jsonType: PlaceDetailResponse.self)
+    func handleWithPlaceId(_ road:RoadInformationDataSource){
+        requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: road.placeId), jsonType: PlaceDetailResponse.self)
+        meterLabel.text = String(format: "%.0f", road.length)+"M"
     }
     
     func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import GoogleMaps
 
 extension ImportantPathDetailViewController{
     func initViews(){
@@ -30,10 +30,11 @@ extension ImportantPathDetailViewController{
         self.navigationController?.navigationBar.tintColor = .white
     }
     
-    func initData(_ selectedRoad:UserSelectedRoadResponse?){
+    func initTopTableData(){
         guard let selectedRoad = selectedRoad else {
             return
         }
+        var roads:[String] = []
         var lastPlaceId:String = ""
         selectedRoad.selectedRoads.forEach{(road) in
             if road.placeID != lastPlaceId{
@@ -41,5 +42,38 @@ extension ImportantPathDetailViewController{
             }
             lastPlaceId = road.placeID
         }
+        if roads.count == 0 || selectedRoad.selectedRoads.count == 0{
+            return
+        }
+        var i = 0
+        var j = 0
+        var path = GMSMutablePath()
+        while(i<selectedRoad.selectedRoads.count){
+            let point = selectedRoad.selectedRoads[i]
+            if roads[j] == point.placeID{
+                path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))
+            }else{
+                roadsInfo.append(RoadInformationDataSource(placeId: roads[j], length: path.length(of: .geodesic)))
+                j += 1
+                path = GMSMutablePath()
+                path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))
+            }
+            i += 1
+        }
+        roadsInfo.append(RoadInformationDataSource(placeId: roads[j], length: path.length(of: .geodesic)))
+    }
+    
+    func initGoogleMap(){
+        guard let selectedRoad = selectedRoad,let firstPlace = selectedRoad.selectedRoads.first else {
+            return
+        }
+        let gmsCamera = GMSCameraPosition.init(latitude:firstPlace.location.latitude , longitude: firstPlace.location.longitude, zoom: 16)
+        importantPathGoogleMapView.camera = gmsCamera
+        let path = GMSMutablePath()
+        selectedRoad.selectedRoads.forEach({(point) in path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))})
+        let polyLine = GMSPolyline(path: path)
+        polyLine.map = importantPathGoogleMapView
+        //rendering 2 decimal places for a double, references on https://www.codegrepper.com/code-examples/swift/swift+double+2+decimal+places
+        totalLengthNumberLabel.text = String(format: "%.2f", path.length(of: .geodesic)/1000.0)
     }
 }

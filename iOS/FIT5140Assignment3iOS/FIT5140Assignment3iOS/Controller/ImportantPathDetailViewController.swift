@@ -28,14 +28,15 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
 
     
     var selectedRoad:UserSelectedRoadResponse?
-    var roads:[String] = []
+    var roadsInfo:[RoadInformationDataSource] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         importantPathTableView.delegate = self
         importantPathTableView.dataSource = self
         initViews()
-        initData(selectedRoad)
+        initTopTableData()
+        initGoogleMap()
     }
 
     // MARK: - TableView
@@ -48,7 +49,7 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
             case SECTION_HEADER:
                 return 1
             case SECTION_CONTENT:
-                return roads.count
+                return roadsInfo.count
             default:
                 return 1
         }
@@ -69,8 +70,8 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
         }else{
             //content section
             let cell = tableView.dequeueReusableCell(withIdentifier: CONTENT_CELL_ID, for: indexPath) as! ImportantPathTableViewContentCell
-            let placeId = roads[indexPath.row]
-            cell.handleWithPlaceId(placeId)
+            let road = roadsInfo[indexPath.row]
+            cell.handleWithPlaceId(road)
             return cell
         }
     }
@@ -101,10 +102,12 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
         }))
         actionOptions.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(actionOptions,animated: true)
-
-
     }
 
+}
 
 
+struct RoadInformationDataSource {
+    let placeId:String
+    let length:Double
 }

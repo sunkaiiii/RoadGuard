@@ -1,0 +1,9 @@
+
+# Installing prerequisites for ELM327-emulator
+pip3 install pyyaml
+pip3 install pyserial # only needed with Windows
+pip3 install tendo # only needed with Windows
+pip3 install obd
+
+# Downloading ELM327-emulator
+git clone https://github.com/ircama/ELM327-emulator.git
