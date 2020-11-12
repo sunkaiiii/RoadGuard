@@ -75,6 +75,8 @@
 		E45B4879254D023600692A2E /* RecordBkdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B4877254D023600692A2E /* RecordBkdTableViewCell.swift */; };
 		E45B487A254D023600692A2E /* RecordBkdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E45B4878254D023600692A2E /* RecordBkdTableViewCell.xib */; };
 		E47A9E5C2556ECAF00A815B7 /* overspeed.wav in Resources */ = {isa = PBXBuildFile; fileRef = E47A9E5B2556ECAF00A815B7 /* overspeed.wav */; };
+		E47D41DD255D83390079DE27 /* DistractionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47D41DB255D83390079DE27 /* DistractionDetailCell.swift */; };
+		E47D41DE255D83390079DE27 /* DistractionDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E47D41DC255D83390079DE27 /* DistractionDetailCell.xib */; };
 		E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */; };
 		E4BA6E7F25450307001D0CD7 /* BottomCardSpecifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BA6E7D25450307001D0CD7 /* BottomCardSpecifyCell.xib */; };
 		E4BA6E8825452BF8001D0CD7 /* SearchRoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA6E8725452BF8001D0CD7 /* SearchRoadViewController.swift */; };
@@ -170,6 +172,8 @@
 		E45B4877254D023600692A2E /* RecordBkdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBkdTableViewCell.swift; sourceTree = "<group>"; };
 		E45B4878254D023600692A2E /* RecordBkdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordBkdTableViewCell.xib; sourceTree = "<group>"; };
 		E47A9E5B2556ECAF00A815B7 /* overspeed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = overspeed.wav; sourceTree = "<group>"; };
+		E47D41DB255D83390079DE27 /* DistractionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistractionDetailCell.swift; sourceTree = "<group>"; };
+		E47D41DC255D83390079DE27 /* DistractionDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistractionDetailCell.xib; sourceTree = "<group>"; };
 		E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardSpecifyCell.swift; sourceTree = "<group>"; };
 		E4BA6E7D25450307001D0CD7 /* BottomCardSpecifyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomCardSpecifyCell.xib; sourceTree = "<group>"; };
 		E4BA6E8725452BF8001D0CD7 /* SearchRoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoadViewController.swift; sourceTree = "<group>"; };
@@ -421,6 +425,8 @@
 				E410CD06255CEC600004B2D9 /* RecordDetailChartCell.xib */,
 				E410CD0A255CEC780004B2D9 /* RecordDetailDistractionSummaryCell.swift */,
 				E410CD0B255CEC780004B2D9 /* RecordDetailDistractionSummaryCell.xib */,
+				E47D41DB255D83390079DE27 /* DistractionDetailCell.swift */,
+				E47D41DC255D83390079DE27 /* DistractionDetailCell.xib */,
 			);
 			path = RecordDetailCellViews;
 			sourceTree = "<group>";
@@ -546,6 +552,7 @@
 				B170FC77254290D90086F1D9 /* SpeedNotificationView.xib in Resources */,
 				E410CCFC255CEC0C0004B2D9 /* RecordDetailMapCell.xib in Resources */,
 				B13CEFD42540FAFB00957E84 /* LaunchScreen.storyboard in Resources */,
+				E47D41DE255D83390079DE27 /* DistractionDetailCell.xib in Resources */,
 				B13CEFD12540FAFB00957E84 /* Assets.xcassets in Resources */,
 				E41FE641254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib in Resources */,
 				E410CD08255CEC600004B2D9 /* RecordDetailChartCell.xib in Resources */,
@@ -646,6 +653,7 @@
 				B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */,
 				E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */,
 				E4DF3AE7255A141F004B96C5 /* ImportantPathTableViewHeaderCell.swift in Sources */,
+				E47D41DD255D83390079DE27 /* DistractionDetailCell.swift in Sources */,
 				B15602602551654B003EF6B7 /* NearestRoadsRequest.swift in Sources */,
 				E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */,
 				E41FE640254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift in Sources */,
