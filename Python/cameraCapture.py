@@ -42,4 +42,5 @@ def start_sertvice():
         camera_capturing()
         sleep(2)
 
-start_sertvice()
+if __name__=="__main__":
+    start_sertvice()
