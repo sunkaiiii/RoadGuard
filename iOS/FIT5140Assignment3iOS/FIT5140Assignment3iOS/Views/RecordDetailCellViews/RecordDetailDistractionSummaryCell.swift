@@ -6,9 +6,15 @@
 //
 
 import UIKit
+protocol RecordDetailDistractionSummaryCellDelegate: class {
+    //这里回头需要改下传值的类型
+    func jumpToSelectedRowDetailPage(selectedRow: String)
+}
+
 
 class RecordDetailDistractionSummaryCell: UITableViewCell , UITableViewDelegate, UITableViewDataSource{
 
+    weak var delegateParent: RecordDetailDistractionSummaryCellDelegate?
 
     @IBOutlet weak var backgroundVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var distractionTableView: UITableView!
@@ -63,8 +69,7 @@ class RecordDetailDistractionSummaryCell: UITableViewCell , UITableViewDelegate,
 
     func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
         //跳转
-        //需借助delegate让母视图的母视图跳转
-        //考虑从这里点击跳转 还是母tableView点击跳转
+        delegateParent?.jumpToSelectedRowDetailPage(selectedRow: "testInfo")
         tableView.deselectRow(at:indexPath,animated:true)
     }
 

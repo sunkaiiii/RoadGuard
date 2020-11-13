@@ -8,7 +8,7 @@
 import UIKit
 import Charts
 
-class RecordDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class RecordDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet weak var recordDetailTableView: UITableView!
 
@@ -24,6 +24,8 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
     let MATRIX_CELL_ID = RecordDetailMatrixCell.identifier
     let CHART_CELL_ID = RecordDetailChartCell.identifier
     let DISTRACTION_CELL_ID = RecordDetailDistractionSummaryCell.identifier
+
+    let DISTRACTION_DETAIL_PAGE_SEGUE = "distractionDetailSegue"
     //test data
     let lineChartDataEntries : [ChartDataEntry] = [
         ChartDataEntry(x:0.0, y:3.0),
@@ -64,6 +66,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
         recordDetailTableView.register(RecordDetailMatrixCell.nib(), forCellReuseIdentifier: MATRIX_CELL_ID)
         recordDetailTableView.register(RecordDetailChartCell.nib(), forCellReuseIdentifier: CHART_CELL_ID)
         recordDetailTableView.register(RecordDetailDistractionSummaryCell.nib(), forCellReuseIdentifier: DISTRACTION_CELL_ID)
+
         // Do any additional setup after loading the view.
     }
     
@@ -122,7 +125,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
         } else {
             //SECTION_DISTRACTION_SUMMARY
             let cell = tableView.dequeueReusableCell(withIdentifier: DISTRACTION_CELL_ID, for: indexPath) as! RecordDetailDistractionSummaryCell
-
+            cell.delegateParent = self
             return cell
         }
     }
@@ -146,11 +149,28 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
 
     func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == SECTION_DISTRACTION_SUMMARY{
-            //跳转
-            //考虑从这里点击跳转 还是子tableView点击跳转
             recordDetailTableView.deselectRow(at:indexPath,animated:true)
         } else{
             recordDetailTableView.deselectRow(at:indexPath,animated:true)
         }
+    }
+
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == DISTRACTION_DETAIL_PAGE_SEGUE {
+            if let des = segue.destination as? DistractionDetailViewController{
+                //需要改传值类型
+                des.selectedDistractionRecord = sender as! String
+            }
+
+        }
+    }
+}
+
+// MARK: - RecordBreakdownDelegate
+extension RecordDetailViewController:  RecordDetailDistractionSummaryCellDelegate  {
+    //需要改传值类型
+    func jumpToSelectedRowDetailPage(selectedRow: String) {
+        performSegue(withIdentifier: DISTRACTION_DETAIL_PAGE_SEGUE, sender: selectedRow)
     }
 }

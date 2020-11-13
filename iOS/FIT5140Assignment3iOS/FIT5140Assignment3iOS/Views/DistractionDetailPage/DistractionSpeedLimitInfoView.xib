@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="WRf-k9-lH7" customClass="DistractionSpeedLimitInfoView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="89" height="78"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x5B-y3-X5x" customClass="CircleShapeView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
+                    <rect key="frame" x="23" y="17.5" width="43" height="43"/>
+                    <color key="backgroundColor" red="1" green="0.34901967639999998" blue="0.37647062539999998" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="43" id="orb-Bm-GYf"/>
+                        <constraint firstAttribute="height" constant="43" id="zWh-zO-vOi"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ura-Zq-Ki9" customClass="CircleShapeView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
+                    <rect key="frame" x="27" y="21.5" width="35" height="35"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="61z-G0-RfD"/>
+                        <constraint firstAttribute="width" constant="35" id="RCE-bY-bZO"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kx-2q-vCm">
+                    <rect key="frame" x="34" y="29" width="21" height="20"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="jzz-Yu-iDS"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="8kx-2q-vCm" firstAttribute="centerY" secondItem="ura-Zq-Ki9" secondAttribute="centerY" id="FAq-gq-mWk"/>
+                <constraint firstItem="ura-Zq-Ki9" firstAttribute="centerY" secondItem="x5B-y3-X5x" secondAttribute="centerY" id="KJY-6s-nsy"/>
+                <constraint firstItem="8kx-2q-vCm" firstAttribute="centerX" secondItem="ura-Zq-Ki9" secondAttribute="centerX" id="cic-39-uqC"/>
+                <constraint firstItem="x5B-y3-X5x" firstAttribute="centerY" secondItem="WRf-k9-lH7" secondAttribute="centerY" id="tsg-1U-g47"/>
+                <constraint firstItem="x5B-y3-X5x" firstAttribute="centerX" secondItem="WRf-k9-lH7" secondAttribute="centerX" id="vO0-ko-NtZ"/>
+                <constraint firstItem="ura-Zq-Ki9" firstAttribute="centerX" secondItem="x5B-y3-X5x" secondAttribute="centerX" id="vq8-pj-h0a"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="speedLImitLabel" destination="8kx-2q-vCm" id="BbR-p3-Wyo"/>
+            </connections>
+            <point key="canvasLocation" x="-97.826086956521749" y="208.25892857142856"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
