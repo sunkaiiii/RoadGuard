@@ -15,5 +15,9 @@ import UIKit
     func setCurrentSpeed(speed:String){
         (childView as? SpeedAlertView)?.setSpeedLabel(speed: speed)
     }
+
+    func setSignBackgroundColor(situation: SituationType){
+        (childView as? SpeedAlertView)?.setBackgroundColorBasingOnSituation(situation: situation)
+    }
 }
 
