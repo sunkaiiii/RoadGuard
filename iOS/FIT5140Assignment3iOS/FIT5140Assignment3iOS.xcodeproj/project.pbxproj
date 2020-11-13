@@ -75,6 +75,12 @@
 		E45B4879254D023600692A2E /* RecordBkdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B4877254D023600692A2E /* RecordBkdTableViewCell.swift */; };
 		E45B487A254D023600692A2E /* RecordBkdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E45B4878254D023600692A2E /* RecordBkdTableViewCell.xib */; };
 		E47A9E5C2556ECAF00A815B7 /* overspeed.wav in Resources */ = {isa = PBXBuildFile; fileRef = E47A9E5B2556ECAF00A815B7 /* overspeed.wav */; };
+		E47D41DD255D83390079DE27 /* DistractionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47D41DB255D83390079DE27 /* DistractionDetailCell.swift */; };
+		E47D41DE255D83390079DE27 /* DistractionDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E47D41DC255D83390079DE27 /* DistractionDetailCell.xib */; };
+		E4AE1714255E0CDF009B1DAA /* DistractionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE1713255E0CDF009B1DAA /* DistractionDetailViewController.swift */; };
+		E4AE1717255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE1716255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift */; };
+		E4AE171C255E1281009B1DAA /* DistractionSpeedLimitInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE171B255E1281009B1DAA /* DistractionSpeedLimitInfoView.swift */; };
+		E4AE1725255E3B15009B1DAA /* DistractionSpeedLimitInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4AE1724255E3B15009B1DAA /* DistractionSpeedLimitInfoView.xib */; };
 		E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */; };
 		E4BA6E7F25450307001D0CD7 /* BottomCardSpecifyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E4BA6E7D25450307001D0CD7 /* BottomCardSpecifyCell.xib */; };
 		E4BA6E8825452BF8001D0CD7 /* SearchRoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BA6E8725452BF8001D0CD7 /* SearchRoadViewController.swift */; };
@@ -170,6 +176,12 @@
 		E45B4877254D023600692A2E /* RecordBkdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBkdTableViewCell.swift; sourceTree = "<group>"; };
 		E45B4878254D023600692A2E /* RecordBkdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordBkdTableViewCell.xib; sourceTree = "<group>"; };
 		E47A9E5B2556ECAF00A815B7 /* overspeed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = overspeed.wav; sourceTree = "<group>"; };
+		E47D41DB255D83390079DE27 /* DistractionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistractionDetailCell.swift; sourceTree = "<group>"; };
+		E47D41DC255D83390079DE27 /* DistractionDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistractionDetailCell.xib; sourceTree = "<group>"; };
+		E4AE1713255E0CDF009B1DAA /* DistractionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistractionDetailViewController.swift; sourceTree = "<group>"; };
+		E4AE1716255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistractionSpeedLimitSuperView.swift; sourceTree = "<group>"; };
+		E4AE171B255E1281009B1DAA /* DistractionSpeedLimitInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistractionSpeedLimitInfoView.swift; sourceTree = "<group>"; };
+		E4AE1724255E3B15009B1DAA /* DistractionSpeedLimitInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistractionSpeedLimitInfoView.xib; sourceTree = "<group>"; };
 		E4BA6E7C25450307001D0CD7 /* BottomCardSpecifyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomCardSpecifyCell.swift; sourceTree = "<group>"; };
 		E4BA6E7D25450307001D0CD7 /* BottomCardSpecifyCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomCardSpecifyCell.xib; sourceTree = "<group>"; };
 		E4BA6E8725452BF8001D0CD7 /* SearchRoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoadViewController.swift; sourceTree = "<group>"; };
@@ -327,6 +339,7 @@
 				E4FECFBB254FAE8F0072555F /* AnalysisPageCells */,
 				E45B486A254CF60100692A2E /* BottomCard */,
 				B13C2602254AA0E7008EBDE3 /* CustomView */,
+				E4AE1719255E10EB009B1DAA /* DistractionDetailPage */,
 				B190D3C525446FFE002249BA /* HomePage */,
 				E4DF3AE1255A13DE004B96C5 /* ImportantPathDetailCells */,
 				E410CCF4255CE9D10004B2D9 /* RecordDetailCellViews */,
@@ -349,6 +362,7 @@
 				E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */,
 				E4E6FE862559711000DC8050 /* ImportantPathDetailViewController.swift */,
 				E410CCEF255CB4730004B2D9 /* RecordDetailViewController.swift */,
+				E4AE1713255E0CDF009B1DAA /* DistractionDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -406,6 +420,7 @@
 				B190D3CC25447113002249BA /* CurrentSpeedInformationSuperView.swift */,
 				B1AB3A9825446A580082B004 /* SpeedAlertSuperView.swift */,
 				B190D3C725447029002249BA /* SpeedNotificationSuperView.swift */,
+				E4AE1716255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift */,
 			);
 			path = SuperViews;
 			sourceTree = "<group>";
@@ -421,6 +436,8 @@
 				E410CD06255CEC600004B2D9 /* RecordDetailChartCell.xib */,
 				E410CD0A255CEC780004B2D9 /* RecordDetailDistractionSummaryCell.swift */,
 				E410CD0B255CEC780004B2D9 /* RecordDetailDistractionSummaryCell.xib */,
+				E47D41DB255D83390079DE27 /* DistractionDetailCell.swift */,
+				E47D41DC255D83390079DE27 /* DistractionDetailCell.xib */,
 			);
 			path = RecordDetailCellViews;
 			sourceTree = "<group>";
@@ -460,6 +477,15 @@
 				E47A9E5B2556ECAF00A815B7 /* overspeed.wav */,
 			);
 			path = SoundFile;
+			sourceTree = "<group>";
+		};
+		E4AE1719255E10EB009B1DAA /* DistractionDetailPage */ = {
+			isa = PBXGroup;
+			children = (
+				E4AE171B255E1281009B1DAA /* DistractionSpeedLimitInfoView.swift */,
+				E4AE1724255E3B15009B1DAA /* DistractionSpeedLimitInfoView.xib */,
+			);
+			path = DistractionDetailPage;
 			sourceTree = "<group>";
 		};
 		E4DF3AE1255A13DE004B96C5 /* ImportantPathDetailCells */ = {
@@ -546,6 +572,8 @@
 				B170FC77254290D90086F1D9 /* SpeedNotificationView.xib in Resources */,
 				E410CCFC255CEC0C0004B2D9 /* RecordDetailMapCell.xib in Resources */,
 				B13CEFD42540FAFB00957E84 /* LaunchScreen.storyboard in Resources */,
+				E47D41DE255D83390079DE27 /* DistractionDetailCell.xib in Resources */,
+				E4AE1725255E3B15009B1DAA /* DistractionSpeedLimitInfoView.xib in Resources */,
 				B13CEFD12540FAFB00957E84 /* Assets.xcassets in Resources */,
 				E41FE641254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib in Resources */,
 				E410CD08255CEC600004B2D9 /* RecordDetailChartCell.xib in Resources */,
@@ -636,6 +664,7 @@
 				E45B486E254CF66E00692A2E /* WormTabStrip.swift in Sources */,
 				B10185D72553D6DF00A5A11A /* SearchPlaceResponse.swift in Sources */,
 				E4EE85152554FBEF00208C71 /* RealmExtension.swift in Sources */,
+				E4AE1717255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift in Sources */,
 				B13C2609254AAA69008EBDE3 /* ScrollableViewController.swift in Sources */,
 				B13CEFE32540FDC900957E84 /* RestfulModel.swift in Sources */,
 				E45B486D254CF66E00692A2E /* WormTabStripButton.swift in Sources */,
@@ -646,6 +675,7 @@
 				B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */,
 				E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */,
 				E4DF3AE7255A141F004B96C5 /* ImportantPathTableViewHeaderCell.swift in Sources */,
+				E47D41DD255D83390079DE27 /* DistractionDetailCell.swift in Sources */,
 				B15602602551654B003EF6B7 /* NearestRoadsRequest.swift in Sources */,
 				E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */,
 				E41FE640254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift in Sources */,
@@ -672,6 +702,7 @@
 				E45B4875254CFF7600692A2E /* RecordBreakdownViewController.swift in Sources */,
 				B1DFBC99255AD613000B7256 /* UserSelectedRoad.swift in Sources */,
 				B1560263255169AA003EF6B7 /* NearestRoadsResponse.swift in Sources */,
+				E4AE1714255E0CDF009B1DAA /* DistractionDetailViewController.swift in Sources */,
 				E4D865E425458CE400465243 /* RoadInfoBottomCard.swift in Sources */,
 				B13CEFDF2540FD7A00957E84 /* RestfulAPI.swift in Sources */,
 				B13CEFFC25410D7400957E84 /* ToastHelper.swift in Sources */,
@@ -693,6 +724,7 @@
 				E4E6FE872559711000DC8050 /* ImportantPathDetailViewController.swift in Sources */,
 				B13CEFCA2540FAF900957E84 /* SceneDelegate.swift in Sources */,
 				B13CF00A2541A9B700957E84 /* SpeedAlertView.swift in Sources */,
+				E4AE171C255E1281009B1DAA /* DistractionSpeedLimitInfoView.swift in Sources */,
 				B1AB3A7B2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift in Sources */,
 				E410CCF0255CB4730004B2D9 /* RecordDetailViewController.swift in Sources */,
 				B170FC6E25428CC20086F1D9 /* BaseUIView.swift in Sources */,

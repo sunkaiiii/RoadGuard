@@ -9,7 +9,7 @@
 import UIKit
 
 class SpeedAlertView: UIView {
-    
+
     @IBOutlet weak var speedLabel: UILabel!
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -21,4 +21,16 @@ class SpeedAlertView: UIView {
     func setSpeedLabel(speed:String){
         speedLabel.text = speed
     }
+
+    func setBackgroundColorBasingOnSituation(situation: SituationType){
+        if situation == .overSpeed{
+            self.backgroundColor = .red
+        }
+    }
+}
+
+enum SituationType {
+    case overSpeed
+    case safeSpeed
+    case none
 }

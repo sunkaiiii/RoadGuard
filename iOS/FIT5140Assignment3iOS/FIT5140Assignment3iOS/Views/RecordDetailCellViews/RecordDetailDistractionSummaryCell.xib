@@ -9,15 +9,58 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecordDetailDistractionSummaryCell" id="KGk-i7-Jjw" customClass="RecordDetailDistractionSummaryCell" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RecordDetailDistractionSummaryCell" rowHeight="302" id="KGk-i7-Jjw" customClass="RecordDetailDistractionSummaryCell" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="302"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="302"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vLV-4U-C09">
+                        <rect key="frame" x="15" y="10" width="290" height="272"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="yNt-Sw-gQf">
+                            <rect key="frame" x="0.0" y="0.0" width="290" height="272"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QTZ-31-kcg">
+                                    <rect key="frame" x="15" y="57" width="260" height="200"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </tableView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distraction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qsh-u3-pnN">
+                                    <rect key="frame" x="15" y="15" width="114" height="27"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="QTZ-31-kcg" secondAttribute="trailing" constant="15" id="5dZ-vc-xsv"/>
+                                <constraint firstItem="QTZ-31-kcg" firstAttribute="leading" secondItem="yNt-Sw-gQf" secondAttribute="leading" constant="15" id="ByO-7p-b1Q"/>
+                                <constraint firstItem="Qsh-u3-pnN" firstAttribute="leading" secondItem="yNt-Sw-gQf" secondAttribute="leading" constant="15" id="Ltl-0Y-zhm"/>
+                                <constraint firstItem="QTZ-31-kcg" firstAttribute="top" secondItem="Qsh-u3-pnN" secondAttribute="bottom" constant="15" id="dC0-6N-G2y"/>
+                                <constraint firstItem="Qsh-u3-pnN" firstAttribute="top" secondItem="yNt-Sw-gQf" secondAttribute="top" constant="15" id="oSO-fQ-MXp"/>
+                                <constraint firstAttribute="bottom" secondItem="QTZ-31-kcg" secondAttribute="bottom" constant="15" id="qCy-Fg-RbQ"/>
+                            </constraints>
+                        </view>
+                        <blurEffect style="regular"/>
+                    </visualEffectView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="vLV-4U-C09" secondAttribute="trailing" constant="15" id="48X-ZK-qBl"/>
+                    <constraint firstItem="vLV-4U-C09" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="7Ph-jU-ZZz"/>
+                    <constraint firstAttribute="bottom" secondItem="vLV-4U-C09" secondAttribute="bottom" constant="20" id="eoX-a4-9Sx"/>
+                    <constraint firstItem="vLV-4U-C09" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="s8x-P6-QGH"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="141" y="76"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="backgroundVisualEffectView" destination="vLV-4U-C09" id="Q1m-D4-9qd"/>
+                <outlet property="distractionTableView" destination="QTZ-31-kcg" id="X8E-QD-FCn"/>
+            </connections>
+            <point key="canvasLocation" x="145" y="101"/>
         </tableViewCell>
     </objects>
 </document>
