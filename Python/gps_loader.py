@@ -1,4 +1,5 @@
 from gps import *
+from json import JSONEncoder
 import time
 
 running = True
@@ -8,11 +9,10 @@ gpsd = gps(mode=WATCH_ENABLE|WATCH_NEWSTYLE)
 # References on https://maker.pro/raspberry-pi/tutorial/how-to-read-gps-data-with-python-on-a-raspberry-pi
 
 class GPSInformationExtractor:
-    class GPSInformationResult:
+    class GPSInformationResult():
         def __init__(self):
             self.latitude = 0
             self.longitude = 0
-            self.speed = 0
     def get_current_position(self):
         result = self.GPSInformationResult()
         while(result.latitude == 0):
