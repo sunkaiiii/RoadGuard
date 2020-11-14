@@ -15,6 +15,7 @@ struct UserSelectedRoadResponse:Codable {
     let createTime:Date
     var passedTime:[SelectedRoadPassDetail]?
     var selectedRoads:[SnappedPointResponse]
+    var placeIds:[String]
     
     enum CodingKeys:String, CodingKey{
         case selectedRoadCustomName = "SelectedRoadCustomName"
@@ -22,6 +23,7 @@ struct UserSelectedRoadResponse:Codable {
         case createTime = "CreateTime"
         case passedTime = "PassedTime"
         case selectedRoads = "SelectedRoads"
+        case placeIds = "PlaceIds"
     }
     
     init(roadInformation:[SnappedPointResponse]) {
@@ -29,6 +31,7 @@ struct UserSelectedRoadResponse:Codable {
         self.passedTime = nil
         self.userCustomImage = nil
         self.selectedRoads = roadInformation
+        self.placeIds = roadInformation.map({(points) in points.placeID})
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
         self.selectedRoadCustomName = "Road_"+dateFormatter.string(from: Date.init())
