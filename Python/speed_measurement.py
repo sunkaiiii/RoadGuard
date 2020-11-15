@@ -36,7 +36,7 @@ class SpeedRecordExtractor(threading.Thread):
         self.firebase = FileStoreUserSelectedRoad()
         # self._get_place_id_by_curent_place(self.location)
         print(self.location.latitude,",",self.location.longitude)
-        self.running = True
+        self.running = False
         self.driving_distance = 0
         self.path = []
 

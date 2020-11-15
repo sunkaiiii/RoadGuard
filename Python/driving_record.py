@@ -18,7 +18,9 @@ class DrivingRecordRecorder:
         self.record_data["startLocation"] = {}
         self.record_data["startLocation"]["latitude"] = self.recorder.location.latitude
         self.record_data["startLocation"]["logitude"] = self.recorder.location.longitude
+        self.recorder.running = True
         self.recorder.start()
+        print("Recording start")
     def end_recording(self):
         self.record_data["path"] = self.recorder.path
         self.record_data["endTime"] = datetime.now()
@@ -28,8 +30,15 @@ class DrivingRecordRecorder:
         self.record_data["drivingDistance"] = self.recorder.driving_distance
         self.recorder.running = False
         print(self.record_data)
-        self.file_store_saver.save_to_firestore(self.record_data,self.document_id)
+        doc = self.file_store_saver.save_to_firestore(self.record_data,self.document_id)
+        return doc
 
+    def is_running(self):
+        return self.recorder.running
+    
+    def get_speed_limit(self):
+        return self.recorder.current_speed_limit
+        
 if __name__=="__main__":
     recorder = DrivingRecordRecorder()
     recorder.start_recording()
