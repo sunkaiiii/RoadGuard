@@ -20,11 +20,13 @@ class SpeedRecordExtractor(threading.Thread):
             self.latitude = 0.0
             self.longitude = 0.0
             
-    def __init__(self,threadID,name,counter):
+            
+    def __init__(self,threadID,name,counter, document_id):
         threading.Thread.__init__(self)
         self.threadID = threadID
         self.name = name
         self.counter = counter
+        self.document_id = document_id
         self.current_place_id = ""
         self.current_speed_limit = -1
         self.location = self.Location()
@@ -34,7 +36,9 @@ class SpeedRecordExtractor(threading.Thread):
         self.firebase = FileStoreUserSelectedRoad()
         # self._get_place_id_by_curent_place(self.location)
         print(self.location.latitude,",",self.location.longitude)
-        self.running = True
+        self.running = False
+        self.driving_distance = 0
+        self.path = []
 
     #calculate distance between two coordinates, references on https://stackoverflow.com/questions/19412462/getting-distance-between-two-points-based-on-latitude-longitude/43211266#43211266
     def _calculate_distance(self,gps_info):
@@ -62,6 +66,8 @@ class SpeedRecordExtractor(threading.Thread):
             if gps_info.latitude != "Unknown" and gps_info.longitude != "Unknown":
                 distance = self._calculate_distance(gps_info)
                 if distance > 300:
+                    self.driving_distance += distance
+                    self.path.append({"latitude":gps_info.latitude,"longitude":gps_info.longitude})
                     place_ids = self._find_selected_raods(gps_info)
                     self._save_speed_record(gps_info,place_ids)
                     if len(place_ids) > 0:
@@ -109,6 +115,7 @@ class SpeedRecordExtractor(threading.Thread):
         speed_record["latitude"] = gps_info.latitude
         speed_record["longitude"] = gps_info.longitude
         speed_record["recordTime"] = firestore.SERVER_TIMESTAMP
+        speed_record["recordId"] = self.document_id
         if len(place_ids) > 0:
             speed_record["selectedRoadIds"] = place_ids
         if limited_speed > 0:

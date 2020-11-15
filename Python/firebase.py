@@ -11,8 +11,8 @@ class FireStoreSaver:
     def __init__(self,collection_name):
         self.collection_name = collection_name
         self.collection = db.collection(collection_name)
-    def save_to_firestore(self,data):
-        return self._save_data(self.collection_name,data)
+    def save_to_firestore(self,data, document_name = None):
+        return self._save_data(self.collection_name,data,document_name)
     def _save_data(self,collection_name, document, document_name=None):
         if document_name is None:
             doc_ref = self.collection.document()

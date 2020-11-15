@@ -5,6 +5,9 @@ import time
 running = True
 gpsd = gps(mode=WATCH_ENABLE|WATCH_NEWSTYLE)
 
+# sudo gpsd /dev/ttyACM0 -F /var/run/gpsd.sock
+# sudo cgps -s
+
 # Extract GPS information from the GPS module.
 # References on https://maker.pro/raspberry-pi/tutorial/how-to-read-gps-data-with-python-on-a-raspberry-pi
 

@@ -48,6 +48,7 @@ extension ImportantPathDetailViewController{
         var i = 0
         var j = 0
         var path = GMSMutablePath()
+        //TODO calculated by original index
         while(i<selectedRoad.selectedRoads.count){
             let point = selectedRoad.selectedRoads[i]
             if roads[j] == point.placeID{
