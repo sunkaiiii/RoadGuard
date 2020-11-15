@@ -7,13 +7,16 @@
 
 import UIKit
 import GoogleMaps
-import AVFoundation
 
-class HomeViewController: UIViewController,CLLocationManagerDelegate {
-    var player:AVAudioPlayer!
+
+class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttpRequestAction {
+
+
     let manager = CLLocationManager.init()
     var mapview:GMSMapView?
     let marker = GMSMarker()
+    var currentSpeed = -1
+    var speedLimit = -1
     weak var firebaseController:DatabaseProtocol?
     @IBOutlet weak var speedAlertView: SpeedAlertSuperView!
     @IBOutlet weak var speedNotificationView: SpeedNotificationSuperView!
@@ -70,79 +73,39 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate {
             return
         }
         print(locationInformation.coordinate.latitude,locationInformation.coordinate.longitude)
-        let speed = Int(fabs(locationInformation.speed * 3.6))
-        speedAlertView.setCurrentSpeed(speed: String(format: "%d", speed))
         marker.position = locationInformation.coordinate
         let gmsCamera = GMSCameraPosition.camera(withLatitude: locationInformation.coordinate.latitude, longitude: locationInformation.coordinate.longitude, zoom: 19)
         mapview?.camera = gmsCamera
-        
-        //TODO 逻辑有问题
-        if let lastPosition = lastPosition{
-            requestMeasureTheSpeed(lastPosition: lastPosition, location: locationInformation)
-        }else{
-            lastPosition = locationInformation.coordinate
-            if limitSpeed > 0 && speed > limitSpeed{
-
-                //play an alert sound
-                //play() method is already async
-                let url = Bundle.main.url(forResource: "overspeed", withExtension: "wav")
-                do{
-                    player =  try AVAudioPlayer(contentsOf: url!)
-                    player.play()
-                }catch{
-                    print(error)
-                }
-
-                self.recordOverSpeed(currentSpeed: speed, limitedSpeed: limitSpeed, location: locationInformation)
-            }else if limitSpeed > 0{
-                self.recordNormalSpeed(currentSpeed: Int(speed), limitedSpeed: limitSpeed, location: locationInformation)
+        requestRestfulService(api: RaspberryPiApi.get_current_speed, model: DefaultSimpleGetModel(), jsonType: CurrentSpeedResponse.self)
+    }
+    
+    func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
+        switch helper.restfulAPI as? RaspberryPiApi{
+        case .get_current_speed:
+            let currentSpeedResponse:CurrentSpeedResponse = accessibleData.retriveData()
+            speedAlertView.setCurrentSpeed(speed: String(format: "%d", currentSpeedResponse.speed))
+            requestRestfulService(api: RaspberryPiApi.get_speed_limit, model: DefaultSimpleGetModel(), jsonType: SpeedLimitResponse.self)
+        case .get_speed_limit:
+            let speedLimitResponse:SpeedLimitResponse = accessibleData.retriveData()
+            if !speedLimitResponse.isError{
+                self.speedLimit = speedLimitResponse.speedLimit
+                speedNotificationView.setSpeedNotification("\(self.speedLimit)")
+                validateSpeed()
             }
+        default:
+            return
         }
     }
     
-    func requestMeasureTheSpeed(lastPosition:CLLocationCoordinate2D, location:CLLocation){
-        let coordinate = location.coordinate
-        let left = lastPosition.longitude < coordinate.longitude ? lastPosition.longitude:coordinate.longitude
-        let bottom = lastPosition.latitude < coordinate.latitude ? lastPosition.latitude:coordinate.latitude
-        let right = lastPosition.longitude > coordinate.longitude ? lastPosition.longitude:coordinate.longitude
-        let top = lastPosition.latitude > coordinate.latitude ? lastPosition.latitude:coordinate.latitude
-
-        let request = SpeedLimitRequest(left: left, right: right, top: top, bottom: bottom)
-        request.RequestSpeedLimit(onCompleted: { [self](response) in
-            if !response.ways.isEmpty{
-                let way = response.ways[0]
-                self.speedNotificationView.setSpeedNotification("\(way.speedMaxSpeed)")
-                let speed = fabs(location.speed * 3.6)
-                self.limitSpeed = Int(speed)
-                if Int(speed) > way.speedMaxSpeed && way.speedMaxSpeed>0{
-
-                    //play an alert sound
-                    //play() method is already async
-                    let url = Bundle.main.url(forResource: "overspeed", withExtension: "wav")
-                    do{
-                        self.player =  try AVAudioPlayer(contentsOf: url!)
-                        self.player.play()
-                    }catch{
-                        print(error)
-                    }
-
-                    self.recordOverSpeed(currentSpeed: Int(speed), limitedSpeed: way.speedMaxSpeed, location: location)
-                }else if way.speedMaxSpeed > 0{
-                    self.recordNormalSpeed(currentSpeed: Int(speed), limitedSpeed: way.speedMaxSpeed, location: location)
-                }
-            }
-        })
-    }
-
-    func recordOverSpeed(currentSpeed:Int, limitedSpeed:Int, location:CLLocation){
-        print("Over speed is record speed limit is \(limitedSpeed), current speed is \(currentSpeed)")
-        var overSpeedRecord = SpeedRecord(recordSpeed: currentSpeed, limitedSpeed: limitedSpeed, lat: location.coordinate.latitude, log: location.coordinate.longitude, roadName: "")
-        let _ = firebaseController?.addOverSpeedRecord(overSpeedRecord)
+    func validateSpeed(){
+        let currentSpeed = self.currentSpeed
+        let speedLimit = self.speedLimit
+        if currentSpeed > 0 && speedLimit > 0  {
+            return
+        }
+        if currentSpeed > speedLimit{
+            SoundHelper.shared.playOverSpeedSound()
+        }
     }
     
-    func recordNormalSpeed(currentSpeed:Int, limitedSpeed:Int, location:CLLocation){
-        print("normal speed is reocrded, limited speed is \(limitedSpeed), current speed is \(currentSpeed)")
-        var normalSpeed = SpeedRecord(recordSpeed: currentSpeed, limitedSpeed: limitedSpeed, lat: location.coordinate.latitude, log: location.coordinate.longitude, roadName: "")
-        let _ = firebaseController?.addOverSpeedRecord(normalSpeed)
-    }
 }

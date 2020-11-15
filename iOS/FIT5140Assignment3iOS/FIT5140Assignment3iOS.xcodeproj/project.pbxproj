@@ -53,8 +53,10 @@
 		B1AB3A7B2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */; };
 		B1AB3A9925446A580082B004 /* SpeedAlertSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A9825446A580082B004 /* SpeedAlertSuperView.swift */; };
 		B1C10EBA25483C8B008BDC64 /* SpeedLimitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C10EB925483C8B008BDC64 /* SpeedLimitResponse.swift */; };
-		B1C10EBD2548458A008BDC64 /* SpeedLimitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C10EBC2548458A008BDC64 /* SpeedLimitRequest.swift */; };
 		B1DFBC99255AD613000B7256 /* UserSelectedRoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DFBC98255AD613000B7256 /* UserSelectedRoad.swift */; };
+		B1E9473225615618007C74AD /* CurrentSpeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9473125615618007C74AD /* CurrentSpeedResponse.swift */; };
+		B1E947352561562C007C74AD /* DefaultSimpleGetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E947342561562C007C74AD /* DefaultSimpleGetModel.swift */; };
+		B1E94738256163E0007C74AD /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E94737256163E0007C74AD /* SoundHelper.swift */; };
 		E40448EC254C278700341510 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40448EB254C278700341510 /* RecordViewController.swift */; };
 		E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */; };
 		E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */; };
@@ -154,8 +156,10 @@
 		B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNetworkRequestControllerProtocol.swift; sourceTree = "<group>"; };
 		B1AB3A9825446A580082B004 /* SpeedAlertSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedAlertSuperView.swift; sourceTree = "<group>"; };
 		B1C10EB925483C8B008BDC64 /* SpeedLimitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLimitResponse.swift; sourceTree = "<group>"; };
-		B1C10EBC2548458A008BDC64 /* SpeedLimitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLimitRequest.swift; sourceTree = "<group>"; };
 		B1DFBC98255AD613000B7256 /* UserSelectedRoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectedRoad.swift; sourceTree = "<group>"; };
+		B1E9473125615618007C74AD /* CurrentSpeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSpeedResponse.swift; sourceTree = "<group>"; };
+		B1E947342561562C007C74AD /* DefaultSimpleGetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSimpleGetModel.swift; sourceTree = "<group>"; };
+		B1E94737256163E0007C74AD /* SoundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
 		E40448EB254C278700341510 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchAddressBottomCard.xib; sourceTree = "<group>"; };
 		E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressBottomCard.swift; sourceTree = "<group>"; };
@@ -272,7 +276,7 @@
 				B13CEFF625410D4E00957E84 /* ControllerHelper */,
 				B13CEFEB25410C8200957E84 /* ImageHelper */,
 				B13CEFDC2540FD4A00957E84 /* Network */,
-				E47A9E4F2556BF7100A815B7 /* SoundFile */,
+				E47A9E4F2556BF7100A815B7 /* Sound */,
 				B13CF0012541766000957E84 /* Views */,
 				B1139ABF255BD560002EA26E /* AppDelegate.swift */,
 				B13CEFC92540FAF900957E84 /* SceneDelegate.swift */,
@@ -390,7 +394,6 @@
 		B1AB3A8625445FD50082B004 /* RequestModel */ = {
 			isa = PBXGroup;
 			children = (
-				B1C10EBC2548458A008BDC64 /* SpeedLimitRequest.swift */,
 				B1466EA52548EF16008ED039 /* SpeedRecord.swift */,
 				B15602762552E18B003EF6B7 /* SnapToRoadsRequest.swift */,
 				B156025F2551654B003EF6B7 /* NearestRoadsRequest.swift */,
@@ -410,6 +413,8 @@
 				B15602732552E0F7003EF6B7 /* SnapToRoadsResponse.swift */,
 				B10185D62553D6DF00A5A11A /* SearchPlaceResponse.swift */,
 				B1DFBC98255AD613000B7256 /* UserSelectedRoad.swift */,
+				B1E9473125615618007C74AD /* CurrentSpeedResponse.swift */,
+				B1E947342561562C007C74AD /* DefaultSimpleGetModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -471,12 +476,13 @@
 			path = BottomCard;
 			sourceTree = "<group>";
 		};
-		E47A9E4F2556BF7100A815B7 /* SoundFile */ = {
+		E47A9E4F2556BF7100A815B7 /* Sound */ = {
 			isa = PBXGroup;
 			children = (
 				E47A9E5B2556ECAF00A815B7 /* overspeed.wav */,
+				B1E94737256163E0007C74AD /* SoundHelper.swift */,
 			);
-			path = SoundFile;
+			path = Sound;
 			sourceTree = "<group>";
 		};
 		E4AE1719255E10EB009B1DAA /* DistractionDetailPage */ = {
@@ -671,6 +677,7 @@
 				B190D3C825447029002249BA /* SpeedNotificationSuperView.swift in Sources */,
 				B13CEFE625410B6F00957E84 /* NetworkExtension.swift in Sources */,
 				B1A5E47A2547C59A00D8CCB0 /* GoogleAPIKey.swift in Sources */,
+				B1E9473225615618007C74AD /* CurrentSpeedResponse.swift in Sources */,
 				B1560268255188E6003EF6B7 /* PlaceDetailResponse.swift in Sources */,
 				B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */,
 				E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */,
@@ -684,8 +691,8 @@
 				B1AB3A782542B9480082B004 /* RoadInformationViewController.swift in Sources */,
 				B1AB3A752542B70D0082B004 /* CurrentSpeedInformationView.swift in Sources */,
 				B15602742552E0F7003EF6B7 /* SnapToRoadsResponse.swift in Sources */,
-				B1C10EBD2548458A008BDC64 /* SpeedLimitRequest.swift in Sources */,
 				E4DF3AE3255A140D004B96C5 /* ImportantPathTableViewContentCell.swift in Sources */,
+				B1E947352561562C007C74AD /* DefaultSimpleGetModel.swift in Sources */,
 				B1560241254EDB91003EF6B7 /* FacialInfoResponse.swift in Sources */,
 				E410CD07255CEC600004B2D9 /* RecordDetailChartCell.swift in Sources */,
 				B1AB3A9925446A580082B004 /* SpeedAlertSuperView.swift in Sources */,
@@ -718,6 +725,7 @@
 				B1466EA62548EF16008ED039 /* SpeedRecord.swift in Sources */,
 				B13CEFF125410D1500957E84 /* ImageExtension.swift in Sources */,
 				B13CEFFF25410D9200957E84 /* AlertControllerHelper.swift in Sources */,
+				B1E94738256163E0007C74AD /* SoundHelper.swift in Sources */,
 				E410CD0C255CEC780004B2D9 /* RecordDetailDistractionSummaryCell.swift in Sources */,
 				E410CCFB255CEC0C0004B2D9 /* RecordDetailMapCell.swift in Sources */,
 				B1C10EBA25483C8B008BDC64 /* SpeedLimitResponse.swift in Sources */,
@@ -877,7 +885,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YNQ45Z475P;
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -899,7 +907,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YNQ45Z475P;
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -9,7 +9,7 @@ import Foundation
 
 let HTTP_PORT = 80
 let DEFAULT_HTTPS_PORT = 443
-
+let RASPBERRY_PI_API_PORT = 5000
 
 protocol RequestModel {
     func getPathParameter()->[String]
