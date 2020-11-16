@@ -270,6 +270,8 @@ class FirebaseController: NSObject,DatabaseProtocol {
             listener.onFacialInfoChange(change: .add, facialInfos: facialInfoList)
         }else if listener.listenerType == .selectedRoad || listener.listenerType == .all{
             listener.onSelectedRoadInfoChange(change: .add, selectRoads: selectedRoadaList)
+        }else if listener.listenerType == .drivingRecord || listener.listenerType == .all{
+            listener.onDrivingRecordChange(change: .add, drivingRecord: drivingRecordList)
         }
     }
 

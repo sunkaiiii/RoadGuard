@@ -24,13 +24,10 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
     let DEFAULT_CELL_ID = "DefaultCell"
     let TABLE_HEADER_CELL_ID = RecordPageHeaderTableViewCell.identifier
     let TABLE_CONTENT_CELL_ID = RecordBkdTableViewCell.identifier
+    var monthIndex:Int = 0
     
     //根据需要展示的内容，更改数据类型和内容
-    var tableViewDataSource = ["Apple", "Apricot", "Banana", "Blueberry", "Cantaloupe", "Cherry",
-                               "Clementine", "Coconut", "Cranberry", "Fig", "Grape", "Grapefruit",
-                               "Kiwi fruit", "Lemon", "Lime", "Lychee", "Mandarine", "Mango",
-                               "Melon", "Nectarine", "Olive", "Orange", "Papaya", "Peach",
-                               "Pear", "Pineapple", "Raspberry", "Strawberry"]
+    var tableViewDataSource:[DrivingRecordResponse] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
