@@ -42,36 +42,37 @@ class SpeedRecordExtractor(threading.Thread):
 
     #calculate distance between two coordinates, references on https://stackoverflow.com/questions/19412462/getting-distance-between-two-points-based-on-latitude-longitude/43211266#43211266
     def _calculate_distance(self,gps_info):
-        # R = 6373.0
+        R = 6373.0
         lat1 = radians(self.location.latitude)
         lon1 = radians(self.location.longitude)
         lat2 = radians(gps_info.latitude)
         lon2 = radians(gps_info.longitude)
-        dist = mpu.haversine_distance((lat1, lon1), (lat2, lon2))
-        print(dist*1000)
-        return dist*1000
-        # dlon = lon2 - lon1
-        # dlat = lat2 - lat1
+        # dist = mpu.haversine_distance((lat1, lon1), (lat2, lon2))
+        # print(dist*1000)
+        # return dist*1000
+        dlon = lon2 - lon1
+        dlat = lat2 - lat1
 
-        # a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
-        # c = 2 * atan2(sqrt(a), sqrt(1 - a))
+        a = sin(dlat / 2)**2 + cos(lat1) * cos(lat2) * sin(dlon / 2)**2
+        c = 2 * atan2(sqrt(a), sqrt(1 - a))
 
-        # distance = R * c
+        distance = R * c
 
-        # print("Result:", distance*1000)
+        print("Result:", distance*1000)
+        return distance*1000
     def run(self):
         while self.running:
             gps_info = gps_extractor.get_current_position()
             print(gps_info)
             if gps_info.latitude != "Unknown" and gps_info.longitude != "Unknown":
                 distance = self._calculate_distance(gps_info)
-                if distance > 300:
+                if distance > 80:
                     self.driving_distance += distance
                     self.path.append({"latitude":gps_info.latitude,"longitude":gps_info.longitude})
                     place_ids = self._find_selected_raods(gps_info)
                     self._save_speed_record(gps_info,place_ids)
                     if len(place_ids) > 0:
-                        cameraCapture.camera_capturing(selectedRoadIds = place_ids)
+                        cameraCapture.camera_capturing(selectedRoadIds = place_ids, record_id=self.document_id)
             time.sleep(3)
 
 
@@ -147,11 +148,14 @@ class SpeedRecordExtractor(threading.Thread):
             return response["snappedPoints"][0]["placeId"]
             
 if __name__=="__main__":
-    thread = SpeedRecordExtractor(1,"SpeedRecordExtractorThread",1)
+    thread = SpeedRecordExtractor(1,"SpeedRecordExtractorThread",1,"123")
+
+
     gps = GPSInformationExtractor.GPSInformationResult()
-    gps.latitude = -37.91133603320601
-    gps.longitude = 145.1223078707812
-    place_ids = thread._find_selected_raods(gps)
-    thread._save_speed_record(gps,place_ids)
+    gps.latitude = -37.909143
+    gps.longitude = 145.116976
+    print(thread._calculate_distance(gps))
+    # place_ids = thread._find_selected_raods(gps)
+    # thread._save_speed_record(gps,place_ids)
     # thread.start()
     # thread._find_limited_speed(-33.86349415655294,151.21035053629208,-33.8634928,151.21036909999998)
