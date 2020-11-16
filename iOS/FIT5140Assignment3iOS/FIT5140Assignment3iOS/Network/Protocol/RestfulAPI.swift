@@ -28,6 +28,7 @@ enum RequestHost:Host{
     case roadsApi
     case overpass
     case placeApi
+    case raspberryPi
     func getHostUrl() -> String {
         switch self {
         case .roadsApi:
@@ -36,6 +37,8 @@ enum RequestHost:Host{
             return "www.overpass-api.de"
         case .placeApi:
             return "maps.googleapis.com"
+        case .raspberryPi:
+            return "13.75.187.241"
         default:
             return ""
         }
@@ -43,6 +46,8 @@ enum RequestHost:Host{
     
     func getPort() -> Int {
         switch self {
+        case .raspberryPi:
+            return RASPBERRY_PI_API_PORT
         default:
             return DEFAULT_HTTPS_PORT
         }
@@ -50,6 +55,8 @@ enum RequestHost:Host{
     
     func getScheme() -> String {
         switch self {
+        case .raspberryPi:
+            return HTTP
         default:
             return HTTPS
         }
@@ -61,6 +68,41 @@ protocol RestfulAPI {
     func getRoute()->String
     func getRequestType()->RequestType
     func getRequestHost()->RequestHost
+}
+
+enum RaspberryPiApi:RestfulAPI{
+    case get_current_speed
+    case get_speed_limit
+    
+    func getRequestName() -> String {
+        switch self {
+        case .get_current_speed:
+            return "getCurrentSpeed"
+        case .get_speed_limit:
+            return "getSpeedLimit"
+        }
+    }
+    
+    func getRoute() -> String {
+        switch self {
+        case .get_current_speed:
+            return "/api/get_current_speed"
+        case .get_speed_limit:
+            return "/api/get_current_speed_limit"
+        }
+    }
+    
+    func getRequestType() -> RequestType {
+        switch self {
+        default:
+            return .GET
+        }
+    }
+    
+    func getRequestHost() -> RequestHost {
+        return .raspberryPi
+    }
+    
 }
 
 enum GoogleApi:RestfulAPI{
