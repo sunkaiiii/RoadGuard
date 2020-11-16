@@ -57,6 +57,7 @@
 		B1E9473225615618007C74AD /* CurrentSpeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9473125615618007C74AD /* CurrentSpeedResponse.swift */; };
 		B1E947352561562C007C74AD /* DefaultSimpleGetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E947342561562C007C74AD /* DefaultSimpleGetModel.swift */; };
 		B1E94738256163E0007C74AD /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E94737256163E0007C74AD /* SoundHelper.swift */; };
+		B1E94743256248C2007C74AD /* DrivingRecordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E94742256248C2007C74AD /* DrivingRecordResponse.swift */; };
 		E40448EC254C278700341510 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40448EB254C278700341510 /* RecordViewController.swift */; };
 		E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */; };
 		E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */; };
@@ -160,6 +161,7 @@
 		B1E9473125615618007C74AD /* CurrentSpeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSpeedResponse.swift; sourceTree = "<group>"; };
 		B1E947342561562C007C74AD /* DefaultSimpleGetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSimpleGetModel.swift; sourceTree = "<group>"; };
 		B1E94737256163E0007C74AD /* SoundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
+		B1E94742256248C2007C74AD /* DrivingRecordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingRecordResponse.swift; sourceTree = "<group>"; };
 		E40448EB254C278700341510 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchAddressBottomCard.xib; sourceTree = "<group>"; };
 		E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressBottomCard.swift; sourceTree = "<group>"; };
@@ -415,6 +417,7 @@
 				B1DFBC98255AD613000B7256 /* UserSelectedRoad.swift */,
 				B1E9473125615618007C74AD /* CurrentSpeedResponse.swift */,
 				B1E947342561562C007C74AD /* DefaultSimpleGetModel.swift */,
+				B1E94742256248C2007C74AD /* DrivingRecordResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				E4BA6E8825452BF8001D0CD7 /* SearchRoadViewController.swift in Sources */,
 				B15602772552E18B003EF6B7 /* SnapToRoadsRequest.swift in Sources */,
 				B1139AC0255BD560002EA26E /* AppDelegate.swift in Sources */,
+				B1E94743256248C2007C74AD /* DrivingRecordResponse.swift in Sources */,
 				B13CEFF425410D2B00957E84 /* ImagePicker.swift in Sources */,
 				B10185D42553D4B000A5A11A /* SearchPlaceRequest.swift in Sources */,
 				B1466EA62548EF16008ED039 /* SpeedRecord.swift in Sources */,

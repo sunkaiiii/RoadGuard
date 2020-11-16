@@ -21,10 +21,12 @@ class FirebaseController: NSObject,DatabaseProtocol {
     var normalSpeedRef:CollectionReference?
     var facialRef:CollectionReference?
     var selectedRoadRef:CollectionReference?
+    var drivingRecordRef:CollectionReference?
 
     var speedInforList:[SpeedRecord] = []
     var facialInfoList:[FacialInfo] = []
     var selectedRoadaList:[UserSelectedRoadResponse] = []
+    var drivingRecordList:[DrivingRecordResponse] = []
     
     override init(){
         FirebaseApp.configure()
@@ -40,6 +42,8 @@ class FirebaseController: NSObject,DatabaseProtocol {
             self.normalSpeedRef = self.database.collection("normalSpeedRecord")
             self.facialRef = self.database.collection("facial")
             self.selectedRoadRef = self.database.collection("selectedRoad")
+            self.drivingRecordRef = self.database.collection("drivingRecord")
+            self.setUpDrivingRecordListeners()
             self.setUpSpeedLimitListeners()
             self.setUpSelectedRoadListener()
         })
@@ -52,6 +56,16 @@ class FirebaseController: NSObject,DatabaseProtocol {
                 return
             }
             self.parseFacialSnapshot(snapshot:querySnapshot)
+        })
+    }
+    
+    func setUpDrivingRecordListeners(){
+        self.drivingRecordRef?.addSnapshotListener({(querySnapshot,error) in
+            guard let querySnapshot = querySnapshot else{
+                print("Error fetching documents")
+                return
+            }
+            self.parseDrivingRecordSnaoshot(snapshot:querySnapshot)
         })
     }
 
@@ -84,6 +98,33 @@ class FirebaseController: NSObject,DatabaseProtocol {
         listeners.invoke(invocation: {(listener) in
             if listener.listenerType == .facial || listener.listenerType == .all {
                 listener.onFacialInfoChange(change: .add, facialInfos: facialInfoList)
+            }
+        })
+    }
+    
+    func parseDrivingRecordSnaoshot(snapshot:QuerySnapshot){
+        snapshot.documentChanges.forEach({(change) in
+            var parsedDrivingrecordDocument:DrivingRecordResponse?
+            do{
+                parsedDrivingrecordDocument = try change.document.data(as: DrivingRecordResponse.self)
+            }catch{
+                print("Unable to decode the Faicial infomation record")
+                return
+            }
+            guard let drivingRecord = parsedDrivingrecordDocument else{
+                print("Document does not exist")
+                return
+            }
+            switch change.type{
+            case .added:
+                drivingRecordList.append(drivingRecord)
+            default:
+                ()
+            }
+        })
+        listeners.invoke(invocation: {(listener) in
+            if listener.listenerType == .drivingRecord || listener.listenerType == .all {
+                listener.onDrivingRecordChange(change: .add, drivingRecord: drivingRecordList)
             }
         })
     }
@@ -248,15 +289,19 @@ protocol DatabaseListener:AnyObject {
     var listenerType:ListenerType{get set}
     func onFacialInfoChange(change:DatabaseChange, facialInfos:[FacialInfo])
     func onSelectedRoadInfoChange(change:DatabaseChange, selectRoads:[UserSelectedRoadResponse])
+    func onDrivingRecordChange(change:DatabaseChange, drivingRecord:[DrivingRecordResponse])
 }
 
 extension DatabaseListener{
     func onFacialInfoChange(change:DatabaseChange, facialInfos:[FacialInfo]){}
     func onSelectedRoadInfoChange(change:DatabaseChange, selectRoads:[UserSelectedRoadResponse]){}
+    func onDrivingRecordChange(change:DatabaseChange, drivingRecord:[DrivingRecordResponse]){}
 }
+
 enum ListenerType {
     case facial
     case selectedRoad
+    case drivingRecord
     case all
 }
 enum DatabaseChange {
