@@ -80,6 +80,8 @@
 		E47A9E5C2556ECAF00A815B7 /* overspeed.wav in Resources */ = {isa = PBXBuildFile; fileRef = E47A9E5B2556ECAF00A815B7 /* overspeed.wav */; };
 		E47D41DD255D83390079DE27 /* DistractionDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47D41DB255D83390079DE27 /* DistractionDetailCell.swift */; };
 		E47D41DE255D83390079DE27 /* DistractionDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E47D41DC255D83390079DE27 /* DistractionDetailCell.xib */; };
+		E48F391D2562A158001A8C1F /* BarChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48F391B2562A158001A8C1F /* BarChartTableViewCell.swift */; };
+		E48F391E2562A158001A8C1F /* BarChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E48F391C2562A158001A8C1F /* BarChartTableViewCell.xib */; };
 		E4AE1714255E0CDF009B1DAA /* DistractionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE1713255E0CDF009B1DAA /* DistractionDetailViewController.swift */; };
 		E4AE1717255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE1716255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift */; };
 		E4AE171C255E1281009B1DAA /* DistractionSpeedLimitInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE171B255E1281009B1DAA /* DistractionSpeedLimitInfoView.swift */; };
@@ -184,6 +186,8 @@
 		E47A9E5B2556ECAF00A815B7 /* overspeed.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = overspeed.wav; sourceTree = "<group>"; };
 		E47D41DB255D83390079DE27 /* DistractionDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistractionDetailCell.swift; sourceTree = "<group>"; };
 		E47D41DC255D83390079DE27 /* DistractionDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistractionDetailCell.xib; sourceTree = "<group>"; };
+		E48F391B2562A158001A8C1F /* BarChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartTableViewCell.swift; sourceTree = "<group>"; };
+		E48F391C2562A158001A8C1F /* BarChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartTableViewCell.xib; sourceTree = "<group>"; };
 		E4AE1713255E0CDF009B1DAA /* DistractionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistractionDetailViewController.swift; sourceTree = "<group>"; };
 		E4AE1716255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistractionSpeedLimitSuperView.swift; sourceTree = "<group>"; };
 		E4AE171B255E1281009B1DAA /* DistractionSpeedLimitInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistractionSpeedLimitInfoView.swift; sourceTree = "<group>"; };
@@ -446,6 +450,8 @@
 				E410CD0B255CEC780004B2D9 /* RecordDetailDistractionSummaryCell.xib */,
 				E47D41DB255D83390079DE27 /* DistractionDetailCell.swift */,
 				E47D41DC255D83390079DE27 /* DistractionDetailCell.xib */,
+				E48F391B2562A158001A8C1F /* BarChartTableViewCell.swift */,
+				E48F391C2562A158001A8C1F /* BarChartTableViewCell.xib */,
 			);
 			path = RecordDetailCellViews;
 			sourceTree = "<group>";
@@ -583,6 +589,7 @@
 				B13CEFD42540FAFB00957E84 /* LaunchScreen.storyboard in Resources */,
 				E47D41DE255D83390079DE27 /* DistractionDetailCell.xib in Resources */,
 				E4AE1725255E3B15009B1DAA /* DistractionSpeedLimitInfoView.xib in Resources */,
+				E48F391E2562A158001A8C1F /* BarChartTableViewCell.xib in Resources */,
 				B13CEFD12540FAFB00957E84 /* Assets.xcassets in Resources */,
 				E41FE641254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib in Resources */,
 				E410CD08255CEC600004B2D9 /* RecordDetailChartCell.xib in Resources */,
@@ -725,6 +732,7 @@
 				B1139AC0255BD560002EA26E /* AppDelegate.swift in Sources */,
 				B1E94743256248C2007C74AD /* DrivingRecordResponse.swift in Sources */,
 				B13CEFF425410D2B00957E84 /* ImagePicker.swift in Sources */,
+				E48F391D2562A158001A8C1F /* BarChartTableViewCell.swift in Sources */,
 				B10185D42553D4B000A5A11A /* SearchPlaceRequest.swift in Sources */,
 				B1466EA62548EF16008ED039 /* SpeedRecord.swift in Sources */,
 				B13CEFF125410D1500957E84 /* ImageExtension.swift in Sources */,

@@ -604,10 +604,10 @@
                                             </subviews>
                                         </stackView>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tE3-vP-iEE">
-                                            <rect key="frame" x="178.5" y="62" width="180.5" height="186.5"/>
+                                            <rect key="frame" x="178.5" y="62" width="180.5" height="187"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYa-OG-Cwm" customClass="DistractionSpeedLimitSuperView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
-                                                    <rect key="frame" x="114" y="129" width="58.5" height="49.5"/>
+                                                    <rect key="frame" x="114" y="129.5" width="58.5" height="49.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="lYa-OG-Cwm" secondAttribute="height" multiplier="59:50" id="foB-ht-MkP"/>
