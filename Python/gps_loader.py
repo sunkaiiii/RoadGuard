@@ -29,6 +29,13 @@ class GPSInformationExtractor:
                 print("Your position: lon = " + str(longitude) + ", lat = " + str(latitude))
                 return result
         return result
+    
+    def get_current_gps_speed(self):
+        nx = gpsd.next()
+        import sys
+        if nx['class'] == 'TPV':
+            return getattr(nx,"speed",-sys.maxsize)
+        return -sys.maxsize
 
 def getPositionData():
     nx = gpsd.next()

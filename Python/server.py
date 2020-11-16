@@ -3,6 +3,7 @@ from flask import Flask
 from driving_record import DrivingRecordRecorder
 import json
 import OBD2Helper
+import sys
 
 app = Flask(__name__)
 recorder = DrivingRecordRecorder()
@@ -39,7 +40,10 @@ def get_running_status():
 @app.route('/api/get_current_speed', methods = ['GET'])
 def get_current_speed():
     result = {}
-    result["speed"] = OBD2Helper.get_current_speed()
+    speed = OBD2Helper.get_current_speed()
+    if speed == -sys.maxsize:
+        speed = recorder.get_current_gps_speed()
+    result["speed"] = speed
     return json.dumps(result)
 
 @app.route('/api/get_current_speed_limit',methods = ['GET'])

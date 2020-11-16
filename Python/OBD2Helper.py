@@ -16,7 +16,10 @@ def get_current_speed():
     # print(queryResult.value.magnitude)
     # print(type(queryResult.value.magnitude))
     # get exactly value of the spped, referenes on https://pint.readthedocs.io/en/stable/tutorial.html
-    return int(queryResult.value.magnitude)
+    if queryResult.value is not None:
+        return int(queryResult.value.magnitude)
+    import sys
+    return -sys.maxsize
 
 
 def close_connection():

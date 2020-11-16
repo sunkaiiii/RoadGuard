@@ -75,6 +75,8 @@ class SpeedRecordExtractor(threading.Thread):
             time.sleep(3)
 
 
+    def get_current_gps_speed(self):
+        return gps_extractor.get_current_gps_speed()
 
 
     def _find_selected_raods(self,gps_info):
