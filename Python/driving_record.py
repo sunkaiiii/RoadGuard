@@ -38,6 +38,9 @@ class DrivingRecordRecorder:
     
     def get_speed_limit(self):
         return self.recorder.current_speed_limit
+
+    def get_current_gps_speed(self):
+        return self.recorder.get_current_gps_speed()
         
 if __name__=="__main__":
     recorder = DrivingRecordRecorder()
