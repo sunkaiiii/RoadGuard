@@ -34,7 +34,7 @@ class GPSInformationExtractor:
         nx = gpsd.next()
         import sys
         if nx['class'] == 'TPV':
-            return getattr(nx,"speed",-sys.maxsize)
+            return getattr(nx,"speed",-sys.maxsize) * 3.6
         return -sys.maxsize
 
 def getPositionData():

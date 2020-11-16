@@ -41,8 +41,11 @@ def get_running_status():
 def get_current_speed():
     result = {}
     speed = OBD2Helper.get_current_speed()
+    result["isError"] = False
     if speed == -sys.maxsize:
         speed = recorder.get_current_gps_speed()
+        if speed == -sys.maxsize:
+            result["isError"] = True
     result["speed"] = speed
     return json.dumps(result)
 

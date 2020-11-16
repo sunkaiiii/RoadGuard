@@ -37,7 +37,12 @@ class FileStoreUserSelectedRoad:
 
 # https://stackoverflow.com/questions/56918460/how-to-fix-error-object-of-type-generator-has-no-len-python
 if __name__=="__main__":
-    firebase = FileStoreUserSelectedRoad()
-    query = firebase.queryByPlaceId("ChIJyzwejcRq1moR4J7N3zYV5lo")
-    for q in query:
-        print(q.id)
+    # firebase = FileStoreUserSelectedRoad()
+    # query = firebase.queryByPlaceId("ChIJyzwejcRq1moR4J7N3zYV5lo")
+    # for q in query:
+    #     print(q.id)
+    firebase = FireStoreSaver("drivingRecord")
+    query = firebase.getAllData()
+    docs = query.stream()
+    for doc in docs:
+        print(u'{} => {}'.format(doc.id, doc.to_dict()))
