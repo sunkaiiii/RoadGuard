@@ -23,15 +23,16 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mamungkukumpurangkuntjunya" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="xh1-aC-XTb">
-                                    <rect key="frame" x="18" y="23.5" width="67" height="14"/>
+                                    <rect key="frame" x="18" y="15" width="67" height="31"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <constraints>
+                                <constraint firstItem="xh1-aC-XTb" firstAttribute="top" secondItem="OyY-X4-SQN" secondAttribute="top" constant="15" id="9gj-Xk-hFu"/>
+                                <constraint firstAttribute="bottom" secondItem="xh1-aC-XTb" secondAttribute="bottom" constant="15" id="I2P-79-lw6"/>
                                 <constraint firstAttribute="trailing" secondItem="xh1-aC-XTb" secondAttribute="trailing" constant="15" id="dnj-fP-LRX"/>
-                                <constraint firstItem="xh1-aC-XTb" firstAttribute="centerY" secondItem="OyY-X4-SQN" secondAttribute="centerY" id="ftV-gG-Dxj"/>
                                 <constraint firstItem="xh1-aC-XTb" firstAttribute="leading" secondItem="OyY-X4-SQN" secondAttribute="leading" constant="18" id="ijf-sc-pi9"/>
                             </constraints>
                         </view>
