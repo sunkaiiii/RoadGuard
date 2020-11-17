@@ -8,6 +8,11 @@ import sys
 app = Flask(__name__)
 recorder = DrivingRecordRecorder()
 
+# pip3 install obd
+# pip3 install firebase_admin
+# pip3 install mpu
+# pip3 install boto3
+
 @app.route('/api/start_recording',methods=['GET'])
 def start_recording_service():
     result = {}
