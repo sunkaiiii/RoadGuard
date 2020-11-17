@@ -34,8 +34,8 @@ class BottomCardImportantRoadCell: UITableViewCell,DefaultHttpRequestAction {
             guard let first = firstPoint, let last = lastPoint else {
                 return
             }
-            requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: first.placeID), jsonType: PlaceDetailResponse.self)
-            requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: last.placeID), jsonType: PlaceDetailResponse.self)
+            requestCachegableDataFromRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: first.placeID), jsonType: PlaceDetailResponse.self, cachegableHelper: PlaceDetailResponseCacheDataHelper())
+            requestCachegableDataFromRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: last.placeID), jsonType: PlaceDetailResponse.self, cachegableHelper: PlaceDetailResponseCacheDataHelper())
         }
     }
     

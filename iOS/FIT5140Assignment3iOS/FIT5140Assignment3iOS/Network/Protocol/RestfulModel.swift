@@ -47,4 +47,26 @@ class RequestHelper: NSObject {
         self.restfulAPI = api
         self.requestModel = model
     }
+    
+    func buildUrlComponents()->(URL?, URLComponents){
+        let host = restfulAPI.getRequestHost()
+        var urlComponents = URLComponents()
+        urlComponents.scheme = host.getScheme()
+        urlComponents.host = host.getHostUrl()
+        urlComponents.port = host.getPort()
+        urlComponents.path = restfulAPI.getRoute()
+        let pathParameter = requestModel.getPathParameter()
+        for path in pathParameter{
+            urlComponents.path += "/"+path
+        }
+        var queryItems:[URLQueryItem] = []
+        for query in requestModel.getQueryParameter(){
+            queryItems.append(URLQueryItem(name: query.key, value: query.value))
+        }
+        if queryItems.count > 0{
+            urlComponents.queryItems = queryItems
+        }
+        print(urlComponents.url?.absoluteString ?? "")
+        return (urlComponents.url, urlComponents)
+    }
 }
