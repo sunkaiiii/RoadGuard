@@ -33,7 +33,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         firebaseController = appDelegate.firebaseController
         //to make the speed circle position dynamiclly adjusted on different size of screen
-        bottomSpacingConstraint.constant = self.view.frame.height / 8
+        bottomSpacingConstraint.constant = self.view.frame.height / 9
         
     }
 

@@ -364,15 +364,15 @@
 			isa = PBXGroup;
 			children = (
 				B1139AC4255C119A002EA26E /* ControllerHelpers */,
-				B13CF00D2541AA2000957E84 /* HomeViewController.swift */,
-				B1AB3A772542B9480082B004 /* RoadInformationViewController.swift */,
-				B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */,
-				E4BA6E8725452BF8001D0CD7 /* SearchRoadViewController.swift */,
-				E40448EB254C278700341510 /* RecordViewController.swift */,
 				E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */,
+				B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */,
+				E4AE1713255E0CDF009B1DAA /* DistractionDetailViewController.swift */,
+				B13CF00D2541AA2000957E84 /* HomeViewController.swift */,
 				E4E6FE862559711000DC8050 /* ImportantPathDetailViewController.swift */,
 				E410CCEF255CB4730004B2D9 /* RecordDetailViewController.swift */,
-				E4AE1713255E0CDF009B1DAA /* DistractionDetailViewController.swift */,
+				E40448EB254C278700341510 /* RecordViewController.swift */,
+				B1AB3A772542B9480082B004 /* RoadInformationViewController.swift */,
+				E4BA6E8725452BF8001D0CD7 /* SearchRoadViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";

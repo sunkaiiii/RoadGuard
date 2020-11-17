@@ -39,7 +39,7 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.areaOutlet = searchAddressBottomCardTableViewOutlet
+        self.areaOutlet = searchAddressBottomCardHandleAreaOutlet
         searchAddressBottomCardTableViewOutlet.delegate = self
         searchAddressBottomCardTableViewOutlet.dataSource = self
         searchAddressBottomCardTableViewOutlet.register(UITableViewCell.self, forCellReuseIdentifier: DEFAULT_CELL_ID)

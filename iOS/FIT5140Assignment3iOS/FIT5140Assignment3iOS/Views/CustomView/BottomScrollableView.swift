@@ -4,9 +4,10 @@
 //
 //  Created by sunkai on 29/10/20.
 //
-//Basing on the BottomCard/FloatPanel from //http://www.brianadvent.com/
+//Basing on the BottomCard/FloatPanel from https://github.com/brianadvent/InteractiveCardViewAnimation
 
 import UIKit
+//dif1: UIViewController
 class BottomScrollableView: UIView {
     // MARK: - BottomCard/FloatPanel Related fields
     enum CardState {
@@ -17,7 +18,10 @@ class BottomScrollableView: UIView {
     var contentViewController : ScrollableViewController!
     var visualEffectView : UIVisualEffectView!
 
+    //will adjusted in the page which using the bottom card
+    //whole card height
     var cardHeight:CGFloat = 680
+    //the height of the handle area
     var cardHandleAreaHeight:CGFloat = 400
 
     var cardVisible = false
@@ -28,6 +32,7 @@ class BottomScrollableView: UIView {
     var runningAnimations = [UIViewPropertyAnimator]()
     var animationProgressWhenInterrupted:CGFloat = 0
 
+    //dif2: Original ref do not have init
     init(contentViewController:ScrollableViewController,superview:UIView) {
         self.contentViewController = contentViewController
         super.init(frame: superview.frame)
@@ -48,27 +53,21 @@ class BottomScrollableView: UIView {
     func setupBottomCard(superview:UIView) {
         visualEffectView = UIVisualEffectView()
         visualEffectView.frame = superview.frame
+
+        //y:superview.height - handleAreaHeight means that: only show the handle area at the begining. the card body will be out side the bottomline of the view
         contentViewController.view.frame = CGRect(x: 0, y: superview.frame.height - cardHandleAreaHeight, width: superview.bounds.width, height: cardHeight)
 
         contentViewController.view.clipsToBounds = true
+        contentViewController.view.layer.cornerRadius = 32
 
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(BottomScrollableView.handleCardPan(recognizer:)))
-        contentViewController.view.layer.cornerRadius = 32
         contentViewController.areaOutlet?.addGestureRecognizer(panGestureRecognizer)
+
+//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(BottomScrollableView.handleCardTap(recognzier:)))
+//        contentViewController.areaOutlet?.addGestureRecognizer(tapGestureRecognizer)
+
         self.addSubview(visualEffectView)
         self.addSubview(contentViewController.view)
-    }
-    
-    //handle the touch event distribution
-    //references on https://gist.github.com/siberian1967/ab1e15f46b5ed30d0e3060079f090ae8
-    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        if cardVisible{
-            return true
-        }
-        if(point.y > self.contentViewController.view.frame.origin.y){
-            return true
-        }
-        return false
     }
 
     @objc
@@ -167,4 +166,18 @@ class BottomScrollableView: UIView {
             animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
         }
     }
+
+
+    //handle the touch event distribution
+    //references on https://gist.github.com/siberian1967/ab1e15f46b5ed30d0e3060079f090ae8
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        if cardVisible{
+            return true
+        }
+        if(point.y > self.contentViewController.view.frame.origin.y){
+            return true
+        }
+        return false
+    }
+
 }
