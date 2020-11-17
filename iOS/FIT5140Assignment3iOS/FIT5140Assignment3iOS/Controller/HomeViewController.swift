@@ -21,6 +21,8 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
     @IBOutlet weak var speedAlertView: SpeedAlertSuperView!
     @IBOutlet weak var speedNotificationView: SpeedNotificationSuperView!
     
+    @IBOutlet weak var bottomSpacingConstraint: NSLayoutConstraint!
+
     var lastPosition:CLLocationCoordinate2D?
     var limitSpeed:Int = -1
     override func viewDidLoad() {
@@ -30,6 +32,8 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
         initGoogleMap()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         firebaseController = appDelegate.firebaseController
+        //to make the speed circle position dynamiclly adjusted on different size of screen
+        bottomSpacingConstraint.constant = self.view.frame.height / 9
         
     }
 

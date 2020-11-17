@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,14 +17,14 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="k19-hI-YMh">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="490"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QqI-iT-ofv">
-                    <rect key="frame" x="0.0" y="2" width="375" height="35"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="35"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0L-3v-DRt">
-                            <rect key="frame" x="157" y="14" width="61" height="7"/>
+                            <rect key="frame" x="176.5" y="14" width="61" height="7"/>
                             <color key="backgroundColor" systemColor="systemGray3Color"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="61" id="Ld7-1L-p5S"/>
@@ -33,28 +34,29 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="35" id="0ID-dq-JDG"/>
                         <constraint firstItem="a0L-3v-DRt" firstAttribute="centerX" secondItem="QqI-iT-ofv" secondAttribute="centerX" id="FvK-Hm-Gkd"/>
                         <constraint firstItem="a0L-3v-DRt" firstAttribute="centerY" secondItem="QqI-iT-ofv" secondAttribute="centerY" id="VIh-Uv-ue1"/>
+                        <constraint firstAttribute="height" constant="35" id="gl7-Al-xQQ"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bcR-A1-ktX">
-                    <rect key="frame" x="0.0" y="37" width="375" height="453"/>
+                    <rect key="frame" x="0.0" y="35" width="414" height="827"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="LqN-qe-nk4"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="QqI-iT-ofv" firstAttribute="top" secondItem="k19-hI-YMh" secondAttribute="top" id="9Od-fi-OYg"/>
                 <constraint firstItem="QqI-iT-ofv" firstAttribute="leading" secondItem="LqN-qe-nk4" secondAttribute="leading" id="9Qg-mf-VtO"/>
                 <constraint firstItem="LqN-qe-nk4" firstAttribute="trailing" secondItem="QqI-iT-ofv" secondAttribute="trailing" id="SvO-zM-m4t"/>
                 <constraint firstItem="LqN-qe-nk4" firstAttribute="trailing" secondItem="bcR-A1-ktX" secondAttribute="trailing" id="fOI-RY-2un"/>
-                <constraint firstItem="QqI-iT-ofv" firstAttribute="top" secondItem="LqN-qe-nk4" secondAttribute="top" constant="2" id="kHj-qG-fLa"/>
-                <constraint firstItem="LqN-qe-nk4" firstAttribute="bottom" secondItem="bcR-A1-ktX" secondAttribute="bottom" id="p5A-Du-ZVB"/>
+                <constraint firstItem="bcR-A1-ktX" firstAttribute="bottom" secondItem="LqN-qe-nk4" secondAttribute="bottom" id="iKV-iR-4Q7"/>
                 <constraint firstItem="bcR-A1-ktX" firstAttribute="leading" secondItem="LqN-qe-nk4" secondAttribute="leading" id="rMT-qC-2DK"/>
                 <constraint firstItem="bcR-A1-ktX" firstAttribute="top" secondItem="QqI-iT-ofv" secondAttribute="bottom" id="zcr-e5-vPa"/>
             </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <point key="canvasLocation" x="-686.23188405797111" y="75.669642857142847"/>
         </view>
     </objects>

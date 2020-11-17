@@ -9,8 +9,6 @@ import UIKit
 
 class RoadInformationViewController: UIViewController,DefaultHttpRequestAction , RoadInfoBottomCardDelegate{
 
-    
-
     let DETAIL_PAGE_SEGUE_ID = "importantPathsSegue"
     
     override func viewDidLoad() {
@@ -36,6 +34,9 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction ,
     func setupBottomCard() {
         let contentController = RoadInfoBottomCard(nibName:"RoadInfoBottomCard", bundle:nil)
         let bototmScrollableViewController = BottomScrollableView(contentViewController: contentController, superview: self.view)
+//        self.addChild(contentController)
+        bototmScrollableViewController.cardHandleAreaHeight = self.view.frame.height / 2.5
+        bototmScrollableViewController.cardHeight =  self.view.frame.height / 4 * 3
         self.view.addSubview(bototmScrollableViewController)
         contentController.delegateParent = self
     }

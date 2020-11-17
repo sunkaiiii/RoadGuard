@@ -46,10 +46,6 @@
                                         <constraint firstAttribute="bottom" secondItem="2G6-7i-bMp" secondAttribute="bottom" constant="18" id="z7U-uH-ysH"/>
                                     </constraints>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tFy-5f-3vw" customClass="HorizontalBarChartView" customModule="Charts">
-                                    <rect key="frame" x="10" y="296.5" width="270" height="260.5"/>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ZU-47-62P">
                                     <rect key="frame" x="3" y="280.5" width="284" height="1"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -58,19 +54,26 @@
                                         <constraint firstAttribute="height" constant="1" id="rAQ-wa-6wG"/>
                                     </constraints>
                                 </view>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zbA-EY-1XI">
+                                    <rect key="frame" x="10" y="296.5" width="270" height="260.5"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </tableView>
                             </subviews>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="zbA-EY-1XI" secondAttribute="bottom" constant="5" id="34O-Ji-PXK"/>
                                 <constraint firstItem="LJ2-dB-JAV" firstAttribute="top" secondItem="TR9-Px-qzL" secondAttribute="top" constant="5" id="85Y-Fa-IvG"/>
                                 <constraint firstItem="3ZU-47-62P" firstAttribute="centerY" secondItem="TR9-Px-qzL" secondAttribute="centerY" id="8XG-wN-jns"/>
                                 <constraint firstItem="3ZU-47-62P" firstAttribute="top" secondItem="LJ2-dB-JAV" secondAttribute="bottom" constant="15" id="9Hf-pN-8wT"/>
-                                <constraint firstItem="tFy-5f-3vw" firstAttribute="leading" secondItem="TR9-Px-qzL" secondAttribute="leading" constant="10" id="Cpi-jz-k3V"/>
-                                <constraint firstAttribute="trailing" secondItem="tFy-5f-3vw" secondAttribute="trailing" constant="10" id="HcQ-7j-sY5"/>
-                                <constraint firstAttribute="bottom" secondItem="tFy-5f-3vw" secondAttribute="bottom" constant="5" id="LUi-ow-rEB"/>
+                                <constraint firstItem="zbA-EY-1XI" firstAttribute="top" secondItem="3ZU-47-62P" secondAttribute="bottom" constant="15" id="JA1-6C-FB3"/>
                                 <constraint firstItem="3ZU-47-62P" firstAttribute="leading" secondItem="TR9-Px-qzL" secondAttribute="leading" constant="3" id="VHW-fS-wpQ"/>
                                 <constraint firstAttribute="trailing" secondItem="3ZU-47-62P" secondAttribute="trailing" constant="3" id="ajI-Bi-lNN"/>
-                                <constraint firstItem="tFy-5f-3vw" firstAttribute="top" secondItem="3ZU-47-62P" secondAttribute="bottom" constant="15" id="d9W-JE-J0Z"/>
                                 <constraint firstAttribute="trailing" secondItem="LJ2-dB-JAV" secondAttribute="trailing" constant="10" id="dm1-sx-Ryd"/>
+                                <constraint firstAttribute="trailing" secondItem="zbA-EY-1XI" secondAttribute="trailing" constant="10" id="jiJ-4V-ZrZ"/>
                                 <constraint firstItem="LJ2-dB-JAV" firstAttribute="leading" secondItem="TR9-Px-qzL" secondAttribute="leading" constant="10" id="quq-9F-EEj"/>
+                                <constraint firstItem="zbA-EY-1XI" firstAttribute="leading" secondItem="TR9-Px-qzL" secondAttribute="leading" constant="10" id="zAa-pV-cTS"/>
                             </constraints>
                         </view>
                         <blurEffect style="regular"/>
@@ -90,7 +93,7 @@
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="backgroundVisualEffectView" destination="JtZ-mp-Hq9" id="hBO-TH-YWB"/>
-                <outlet property="horizontalBarChartOutlet" destination="tFy-5f-3vw" id="pGj-im-hVq"/>
+                <outlet property="barChartTableVIew" destination="zbA-EY-1XI" id="ZkY-cx-FJo"/>
                 <outlet property="lineChartOutlet" destination="LJ2-dB-JAV" id="eZl-Dw-Qm3"/>
             </connections>
             <point key="canvasLocation" x="314.49275362318843" y="79.6875"/>

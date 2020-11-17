@@ -19,5 +19,4 @@ class PlaceDetailRequest:NSObject,SimpleRequestModel {
     init(placeId:String) {
         self.placeId = placeId
     }
-
 }

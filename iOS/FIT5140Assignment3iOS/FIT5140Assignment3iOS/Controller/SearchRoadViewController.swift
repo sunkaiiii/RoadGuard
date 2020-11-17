@@ -148,16 +148,7 @@ class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMa
         selectMapItem.title = SAVE_ROAD_TEXT
     }
     
-    // MARK: - BottomCard/FloatPanel Related functions
-    func setupBottomCard(){
-        let contentView = SearchAddressBottomCard(nibName:"SearchAddressBottomCard", bundle:nil)
-        contentView.searchAddressDelegate = self
-        let bototmScrollableViewController = BottomScrollableView(contentViewController: contentView, superview: self.view)
-        bottomContentView = bototmScrollableViewController
-        bototmScrollableViewController.cardHandleAreaHeight = 180
-        self.view.addSubview(bototmScrollableViewController)
-    }
-    
+
     func addRoad(roadInfo: RoadInformation) {
         selectedRoads.append(roadInfo)
         requestPathBySelectedRoads()
@@ -175,4 +166,16 @@ class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMa
         let points = selectedRoads.map({(road)->CLLocationCoordinate2D in CLLocationCoordinate2D(latitude: road.latitude, longitude: road.longitude)})
         requestRestfulService(api: GoogleApi.snapToRoads, model: SnapToRoadsRequest(points: points), jsonType: SnapToRoadsResponse.self)
     }
+
+    // MARK: - BottomCard/FloatPanel Related functions
+    func setupBottomCard(){
+        let contentView = SearchAddressBottomCard(nibName:"SearchAddressBottomCard", bundle:nil)
+        contentView.searchAddressDelegate = self
+        let bototmScrollableViewController = BottomScrollableView(contentViewController: contentView, superview: self.view)
+        bottomContentView = bototmScrollableViewController
+        bototmScrollableViewController.cardHandleAreaHeight = self.view.frame.height / 5 + 15
+        bototmScrollableViewController.cardHeight =  self.view.frame.height / 4 * 3
+        self.view.addSubview(bototmScrollableViewController)
+    }
+
 }

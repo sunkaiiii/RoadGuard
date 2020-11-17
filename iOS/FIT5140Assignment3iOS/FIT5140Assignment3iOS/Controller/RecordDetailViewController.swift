@@ -42,21 +42,21 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
         ChartDataEntry(x:11.0, y:35.0)
     ]
 
-    let barChartDataEntries : [BarChartDataEntry] = [
-
-        BarChartDataEntry(x:0.0, y:3.0),
-        BarChartDataEntry(x:1.0, y:8.0),
-        BarChartDataEntry(x:2.0, y:15.0),
-        BarChartDataEntry(x:3.0, y:25.0),
-        BarChartDataEntry(x:4.0, y:35.0),
-        BarChartDataEntry(x:5.0, y:50.0),
-        BarChartDataEntry(x:6.0, y:65.0),
-        BarChartDataEntry(x:7.0, y:75.0),
-        BarChartDataEntry(x:8.0, y:80.0),
-        BarChartDataEntry(x:9.0, y:65.0),
-        BarChartDataEntry(x:10.0, y:55.0),
-        BarChartDataEntry(x:11.0, y:35.0)
-    ]
+//    var barChartDataEntries : [BarChartDataEntry] = [
+//
+//        BarChartDataEntry(x:11.0, y:3.0),
+//        BarChartDataEntry(x:1.0, y:8.0),
+//        BarChartDataEntry(x:9.0, y:15.0),
+//        BarChartDataEntry(x:3.0, y:25.0),
+//        BarChartDataEntry(x:4.0, y:35.0),
+//        BarChartDataEntry(x:5.0, y:50.0),
+//        BarChartDataEntry(x:6.0, y:65.0),
+//        BarChartDataEntry(x:7.0, y:75.0),
+//        BarChartDataEntry(x:8.0, y:80.0),
+//        BarChartDataEntry(x:2.0, y:65.0),
+//        BarChartDataEntry(x:10.0, y:55.0),
+//        BarChartDataEntry(x:0.0, y:35.0)
+//    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +66,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
         recordDetailTableView.register(RecordDetailMatrixCell.nib(), forCellReuseIdentifier: MATRIX_CELL_ID)
         recordDetailTableView.register(RecordDetailChartCell.nib(), forCellReuseIdentifier: CHART_CELL_ID)
         recordDetailTableView.register(RecordDetailDistractionSummaryCell.nib(), forCellReuseIdentifier: DISTRACTION_CELL_ID)
-
+    
         // Do any additional setup after loading the view.
     }
     
@@ -110,17 +110,12 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
             let lineChart = cell.lineChartOutlet
             lineChart?.data = lineChartData
 
-            //configure horizontal bar chart data
-            //有待再调整，现在做的和设计图差异较大
-            let horizontolBarChartDataSet = BarChartDataSet(entries: barChartDataEntries)
-            horizontolBarChartDataSet.setColor(UIColor(red: 0.45, green: 0.74, blue: 0.94, alpha: 1.00))
-            let horizontalBarChartData = BarChartData(dataSet: horizontolBarChartDataSet)
-            let horizontalBarChart = cell.horizontalBarChartOutlet
-            horizontalBarChart?.data = horizontalBarChartData
+            //需要替换传入的值
+            cell.barChartTableViewDataSource = [("street1", 60),("street2", 80),("street3", 90),("street4", 60),("street5", 120),("street6", 180),("street7", 260),("street1", 360),("street1", 120),("street1", 40),("street1", 20)]
+            cell.barChartTableVIew.reloadData()
+
 
             return cell
-
-
 
         } else {
             //SECTION_DISTRACTION_SUMMARY
