@@ -58,6 +58,8 @@
 		B1E947352561562C007C74AD /* DefaultSimpleGetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E947342561562C007C74AD /* DefaultSimpleGetModel.swift */; };
 		B1E94738256163E0007C74AD /* SoundHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E94737256163E0007C74AD /* SoundHelper.swift */; };
 		B1E94743256248C2007C74AD /* DrivingRecordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E94742256248C2007C74AD /* DrivingRecordResponse.swift */; };
+		B1F632512563FFE700787119 /* CachegableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F632502563FFE700787119 /* CachegableData.swift */; };
+		B1F6325525640D9D00787119 /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F6325425640D9D00787119 /* RealmController.swift */; };
 		E40448EC254C278700341510 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40448EB254C278700341510 /* RecordViewController.swift */; };
 		E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */; };
 		E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */; };
@@ -164,6 +166,8 @@
 		B1E947342561562C007C74AD /* DefaultSimpleGetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSimpleGetModel.swift; sourceTree = "<group>"; };
 		B1E94737256163E0007C74AD /* SoundHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundHelper.swift; sourceTree = "<group>"; };
 		B1E94742256248C2007C74AD /* DrivingRecordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingRecordResponse.swift; sourceTree = "<group>"; };
+		B1F632502563FFE700787119 /* CachegableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachegableData.swift; sourceTree = "<group>"; };
+		B1F6325425640D9D00787119 /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		E40448EB254C278700341510 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchAddressBottomCard.xib; sourceTree = "<group>"; };
 		E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressBottomCard.swift; sourceTree = "<group>"; };
@@ -278,6 +282,7 @@
 		B13CEFC62540FAF900957E84 /* FIT5140Assignment3iOS */ = {
 			isa = PBXGroup;
 			children = (
+				B1F6324B2563FEF300787119 /* CacheHelper */,
 				B13CF00C2541A9FE00957E84 /* Controller */,
 				B13CEFF625410D4E00957E84 /* ControllerHelper */,
 				B13CEFEB25410C8200957E84 /* ImageHelper */,
@@ -435,6 +440,15 @@
 				E4AE1716255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift */,
 			);
 			path = SuperViews;
+			sourceTree = "<group>";
+		};
+		B1F6324B2563FEF300787119 /* CacheHelper */ = {
+			isa = PBXGroup;
+			children = (
+				B1F632502563FFE700787119 /* CachegableData.swift */,
+				B1F6325425640D9D00787119 /* RealmController.swift */,
+			);
+			path = CacheHelper;
 			sourceTree = "<group>";
 		};
 		E410CCF4255CE9D10004B2D9 /* RecordDetailCellViews */ = {
@@ -715,6 +729,7 @@
 				B1139AC6255C11B4002EA26E /* ImportantPatDetailViewControllerExtension.swift in Sources */,
 				B170FC74254290D00086F1D9 /* SpeedNotificationView.swift in Sources */,
 				B13CEFF825410D5F00957E84 /* UITextFieldHelper.swift in Sources */,
+				B1F632512563FFE700787119 /* CachegableData.swift in Sources */,
 				E4F59EC72552DA8300286BE7 /* MulticastDelegate.swift in Sources */,
 				E45B4875254CFF7600692A2E /* RecordBreakdownViewController.swift in Sources */,
 				B1DFBC99255AD613000B7256 /* UserSelectedRoad.swift in Sources */,
@@ -722,6 +737,7 @@
 				E4AE1714255E0CDF009B1DAA /* DistractionDetailViewController.swift in Sources */,
 				E4D865E425458CE400465243 /* RoadInfoBottomCard.swift in Sources */,
 				B13CEFDF2540FD7A00957E84 /* RestfulAPI.swift in Sources */,
+				B1F6325525640D9D00787119 /* RealmController.swift in Sources */,
 				B13CEFFC25410D7400957E84 /* ToastHelper.swift in Sources */,
 				E410CD02255CEC390004B2D9 /* RecordDetailMatrixCell.swift in Sources */,
 				B13CEFED25410C9000957E84 /* ImageLoader.swift in Sources */,

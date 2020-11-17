@@ -9,7 +9,24 @@ import Foundation
 
 // MARK: - PlaceDetailResponse
 struct PlaceDetailResponse: Codable {
+
     let result: PlaceDetail
+
+}
+
+class PlaceDetailResponseCacheDataHelper:CachegableData{
+    func tryFetchCacheData(request: RequestModel) -> Decodable? {
+        if let placeDetailRequest = request as? PlaceDetailRequest{
+            return RealmController.shared.getPlaceDetailCacheData(placeDetailRequest.placeId)
+        }
+        return nil
+    }
+    
+    func cacheData(data: Decodable) {
+        if let data = data as? PlaceDetailResponse{
+            RealmController.shared.storePlaceDetailResponse(data)
+        }
+    }
 }
 
 // MARK: - Result
