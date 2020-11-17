@@ -79,11 +79,20 @@ class RecordDetailChartCell: UITableViewCell, ChartViewDelegate, UITableViewDele
         let speed = CGFloat(barChartTableViewDataSource[indexPath.row].1)
         let name = barChartTableViewDataSource[indexPath.row].0
         let widthRatio = speed/maxPossibleSpeed
-//        cell.backgroundVisualEffect.frame.size.width = (self.frame.width - 50.0) * widthRatio
-//        cell.backgroundVisualEffect.contentView.frame.size.width = (self.frame.width - 50.0) * widthRatio
-        cell.barWidthConstraint.constant = (self.frame.width - 50.0) * widthRatio
+
+        let baseWidth = CGFloat(130)
+        let totalGapWidth = CGFloat(110)
+
+        if speed == CGFloat(0) {
+            cell.barWidthConstraint.constant = baseWidth
+        } else {
+            cell.barWidthConstraint.constant = baseWidth + (self.frame.width - baseWidth - totalGapWidth) * widthRatio
+        }
+
+
         cell.streetNameLabel.text = name
-        cell.speedLabel.text =  "\(speed)km/h"
+        //we don't use CGFloat result here
+        cell.speedLabel.text =  "\(barChartTableViewDataSource[indexPath.row].1)km/h"
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
