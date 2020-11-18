@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 
 final class RealmController:CacheController{
+    
     static let shared = RealmController()
     private var realm : Realm?
     
@@ -46,7 +47,7 @@ final class RealmController:CacheController{
 
     }
     
-    func getPlaceDetailCacheDataFromRealm(_ placeId:String)->PlaceDetailResponse?{
+    func getPlaceDetailCacheData(_ placeId:String)->PlaceDetailResponse?{
 
 //        let results = realm?.objects(PlaceDetail.self)
 
@@ -62,7 +63,7 @@ final class RealmController:CacheController{
         return nil
     }
     
-    func storePlaceDetailResponseIntoRealm(_ placeDetail: PlaceDetailResponse) {
+    func storePlaceDetailResponse(_ placeDetail: PlaceDetailResponse) {
 
         let location = PlaceDetailLocationRealmModel()
         location.lat.value = placeDetail.result.geometry.location.lat
@@ -124,10 +125,5 @@ final class RealmController:CacheController{
 
         return
     }
-}
-
-protocol CacheController {
-    func getPlaceDetailCacheDataFromRealm(_ placeId:String)->PlaceDetailResponse?
-    func storePlaceDetailResponseIntoRealm(_ placeDetail:PlaceDetailResponse)
 }
 
