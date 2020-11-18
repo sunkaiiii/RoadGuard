@@ -49,22 +49,24 @@ final class RealmController:CacheController{
     
     func getPlaceDetailCacheData(_ placeId:String)->PlaceDetailResponse?{
 
-//        let results = realm?.objects(PlaceDetail.self)
+        let queryResults = realm?.objects(PlaceDetailResponseRealmModel.self)
 
-        //first fetch data from Realm DB, if not exist, then make a Network Request
-
-        //            let predicate = NSPredicate(format: "placeID = %@",points.placeID)
-        //            if  let oneResult = results!.filter(predicate).first {
-        //                self.tableViewDataSourceNearby.append(oneResult)
-        //            }else {
-        //                requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self)
-        //            }
-
+        //first fetch data from Realm DB
+        if let noneEmptyQueryResults = queryResults {
+            for queryResult in noneEmptyQueryResults {
+                if queryResult.result?.placeID == placeId{
+                    let placeDetailResponse = PlaceDetailResponse(placeDetailResponseRealmModel: queryResult)
+                    return placeDetailResponse
+                    //let predicate = NSPredicate(format: "placeID = %@", placeId)
+                    //let firstResultOfRealmModel = results!.filter(predicate).first
+                }
+            }
+        }
         return nil
     }
     
     func storePlaceDetailResponse(_ placeDetail: PlaceDetailResponse) {
-
+        //converting placeDetail into Realm Model
         let location = PlaceDetailLocationRealmModel()
         location.lat.value = placeDetail.result.geometry.location.lat
         location.lng.value = placeDetail.result.geometry.location.lng
@@ -90,39 +92,33 @@ final class RealmController:CacheController{
 
         let addressComponentsOriginal = placeDetail.result.addressComponents
         for address in addressComponentsOriginal{
-
             let addressComponent = AddressComponentRealmModel()
             addressComponent.types.append(objectsIn: address.types)
             addressComponent.longName = address.longName
             addressComponent.shortName = address.shortName
-
+            result.addressComponents.append(addressComponent)
         }
 
+        result.formattedAddress = placeDetail.result.formattedAddress
+        result.icon = placeDetail.result.icon
+        result.name = placeDetail.result.name
+        result.placeID = placeDetail.result.placeID
 
-
-
-
-
+        if let types = placeDetail.result.types{
+            result.types.append(objectsIn: types)
+        }
 
         let placeDetailResponseRealmModel = PlaceDetailResponseRealmModel()
         placeDetailResponseRealmModel.result = result
 
-
-
-
-
-
-
         //store into realm
-        //        do{
-        //            try realm?.write{
-        //                realm?.add(placeDetailResponse.result!)
-        //            }
-        //        } catch {
-        //            print(error)
-        //        }
-
-
+        do{
+            try realm?.write{
+                realm?.add(placeDetailResponseRealmModel)
+            }
+        } catch {
+            print(error)
+        }
         return
     }
 }
