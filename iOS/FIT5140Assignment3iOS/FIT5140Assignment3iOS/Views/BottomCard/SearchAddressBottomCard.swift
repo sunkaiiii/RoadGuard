@@ -179,8 +179,10 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
 
 
         nearestRoads.snappedPoints.forEach({(points) in
-            requestRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self)
+            requestCachegableDataFromRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self, cachegableHelper: PlaceDetailResponseCacheDataHelper())
         })
+
+        
         //考虑for each循环完再reaload的话, case placeDetail 里是否还需要reaload,  以及这里会不会造成线程异步问题?
         //这里要不要把更新UI明确放在主线程？（不太清楚现在是什么线程）
         //after updating table view data source, reload table view
