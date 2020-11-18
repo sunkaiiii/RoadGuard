@@ -107,6 +107,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
             var parsedDrivingrecordDocument:DrivingRecordResponse?
             do{
                 parsedDrivingrecordDocument = try change.document.data(as: DrivingRecordResponse.self)
+                parsedDrivingrecordDocument?.id = change.document.documentID
             }catch{
                 print("Unable to decode the Faicial infomation record")
                 return
@@ -179,27 +180,12 @@ class FirebaseController: NSObject,DatabaseProtocol {
         })
     }
     
-    func addOverSpeedRecord(_ record: SpeedRecord)->SpeedRecord {
-        do{
-            if let overspeedRef = try speedLimitRef?.addDocument(from: record){
-                record.id = overspeedRef.documentID
-            }
-        }catch{
-            print("Failed to serilise over speed record")
-        }
-        return record
+    func getSpeedRecordByRecordId(_ recordId:String)->[SpeedRecord]{
+        return speedInforList.filter({(speedInfo) in
+            speedInfo.recordId == recordId && speedInfo.currentSpeed > 0
+        })
     }
     
-    func addNormalSpeedRecord(_ record: SpeedRecord) -> SpeedRecord {
-        do{
-            if let overspeedRef = try normalSpeedRef?.addDocument(from: record){
-                record.id = overspeedRef.documentID
-            }
-        }catch{
-            print("Failed to serilise over speed record")
-        }
-        return record
-    }
     
     func addSelectedeRoad(_ record: UserSelectedRoadResponse) -> UserSelectedRoadResponse {
         var record = record
@@ -283,8 +269,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
 protocol DatabaseProtocol:NSObject {
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
-    func addOverSpeedRecord(_ record:SpeedRecord)->SpeedRecord
-    func addNormalSpeedRecord(_ record:SpeedRecord)->SpeedRecord
+    func getSpeedRecordByRecordId(_ recordId:String)->[SpeedRecord]
     func addSelectedeRoad(_ record:UserSelectedRoadResponse)->UserSelectedRoadResponse
 }
 protocol DatabaseListener:AnyObject {
