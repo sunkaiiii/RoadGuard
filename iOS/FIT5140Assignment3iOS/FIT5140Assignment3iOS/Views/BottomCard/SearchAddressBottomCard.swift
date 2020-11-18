@@ -20,7 +20,6 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var searchAddressBar: UISearchBar!
     let locationManager = CLLocationManager.init()
 
-    var realm : Realm?
     var searchAddressTimer:Timer?
     var currentSearchPlaceReqeust:SearchPlaceRequest?
 
@@ -45,7 +44,7 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
         searchAddressBottomCardTableViewOutlet.register(UITableViewCell.self, forCellReuseIdentifier: DEFAULT_CELL_ID)
         searchAddressBottomCardTableViewOutlet.register(BottomCardSpecifyCell.nib(), forCellReuseIdentifier: BOTTOM_CARD_CELL_ID)
 
-        realm = (UIApplication.shared.delegate as! AppDelegate).realm
+        
 
         locationManager.delegate = self
         locationManager.requestTemporaryFullAccuracyAuthorization(withPurposeKey: "wantAccurateLocation", completion: {

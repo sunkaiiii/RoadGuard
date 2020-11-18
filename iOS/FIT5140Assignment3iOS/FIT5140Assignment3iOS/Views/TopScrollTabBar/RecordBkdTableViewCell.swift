@@ -14,18 +14,26 @@ class RecordBkdTableViewCell: UITableViewCell {
     @IBOutlet weak var drivingTimeLabelOutlet: UILabel!    
     @IBOutlet weak var startAndEndPlaceLabelOutlet: UILabel!
     
+    var startLocation = ""
+    var endLocation = ""
+    
     static let identifier = "RecordBkdTableViewCell"
     static func nib()->UINib{
         return UINib(nibName: "RecordBkdTableViewCell", bundle: nil)
     }
 
-    public func configure(iconImageViewName: String,distanceLabelOutlet: String, drivingTimeLabelOutlet: String, startAndEndPlaceLabelOutlet: String){
-        self.iconImageOutlet.image = UIImage(systemName: iconImageViewName)
-        self.distanceLabelOutlet.text = distanceLabelOutlet
-        self.drivingTimeLabelOutlet.text = drivingTimeLabelOutlet
-        self.startAndEndPlaceLabelOutlet.text = startAndEndPlaceLabelOutlet
+    public func initWithData(_ record:DrivingRecordResponse){
+        self.distanceLabelOutlet.text = "\(record.drivingDistance)"
+        self.distanceLabelOutlet.text = "\(record.endTime.timeIntervalSince(record.startTime)/60) min"
+        
+//        self.iconImageOutlet.image = UIImage(systemName: iconImageViewName)
+//        self.distanceLabelOutlet.text = distanceLabelOutlet
+//        self.drivingTimeLabelOutlet.text = drivingTimeLabelOutlet
+//        self.startAndEndPlaceLabelOutlet.text = startAndEndPlaceLabelOutlet
 
     }
+    
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

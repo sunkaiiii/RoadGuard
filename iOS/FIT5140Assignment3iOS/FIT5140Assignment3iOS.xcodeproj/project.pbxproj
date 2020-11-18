@@ -40,6 +40,7 @@
 		B156026B25518A1A003EF6B7 /* PlaceDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B156026A25518A1A003EF6B7 /* PlaceDetailRequest.swift */; };
 		B15602742552E0F7003EF6B7 /* SnapToRoadsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15602732552E0F7003EF6B7 /* SnapToRoadsResponse.swift */; };
 		B15602772552E18B003EF6B7 /* SnapToRoadsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15602762552E18B003EF6B7 /* SnapToRoadsRequest.swift */; };
+		B161C77C2564A286004D37E6 /* CachegableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B161C77B2564A286004D37E6 /* CachegableController.swift */; };
 		B170FC6E25428CC20086F1D9 /* BaseUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170FC6D25428CC20086F1D9 /* BaseUIView.swift */; };
 		B170FC74254290D00086F1D9 /* SpeedNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170FC73254290D00086F1D9 /* SpeedNotificationView.swift */; };
 		B170FC77254290D90086F1D9 /* SpeedNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B170FC76254290D90086F1D9 /* SpeedNotificationView.xib */; };
@@ -60,6 +61,7 @@
 		B1E94743256248C2007C74AD /* DrivingRecordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E94742256248C2007C74AD /* DrivingRecordResponse.swift */; };
 		B1F632512563FFE700787119 /* CachegableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F632502563FFE700787119 /* CachegableData.swift */; };
 		B1F6325525640D9D00787119 /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F6325425640D9D00787119 /* RealmController.swift */; };
+		B1F6325A2564939800787119 /* InmemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F632592564939800787119 /* InmemoryCache.swift */; };
 		E40448EC254C278700341510 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40448EB254C278700341510 /* RecordViewController.swift */; };
 		E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */; };
 		E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */; };
@@ -148,6 +150,7 @@
 		B156026A25518A1A003EF6B7 /* PlaceDetailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailRequest.swift; sourceTree = "<group>"; };
 		B15602732552E0F7003EF6B7 /* SnapToRoadsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapToRoadsResponse.swift; sourceTree = "<group>"; };
 		B15602762552E18B003EF6B7 /* SnapToRoadsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapToRoadsRequest.swift; sourceTree = "<group>"; };
+		B161C77B2564A286004D37E6 /* CachegableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachegableController.swift; sourceTree = "<group>"; };
 		B170FC6D25428CC20086F1D9 /* BaseUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIView.swift; sourceTree = "<group>"; };
 		B170FC7025428F660086F1D9 /* FIT5140Assignment3iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FIT5140Assignment3iOS.entitlements; sourceTree = "<group>"; };
 		B170FC73254290D00086F1D9 /* SpeedNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedNotificationView.swift; sourceTree = "<group>"; };
@@ -169,6 +172,7 @@
 		B1E94742256248C2007C74AD /* DrivingRecordResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingRecordResponse.swift; sourceTree = "<group>"; };
 		B1F632502563FFE700787119 /* CachegableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachegableData.swift; sourceTree = "<group>"; };
 		B1F6325425640D9D00787119 /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
+		B1F632592564939800787119 /* InmemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InmemoryCache.swift; sourceTree = "<group>"; };
 		E40448EB254C278700341510 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchAddressBottomCard.xib; sourceTree = "<group>"; };
 		E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressBottomCard.swift; sourceTree = "<group>"; };
@@ -449,6 +453,8 @@
 			children = (
 				B1F632502563FFE700787119 /* CachegableData.swift */,
 				B1F6325425640D9D00787119 /* RealmController.swift */,
+				B1F632592564939800787119 /* InmemoryCache.swift */,
+				B161C77B2564A286004D37E6 /* CachegableController.swift */,
 				E494034625649619009042A5 /* PlaceDetailResponseRealmModel.swift */,
 			);
 			path = CacheHelper;
@@ -711,6 +717,7 @@
 				E45B486D254CF66E00692A2E /* WormTabStripButton.swift in Sources */,
 				B190D3C825447029002249BA /* SpeedNotificationSuperView.swift in Sources */,
 				B13CEFE625410B6F00957E84 /* NetworkExtension.swift in Sources */,
+				B161C77C2564A286004D37E6 /* CachegableController.swift in Sources */,
 				B1A5E47A2547C59A00D8CCB0 /* GoogleAPIKey.swift in Sources */,
 				B1E9473225615618007C74AD /* CurrentSpeedResponse.swift in Sources */,
 				B1560268255188E6003EF6B7 /* PlaceDetailResponse.swift in Sources */,
@@ -718,6 +725,7 @@
 				E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */,
 				E4DF3AE7255A141F004B96C5 /* ImportantPathTableViewHeaderCell.swift in Sources */,
 				E47D41DD255D83390079DE27 /* DistractionDetailCell.swift in Sources */,
+				B1F6325A2564939800787119 /* InmemoryCache.swift in Sources */,
 				B15602602551654B003EF6B7 /* NearestRoadsRequest.swift in Sources */,
 				E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */,
 				E41FE640254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift in Sources */,
