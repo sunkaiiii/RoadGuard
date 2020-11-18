@@ -58,5 +58,18 @@ class RecordDetailMatrixCell: UITableViewCell {
         }else{
             avgSpeedLabel.text = "Unknown"
         }
+        
+        let facialList = databaseController.getFacialRecordByRecordId(id)
+        let time = facialList.filter({(facial) in
+            let detail = facial.faceDetails
+            if detail.count > 0{
+                let firstEmotion = detail[0]
+                if firstEmotion.emotions[0].type == "CALM"{
+                    return false
+                }
+            }
+            return true
+        }).count
+        distractionTimesLabel.text = "\(time)"
     }
 }

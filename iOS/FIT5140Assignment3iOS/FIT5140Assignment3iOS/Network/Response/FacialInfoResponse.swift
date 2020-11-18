@@ -8,22 +8,27 @@
 import Foundation
 // MARK: - FacialInfo
 struct FacialInfo: Codable {
-    let id: String?
+    var id: String?
     let imageURL: String
     let faceDetails: [FaceDetail]
     let speed: Int
-    let capturedTime: String
-    let latitude, longitude: Double
+    let recordId:String?
+    let locationInfo:FacialLocation?
+    let selectedRoadIds:[String]?
+    let capturedTime: Date
 
     enum CodingKeys: String, CodingKey {
-        case id
         case imageURL = "ImageUrl"
         case faceDetails = "FaceDetails"
-        case speed = "Speed"
+        case speed = "speed"
         case capturedTime = "CapturedTime"
-        case latitude = "Latitude"
-        case longitude = "Longitude"
+        case locationInfo = "location_info"
+        case recordId
+        case selectedRoadIds
     }
+}
+struct FacialLocation: Codable {
+    let latitude, logitude: Double?
 }
 
 // MARK: - FaceDetail

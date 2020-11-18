@@ -12,6 +12,8 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class FirebaseController: NSObject,DatabaseProtocol {
+
+    
     var listeners = MulticastDelegate<DatabaseListener>()
 
     var authController:Auth
@@ -46,6 +48,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
             self.setUpDrivingRecordListeners()
             self.setUpSpeedLimitListeners()
             self.setUpSelectedRoadListener()
+            self.setUpFacialListeners()
         })
     }
 
@@ -95,8 +98,11 @@ class FirebaseController: NSObject,DatabaseProtocol {
 
             var parsedFacialDocument:FacialInfo?
             do{
+                //print(change.document.data())
                 parsedFacialDocument = try change.document.data(as: FacialInfo.self)
+                parsedFacialDocument?.id = change.document.documentID
             }catch{
+                print(error)
                 print("Unable to decode the Faicial infomation record")
                 return
             }
@@ -222,6 +228,10 @@ class FirebaseController: NSObject,DatabaseProtocol {
         })
     }
     
+    func getFacialRecordByRecordId(_ recordId: String) -> [FacialInfo] {
+        return facialInfoList.filter({(facial) in facial.recordId == recordId})
+    }
+    
     
     func addSelectedeRoad(_ record: UserSelectedRoadResponse) -> UserSelectedRoadResponse {
         var record = record
@@ -274,6 +284,7 @@ protocol DatabaseProtocol:NSObject {
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
     func getSpeedRecordByRecordId(_ recordId:String)->[SpeedRecord]
+    func getFacialRecordByRecordId(_ recordId:String)->[FacialInfo]
     func addSelectedeRoad(_ record:UserSelectedRoadResponse)->UserSelectedRoadResponse
 }
 protocol DatabaseListener:AnyObject {
