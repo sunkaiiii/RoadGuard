@@ -9,7 +9,7 @@ import UIKit
 
 
 class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseListener{
-    var listenerType: ListenerType = .drivingRecord
+    var listenerType: [ListenerType] = [ListenerType.drivingRecord]
     
 
     let DETAIL_PAGE_SEGUE_ID = "recordDetailSegue"

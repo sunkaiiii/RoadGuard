@@ -49,16 +49,6 @@ class FirebaseController: NSObject,DatabaseProtocol {
         })
     }
 
-    func setUpFacialListeners(){
-        self.facialRef?.addSnapshotListener({(querySnapshot,error) in
-            guard let querySnapshot = querySnapshot else{
-                print("Error fetching documents")
-                return
-            }
-            self.parseFacialSnapshot(snapshot:querySnapshot)
-        })
-    }
-    
     func setUpDrivingRecordListeners(){
         self.drivingRecordRef?.addSnapshotListener({(querySnapshot,error) in
             guard let querySnapshot = querySnapshot else{
@@ -69,9 +59,39 @@ class FirebaseController: NSObject,DatabaseProtocol {
         })
     }
 
+    func setUpSpeedLimitListeners(){
+        self.speedLimitRef?.addSnapshotListener({(querySnapshot,error) in
+            guard let querySnapshot = querySnapshot else{
+                print("Error fetching documents")
+                return
+            }
+            self.parseSpeedLimitSnapshot(snapshot:querySnapshot)
+        })
+    }
+
+    func setUpSelectedRoadListener(){
+        self.selectedRoadRef?.addSnapshotListener({(querySnapshot,error) in
+            guard let querySnapshot = querySnapshot else{
+                print("Error fetching road documents")
+                return
+            }
+            self.parseSelectedRoadData(querySnapshot: querySnapshot)
+        })
+    }
+
+    func setUpFacialListeners(){
+        self.facialRef?.addSnapshotListener({(querySnapshot,error) in
+            guard let querySnapshot = querySnapshot else{
+                print("Error fetching documents")
+                return
+            }
+            self.parseFacialSnapshot(snapshot:querySnapshot)
+        })
+    }
+    
+
     func parseFacialSnapshot(snapshot:QuerySnapshot){
         snapshot.documentChanges.forEach({(change) in
-            //            let facialRecordId = chang
 
             var parsedFacialDocument:FacialInfo?
             do{
@@ -86,8 +106,6 @@ class FirebaseController: NSObject,DatabaseProtocol {
                 return
             }
 
-            //            facialInfo.id = facialRecordId
-
             switch change.type{
                 case .added:
                     facialInfoList.append(facialInfo)
@@ -96,7 +114,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
             }
         })
         listeners.invoke(invocation: {(listener) in
-            if listener.listenerType == .facial || listener.listenerType == .all {
+            if listener.listenerType.contains(.facial)  || listener.listenerType.contains(.all) {
                 listener.onFacialInfoChange(change: .add, facialInfos: facialInfoList)
             }
         })
@@ -123,22 +141,13 @@ class FirebaseController: NSObject,DatabaseProtocol {
             }
         })
         listeners.invoke(invocation: {(listener) in
-            if listener.listenerType == .drivingRecord || listener.listenerType == .all {
+            if listener.listenerType.contains(.drivingRecord) || listener.listenerType.contains(.all) {
                 listener.onDrivingRecordChange(change: .add, drivingRecord: drivingRecordList)
             }
         })
     }
-    
-    func setUpSpeedLimitListeners(){
-        self.speedLimitRef?.addSnapshotListener({(querySnapshot,error) in
-            guard let querySnapshot = querySnapshot else{
-                print("Error fetching documents")
-                return
-            }
-            self.parseSpeedLimitSnapshot(snapshot:querySnapshot)
-        })
-    }
-    
+
+
     func parseSpeedLimitSnapshot(snapshot:QuerySnapshot){
         snapshot.documentChanges.forEach({(change) in
             let speedRecordId = change.document.documentID
@@ -172,7 +181,34 @@ class FirebaseController: NSObject,DatabaseProtocol {
             }
         })
     }
-    
+
+    func parseSelectedRoadData(querySnapshot:QuerySnapshot){
+        querySnapshot.documentChanges.forEach({(document) in
+            var selectedRoadDocument:UserSelectedRoadResponse?
+            do{
+                selectedRoadDocument = try document.document.data(as: UserSelectedRoadResponse.self)
+            }catch{
+                print("Unable to decode the selected road document")
+                return
+            }
+            guard let selectRoad = selectedRoadDocument else{
+                print("Document does not exist")
+                return
+            }
+            switch document.type{
+                case .added:
+                    self.selectedRoadaList.append(selectRoad)
+                case .modified,.removed:
+                    self.findIndexAndModifySpeedList(selectRoad,document.type)
+            }
+        })
+        listeners.invoke(invocation: {(listener) in
+            if listener.listenerType.contains(.selectedRoad) || listener.listenerType.contains(.all){
+                listener.onSelectedRoadInfoChange(change: .add, selectRoads:selectedRoadaList)
+            }
+        })
+    }
+
     func getSpeedRecordById(id:String)->Int?{
         return speedInforList.firstIndex(where: {(speed) in
             speed.id == id
@@ -213,42 +249,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
         return record
     }
 
-    func setUpSelectedRoadListener(){
-        self.selectedRoadRef?.addSnapshotListener({(querySnapshot,error) in
-            guard let querySnapshot = querySnapshot else{
-                print("Error fetching road documents")
-                return
-            }
-            self.parseSelectedRoadData(querySnapshot: querySnapshot)
-        })
-    }
-    
-    func parseSelectedRoadData(querySnapshot:QuerySnapshot){
-        querySnapshot.documentChanges.forEach({(document) in
-            var selectedRoadDocument:UserSelectedRoadResponse?
-            do{
-                selectedRoadDocument = try document.document.data(as: UserSelectedRoadResponse.self)
-            }catch{
-                print("Unable to decode the selected road document")
-                return
-            }
-            guard let selectRoad = selectedRoadDocument else{
-                print("Document does not exist")
-                return
-            }
-            switch document.type{
-            case .added:
-                self.selectedRoadaList.append(selectRoad)
-            case .modified,.removed:
-                self.findIndexAndModifySpeedList(selectRoad,document.type)
-            }
-        })
-        listeners.invoke(invocation: {(listener) in
-            if listener.listenerType == .selectedRoad || listener.listenerType == .all{
-                listener.onSelectedRoadInfoChange(change: .add, selectRoads:selectedRoadaList)
-            }
-        })
-    }
+
     
     func findIndexAndModifySpeedList(_ selectedRoad:UserSelectedRoadResponse, _ type:DocumentChangeType){
         guard let index = selectedRoadaList.firstIndex(where: {(road) in
@@ -262,15 +263,18 @@ class FirebaseController: NSObject,DatabaseProtocol {
             selectedRoadaList.remove(at: index)
         }
     }
-    
+
+    // MARK: - Db Listner
     func addListener(listener: DatabaseListener) {
         listeners.addDelegate(listener)
 
-        if listener.listenerType == .facial || listener.listenerType == .all{
+        if listener.listenerType.contains(.facial) || listener.listenerType.contains(.all){
             listener.onFacialInfoChange(change: .add, facialInfos: facialInfoList)
-        }else if listener.listenerType == .selectedRoad || listener.listenerType == .all{
+        }
+        if listener.listenerType.contains(.selectedRoad) || listener.listenerType.contains(.all){
             listener.onSelectedRoadInfoChange(change: .add, selectRoads: selectedRoadaList)
-        }else if listener.listenerType == .drivingRecord || listener.listenerType == .all{
+        }
+        if listener.listenerType.contains(.drivingRecord) || listener.listenerType.contains(.all){
             listener.onDrivingRecordChange(change: .add, drivingRecord: drivingRecordList)
         }
     }
@@ -288,7 +292,7 @@ protocol DatabaseProtocol:NSObject {
     func addSelectedeRoad(_ record:UserSelectedRoadResponse)->UserSelectedRoadResponse
 }
 protocol DatabaseListener:AnyObject {
-    var listenerType:ListenerType{get set}
+    var listenerType:[ListenerType]{get set}
     func onFacialInfoChange(change:DatabaseChange, facialInfos:[FacialInfo])
     func onSelectedRoadInfoChange(change:DatabaseChange, selectRoads:[UserSelectedRoadResponse])
     func onDrivingRecordChange(change:DatabaseChange, drivingRecord:[DrivingRecordResponse])
