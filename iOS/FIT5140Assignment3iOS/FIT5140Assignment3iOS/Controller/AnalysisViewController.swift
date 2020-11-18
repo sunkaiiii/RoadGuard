@@ -96,15 +96,23 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                         arrayOfDayAndDistanceTuple.append((dateOfOneRecord,record.drivingDistance))
                     }
                 }
+        
 
-                var counter = 1
+                var labels : [String] = []
+
+                var counter = 0
                 for element in arrayOfDayAndDistanceTuple {
+
                     let dataEntry = BarChartDataEntry(x: Double(counter), y: element.1)
+                    let dateComponents = element.0.split(separator: "-")
+                    let label = "\(dateComponents[0])/\(dateComponents[1])"
+                    labels.append(label)
                     barChartDataEntries.append(dataEntry)
                     //Todo: 这里需要Charts的ValueFormatter用以替换x轴坐标label
                     counter += 1
                 }
 
+                let valueFormatterForXAxis = IndexAxisValueFormatter(values: labels)
 
                 let set = BarChartDataSet(barChartDataEntries)
                 set.colors = [NSUIColor.blue]
@@ -120,7 +128,8 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 xAxis?.drawGridLinesEnabled = false
                 xAxis?.labelPosition = .bottom
                 xAxis?.labelFont = .boldSystemFont(ofSize: 12)
-                xAxis?.setLabelCount(10, force: false)
+
+                xAxis?.valueFormatter = valueFormatterForXAxis
                 barChart?.animate(xAxisDuration: 1)
                 barChartDataEntries.removeAll()
                 return cell
