@@ -8,8 +8,7 @@
 import UIKit
 
 protocol RecordBreakdownDelegate: class {
-    //这里回头需要改下传值的类型
-    func jumpToSelectedRowDetailPage(selectedRow: String)
+    func jumpToSelectedRowDetailPage(selectedRow: DrivingRecordResponse)
 }
 
 class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -102,8 +101,7 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
             table.deselectRow(at:indexPath,animated:true)
         }
         if indexPath.section == SECTION_CONTENT{
-            //更改穿的值
-            delegateParent?.jumpToSelectedRowDetailPage(selectedRow: "testInfo")
+            delegateParent?.jumpToSelectedRowDetailPage(selectedRow: tableViewDataSource[indexPath.row])
         }
     }
 
