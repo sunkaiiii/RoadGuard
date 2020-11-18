@@ -334,6 +334,7 @@ PODS:
   - gRPC-Core/Interface (1.28.2)
   - GTMSessionFetcher/Core (1.4.0)
   - leveldb-library (1.22)
+  - MemoryCache (1.1.0)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -355,6 +356,7 @@ DEPENDENCIES:
   - FirebaseFirestoreSwift
   - GoogleMaps
   - GooglePlaces
+  - MemoryCache
   - RealmSwift
   - TinyConstraints
 
@@ -380,6 +382,7 @@ SPEC REPOS:
     - gRPC-Core
     - GTMSessionFetcher
     - leveldb-library
+    - MemoryCache
     - nanopb
     - PromisesObjC
     - Realm
@@ -407,12 +410,13 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  MemoryCache: 145f843f3bc78432693f0670bc643475c9bfdbf0
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Realm: 784ca1da1453e31a9c9adc14445421a81f316119
   RealmSwift: cc52fe0dcea56387274dff36e19219e055a3bb84
   TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
-PODFILE CHECKSUM: abfd4ebe380a721f4313ad40534824828dde52fb
+PODFILE CHECKSUM: 5fab73f8f75cac24d91692ef2aea2da183882094
 
 COCOAPODS: 1.10.0
