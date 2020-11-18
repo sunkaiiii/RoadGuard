@@ -17,14 +17,14 @@ struct PlaceDetailResponse: Codable {
 class PlaceDetailResponseCacheDataHelper:CachegableData{
     func tryFetchCacheData(request: RequestModel) -> Decodable? {
         if let placeDetailRequest = request as? PlaceDetailRequest{
-            return RealmController.shared.getPlaceDetailCacheData(placeDetailRequest.placeId)
+            return RealmController.shared.getPlaceDetailCacheDataFromRealm(placeDetailRequest.placeId)
         }
         return nil
     }
     
     func cacheData(data: Decodable) {
         if let data = data as? PlaceDetailResponse{
-            RealmController.shared.storePlaceDetailResponse(data)
+            RealmController.shared.storePlaceDetailResponseIntoRealm(data)
         }
     }
 }

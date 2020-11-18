@@ -84,6 +84,7 @@
 		E47D41DE255D83390079DE27 /* DistractionDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E47D41DC255D83390079DE27 /* DistractionDetailCell.xib */; };
 		E48F391D2562A158001A8C1F /* BarChartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48F391B2562A158001A8C1F /* BarChartTableViewCell.swift */; };
 		E48F391E2562A158001A8C1F /* BarChartTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E48F391C2562A158001A8C1F /* BarChartTableViewCell.xib */; };
+		E494034725649619009042A5 /* PlaceDetailResponseRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E494034625649619009042A5 /* PlaceDetailResponseRealmModel.swift */; };
 		E4AE1714255E0CDF009B1DAA /* DistractionDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE1713255E0CDF009B1DAA /* DistractionDetailViewController.swift */; };
 		E4AE1717255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE1716255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift */; };
 		E4AE171C255E1281009B1DAA /* DistractionSpeedLimitInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AE171B255E1281009B1DAA /* DistractionSpeedLimitInfoView.swift */; };
@@ -192,6 +193,7 @@
 		E47D41DC255D83390079DE27 /* DistractionDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistractionDetailCell.xib; sourceTree = "<group>"; };
 		E48F391B2562A158001A8C1F /* BarChartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartTableViewCell.swift; sourceTree = "<group>"; };
 		E48F391C2562A158001A8C1F /* BarChartTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarChartTableViewCell.xib; sourceTree = "<group>"; };
+		E494034625649619009042A5 /* PlaceDetailResponseRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDetailResponseRealmModel.swift; sourceTree = "<group>"; };
 		E4AE1713255E0CDF009B1DAA /* DistractionDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistractionDetailViewController.swift; sourceTree = "<group>"; };
 		E4AE1716255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistractionSpeedLimitSuperView.swift; sourceTree = "<group>"; };
 		E4AE171B255E1281009B1DAA /* DistractionSpeedLimitInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistractionSpeedLimitInfoView.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 			children = (
 				B1F632502563FFE700787119 /* CachegableData.swift */,
 				B1F6325425640D9D00787119 /* RealmController.swift */,
+				E494034625649619009042A5 /* PlaceDetailResponseRealmModel.swift */,
 			);
 			path = CacheHelper;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				E4E6FE872559711000DC8050 /* ImportantPathDetailViewController.swift in Sources */,
 				B13CEFCA2540FAF900957E84 /* SceneDelegate.swift in Sources */,
 				B13CF00A2541A9B700957E84 /* SpeedAlertView.swift in Sources */,
+				E494034725649619009042A5 /* PlaceDetailResponseRealmModel.swift in Sources */,
 				E4AE171C255E1281009B1DAA /* DistractionSpeedLimitInfoView.swift in Sources */,
 				B1AB3A7B2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift in Sources */,
 				E410CCF0255CB4730004B2D9 /* RecordDetailViewController.swift in Sources */,
