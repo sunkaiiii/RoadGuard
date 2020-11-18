@@ -23,7 +23,6 @@ final class RealmController:CacheController{
     }
 }
 
-protocol CacheController {
-    func getPlaceDetailCacheData(_ placeId:String)->PlaceDetailResponse?
-    func storePlaceDetailResponse(_ placeDetail:PlaceDetailResponse)
-}
+
+
+

@@ -75,7 +75,7 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: TABLE_CONTENT_CELL_ID, for: indexPath) as! RecordBkdTableViewCell
             let record = tableViewDataSource[indexPath.row]
-            
+            cell.initWithData(record)
             //调用cell.configure给图片和label赋值
             cell.iconImageOutlet.image = UIImage(systemName: "person.crop.circle")
             return cell

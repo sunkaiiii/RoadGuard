@@ -25,7 +25,7 @@ class PlaceDetailResponseCacheDataHelper:CachegableData{
         return nil
     }
     
-    func cacheData(data: Decodable) {
+    func cacheData(data: Decodable,request:RequestModel) {
         if let data = data as? PlaceDetailResponse{
             InMemoryDataCache.shared.storePlaceDetailResponse(data)
             RealmController.shared.storePlaceDetailResponse(data)

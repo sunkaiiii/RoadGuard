@@ -10,5 +10,5 @@ import Foundation
 
 protocol CachegableData {
     func tryFetchCacheData(request:RequestModel)->Decodable?
-    func cacheData(data:Decodable)
+    func cacheData(data:Decodable,request:RequestModel)
 }

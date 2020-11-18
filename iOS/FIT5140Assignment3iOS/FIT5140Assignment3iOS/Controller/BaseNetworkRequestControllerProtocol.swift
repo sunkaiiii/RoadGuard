@@ -39,7 +39,7 @@ extension DefaultHttpRequestAction{
         }
         
         requestRestfulService(api: api, model: model, jsonType: jsonType, onDataReturned: {(helper,components,result,rawData) in
-            cachegableHelper.cacheData(data: result)
+            cachegableHelper.cacheData(data: result,request: model)
             afterExecution(helper: helper, url: components, response: result, rawData: rawData)
         })
     }
