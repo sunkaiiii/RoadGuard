@@ -13,7 +13,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var recordDetailTableView: UITableView!
 
     //需要更改数据类型
-    var selectedRecord : String?
+    var drivingRecord : DrivingRecordResponse?
     
     let SECTION_MAP = 0
     let SECTION_MATRIX = 1
@@ -83,7 +83,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == SECTION_MAP {
             let cell = tableView.dequeueReusableCell(withIdentifier: MAP_CELL_ID, for: indexPath) as! RecordDetailMapCell
-      
+            cell.initMapAndPath(self.drivingRecord)
             return cell
         } else if indexPath.section == SECTION_MATRIX{
             let cell = tableView.dequeueReusableCell(withIdentifier: MATRIX_CELL_ID, for: indexPath) as! RecordDetailMatrixCell

@@ -29,4 +29,18 @@ class RecordDetailMapCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func initMapAndPath(_ drivingRecord:DrivingRecordResponse?){
+        guard let drivingRecord = drivingRecord else {
+            return
+        }
+        let gmsCamera = GMSCameraPosition.init(latitude:drivingRecord.startLocation.latitude , longitude: drivingRecord.startLocation.logitude, zoom: 14)
+        self.googleMapView.camera = gmsCamera
+        let path = GMSMutablePath()
+        drivingRecord.path.forEach({(point) in
+            path.add(CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude))
+        })
+        let polyLine = GMSPolyline(path: path)
+        polyLine.map = self.googleMapView
+    }
+    
 }
