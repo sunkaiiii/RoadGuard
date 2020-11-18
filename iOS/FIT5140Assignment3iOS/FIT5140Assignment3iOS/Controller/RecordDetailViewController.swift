@@ -120,6 +120,20 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
         } else {
             //SECTION_DISTRACTION_SUMMARY
             let cell = tableView.dequeueReusableCell(withIdentifier: DISTRACTION_CELL_ID, for: indexPath) as! RecordDetailDistractionSummaryCell
+            if let delegate = UIApplication.shared.delegate as? AppDelegate, let databaseController = delegate.firebaseController, let id = self.drivingRecord?.id{
+                cell.dataSource = databaseController.getFacialRecordByRecordId(id).filter({(facial) in
+                    let detail = facial.faceDetails
+                    if detail.count > 0{
+                        let firstEmotion = detail[0]
+                        if firstEmotion.emotions[0].type == "CALM"{
+                            return false
+                        }
+                    }else{
+                        return false
+                    }
+                    return true
+                })
+            }
             cell.delegateParent = self
             return cell
         }
