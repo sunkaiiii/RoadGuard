@@ -15,4 +15,5 @@ target 'FIT5140Assignment3iOS' do
   pod 'Charts'
   pod 'TinyConstraints'
   pod 'RealmSwift'
+  pod 'MemoryCache'
 end

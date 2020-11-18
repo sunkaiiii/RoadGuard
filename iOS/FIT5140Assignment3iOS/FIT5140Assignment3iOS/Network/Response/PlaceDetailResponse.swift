@@ -17,6 +17,9 @@ struct PlaceDetailResponse: Codable {
 class PlaceDetailResponseCacheDataHelper:CachegableData{
     func tryFetchCacheData(request: RequestModel) -> Decodable? {
         if let placeDetailRequest = request as? PlaceDetailRequest{
+            if let memoryCache =  InMemoryDataCache.shared.getPlaceDetailCacheData(placeDetailRequest.placeId){
+                return memoryCache
+            }
             return RealmController.shared.getPlaceDetailCacheData(placeDetailRequest.placeId)
         }
         return nil
@@ -24,6 +27,7 @@ class PlaceDetailResponseCacheDataHelper:CachegableData{
     
     func cacheData(data: Decodable) {
         if let data = data as? PlaceDetailResponse{
+            InMemoryDataCache.shared.storePlaceDetailResponse(data)
             RealmController.shared.storePlaceDetailResponse(data)
         }
     }
