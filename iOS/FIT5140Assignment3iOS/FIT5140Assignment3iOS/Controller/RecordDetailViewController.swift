@@ -87,7 +87,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
             return cell
         } else if indexPath.section == SECTION_MATRIX{
             let cell = tableView.dequeueReusableCell(withIdentifier: MATRIX_CELL_ID, for: indexPath) as! RecordDetailMatrixCell
-
+            cell.initMatrixData(self.drivingRecord)
             return cell
         } else if indexPath.section == SECTION_CHART{
             let cell = tableView.dequeueReusableCell(withIdentifier: CHART_CELL_ID, for: indexPath) as! RecordDetailChartCell

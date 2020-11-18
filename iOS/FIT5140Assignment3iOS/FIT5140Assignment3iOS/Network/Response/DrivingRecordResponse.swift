@@ -10,6 +10,7 @@ import Foundation
 
 // MARK: - DrivingRecordResponse
 struct DrivingRecordResponse: Codable {
+    var id:String?
     let path: [DrivingPath]
     let drivingDistance: Double
     let startTime: Date

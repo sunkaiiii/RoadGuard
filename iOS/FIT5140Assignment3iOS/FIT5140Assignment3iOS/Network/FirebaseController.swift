@@ -12,6 +12,8 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class FirebaseController: NSObject,DatabaseProtocol {
+
+    
     var listeners = MulticastDelegate<DatabaseListener>()
 
     var authController:Auth
@@ -46,6 +48,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
             self.setUpDrivingRecordListeners()
             self.setUpSpeedLimitListeners()
             self.setUpSelectedRoadListener()
+            self.setUpFacialListeners()
         })
     }
 
@@ -95,8 +98,11 @@ class FirebaseController: NSObject,DatabaseProtocol {
 
             var parsedFacialDocument:FacialInfo?
             do{
+                //print(change.document.data())
                 parsedFacialDocument = try change.document.data(as: FacialInfo.self)
+                parsedFacialDocument?.id = change.document.documentID
             }catch{
+                print(error)
                 print("Unable to decode the Faicial infomation record")
                 return
             }
@@ -125,6 +131,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
             var parsedDrivingrecordDocument:DrivingRecordResponse?
             do{
                 parsedDrivingrecordDocument = try change.document.data(as: DrivingRecordResponse.self)
+                parsedDrivingrecordDocument?.id = change.document.documentID
             }catch{
                 print("Unable to decode the Faicial infomation record")
                 return
@@ -215,27 +222,16 @@ class FirebaseController: NSObject,DatabaseProtocol {
         })
     }
     
-    func addOverSpeedRecord(_ record: SpeedRecord)->SpeedRecord {
-        do{
-            if let overspeedRef = try speedLimitRef?.addDocument(from: record){
-                record.id = overspeedRef.documentID
-            }
-        }catch{
-            print("Failed to serilise over speed record")
-        }
-        return record
+    func getSpeedRecordByRecordId(_ recordId:String)->[SpeedRecord]{
+        return speedInforList.filter({(speedInfo) in
+            speedInfo.recordId == recordId && speedInfo.currentSpeed > 0
+        })
     }
     
-    func addNormalSpeedRecord(_ record: SpeedRecord) -> SpeedRecord {
-        do{
-            if let overspeedRef = try normalSpeedRef?.addDocument(from: record){
-                record.id = overspeedRef.documentID
-            }
-        }catch{
-            print("Failed to serilise over speed record")
-        }
-        return record
+    func getFacialRecordByRecordId(_ recordId: String) -> [FacialInfo] {
+        return facialInfoList.filter({(facial) in facial.recordId == recordId})
     }
+    
     
     func addSelectedeRoad(_ record: UserSelectedRoadResponse) -> UserSelectedRoadResponse {
         var record = record
@@ -287,8 +283,8 @@ class FirebaseController: NSObject,DatabaseProtocol {
 protocol DatabaseProtocol:NSObject {
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
-    func addOverSpeedRecord(_ record:SpeedRecord)->SpeedRecord
-    func addNormalSpeedRecord(_ record:SpeedRecord)->SpeedRecord
+    func getSpeedRecordByRecordId(_ recordId:String)->[SpeedRecord]
+    func getFacialRecordByRecordId(_ recordId:String)->[FacialInfo]
     func addSelectedeRoad(_ record:UserSelectedRoadResponse)->UserSelectedRoadResponse
 }
 protocol DatabaseListener:AnyObject {
