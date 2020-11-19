@@ -43,7 +43,7 @@ def analyse(filename,speed = -1,selectedRoadIds = None,record_id = None):
     data = uploadImageToS3.detect_face(filename,bucket_name)
     data['location_info'] = {}
     data['location_info']["latitude"] = gps_information.latitude
-    data['location_info']["longitude"] = gps_information.latitude
+    data['location_info']["longitude"] = gps_information.longitude
     data['speed'] = speed
     if selectedRoadIds != None:
         data['selectedRoadIds'] = selectedRoadIds

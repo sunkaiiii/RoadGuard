@@ -67,6 +67,8 @@ class RecordDetailMatrixCell: UITableViewCell {
                 if firstEmotion.emotions[0].type == "CALM"{
                     return false
                 }
+            }else{
+                return false
             }
             return true
         }).count

@@ -28,7 +28,7 @@ struct FacialInfo: Codable {
     }
 }
 struct FacialLocation: Codable {
-    let latitude, logitude: Double?
+    let latitude, longitude: Double?
 }
 
 // MARK: - FaceDetail
