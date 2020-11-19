@@ -113,6 +113,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 }
 
                 let valueFormatterForXAxis = IndexAxisValueFormatter(values: labels)
+                valueFormatterForXAxis.values = labels
 
                 let set = BarChartDataSet(barChartDataEntries)
                 set.colors = [NSUIColor.blue]
@@ -130,6 +131,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 xAxis?.labelFont = .boldSystemFont(ofSize: 12)
 
                 xAxis?.valueFormatter = valueFormatterForXAxis
+                xAxis?.labelCount = labels.count
                 barChart?.animate(xAxisDuration: 1)
                 barChartDataEntries.removeAll()
                 return cell
