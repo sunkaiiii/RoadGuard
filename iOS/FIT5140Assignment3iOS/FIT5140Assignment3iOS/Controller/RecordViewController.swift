@@ -26,6 +26,7 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
     // MARK: - Top Scroll Tab Bar Related functions
     func setUpContentViewForEachTab(){
         montlyRecords.removeAll()
+        tabContentViews = []
         for index in 1...12 {
             montlyRecords.append(Calendar.current.monthSymbols[index-1])
             let vc = RecordBreakdownViewController()
@@ -127,6 +128,15 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
         }
         setUpContentViewForEachTab()
         setUpViewPager()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if #available(iOS 13.0, *){
+            // sense theme swtich references on https://engineering.nodesagency.com/categories/ios/2019/07/03/Dark-Mode
+            if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection){
+                setUpViewPager()
+            }
+        }
     }
 }
 
