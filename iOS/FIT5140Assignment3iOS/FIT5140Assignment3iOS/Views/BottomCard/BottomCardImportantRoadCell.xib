@@ -5,7 +5,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,7 +18,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="efN-Cs-Jki">
-                        <rect key="frame" x="12" y="0.0" width="322" height="84"/>
+                        <rect key="frame" x="12" y="6" width="322" height="84"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tray.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GXZ-cy-P1I">
                                 <rect key="frame" x="20" y="25" width="35" height="34"/>
@@ -75,25 +74,15 @@
                             <constraint firstItem="IVf-mh-8Uw" firstAttribute="leading" secondItem="Dap-bd-06q" secondAttribute="trailing" constant="9" id="xw4-kw-SGl"/>
                         </constraints>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QW1-9p-QDr">
-                        <rect key="frame" x="0.0" y="84" width="346" height="12"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="12" id="UoA-wE-hu3"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="QW1-9p-QDr" firstAttribute="top" secondItem="efN-Cs-Jki" secondAttribute="bottom" id="4cN-i3-0ok"/>
-                    <constraint firstAttribute="bottom" secondItem="QW1-9p-QDr" secondAttribute="bottom" id="HMX-bq-I2Z"/>
-                    <constraint firstAttribute="trailing" secondItem="QW1-9p-QDr" secondAttribute="trailing" id="Ns7-vL-jAU"/>
-                    <constraint firstItem="QW1-9p-QDr" firstAttribute="leading" secondItem="9xo-c7-DZk" secondAttribute="leading" id="t4P-Ez-Opu"/>
+                    <constraint firstItem="efN-Cs-Jki" firstAttribute="top" secondItem="9xo-c7-DZk" secondAttribute="top" constant="6" id="Ve4-Vv-DY5"/>
+                    <constraint firstAttribute="bottom" secondItem="efN-Cs-Jki" secondAttribute="bottom" constant="6" id="cdV-zD-lki"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="MKh-gQ-qcn"/>
             <constraints>
                 <constraint firstItem="MKh-gQ-qcn" firstAttribute="trailing" secondItem="efN-Cs-Jki" secondAttribute="trailing" constant="12" id="Ber-iz-gCA"/>
-                <constraint firstItem="MKh-gQ-qcn" firstAttribute="top" secondItem="efN-Cs-Jki" secondAttribute="top" id="aCt-NX-Lir"/>
                 <constraint firstItem="efN-Cs-Jki" firstAttribute="leading" secondItem="MKh-gQ-qcn" secondAttribute="leading" constant="12" id="kwO-hn-9gP"/>
             </constraints>
             <connections>
@@ -112,8 +101,5 @@
         <namedColor name="BottomCardImportantRoadCellBackground">
             <color red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

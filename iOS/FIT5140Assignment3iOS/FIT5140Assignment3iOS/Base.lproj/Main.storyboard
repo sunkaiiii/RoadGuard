@@ -238,7 +238,7 @@
         <scene sceneID="MuT-SF-3ga">
             <objects>
                 <viewController id="ERA-1y-qER" customClass="ImportantPathDetailViewController" customModule="FIT5140Assignment3iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SaW-uo-q4d">
+                    <view key="view" contentMode="scaleToFill" id="SaW-uo-q4d" customClass="GradientView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -427,7 +427,7 @@
                             </visualEffectView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ouK-bE-aIb"/>
-                        <color key="backgroundColor" name="BackgroundPurple"/>
+                        <color key="backgroundColor" name="RoadDetailPageBackground"/>
                         <constraints>
                             <constraint firstItem="24K-Vg-qR0" firstAttribute="centerX" secondItem="SaW-uo-q4d" secondAttribute="centerX" id="0pE-W4-ORg"/>
                             <constraint firstItem="24K-Vg-qR0" firstAttribute="height" secondItem="SaW-uo-q4d" secondAttribute="height" multiplier="0.285714" id="4IE-M8-2gt"/>
@@ -442,6 +442,18 @@
                             <constraint firstItem="24K-Vg-qR0" firstAttribute="leading" secondItem="ouK-bE-aIb" secondAttribute="leading" constant="20" id="k5W-ew-N4j"/>
                             <constraint firstItem="24K-Vg-qR0" firstAttribute="top" secondItem="GOL-nF-pXh" secondAttribute="bottom" constant="15" id="ylF-Jj-4cW"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                <color key="value" name="RoadDetailPageBackground"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                <color key="value" name="RoadDetailViewSecondColorBackground"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHorizontal" value="NO"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                <integer key="value" value="45"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="1Yh-0E-WpM"/>
                     <connections>
@@ -766,8 +778,11 @@
         <image name="safedriving" width="466" height="437"/>
         <image name="settings-black-24dp" width="24" height="24"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
-        <namedColor name="BackgroundPurple">
-            <color red="0.3919999897480011" green="0.32199999690055847" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="RoadDetailPageBackground">
+            <color red="0.39215686274509803" green="0.32156862745098042" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RoadDetailViewSecondColorBackground">
+            <color red="0.36470588235294116" green="0.51372549019607838" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="RpadViewBackgroundPurple">
             <color red="0.39215686274509803" green="0.32156862745098042" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
