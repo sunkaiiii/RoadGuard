@@ -7,7 +7,7 @@ obd.logger.setLevel(obd.logging.DEBUG)
 # emulator.answer['SPEED'] = '\0 "7E8 03 41 0D %.2X" % randint(20,100) \0\r'
 
 # explicitly define the portstr when using windows
-connection = obd.OBD(portstr="/dev/pts/6",fast=False,baudrate=9600,timeout=30)
+connection = obd.OBD(portstr="/dev/tty4",fast=False,baudrate=9600,timeout=30)
 
 
 def get_current_speed():
@@ -16,7 +16,7 @@ def get_current_speed():
     # print(queryResult.value.magnitude)
     # print(type(queryResult.value.magnitude))
     # get exactly value of the spped, referenes on https://pint.readthedocs.io/en/stable/tutorial.html
-    if queryResult.value is not None:
+    if queryResult is not None and queryResult.value is not None:
         return int(queryResult.value.magnitude)
     import sys
     return -sys.maxsize
