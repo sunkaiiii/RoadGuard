@@ -12,6 +12,8 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 class FirebaseController: NSObject,DatabaseProtocol {
+
+    
     var listeners = MulticastDelegate<DatabaseListener>()
 
     var authController:Auth
@@ -46,6 +48,37 @@ class FirebaseController: NSObject,DatabaseProtocol {
             self.setUpDrivingRecordListeners()
             self.setUpSpeedLimitListeners()
             self.setUpSelectedRoadListener()
+            self.setUpFacialListeners()
+        })
+    }
+
+    func setUpDrivingRecordListeners(){
+        self.drivingRecordRef?.addSnapshotListener({(querySnapshot,error) in
+            guard let querySnapshot = querySnapshot else{
+                print("Error fetching documents")
+                return
+            }
+            self.parseDrivingRecordSnaoshot(snapshot:querySnapshot)
+        })
+    }
+
+    func setUpSpeedLimitListeners(){
+        self.speedLimitRef?.addSnapshotListener({(querySnapshot,error) in
+            guard let querySnapshot = querySnapshot else{
+                print("Error fetching documents")
+                return
+            }
+            self.parseSpeedLimitSnapshot(snapshot:querySnapshot)
+        })
+    }
+
+    func setUpSelectedRoadListener(){
+        self.selectedRoadRef?.addSnapshotListener({(querySnapshot,error) in
+            guard let querySnapshot = querySnapshot else{
+                print("Error fetching road documents")
+                return
+            }
+            self.parseSelectedRoadData(querySnapshot: querySnapshot)
         })
     }
 
@@ -59,24 +92,17 @@ class FirebaseController: NSObject,DatabaseProtocol {
         })
     }
     
-    func setUpDrivingRecordListeners(){
-        self.drivingRecordRef?.addSnapshotListener({(querySnapshot,error) in
-            guard let querySnapshot = querySnapshot else{
-                print("Error fetching documents")
-                return
-            }
-            self.parseDrivingRecordSnaoshot(snapshot:querySnapshot)
-        })
-    }
 
     func parseFacialSnapshot(snapshot:QuerySnapshot){
         snapshot.documentChanges.forEach({(change) in
-            //            let facialRecordId = chang
 
             var parsedFacialDocument:FacialInfo?
             do{
+                //print(change.document.data())
                 parsedFacialDocument = try change.document.data(as: FacialInfo.self)
+                parsedFacialDocument?.id = change.document.documentID
             }catch{
+                print(error)
                 print("Unable to decode the Faicial infomation record")
                 return
             }
@@ -86,8 +112,6 @@ class FirebaseController: NSObject,DatabaseProtocol {
                 return
             }
 
-            //            facialInfo.id = facialRecordId
-
             switch change.type{
                 case .added:
                     facialInfoList.append(facialInfo)
@@ -96,7 +120,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
             }
         })
         listeners.invoke(invocation: {(listener) in
-            if listener.listenerType == .facial || listener.listenerType == .all {
+            if listener.listenerType.contains(.facial)  || listener.listenerType.contains(.all) {
                 listener.onFacialInfoChange(change: .add, facialInfos: facialInfoList)
             }
         })
@@ -107,6 +131,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
             var parsedDrivingrecordDocument:DrivingRecordResponse?
             do{
                 parsedDrivingrecordDocument = try change.document.data(as: DrivingRecordResponse.self)
+                parsedDrivingrecordDocument?.id = change.document.documentID
             }catch{
                 print("Unable to decode the Faicial infomation record")
                 return
@@ -123,22 +148,13 @@ class FirebaseController: NSObject,DatabaseProtocol {
             }
         })
         listeners.invoke(invocation: {(listener) in
-            if listener.listenerType == .drivingRecord || listener.listenerType == .all {
+            if listener.listenerType.contains(.drivingRecord) || listener.listenerType.contains(.all) {
                 listener.onDrivingRecordChange(change: .add, drivingRecord: drivingRecordList)
             }
         })
     }
-    
-    func setUpSpeedLimitListeners(){
-        self.speedLimitRef?.addSnapshotListener({(querySnapshot,error) in
-            guard let querySnapshot = querySnapshot else{
-                print("Error fetching documents")
-                return
-            }
-            self.parseSpeedLimitSnapshot(snapshot:querySnapshot)
-        })
-    }
-    
+
+
     func parseSpeedLimitSnapshot(snapshot:QuerySnapshot){
         snapshot.documentChanges.forEach({(change) in
             let speedRecordId = change.document.documentID
@@ -172,57 +188,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
             }
         })
     }
-    
-    func getSpeedRecordById(id:String)->Int?{
-        return speedInforList.firstIndex(where: {(speed) in
-            speed.id == id
-        })
-    }
-    
-    func addOverSpeedRecord(_ record: SpeedRecord)->SpeedRecord {
-        do{
-            if let overspeedRef = try speedLimitRef?.addDocument(from: record){
-                record.id = overspeedRef.documentID
-            }
-        }catch{
-            print("Failed to serilise over speed record")
-        }
-        return record
-    }
-    
-    func addNormalSpeedRecord(_ record: SpeedRecord) -> SpeedRecord {
-        do{
-            if let overspeedRef = try normalSpeedRef?.addDocument(from: record){
-                record.id = overspeedRef.documentID
-            }
-        }catch{
-            print("Failed to serilise over speed record")
-        }
-        return record
-    }
-    
-    func addSelectedeRoad(_ record: UserSelectedRoadResponse) -> UserSelectedRoadResponse {
-        var record = record
-        do{
-            if let selectedRoad = try selectedRoadRef?.addDocument(from: record){
-                record.id = selectedRoad.documentID
-            }
-        }catch{
-            print("Failed to serilise selected road record")
-        }
-        return record
-    }
 
-    func setUpSelectedRoadListener(){
-        self.selectedRoadRef?.addSnapshotListener({(querySnapshot,error) in
-            guard let querySnapshot = querySnapshot else{
-                print("Error fetching road documents")
-                return
-            }
-            self.parseSelectedRoadData(querySnapshot: querySnapshot)
-        })
-    }
-    
     func parseSelectedRoadData(querySnapshot:QuerySnapshot){
         querySnapshot.documentChanges.forEach({(document) in
             var selectedRoadDocument:UserSelectedRoadResponse?
@@ -237,18 +203,49 @@ class FirebaseController: NSObject,DatabaseProtocol {
                 return
             }
             switch document.type{
-            case .added:
-                self.selectedRoadaList.append(selectRoad)
-            case .modified,.removed:
-                self.findIndexAndModifySpeedList(selectRoad,document.type)
+                case .added:
+                    self.selectedRoadaList.append(selectRoad)
+                case .modified,.removed:
+                    self.findIndexAndModifySpeedList(selectRoad,document.type)
             }
         })
         listeners.invoke(invocation: {(listener) in
-            if listener.listenerType == .selectedRoad || listener.listenerType == .all{
+            if listener.listenerType.contains(.selectedRoad) || listener.listenerType.contains(.all){
                 listener.onSelectedRoadInfoChange(change: .add, selectRoads:selectedRoadaList)
             }
         })
     }
+
+    func getSpeedRecordById(id:String)->Int?{
+        return speedInforList.firstIndex(where: {(speed) in
+            speed.id == id
+        })
+    }
+    
+    func getSpeedRecordByRecordId(_ recordId:String)->[SpeedRecord]{
+        return speedInforList.filter({(speedInfo) in
+            speedInfo.recordId == recordId && speedInfo.currentSpeed > 0
+        })
+    }
+    
+    func getFacialRecordByRecordId(_ recordId: String) -> [FacialInfo] {
+        return facialInfoList.filter({(facial) in facial.recordId == recordId})
+    }
+    
+    
+    func addSelectedeRoad(_ record: UserSelectedRoadResponse) -> UserSelectedRoadResponse {
+        var record = record
+        do{
+            if let selectedRoad = try selectedRoadRef?.addDocument(from: record){
+                record.id = selectedRoad.documentID
+            }
+        }catch{
+            print("Failed to serilise selected road record")
+        }
+        return record
+    }
+
+
     
     func findIndexAndModifySpeedList(_ selectedRoad:UserSelectedRoadResponse, _ type:DocumentChangeType){
         guard let index = selectedRoadaList.firstIndex(where: {(road) in
@@ -262,15 +259,18 @@ class FirebaseController: NSObject,DatabaseProtocol {
             selectedRoadaList.remove(at: index)
         }
     }
-    
+
+    // MARK: - Db Listner
     func addListener(listener: DatabaseListener) {
         listeners.addDelegate(listener)
 
-        if listener.listenerType == .facial || listener.listenerType == .all{
+        if listener.listenerType.contains(.facial) || listener.listenerType.contains(.all){
             listener.onFacialInfoChange(change: .add, facialInfos: facialInfoList)
-        }else if listener.listenerType == .selectedRoad || listener.listenerType == .all{
+        }
+        if listener.listenerType.contains(.selectedRoad) || listener.listenerType.contains(.all){
             listener.onSelectedRoadInfoChange(change: .add, selectRoads: selectedRoadaList)
-        }else if listener.listenerType == .drivingRecord || listener.listenerType == .all{
+        }
+        if listener.listenerType.contains(.drivingRecord) || listener.listenerType.contains(.all){
             listener.onDrivingRecordChange(change: .add, drivingRecord: drivingRecordList)
         }
     }
@@ -283,12 +283,12 @@ class FirebaseController: NSObject,DatabaseProtocol {
 protocol DatabaseProtocol:NSObject {
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
-    func addOverSpeedRecord(_ record:SpeedRecord)->SpeedRecord
-    func addNormalSpeedRecord(_ record:SpeedRecord)->SpeedRecord
+    func getSpeedRecordByRecordId(_ recordId:String)->[SpeedRecord]
+    func getFacialRecordByRecordId(_ recordId:String)->[FacialInfo]
     func addSelectedeRoad(_ record:UserSelectedRoadResponse)->UserSelectedRoadResponse
 }
 protocol DatabaseListener:AnyObject {
-    var listenerType:ListenerType{get set}
+    var listenerType:[ListenerType]{get set}
     func onFacialInfoChange(change:DatabaseChange, facialInfos:[FacialInfo])
     func onSelectedRoadInfoChange(change:DatabaseChange, selectRoads:[UserSelectedRoadResponse])
     func onDrivingRecordChange(change:DatabaseChange, drivingRecord:[DrivingRecordResponse])

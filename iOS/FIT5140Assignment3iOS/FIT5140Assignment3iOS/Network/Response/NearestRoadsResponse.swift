@@ -12,6 +12,24 @@ struct NearestRoadResponse: Codable {
     let snappedPoints: [SnappedPoint]
 }
 
+class NearestRoadResponseCacheHelper:CachegableData{
+    func tryFetchCacheData(request: RequestModel) -> Decodable? {
+        if let request = request as? NearestRoadsRequest{
+            return InMemoryDataCache.shared.getNearestRoadCacheData(request)
+        }
+        return nil
+    }
+
+    func cacheData(data: Decodable,request:RequestModel) {
+        if let request = request as? NearestRoadsRequest, let data = data as? NearestRoadResponse{
+            InMemoryDataCache.shared.storeNearestRoadResponse(request, data)
+        }
+
+    }
+
+    
+}
+
 // MARK: - SnappedPoint
 struct SnappedPoint: Codable {
     let location: Location

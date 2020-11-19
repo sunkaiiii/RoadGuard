@@ -13,7 +13,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var recordDetailTableView: UITableView!
 
     //需要更改数据类型
-    var selectedRecord : String?
+    var drivingRecord : DrivingRecordResponse?
     
     let SECTION_MAP = 0
     let SECTION_MATRIX = 1
@@ -26,37 +26,6 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
     let DISTRACTION_CELL_ID = RecordDetailDistractionSummaryCell.identifier
 
     let DISTRACTION_DETAIL_PAGE_SEGUE = "distractionDetailSegue"
-    //test data
-    let lineChartDataEntries : [ChartDataEntry] = [
-        ChartDataEntry(x:0.0, y:3.0),
-        ChartDataEntry(x:1.0, y:8.0),
-        ChartDataEntry(x:2.0, y:15.0),
-        ChartDataEntry(x:3.0, y:25.0),
-        ChartDataEntry(x:4.0, y:35.0),
-        ChartDataEntry(x:5.0, y:50.0),
-        ChartDataEntry(x:6.0, y:65.0),
-        ChartDataEntry(x:7.0, y:75.0),
-        ChartDataEntry(x:8.0, y:80.0),
-        ChartDataEntry(x:9.0, y:65.0),
-        ChartDataEntry(x:10.0, y:55.0),
-        ChartDataEntry(x:11.0, y:35.0)
-    ]
-
-    let barChartDataEntries : [BarChartDataEntry] = [
-
-        BarChartDataEntry(x:0.0, y:3.0),
-        BarChartDataEntry(x:1.0, y:8.0),
-        BarChartDataEntry(x:2.0, y:15.0),
-        BarChartDataEntry(x:3.0, y:25.0),
-        BarChartDataEntry(x:4.0, y:35.0),
-        BarChartDataEntry(x:5.0, y:50.0),
-        BarChartDataEntry(x:6.0, y:65.0),
-        BarChartDataEntry(x:7.0, y:75.0),
-        BarChartDataEntry(x:8.0, y:80.0),
-        BarChartDataEntry(x:9.0, y:65.0),
-        BarChartDataEntry(x:10.0, y:55.0),
-        BarChartDataEntry(x:11.0, y:35.0)
-    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +35,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
         recordDetailTableView.register(RecordDetailMatrixCell.nib(), forCellReuseIdentifier: MATRIX_CELL_ID)
         recordDetailTableView.register(RecordDetailChartCell.nib(), forCellReuseIdentifier: CHART_CELL_ID)
         recordDetailTableView.register(RecordDetailDistractionSummaryCell.nib(), forCellReuseIdentifier: DISTRACTION_CELL_ID)
-
+    
         // Do any additional setup after loading the view.
     }
     
@@ -83,48 +52,35 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == SECTION_MAP {
             let cell = tableView.dequeueReusableCell(withIdentifier: MAP_CELL_ID, for: indexPath) as! RecordDetailMapCell
-      
+            cell.initMapAndPath(self.drivingRecord)
             return cell
         } else if indexPath.section == SECTION_MATRIX{
             let cell = tableView.dequeueReusableCell(withIdentifier: MATRIX_CELL_ID, for: indexPath) as! RecordDetailMatrixCell
-
+            cell.initMatrixData(self.drivingRecord)
             return cell
         } else if indexPath.section == SECTION_CHART{
             let cell = tableView.dequeueReusableCell(withIdentifier: CHART_CELL_ID, for: indexPath) as! RecordDetailChartCell
-            //configure chart data here
-
-            //configure line chart data
-            let dataSet = LineChartDataSet(entries: lineChartDataEntries, label: "km/h")
-            //disable the big circle in the chart
-            dataSet.drawCirclesEnabled = false
-            //make the line looks more smooth
-            dataSet.mode = .cubicBezier
-            //line width
-//            dataSet.lineWidth = 1
-            //white line
-            dataSet.setColor(.white)
-            let lineChartData = LineChartData(dataSet: dataSet)
-            //hide the number on each point of the line
-            lineChartData.setDrawValues(false)
-
-            let lineChart = cell.lineChartOutlet
-            lineChart?.data = lineChartData
-
-            //configure horizontal bar chart data
-            //有待再调整，现在做的和设计图差异较大
-            let horizontolBarChartDataSet = BarChartDataSet(entries: barChartDataEntries)
-            horizontolBarChartDataSet.setColor(UIColor(red: 0.45, green: 0.74, blue: 0.94, alpha: 1.00))
-            let horizontalBarChartData = BarChartData(dataSet: horizontolBarChartDataSet)
-            let horizontalBarChart = cell.horizontalBarChartOutlet
-            horizontalBarChart?.data = horizontalBarChartData
-
+            cell.initLineChart(drivingRecord)
+            cell.initBarChart(drivingRecord)
             return cell
-
-
 
         } else {
             //SECTION_DISTRACTION_SUMMARY
             let cell = tableView.dequeueReusableCell(withIdentifier: DISTRACTION_CELL_ID, for: indexPath) as! RecordDetailDistractionSummaryCell
+            if let delegate = UIApplication.shared.delegate as? AppDelegate, let databaseController = delegate.firebaseController, let id = self.drivingRecord?.id{
+                cell.dataSource = databaseController.getFacialRecordByRecordId(id).filter({(facial) in
+                    let detail = facial.faceDetails
+                    if detail.count > 0{
+                        let firstEmotion = detail[0]
+                        if firstEmotion.emotions[0].type == "CALM"{
+                            return false
+                        }
+                    }else{
+                        return false
+                    }
+                    return true
+                })
+            }
             cell.delegateParent = self
             return cell
         }

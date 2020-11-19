@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="viQ-sC-L2j">
-                    <rect key="frame" x="0.0" y="46" width="375" height="35"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MIa-B4-RDJ">
                             <rect key="frame" x="157" y="14" width="61" height="7"/>
@@ -41,7 +41,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vtl-bb-Z6W">
-                    <rect key="frame" x="0.0" y="81" width="375" height="409"/>
+                    <rect key="frame" x="0.0" y="35" width="375" height="455"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Seach by address..." id="aB1-nM-q31">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -58,9 +58,11 @@
                 <constraint firstItem="vtl-bb-Z6W" firstAttribute="top" secondItem="viQ-sC-L2j" secondAttribute="bottom" id="TEi-fw-OYg"/>
                 <constraint firstItem="vtl-bb-Z6W" firstAttribute="leading" secondItem="cRn-qn-5zq" secondAttribute="leading" id="Zbw-0z-hVE"/>
                 <constraint firstItem="cRn-qn-5zq" firstAttribute="bottom" secondItem="vtl-bb-Z6W" secondAttribute="bottom" id="hD7-xY-4mo"/>
-                <constraint firstItem="viQ-sC-L2j" firstAttribute="top" secondItem="cRn-qn-5zq" secondAttribute="top" constant="2" id="kgs-kt-V0P"/>
+                <constraint firstItem="viQ-sC-L2j" firstAttribute="top" secondItem="clf-VL-sia" secondAttribute="top" id="kgs-kt-V0P"/>
                 <constraint firstItem="viQ-sC-L2j" firstAttribute="leading" secondItem="cRn-qn-5zq" secondAttribute="leading" id="twV-y4-cUd"/>
             </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-686.23188405797111" y="75.669642857142847"/>
         </view>

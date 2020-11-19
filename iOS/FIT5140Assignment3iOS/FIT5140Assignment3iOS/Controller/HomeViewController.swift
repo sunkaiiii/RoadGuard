@@ -21,6 +21,8 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
     @IBOutlet weak var speedAlertView: SpeedAlertSuperView!
     @IBOutlet weak var speedNotificationView: SpeedNotificationSuperView!
     
+    @IBOutlet weak var bottomSpacingConstraint: NSLayoutConstraint!
+
     var lastPosition:CLLocationCoordinate2D?
     var limitSpeed:Int = -1
     override func viewDidLoad() {
@@ -30,18 +32,10 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
         initGoogleMap()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         firebaseController = appDelegate.firebaseController
-        
-    }
 
-    //    @IBAction func testSound(_ sender: Any) {
-    //        let url = Bundle.main.url(forResource: "overspeed", withExtension: "wav")
-    //        do{
-    //            player =  try AVAudioPlayer(contentsOf: url!)
-    //            player.play()
-    //        }catch{
-    //            print(error)
-    //        }
-    //    }
+        //to make the speed circle position dynamiclly adjusted on different size of screen
+        bottomSpacingConstraint.constant = self.view.frame.height / 9
+    }
 
     func initLocationPermission() {
         manager.requestAlwaysAuthorization()
@@ -65,7 +59,6 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
             self.view.addSubview(mapview)
             mapview.layer.zPosition = -.greatestFiniteMagnitude
         }
-
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -107,5 +100,4 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
             SoundHelper.shared.playOverSpeedSound()
         }
     }
-    
 }

@@ -10,7 +10,7 @@ import UIKit
 class NetworkRequestTask<T> : NSObject where T:Decodable{
     let requestHelper:RequestHelper
     let requestAction:HTTPRequestAction
-    let onCompltedAction:((RequestHelper,URLComponents,T)->Void)?
+    let onCompltedAction:((RequestHelper,URLComponents,T,Data)->Void)?
     
     //references on https://learnappmaking.com/codable-json-swift-how-to/
     //references on https://medium.com/@alfianlosari/building-simple-async-api-request-with-swift-5-result-type-alfian-losari-e92f4e9ab412
@@ -18,14 +18,14 @@ class NetworkRequestTask<T> : NSObject where T:Decodable{
         self.init(helper: helper, action: action, onCompleted: nil)
     }
     
-    init(helper:RequestHelper, action:HTTPRequestAction, onCompleted: ((RequestHelper,URLComponents,T)->Void)?) {
+    init(helper:RequestHelper, action:HTTPRequestAction, onCompleted: ((RequestHelper,URLComponents,T,Data)->Void)?) {
         self.requestHelper = helper
         self.requestAction = action
         self.onCompltedAction = onCompleted
     }
     
     func fetchDataFromSever(){
-        let urlAndComponents = buildRequestUrl()
+        let urlAndComponents = requestHelper.buildUrlComponents()
         guard let url = urlAndComponents.0 else{
             return
         }
@@ -43,9 +43,10 @@ class NetworkRequestTask<T> : NSObject where T:Decodable{
                     do{
                         let decoder = JSONDecoder()
                         let convertedData = try decoder.decode(T.self, from: data)
-                        self.requestAction.afterExecution(helper: self.requestHelper, url: urlAndComponents.1, response: convertedData, rawData: data)
                         if let onCompleted = self.onCompltedAction{
-                            onCompleted(self.requestHelper,urlAndComponents.1,convertedData)
+                            onCompleted(self.requestHelper,urlAndComponents.1,convertedData,data)
+                        }else{
+                            self.requestAction.afterExecution(helper: self.requestHelper, url: urlAndComponents.1, response: convertedData, rawData: data)
                         }
                     }catch let error{
                         print(error)
@@ -59,28 +60,7 @@ class NetworkRequestTask<T> : NSObject where T:Decodable{
             }
             }).resume()
     }
-    
-    private func buildRequestUrl()->(URL?, URLComponents){
-        let model = requestHelper.requestModel
-        let api = requestHelper.restfulAPI
-        let host = api.getRequestHost()
-        var urlComponents = URLComponents()
-        urlComponents.scheme = host.getScheme()
-        urlComponents.host = host.getHostUrl()
-        urlComponents.port = host.getPort()
-        urlComponents.path = api.getRoute()
-        let pathParameter = model.getPathParameter()
-        for path in pathParameter{
-            urlComponents.path += "/"+path
-        }
-        var queryItems:[URLQueryItem] = []
-        for query in model.getQueryParameter(){
-            queryItems.append(URLQueryItem(name: query.key, value: query.value))
-        }
-        urlComponents.queryItems = queryItems
-        print(urlComponents.url?.absoluteString ?? "")
-        return (urlComponents.url, urlComponents)
-    }
+
 }
 
 extension URLSession{

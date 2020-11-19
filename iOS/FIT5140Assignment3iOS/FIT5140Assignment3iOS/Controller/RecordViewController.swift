@@ -9,7 +9,7 @@ import UIKit
 
 
 class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseListener{
-    var listenerType: ListenerType = .drivingRecord
+    var listenerType: [ListenerType] = [ListenerType.drivingRecord]
     
 
     let DETAIL_PAGE_SEGUE_ID = "recordDetailSegue"
@@ -101,9 +101,9 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == DETAIL_PAGE_SEGUE_ID {
-            if let des = segue.destination as? RecordDetailViewController{
+            if let des = segue.destination as? RecordDetailViewController, let respone = sender as? DrivingRecordResponse{
                 //需要改传值类型
-                des.selectedRecord = sender as? String
+                des.drivingRecord = respone
             }
 
         }
@@ -111,6 +111,7 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
     
     
     func onDrivingRecordChange(change: DatabaseChange, drivingRecord: [DrivingRecordResponse]) {
+        //map array into a group of dictionary, references on https://stackoverflow.com/questions/38454952/map-array-of-objects-to-dictionary-in-swift
         self.dataSource = drivingRecord.reduce([Int:[DrivingRecordResponse]]()){(dict,drivingRecord)->[Int:[DrivingRecordResponse]] in
             var dict = dict
             let index = Calendar.current.component(.month, from: drivingRecord.startTime)
@@ -127,8 +128,8 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
 
 // MARK: - RecordBreakdownDelegate
 extension RecordViewController: RecordBreakdownDelegate {
-    //需要改传值类型
-    func jumpToSelectedRowDetailPage(selectedRow: String) {
+    func jumpToSelectedRowDetailPage(selectedRow: DrivingRecordResponse) {
         performSegue(withIdentifier: DETAIL_PAGE_SEGUE_ID, sender: selectedRow)
     }
+
 }

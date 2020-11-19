@@ -8,8 +8,9 @@
 import UIKit
 
 protocol DefaultHttpRequestAction:HTTPRequestAction {
+    func requestCachegableDataFromRestfulService<T>(api:RestfulAPI,model:RequestModel,jsonType:T.Type,cachegableHelper:CachegableData) where T:Decodable
     func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T.Type) where T:Decodable
-    func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T.Type, onDataReturned:@escaping(RequestHelper,URLComponents,T)->Void) where T:Decodable
+    func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T.Type, onDataReturned:@escaping(RequestHelper,URLComponents,T,Data)->Void) where T:Decodable
     func requestRestfulServiceForXmlResult(api:RestfulAPI, model:RequestModel)
     func handleResponseDataFromRestfulRequest(helper:RequestHelper,url:URLComponents,accessibleData:AccessibleNetworkData)
 }
@@ -29,11 +30,24 @@ class DataResult:AccessibleNetworkData{
 }
 
 extension DefaultHttpRequestAction{
+    func requestCachegableDataFromRestfulService<T>(api:RestfulAPI,model:RequestModel,jsonType:T.Type,cachegableHelper:CachegableData) where T:Decodable{
+        let data:T? = cachegableHelper.tryFetchCacheData(request: model) as? T
+        let helper = RequestHelper(api: api, model: model)
+        if let data = data{
+            handleResponseDataFromRestfulRequest(helper: helper, url: helper.buildUrlComponents().1, accessibleData: DataResult(data: data))
+            return
+        }
+        
+        requestRestfulService(api: api, model: model, jsonType: jsonType, onDataReturned: {(helper,components,result,rawData) in
+            cachegableHelper.cacheData(data: result,request: model)
+            afterExecution(helper: helper, url: components, response: result, rawData: rawData)
+        })
+    }
     func requestRestfulService<T>(api: RestfulAPI, model: RequestModel,jsonType:T.Type) where T:Decodable {
         NetworkRequestTask<T>(helper: RequestHelper(api: api, model: model), action: self).fetchDataFromSever()
     }
     
-    func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T.Type, onDataReturned:@escaping(RequestHelper,URLComponents,T)->Void) where T:Decodable{
+    func requestRestfulService<T>(api:RestfulAPI, model:RequestModel,jsonType:T.Type, onDataReturned:@escaping(RequestHelper,URLComponents,T,Data)->Void) where T:Decodable{
         NetworkRequestTask<T>(helper: RequestHelper(api: api, model: model), action: self, onCompleted: onDataReturned).fetchDataFromSever()
     }
     

@@ -15,7 +15,7 @@ protocol RoadInfoBottomCardDelegate: class {
 }
 
 class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController, DatabaseListener {
-    var listenerType: ListenerType = .selectedRoad
+    var listenerType: [ListenerType] = [ListenerType.selectedRoad]
     
     
     var areaOutlet: UIView?
