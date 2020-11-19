@@ -10,10 +10,11 @@ import UIKit
 class BottomCardImportantRoadCell: UITableViewCell,DefaultHttpRequestAction {
 
     
-    @IBOutlet var iconImageView : UIImageView!
-    @IBOutlet var headerLabel : UILabel!
-    @IBOutlet var contentLabel : UILabel!
-    @IBOutlet var distanceLabel : UILabel!
+    @IBOutlet weak var iconImageView : UIImageView!
+    @IBOutlet weak var headerLabel : UILabel!
+    @IBOutlet weak var fromLabel : UILabel!
+    @IBOutlet weak var toLabel: UILabel!
+    @IBOutlet weak var distanceLabel : UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var backgroundColorView: UIView!
 
@@ -65,7 +66,10 @@ class BottomCardImportantRoadCell: UITableViewCell,DefaultHttpRequestAction {
     }
     
     func initContentLabel(_ placeDetail:PlaceDetailResponse){
-        let refreshContentLabel = {() in self.contentLabel.text = "From \(self.startName ?? "") to \(self.endName ?? "")"}
+        let refreshContentLabel = {() in
+            self.fromLabel.text = "From: \(self.startName ?? "")"
+            self.toLabel.text = "To \(self.endName ?? "")"
+        }
         if placeDetail.result.placeID == firstPoint?.placeID{
             startName = placeDetail.result.name
             ImageLoader.simpleLoad(placeDetail.result.icon, imageView: iconImageView)

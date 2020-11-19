@@ -34,7 +34,7 @@ struct UserSelectedRoadResponse:Codable {
         self.placeIds = roadInformation.map({(points) in points.placeID})
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd-MM-yyyy"
-        self.selectedRoadCustomName = "Road_"+dateFormatter.string(from: Date.init())
+        self.selectedRoadCustomName = "Date: "+dateFormatter.string(from: Date.init())
         
     }
 }

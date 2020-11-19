@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,10 +29,10 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="UdI-JO-tXb">
-                                <rect key="frame" x="239.5" y="28" width="68.5" height="20.5"/>
+                                <rect key="frame" x="250.5" y="28" width="57.5" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100KM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rx0-fX-rBn">
-                                        <rect key="frame" x="5.5" y="0.0" width="57.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="57.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <color key="textColor" name="RecordViewCellDistanceColour"/>
                                         <nil key="highlightedColor"/>
@@ -40,17 +40,23 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="6M1-yJ-0dg">
-                                <rect key="frame" x="51" y="15.5" width="179.5" height="45.5"/>
+                                <rect key="frame" x="51" y="8.5" width="117" height="59.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driving 120min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000596046448" translatesAutoresizingMaskIntoConstraints="NO" id="BXw-sC-zub">
-                                        <rect key="frame" x="0.0" y="0.0" width="179.5" height="23"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="117" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                         <color key="textColor" name="RecordViewCellTitleColour"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From Clayton to Caufield" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000596046448" translatesAutoresizingMaskIntoConstraints="NO" id="tjL-vX-okg">
-                                        <rect key="frame" x="0.0" y="26" width="179.5" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000596046448" translatesAutoresizingMaskIntoConstraints="NO" id="tjL-vX-okg">
+                                        <rect key="frame" x="0.0" y="22.5" width="117" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" name="RecordViewCellSubtitleColour"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000596046448" translatesAutoresizingMaskIntoConstraints="NO" id="Keq-a6-Xgq">
+                                        <rect key="frame" x="0.0" y="42.5" width="117" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" name="RecordViewCellSubtitleColour"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -63,7 +69,7 @@
                             <constraint firstItem="6M1-yJ-0dg" firstAttribute="leading" secondItem="rPy-66-qTr" secondAttribute="trailing" constant="8" id="LmY-dY-bN5"/>
                             <constraint firstItem="rPy-66-qTr" firstAttribute="leading" secondItem="IEE-Zl-QEL" secondAttribute="leading" constant="8" id="Qaw-vy-5NN"/>
                             <constraint firstItem="UdI-JO-tXb" firstAttribute="centerY" secondItem="IEE-Zl-QEL" secondAttribute="centerY" id="cs0-pB-AGC"/>
-                            <constraint firstItem="UdI-JO-tXb" firstAttribute="leading" secondItem="6M1-yJ-0dg" secondAttribute="trailing" constant="9" id="gpC-o0-zDm"/>
+                            <constraint firstItem="UdI-JO-tXb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6M1-yJ-0dg" secondAttribute="trailing" constant="10" id="gpC-o0-zDm"/>
                             <constraint firstItem="6M1-yJ-0dg" firstAttribute="centerY" secondItem="IEE-Zl-QEL" secondAttribute="centerY" id="xqQ-uJ-9x1"/>
                             <constraint firstItem="rPy-66-qTr" firstAttribute="centerY" secondItem="IEE-Zl-QEL" secondAttribute="centerY" id="zTo-er-KH8"/>
                         </constraints>
@@ -83,8 +89,9 @@
                 <outlet property="backgroundBorderAndColorViewOutlet" destination="IEE-Zl-QEL" id="MHD-DU-gyN"/>
                 <outlet property="distanceLabelOutlet" destination="rx0-fX-rBn" id="R0o-0h-WEo"/>
                 <outlet property="drivingTimeLabelOutlet" destination="BXw-sC-zub" id="7tl-qE-S3F"/>
+                <outlet property="fromLabel" destination="tjL-vX-okg" id="OsX-UK-aOB"/>
                 <outlet property="iconImageOutlet" destination="rPy-66-qTr" id="Wbl-dM-ZD8"/>
-                <outlet property="startAndEndPlaceLabelOutlet" destination="tjL-vX-okg" id="OsX-UK-aOB"/>
+                <outlet property="toLabel" destination="Keq-a6-Xgq" id="38T-iJ-YvE"/>
             </connections>
             <point key="canvasLocation" x="55.072463768115945" y="113.83928571428571"/>
         </tableViewCell>
