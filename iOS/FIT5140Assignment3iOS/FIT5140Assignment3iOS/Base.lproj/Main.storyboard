@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -212,7 +212,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iRZ-DS-DPV"/>
-                        <color key="backgroundColor" red="0.36470588240000001" green="0.29803921570000003" blue="0.69019607839999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="RpadViewBackgroundPurple"/>
                         <constraints>
                             <constraint firstItem="nCe-gB-aNr" firstAttribute="centerX" secondItem="txg-qf-k6G" secondAttribute="centerX" id="8Jj-q1-HMA"/>
                             <constraint firstItem="nCe-gB-aNr" firstAttribute="top" secondItem="iRZ-DS-DPV" secondAttribute="top" constant="20" id="vgI-hw-mMd"/>
@@ -238,7 +238,7 @@
         <scene sceneID="MuT-SF-3ga">
             <objects>
                 <viewController id="ERA-1y-qER" customClass="ImportantPathDetailViewController" customModule="FIT5140Assignment3iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SaW-uo-q4d">
+                    <view key="view" contentMode="scaleToFill" id="SaW-uo-q4d" customClass="GradientView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -252,7 +252,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="jAZ-zg-oVt">
-                                                    <rect key="frame" x="37.5" y="21.5" width="99.5" height="115"/>
+                                                    <rect key="frame" x="38" y="21.5" width="99.5" height="115"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Length" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19D-z6-FNT">
                                                             <rect key="frame" x="0.0" y="0.0" width="99.5" height="21.5"/>
@@ -292,7 +292,7 @@
                                                     <rect key="frame" x="61.5" y="21.5" width="51.5" height="115"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pass" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yvb-p9-vUA">
-                                                            <rect key="frame" x="7" y="0.0" width="38" height="21.5"/>
+                                                            <rect key="frame" x="6.5" y="0.0" width="38" height="21.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -427,7 +427,7 @@
                             </visualEffectView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ouK-bE-aIb"/>
-                        <color key="backgroundColor" name="BackgroundPurple"/>
+                        <color key="backgroundColor" name="RoadDetailPageBackground"/>
                         <constraints>
                             <constraint firstItem="24K-Vg-qR0" firstAttribute="centerX" secondItem="SaW-uo-q4d" secondAttribute="centerX" id="0pE-W4-ORg"/>
                             <constraint firstItem="24K-Vg-qR0" firstAttribute="height" secondItem="SaW-uo-q4d" secondAttribute="height" multiplier="0.285714" id="4IE-M8-2gt"/>
@@ -442,6 +442,18 @@
                             <constraint firstItem="24K-Vg-qR0" firstAttribute="leading" secondItem="ouK-bE-aIb" secondAttribute="leading" constant="20" id="k5W-ew-N4j"/>
                             <constraint firstItem="24K-Vg-qR0" firstAttribute="top" secondItem="GOL-nF-pXh" secondAttribute="bottom" constant="15" id="ylF-Jj-4cW"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                <color key="value" name="RoadDetailPageBackground"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                <color key="value" name="RoadDetailViewSecondColorBackground"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="isHorizontal" value="NO"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                <integer key="value" value="45"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" id="1Yh-0E-WpM"/>
                     <connections>
@@ -462,13 +474,13 @@
         <scene sceneID="pQO-TD-dpm">
             <objects>
                 <viewController id="oAV-4E-AUv" customClass="RecordViewController" customModule="FIT5140Assignment3iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Pd2-EF-78X">
+                    <view key="view" contentMode="scaleToFill" id="Pd2-EF-78X" customClass="GradientView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBX-xr-FNU" customClass="WormTabStrip" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Sp-ap-h1x"/>
@@ -479,6 +491,17 @@
                             <constraint firstItem="PBX-xr-FNU" firstAttribute="top" secondItem="8Sp-ap-h1x" secondAttribute="top" id="b7e-N1-zfx"/>
                             <constraint firstItem="PBX-xr-FNU" firstAttribute="leading" secondItem="8Sp-ap-h1x" secondAttribute="leading" id="vyp-aD-MTm"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                <color key="value" name="RecordViewFirstBackground"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                <color key="value" name="RecordViewSecondBackground"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                <integer key="value" value="45"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="Yg0-I0-3mJ"/>
                     <connections>
@@ -494,7 +517,7 @@
         <scene sceneID="lsi-yt-L2o">
             <objects>
                 <viewController id="cXS-Aa-XqL" customClass="RecordDetailViewController" customModule="FIT5140Assignment3iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Xg4-Ob-vqQ">
+                    <view key="view" contentMode="scaleToFill" id="Xg4-Ob-vqQ" customClass="GradientView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -514,6 +537,17 @@
                             <constraint firstItem="idC-A4-9NG" firstAttribute="leading" secondItem="njP-bP-3wy" secondAttribute="leading" id="bAq-DL-1XB"/>
                             <constraint firstItem="njP-bP-3wy" firstAttribute="trailing" secondItem="idC-A4-9NG" secondAttribute="trailing" id="mRN-tg-4JE"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                <color key="value" name="RecordDetailFirstBackgroundColour"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                <color key="value" name="RecordDetailSecondBackgroundColour"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                <integer key="value" value="45"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="Record Detail" id="oTG-xm-Z5W"/>
                     <connections>
@@ -766,8 +800,26 @@
         <image name="safedriving" width="466" height="437"/>
         <image name="settings-black-24dp" width="24" height="24"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
-        <namedColor name="BackgroundPurple">
-            <color red="0.3919999897480011" green="0.32199999690055847" blue="0.74500000476837158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="RecordDetailFirstBackgroundColour">
+            <color red="0.10196078431372549" green="0.27058823529411763" blue="0.3843137254901961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RecordDetailSecondBackgroundColour">
+            <color red="0.10196078431372549" green="0.27058823529411763" blue="0.3843137254901961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RecordViewFirstBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RecordViewSecondBackground">
+            <color red="0.81176470588235294" green="0.85490196078431369" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RoadDetailPageBackground">
+            <color red="0.39215686274509803" green="0.32156862745098042" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RoadDetailViewSecondColorBackground">
+            <color red="0.36470588235294116" green="0.51372549019607838" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RpadViewBackgroundPurple">
+            <color red="0.39215686274509803" green="0.32156862745098042" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -45,7 +45,7 @@ class BottomCardImportantRoadCell: UITableViewCell,DefaultHttpRequestAction {
     override func awakeFromNib() {
         super.awakeFromNib()
         iconImageView.contentMode = .scaleAspectFit
-        backgroundColorView.layer.cornerRadius = 24
+        backgroundColorView.layer.cornerRadius = 18
         // Initialization code
     }
 

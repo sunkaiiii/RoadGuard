@@ -41,7 +41,7 @@ class RecordBkdTableViewCell: UITableViewCell,DefaultHttpRequestAction {
     override func awakeFromNib() {
         super.awakeFromNib()
         iconImageOutlet.contentMode = .scaleAspectFit
-        backgroundBorderAndColorViewOutlet.layer.cornerRadius = 24
+        backgroundBorderAndColorViewOutlet.layer.cornerRadius = 12
         // Initialization code
     }
 

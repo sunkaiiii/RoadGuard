@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +28,7 @@
                 </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="pi1-ok-vTn"/>
-            <color key="backgroundColor" red="0.36470588235294116" green="0.29803921568627451" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" name="RoadViewSpeedAlertBackground"/>
             <constraints>
                 <constraint firstItem="pi1-ok-vTn" firstAttribute="trailing" secondItem="hPh-ZF-jmV" secondAttribute="trailing" constant="12" id="Cg7-k4-teB"/>
                 <constraint firstItem="hPh-ZF-jmV" firstAttribute="leading" secondItem="pi1-ok-vTn" secondAttribute="leading" constant="12" id="IWY-jS-eSe"/>
@@ -43,4 +44,9 @@
             <point key="canvasLocation" x="-84.782608695652186" y="440.29017857142856"/>
         </view>
     </objects>
+    <resources>
+        <namedColor name="RoadViewSpeedAlertBackground">
+            <color red="0.36470588235294116" green="0.29803921568627451" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -38,15 +38,19 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
 
     //This is from https://github.com/EzimetYusup/WormTabStrip
     func setUpViewPager(){
+        let topColour = UIColor(named: "RecordViewTopColour") ?? .black
+        navigationController?.navigationBar.backgroundColor = topColour
         viewPager.delegate = self
         viewPager.eyStyle.wormStyel = .line
         viewPager.eyStyle.isWormEnable = true
         viewPager.eyStyle.spacingBetweenTabs = 15
-        viewPager.eyStyle.dividerBackgroundColor = .white
-        viewPager.eyStyle.WormColor = .blue
-        viewPager.eyStyle.tabItemDefaultColor = .blue
-        viewPager.eyStyle.tabItemSelectedColor = .blue
-        viewPager.eyStyle.topScrollViewBackgroundColor = .white
+        viewPager.eyStyle.dividerBackgroundColor = topColour
+        viewPager.eyStyle.topScrollViewBackgroundColor = topColour
+        viewPager.backgroundColor = .clear
+        viewPager.eyStyle.contentScrollViewBackgroundColor = .clear
+        viewPager.eyStyle.WormColor = .white
+        viewPager.eyStyle.tabItemDefaultColor = UIColor(red: 104, green: 119, blue: 117)
+        viewPager.eyStyle.tabItemSelectedColor = .white
         viewPager.eyStyle.tabItemDefaultFont = UIFont.boldSystemFont(ofSize: 16.0)
         viewPager.eyStyle.tabItemSelectedFont = UIFont.boldSystemFont(ofSize: 16.0)
         viewPager.currentTabIndex = Calendar.current.component(.month, from: Date()) - 1 //get current month number refereces on https://stackoverflow.com/questions/55492003/how-can-i-find-current-month-name-and-current-month-number-in-swift

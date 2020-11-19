@@ -62,6 +62,7 @@
 		B1F632512563FFE700787119 /* CachegableData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F632502563FFE700787119 /* CachegableData.swift */; };
 		B1F6325525640D9D00787119 /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F6325425640D9D00787119 /* RealmController.swift */; };
 		B1F6325A2564939800787119 /* InmemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F632592564939800787119 /* InmemoryCache.swift */; };
+		B1F7D00A2566159B001AFBFD /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F7D0092566159B001AFBFD /* GradientView.swift */; };
 		E40448EC254C278700341510 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40448EB254C278700341510 /* RecordViewController.swift */; };
 		E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */; };
 		E40D975F254438150012DAB6 /* SearchAddressBottomCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */; };
@@ -173,6 +174,7 @@
 		B1F632502563FFE700787119 /* CachegableData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachegableData.swift; sourceTree = "<group>"; };
 		B1F6325425640D9D00787119 /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		B1F632592564939800787119 /* InmemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InmemoryCache.swift; sourceTree = "<group>"; };
+		B1F7D0092566159B001AFBFD /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		E40448EB254C278700341510 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
 		E40D975B254437E90012DAB6 /* SearchAddressBottomCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchAddressBottomCard.xib; sourceTree = "<group>"; };
 		E40D975E254438150012DAB6 /* SearchAddressBottomCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAddressBottomCard.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				B190D3CB25447102002249BA /* RoadPage */,
 				B1AB3AA025446D0B0082B004 /* SuperViews */,
 				E45B4869254CF5F400692A2E /* TopScrollTabBar */,
+				B1F7D0092566159B001AFBFD /* GradientView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -720,6 +723,7 @@
 				B161C77C2564A286004D37E6 /* CachegableController.swift in Sources */,
 				B1A5E47A2547C59A00D8CCB0 /* GoogleAPIKey.swift in Sources */,
 				B1E9473225615618007C74AD /* CurrentSpeedResponse.swift in Sources */,
+				B1F7D00A2566159B001AFBFD /* GradientView.swift in Sources */,
 				B1560268255188E6003EF6B7 /* PlaceDetailResponse.swift in Sources */,
 				B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */,
 				E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */,
