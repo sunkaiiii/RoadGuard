@@ -116,9 +116,9 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
         if segue.identifier == DISTRACTION_DETAIL_PAGE_SEGUE {
             if let des = segue.destination as? DistractionDetailViewController{
                 //需要改传值类型
-                des.selectedDistractionRecord = sender as! String
+                des.selectedDistractionRecord = (sender as? (locationName: String, facialInfo: FacialInfo))?.1
+                des.selectedDistractionLocationName = (sender as? (locationName: String, facialInfo: FacialInfo))?.0
             }
-
         }
     }
 }
@@ -126,7 +126,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
 // MARK: - RecordBreakdownDelegate
 extension RecordDetailViewController:  RecordDetailDistractionSummaryCellDelegate  {
     //需要改传值类型
-    func jumpToSelectedRowDetailPage(selectedRow: String) {
+    func jumpToSelectedRowDetailPage(selectedRow: (locationName: String, facialInfo: FacialInfo)) {
         performSegue(withIdentifier: DISTRACTION_DETAIL_PAGE_SEGUE, sender: selectedRow)
     }
 }

@@ -7,14 +7,17 @@
 
 import UIKit
 protocol RecordDetailDistractionSummaryCellDelegate: class {
-    //这里回头需要改下传值的类型
-    func jumpToSelectedRowDetailPage(selectedRow: String)
+    func jumpToSelectedRowDetailPage(selectedRow: (locationName: String, facialInfo: FacialInfo))
 }
 
 
 class RecordDetailDistractionSummaryCell: UITableViewCell , UITableViewDelegate, UITableViewDataSource{
 
+    var selectedDistractionInfo: (locationName: String, facialInfo: FacialInfo)?
+
+
     weak var delegateParent: RecordDetailDistractionSummaryCellDelegate?
+
 
     @IBOutlet weak var backgroundVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var distractionTableView: UITableView!
@@ -57,6 +60,7 @@ class RecordDetailDistractionSummaryCell: UITableViewCell , UITableViewDelegate,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! DistractionDetailCell
         let facialInfo = dataSource[indexPath.row]
+//        cell.delegate = self
         cell.initDistractionDetail(facialInfo)
         //给cell传值
         return cell
@@ -71,7 +75,10 @@ class RecordDetailDistractionSummaryCell: UITableViewCell , UITableViewDelegate,
 
     func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
         //跳转
-        delegateParent?.jumpToSelectedRowDetailPage(selectedRow: "testInfo")
+        let cell = tableView.cellForRow(at: indexPath) as! DistractionDetailCell
+
+        let distractionPlaceName = cell.distractionPlaceName
+        delegateParent?.jumpToSelectedRowDetailPage(selectedRow:(locationName: distractionPlaceName!, facialInfo: dataSource[indexPath.row]) )
         tableView.deselectRow(at:indexPath,animated:true)
     }
 
