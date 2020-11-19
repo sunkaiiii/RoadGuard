@@ -8,11 +8,6 @@ import sys
 app = Flask(__name__)
 recorder = DrivingRecordRecorder()
 
-# pip3 install obd
-# pip3 install firebase_admin
-# pip3 install mpu
-# pip3 install boto3
-
 @app.route('/api/start_recording',methods=['GET'])
 def start_recording_service():
     result = {}
@@ -27,7 +22,7 @@ def start_recording_service():
 @app.route('/api/stop_recording', methods = ['GET'])
 def stop_recording_service():
     result = {}
-    if recorder.is_running:
+    if recorder.is_running():
         doc = recorder.end_recording()
         result["documentId"] = doc.id
         result["isError"] = False
@@ -64,6 +59,13 @@ def get_current_speed_limit():
     else:
         result["isError"] = True
     return json.dumps(result)
-        
+    
+@app.route('/api/get_service_status',methods = ['GET'])
+def get_service_running_status():
+    result = {}
+    result["isRunning"] = recorder.is_running()
+    return json.dumps(result)
+
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', debug=False, port=5000)

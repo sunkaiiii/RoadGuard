@@ -1,7 +1,7 @@
 from gps import *
 from json import JSONEncoder
 import time
-
+import sys
 running = True
 gpsd = gps(mode=WATCH_ENABLE|WATCH_NEWSTYLE)
 
@@ -35,9 +35,12 @@ class GPSInformationExtractor:
     
     def get_current_gps_speed(self):
         nx = gpsd.next()
-        import sys
-        if nx['class'] == 'TPV':
-            return getattr(nx,"speed",-sys.maxsize) * 3.6
+        speed = -sys.maxsize
+        while speed == -sys.maxsize:
+            if nx['class'] == 'TPV':
+                speed = getattr(nx,"speed",-sys.maxsize)
+                if speed != -sys.maxsize:
+                    return speed * 3.6
         return -sys.maxsize
 
 def getPositionData():
