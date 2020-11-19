@@ -641,10 +641,10 @@
                                             </subviews>
                                         </stackView>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tE3-vP-iEE">
-                                            <rect key="frame" x="178.5" y="62" width="180.5" height="187"/>
+                                            <rect key="frame" x="178.5" y="62" width="180.5" height="186.5"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYa-OG-Cwm" customClass="DistractionSpeedLimitSuperView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
-                                                    <rect key="frame" x="114" y="129.5" width="58.5" height="49.5"/>
+                                                    <rect key="frame" x="114" y="129" width="58.5" height="49.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="lYa-OG-Cwm" secondAttribute="height" multiplier="59:50" id="foB-ht-MkP"/>
@@ -717,15 +717,18 @@
                     </view>
                     <navigationItem key="navigationItem" title="Distraction Detail" id="VQM-S7-GQI"/>
                     <connections>
-                        <outlet property="bodyMotionLegendIcon" destination="i0Y-eq-DNE" id="v1F-u6-yTO"/>
-                        <outlet property="distractionLegendIcon" destination="OSl-fl-02a" id="imj-iF-GG2"/>
+                        <outlet property="bottomCicrle" destination="i0Y-eq-DNE" id="v1F-u6-yTO"/>
+                        <outlet property="bottomCircleLabel" destination="JGi-au-tdb" id="8Mi-9C-p0G"/>
                         <outlet property="distractionTimeLabel" destination="BVD-7Z-lbV" id="XxL-E6-bug"/>
                         <outlet property="mapAreaBackgroundVisualEffectView" destination="VfT-rW-EcM" id="Vh2-lw-TUd"/>
                         <outlet property="mapViewContainer" destination="tE3-vP-iEE" id="VTL-x3-jQg"/>
-                        <outlet property="overSpeedLegendIcon" destination="qH2-P2-PN5" id="Afm-fj-9mZ"/>
+                        <outlet property="middleCircleLabel" destination="stI-4r-1rq" id="dH6-IZ-oKc"/>
+                        <outlet property="midlleCircle" destination="OSl-fl-02a" id="imj-iF-GG2"/>
                         <outlet property="roadNameLabel" destination="v2I-lY-d5r" id="SzI-Dp-osh"/>
                         <outlet property="speedAlertView" destination="SFR-IT-bA4" id="esu-k7-0xl"/>
                         <outlet property="speedLimitView" destination="lYa-OG-Cwm" id="Z8I-uP-4SP"/>
+                        <outlet property="topCircle" destination="qH2-P2-PN5" id="Afm-fj-9mZ"/>
+                        <outlet property="topCircleLabel" destination="nWb-fM-x3S" id="7tE-Wu-pJ2"/>
                         <outlet property="topImage" destination="voO-Nh-pPT" id="Ivd-8U-ZXG"/>
                     </connections>
                 </viewController>

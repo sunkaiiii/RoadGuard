@@ -15,36 +15,101 @@ class DistractionDetailViewController: UIViewController {
     @IBOutlet weak var distractionTimeLabel: UILabel!
     @IBOutlet weak var mapAreaBackgroundVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var mapViewContainer: UIView!
-    @IBOutlet weak var overSpeedLegendIcon: UIView!
-    @IBOutlet weak var distractionLegendIcon: UIView!
-    @IBOutlet weak var bodyMotionLegendIcon: UIView!
+    @IBOutlet weak var topCircle: UIView!
+    @IBOutlet weak var midlleCircle: UIView!
+    @IBOutlet weak var bottomCicrle: UIView!
     @IBOutlet weak var speedAlertView: SpeedAlertSuperView!
     @IBOutlet weak var speedLimitView: DistractionSpeedLimitSuperView!
 
+    @IBOutlet weak var topCircleLabel: UILabel!
+    @IBOutlet weak var middleCircleLabel: UILabel!
+    @IBOutlet weak var bottomCircleLabel: UILabel!
+    
     var mapview:GMSMapView?
     //需要改为传入的值
-    var selectedDistractionRecord : String = "abc"
+    var selectedDistractionLocationName : String?
+    var selectedDistractionRecord : FacialInfo?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
-        //Todo 需要写个判断，根据传入的数据，判断是什么情况，如果是超速，则设为红色背景
-        speedAlertView.setSignBackgroundColor(situation: .overSpeed)
-
-        //Todo 需要写个判断，根据传入的数据，判断是什么情况，决定用什么图片
-
         mapViewContainer.layer.cornerRadius = 24
         mapAreaBackgroundVisualEffectView.layer.cornerRadius = 24
         mapAreaBackgroundVisualEffectView.contentView.layer.cornerRadius = 24
-        overSpeedLegendIcon.layer.cornerRadius = overSpeedLegendIcon.bounds.size.width/2
-        distractionLegendIcon.layer.cornerRadius = distractionLegendIcon.bounds.size.width/2
-        bodyMotionLegendIcon.layer.cornerRadius = bodyMotionLegendIcon.bounds.size.width/2
-        overSpeedLegendIcon.layer.masksToBounds = true
-        distractionLegendIcon.layer.masksToBounds = true
-        bodyMotionLegendIcon.layer.masksToBounds = true
+        topCircle.layer.cornerRadius = topCircle.bounds.size.width/2
+        midlleCircle.layer.cornerRadius = midlleCircle.bounds.size.width/2
+        bottomCicrle.layer.cornerRadius = bottomCicrle.bounds.size.width/2
+        topCircle.layer.masksToBounds = true
+        midlleCircle.layer.masksToBounds = true
+        bottomCicrle.layer.masksToBounds = true
+
+
+        if selectedDistractionRecord != nil{
+            //Todo, 路名还没传入? roadname label
+            roadNameLabel.text = selectedDistractionLocationName
+
+            //set time label
+            let formatter = DateFormatter()
+            formatter.timeZone = .current
+            formatter.locale = .current
+            formatter.dateFormat = "hh:mm a dd-MMM-yyyy"
+            distractionTimeLabel.text = formatter.string(from: selectedDistractionRecord!.capturedTime)
+
+            //set three label
+            var emotions = selectedDistractionRecord?.faceDetails.first?.emotions
+            emotions?.sort(by: { (thisEmotion: Emotion, thatEmotion: Emotion) -> Bool in
+                return thisEmotion.confidence > thatEmotion.confidence
+            })
+
+            var counter = 0
+            for element in emotions!{
+                if element.type != "CALM" {
+                    switch counter {
+                        case 0:
+                            topCircleLabel.text = element.type
+                        case 1:
+                            middleCircleLabel.text = element.type
+                        case 2:
+                            bottomCircleLabel.text = element.type
+                        default:
+                            break
+                    }
+                    counter += 1
+                }
+            }
+
+            //set current speed text
+            let speed = selectedDistractionRecord!.speed
+            if speed >= 0 {
+                let speedString = String(speed)
+                speedAlertView.setCurrentSpeed(speed: speedString)
+            } else {
+                speedAlertView.setCurrentSpeed(speed: "N/A")
+            }
+
+
+            //set speed limit text
+            let limitedSpeed = selectedDistractionRecord?.limitedSpeed
+            if limitedSpeed != nil , limitedSpeed! >= 0 {
+                speedLimitView.setSpeedLimit(speed: String(limitedSpeed!))
+            } else {
+                speedLimitView.setSpeedLimit(speed: "N/A")
+            }
+
+            //when overspeed, set the sign background as red; otherwise, green
+            if limitedSpeed != nil , limitedSpeed! >= 0, speed >= 0{
+                if speed > limitedSpeed!{
+                    speedAlertView.setSignBackgroundColor(situation: .overSpeed)
+                } else {
+                    speedAlertView.setSignBackgroundColor(situation: .safeSpeed)
+                }
+            }
+
+            //get captured image
+            ImageLoader.simpleLoad(selectedDistractionRecord?.imageURL, imageView: topImage)
+        }
 
         initGoogleMap()
+
     }
     
 
@@ -55,7 +120,6 @@ class DistractionDetailViewController: UIViewController {
             self.mapViewContainer.addSubview(mapview)
             mapview.layer.zPosition = -.greatestFiniteMagnitude
         }
-
     }
     /*
     // MARK: - Navigation

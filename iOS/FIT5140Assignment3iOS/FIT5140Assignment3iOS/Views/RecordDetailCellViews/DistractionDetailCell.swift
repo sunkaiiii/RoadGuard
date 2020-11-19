@@ -7,10 +7,18 @@
 
 import UIKit
 
+//protocol DistractionDetailCellDelegate: class {
+//    var selectedDistractionInfo : (locationName: String, facialInfo: FacialInfo)?{get set}
+//}
+
 class DistractionDetailCell: UITableViewCell,DefaultHttpRequestAction {
     
     @IBOutlet weak var timeAndLocationLabel: UILabel!
     @IBOutlet weak var emotionLabel: UILabel!
+
+    var distractionPlaceName:String?
+
+//    var delegate:DistractionDetailCellDelegate?
     
     static let identifier = "DistractionDetailCell"
     static func nib()->UINib{
@@ -49,6 +57,7 @@ class DistractionDetailCell: UITableViewCell,DefaultHttpRequestAction {
             }
         case .placeDetail:
             let placeDetail:PlaceDetailResponse = accessibleData.retriveData()
+            distractionPlaceName = placeDetail.result.name
             timeAndLocationLabel.text = "\(timeAndLocationLabel.text ?? "") at \(placeDetail.result.name)"
         default:
             return

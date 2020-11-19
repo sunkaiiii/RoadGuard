@@ -113,7 +113,7 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
         }
     }
     
-    
+    // MARK: - DB listener
     func onDrivingRecordChange(change: DatabaseChange, drivingRecord: [DrivingRecordResponse]) {
         //map array into a group of dictionary, references on https://stackoverflow.com/questions/38454952/map-array-of-objects-to-dictionary-in-swift
         self.dataSource = drivingRecord.reduce([Int:[DrivingRecordResponse]]()){(dict,drivingRecord)->[Int:[DrivingRecordResponse]] in
