@@ -73,6 +73,9 @@ protocol RestfulAPI {
 enum RaspberryPiApi:RestfulAPI{
     case get_current_speed
     case get_speed_limit
+    case get_current_server_status
+    case start_service
+    case stop_service
     
     func getRequestName() -> String {
         switch self {
@@ -80,6 +83,12 @@ enum RaspberryPiApi:RestfulAPI{
             return "getCurrentSpeed"
         case .get_speed_limit:
             return "getSpeedLimit"
+        case .get_current_server_status:
+            return "getCurrentServerStatus"
+        case .start_service:
+            return "startService"
+        case .stop_service:
+            return "StopService"
         }
     }
     
@@ -89,6 +98,12 @@ enum RaspberryPiApi:RestfulAPI{
             return "/api/get_current_speed"
         case .get_speed_limit:
             return "/api/get_current_speed_limit"
+        case .get_current_server_status:
+            return "/api/get_service_status"
+        case .start_service:
+            return "/api/start_recording"
+        case .stop_service:
+            return "/api/stop_recording"
         }
     }
     
@@ -135,6 +150,7 @@ enum GoogleApi:RestfulAPI{
             return "/v1/snapToRoads"
         case .searchPlace:
             return "/maps/api/place/textsearch"
+
         }
     }
     

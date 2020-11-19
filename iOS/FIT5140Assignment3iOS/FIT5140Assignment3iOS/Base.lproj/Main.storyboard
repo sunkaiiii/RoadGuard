@@ -115,12 +115,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="NIn-EC-qBH">
-                        <barButtonItem key="rightBarButtonItem" title="test" id="yHD-Je-wb9"/>
+                        <barButtonItem key="rightBarButtonItem" title="Start" id="yHD-Je-wb9">
+                            <connections>
+                                <action selector="requestActionToServer:" destination="BYZ-38-t0r" id="h2z-rL-enP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomSpacingConstraint" destination="kv9-L5-LVb" id="skR-MJ-ruB"/>
                         <outlet property="speedAlertView" destination="4aK-1w-1bx" id="UM6-ib-FJl"/>
                         <outlet property="speedNotificationView" destination="y8c-qU-NFh" id="Pe7-QN-UF4"/>
+                        <outlet property="startServiceItem" destination="yHD-Je-wb9" id="jWE-m8-9Tq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -248,7 +253,7 @@
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4s-TA-NXN">
                                         <rect key="frame" x="0.0" y="0.0" width="174.5" height="203"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6j6-st-cPI">
-                                            <rect key="frame" x="0.0" y="0.0" width="174.5" height="203"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="175" height="203"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jAZ-zg-oVt">
@@ -286,7 +291,7 @@
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vP-Ee-RrY">
                                         <rect key="frame" x="189.5" y="0.0" width="174.5" height="203"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="d4M-dL-qjn">
-                                            <rect key="frame" x="0.0" y="0.0" width="174.5" height="203"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="174" height="203"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vu0-Fb-VG7">
@@ -575,7 +580,7 @@
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfT-rW-EcM">
                                 <rect key="frame" x="20" y="482.5" width="374" height="310.5"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="iND-QL-vtd">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="310.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="311"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="c9h-AO-tFU">
@@ -815,7 +820,7 @@
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="RecordViewSecondBackground">
-            <color red="0.81176470588235294" green="0.85490196078431369" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294117647061" green="0.85490196078431369" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="RoadDetailPageBackground">
             <color red="0.39215686274509803" green="0.32156862745098042" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
