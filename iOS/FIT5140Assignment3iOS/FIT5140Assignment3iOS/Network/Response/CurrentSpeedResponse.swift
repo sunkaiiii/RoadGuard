@@ -8,5 +8,6 @@
 import Foundation
 
 struct CurrentSpeedResponse: Codable {
-    let speed: Int
+    let isError: Bool
+    let speed: Double
 }

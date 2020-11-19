@@ -33,6 +33,9 @@
 		B13CF00E2541AA2000957E84 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13CF00D2541AA2000957E84 /* HomeViewController.swift */; };
 		B14053332566884300327A09 /* GoogleMapExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14053322566884300327A09 /* GoogleMapExtension.swift */; };
 		B140533C256693C900327A09 /* style.json in Resources */ = {isa = PBXBuildFile; fileRef = B1405337256692FF00327A09 /* style.json */; };
+		B14053402566AA1E00327A09 /* ServerStatusResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B140533F2566AA1E00327A09 /* ServerStatusResponse.swift */; };
+		B14053432566ABE600327A09 /* StartServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14053422566ABE600327A09 /* StartServiceResponse.swift */; };
+		B14053462566AC5000327A09 /* StopServiceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14053452566AC5000327A09 /* StopServiceResponse.swift */; };
 		B1466EA32548EEE1008ED039 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1466EA22548EEE1008ED039 /* FirebaseController.swift */; };
 		B1466EA62548EF16008ED039 /* SpeedRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1466EA52548EF16008ED039 /* SpeedRecord.swift */; };
 		B1560241254EDB91003EF6B7 /* FacialInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1560240254EDB91003EF6B7 /* FacialInfoResponse.swift */; };
@@ -146,6 +149,9 @@
 		B13CF00D2541AA2000957E84 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B14053322566884300327A09 /* GoogleMapExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapExtension.swift; sourceTree = "<group>"; };
 		B1405337256692FF00327A09 /* style.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = style.json; sourceTree = "<group>"; };
+		B140533F2566AA1E00327A09 /* ServerStatusResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerStatusResponse.swift; sourceTree = "<group>"; };
+		B14053422566ABE600327A09 /* StartServiceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartServiceResponse.swift; sourceTree = "<group>"; };
+		B14053452566AC5000327A09 /* StopServiceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopServiceResponse.swift; sourceTree = "<group>"; };
 		B1466EA22548EEE1008ED039 /* FirebaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		B1466EA52548EF16008ED039 /* SpeedRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedRecord.swift; sourceTree = "<group>"; };
 		B1560240254EDB91003EF6B7 /* FacialInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacialInfoResponse.swift; sourceTree = "<group>"; };
@@ -297,7 +303,7 @@
 				E4BF4A6A2563F0D50056EB4F /* Database */,
 				B1F6324B2563FEF300787119 /* CacheHelper */,
 				B13CF00C2541A9FE00957E84 /* Controller */,
-				B13CEFF625410D4E00957E84 /* ControllerHelper */,
+				B13CEFF625410D4E00957E84 /* FunctionHelper */,
 				B13CEFEB25410C8200957E84 /* ImageHelper */,
 				B13CEFDC2540FD4A00957E84 /* Network */,
 				E47A9E4F2556BF7100A815B7 /* Sound */,
@@ -347,7 +353,7 @@
 			path = ImageHelper;
 			sourceTree = "<group>";
 		};
-		B13CEFF625410D4E00957E84 /* ControllerHelper */ = {
+		B13CEFF625410D4E00957E84 /* FunctionHelper */ = {
 			isa = PBXGroup;
 			children = (
 				B1405337256692FF00327A09 /* style.json */,
@@ -357,7 +363,7 @@
 				E4EE85142554FBEF00208C71 /* RealmExtension.swift */,
 				B14053322566884300327A09 /* GoogleMapExtension.swift */,
 			);
-			path = ControllerHelper;
+			path = FunctionHelper;
 			sourceTree = "<group>";
 		};
 		B13CF0012541766000957E84 /* Views */ = {
@@ -442,6 +448,9 @@
 				B1E9473125615618007C74AD /* CurrentSpeedResponse.swift */,
 				B1E947342561562C007C74AD /* DefaultSimpleGetModel.swift */,
 				B1E94742256248C2007C74AD /* DrivingRecordResponse.swift */,
+				B140533F2566AA1E00327A09 /* ServerStatusResponse.swift */,
+				B14053422566ABE600327A09 /* StartServiceResponse.swift */,
+				B14053452566AC5000327A09 /* StopServiceResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -733,10 +742,12 @@
 				B1F7D00A2566159B001AFBFD /* GradientView.swift in Sources */,
 				B1560268255188E6003EF6B7 /* PlaceDetailResponse.swift in Sources */,
 				B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */,
+				B14053462566AC5000327A09 /* StopServiceResponse.swift in Sources */,
 				E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */,
 				E4DF3AE7255A141F004B96C5 /* ImportantPathTableViewHeaderCell.swift in Sources */,
 				E47D41DD255D83390079DE27 /* DistractionDetailCell.swift in Sources */,
 				B1F6325A2564939800787119 /* InmemoryCache.swift in Sources */,
+				B14053402566AA1E00327A09 /* ServerStatusResponse.swift in Sources */,
 				B14053332566884300327A09 /* GoogleMapExtension.swift in Sources */,
 				B15602602551654B003EF6B7 /* NearestRoadsRequest.swift in Sources */,
 				E4D865E8254591B600465243 /* BottomCardImportantRoadCell.swift in Sources */,
@@ -764,6 +775,7 @@
 				E4F59EC72552DA8300286BE7 /* MulticastDelegate.swift in Sources */,
 				E45B4875254CFF7600692A2E /* RecordBreakdownViewController.swift in Sources */,
 				B1DFBC99255AD613000B7256 /* UserSelectedRoad.swift in Sources */,
+				B14053432566ABE600327A09 /* StartServiceResponse.swift in Sources */,
 				B1560263255169AA003EF6B7 /* NearestRoadsResponse.swift in Sources */,
 				E4AE1714255E0CDF009B1DAA /* DistractionDetailViewController.swift in Sources */,
 				E4D865E425458CE400465243 /* RoadInfoBottomCard.swift in Sources */,

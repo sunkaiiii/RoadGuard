@@ -11,7 +11,9 @@ import GoogleMaps
 
 class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttpRequestAction {
 
-
+    @IBOutlet weak var startServiceItem: UIBarButtonItem!
+    
+    var isRunning = false
     let manager = CLLocationManager.init()
     var mapview:GMSMapView?
     let marker = GMSMarker()
@@ -28,6 +30,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initItem(isRunning: false)
         initLocationPermission()
         initGoogleMap()
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -35,6 +38,20 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
 
         //to make the speed circle position dynamiclly adjusted on different size of screen
         bottomSpacingConstraint.constant = self.view.frame.height / 9
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        requestRestfulService(api: RaspberryPiApi.get_current_server_status, model: DefaultSimpleGetModel(), jsonType: ServerStatusResponse.self)
+    }
+    
+    func initItem(isRunning:Bool){
+        self.isRunning = isRunning
+        if isRunning{
+            startServiceItem.title = "Stop"
+        }else{
+            startServiceItem.title = "Start"
+        }
     }
 
     func initLocationPermission() {
@@ -73,9 +90,15 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
     }
     
     func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
+        if helper.restfulAPI is RaspberryPiApi{
+            startServiceItem.isEnabled = true
+        }
         switch helper.restfulAPI as? RaspberryPiApi{
         case .get_current_speed:
             let currentSpeedResponse:CurrentSpeedResponse = accessibleData.retriveData()
+            if currentSpeedResponse.isError{
+                return
+            }
             speedAlertView.setCurrentSpeed(speed: String(format: "%d", currentSpeedResponse.speed))
             requestRestfulService(api: RaspberryPiApi.get_speed_limit, model: DefaultSimpleGetModel(), jsonType: SpeedLimitResponse.self)
         case .get_speed_limit:
@@ -84,6 +107,23 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
                 self.speedLimit = speedLimitResponse.speedLimit
                 speedNotificationView.setSpeedNotification("\(self.speedLimit)")
                 validateSpeed()
+            }
+        case .get_current_server_status:
+            let status:ServerStatusResponse = accessibleData.retriveData()
+            initItem(isRunning: status.isRunning)
+        case .start_service:
+            let response:StartServiceResponse = accessibleData.retriveData()
+            if !response.isError{
+                initItem(isRunning: true)
+            }else{
+                showToast(message: response.errorMessage ?? "an error happened in starting services")
+            }
+        case .stop_service:
+            let response:StopServiceResponse = accessibleData.retriveData()
+            if !response.isError{
+                initItem(isRunning: false)
+            }else{
+                showToast(message: response.errorMessage ?? "an error happene in stopping services")
             }
         default:
             return
@@ -99,5 +139,25 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
         if currentSpeed > speedLimit{
             SoundHelper.shared.playOverSpeedSound()
         }
+    }
+    @IBAction func requestActionToServer(_ sender: Any) {
+        if isRunning{
+            requestRestfulService(api: RaspberryPiApi.stop_service, model: DefaultSimpleGetModel(), jsonType: StopServiceResponse.self)
+        }else{
+            requestRestfulService(api: RaspberryPiApi.start_service, model: DefaultSimpleGetModel(), jsonType: StartServiceResponse.self)
+        }
+    }
+}
+
+
+extension HomeViewController{
+    func beforeExecution(helper: RequestHelper) {
+        if helper.restfulAPI is RaspberryPiApi{
+            startServiceItem.isEnabled = false
+        }
+    }
+    
+    func executionFailed(helper: RequestHelper, message: String, error: Error) {
+        startServiceItem.isEnabled = true
     }
 }
