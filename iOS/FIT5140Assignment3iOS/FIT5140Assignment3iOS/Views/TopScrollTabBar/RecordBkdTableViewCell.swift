@@ -12,7 +12,8 @@ class RecordBkdTableViewCell: UITableViewCell,DefaultHttpRequestAction {
     @IBOutlet weak var backgroundBorderAndColorViewOutlet: UIView!
     @IBOutlet weak var distanceLabelOutlet: UILabel!
     @IBOutlet weak var drivingTimeLabelOutlet: UILabel!    
-    @IBOutlet weak var startAndEndPlaceLabelOutlet: UILabel!
+    @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var toLabel: UILabel!
     
     var startLocationPlaceId = ""
     var endLocationPlaceId = ""
@@ -86,6 +87,7 @@ class RecordBkdTableViewCell: UITableViewCell,DefaultHttpRequestAction {
     }
     
     private func initDetailLabel(){
-        self.startAndEndPlaceLabelOutlet.text = "From \(self.startLocation) to \(self.endLocation)"
+        self.fromLabel.text = "From \(self.startLocation)"
+        self.toLabel.text = "To \(self.endLocation)"
     }
 }

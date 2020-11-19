@@ -27,16 +27,16 @@
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="IVf-mh-8Uw">
-                                <rect key="frame" x="241" y="16.5" width="67" height="43"/>
+                                <rect key="frame" x="260.5" y="16.5" width="47.5" height="43"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4KM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEq-jX-1V2">
-                                        <rect key="frame" x="14.5" y="0.0" width="38" height="20.5"/>
+                                        <rect key="frame" x="5" y="0.0" width="38" height="20.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 min" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bfb-v0-MtG">
-                                        <rect key="frame" x="10" y="23.5" width="47.5" height="19.5"/>
+                                        <rect key="frame" x="0.0" y="23.5" width="47.5" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -44,17 +44,23 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="Dap-bd-06q">
-                                <rect key="frame" x="51" y="15.5" width="181" height="45.5"/>
+                                <rect key="frame" x="51" y="8" width="39.5" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lomandra Dr" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="B9l-Op-w4A">
-                                        <rect key="frame" x="0.0" y="0.0" width="181" height="23"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="B9l-Op-w4A">
+                                        <rect key="frame" x="0.0" y="0.0" width="39.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Clayton South, 3169, VIC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="Ynu-lp-xn9">
-                                        <rect key="frame" x="0.0" y="26" width="181" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="Ynu-lp-xn9">
+                                        <rect key="frame" x="0.0" y="21" width="39.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="lST-ee-N3v">
+                                        <rect key="frame" x="0.0" y="42" width="39.5" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -69,7 +75,7 @@
                             <constraint firstItem="Dap-bd-06q" firstAttribute="centerY" secondItem="efN-Cs-Jki" secondAttribute="centerY" id="h9h-Z0-et0"/>
                             <constraint firstItem="IVf-mh-8Uw" firstAttribute="centerY" secondItem="efN-Cs-Jki" secondAttribute="centerY" id="qXh-JX-yU1"/>
                             <constraint firstItem="GXZ-cy-P1I" firstAttribute="centerY" secondItem="efN-Cs-Jki" secondAttribute="centerY" id="usz-LN-oQ3"/>
-                            <constraint firstItem="IVf-mh-8Uw" firstAttribute="leading" secondItem="Dap-bd-06q" secondAttribute="trailing" constant="9" id="xw4-kw-SGl"/>
+                            <constraint firstItem="IVf-mh-8Uw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Dap-bd-06q" secondAttribute="trailing" constant="10" id="xw4-kw-SGl"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -83,11 +89,12 @@
             </constraints>
             <connections>
                 <outlet property="backgroundColorView" destination="efN-Cs-Jki" id="rFX-8A-KQS"/>
-                <outlet property="contentLabel" destination="Ynu-lp-xn9" id="w3s-nW-v5x"/>
                 <outlet property="distanceLabel" destination="CEq-jX-1V2" id="GO2-W6-xEU"/>
+                <outlet property="fromLabel" destination="Ynu-lp-xn9" id="w3s-nW-v5x"/>
                 <outlet property="headerLabel" destination="B9l-Op-w4A" id="kBW-LL-cZ5"/>
                 <outlet property="iconImageView" destination="GXZ-cy-P1I" id="Bm0-9E-Sz1"/>
                 <outlet property="timeLabel" destination="bfb-v0-MtG" id="EC0-O7-dYb"/>
+                <outlet property="toLabel" destination="lST-ee-N3v" id="Ry4-D4-TmU"/>
             </connections>
             <point key="canvasLocation" x="55.072463768115945" y="113.83928571428571"/>
         </tableViewCell>

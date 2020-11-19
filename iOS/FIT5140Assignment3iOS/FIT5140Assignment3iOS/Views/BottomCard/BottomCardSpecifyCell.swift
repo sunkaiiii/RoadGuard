@@ -9,9 +9,10 @@ import UIKit
 
 class BottomCardSpecifyCell: UITableViewCell {
 
-    @IBOutlet var iconImageView : UIImageView!
-    @IBOutlet var headerLabel : UILabel!
-    @IBOutlet var contentLabel : UILabel!
+    @IBOutlet weak var iconImageView : UIImageView!
+    @IBOutlet weak var headerLabel : UILabel!
+    @IBOutlet weak var contentLabel : UILabel!
+ 
     @IBOutlet weak var addRoadBtn: UIImageView!
     
     private var roadDetail:RoadInformation?
@@ -78,7 +79,7 @@ class BottomCardSpecifyCell: UITableViewCell {
             imageView.image = UIImage(named: "RemoveRoad")
         }
         
-        isAdded != isAdded
+        isAdded = !isAdded
     }
     
     private struct RoadInforamtionImpl:RoadInformation{
