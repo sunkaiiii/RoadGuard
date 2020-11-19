@@ -109,7 +109,6 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
             selectedRoadTableView.deselectRow(at:indexPath,animated:true)
         }
         if indexPath.section == SECTION_CONTENT{
-            //这里传值以后需要改下
             self.delegateParent?.jumpToSelectedRowDetailPage(selectedRow: selectRoadDataSource[indexPath.row])
         }
     }
