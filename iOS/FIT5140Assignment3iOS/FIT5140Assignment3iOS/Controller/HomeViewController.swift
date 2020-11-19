@@ -90,9 +90,15 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
     }
     
     func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
+        if helper.restfulAPI is RaspberryPiApi{
+            startServiceItem.isEnabled = true
+        }
         switch helper.restfulAPI as? RaspberryPiApi{
         case .get_current_speed:
             let currentSpeedResponse:CurrentSpeedResponse = accessibleData.retriveData()
+            if currentSpeedResponse.isError{
+                return
+            }
             speedAlertView.setCurrentSpeed(speed: String(format: "%d", currentSpeedResponse.speed))
             requestRestfulService(api: RaspberryPiApi.get_speed_limit, model: DefaultSimpleGetModel(), jsonType: SpeedLimitResponse.self)
         case .get_speed_limit:
@@ -150,9 +156,8 @@ extension HomeViewController{
             startServiceItem.isEnabled = false
         }
     }
-    func afterExecution<T>(helper: RequestHelper, url: URLComponents, response: T, rawData: Data) {
-        if helper.restfulAPI is RaspberryPiApi{
-            startServiceItem.isEnabled = true
-        }
+    
+    func executionFailed(helper: RequestHelper, message: String, error: Error) {
+        startServiceItem.isEnabled = true
     }
 }
