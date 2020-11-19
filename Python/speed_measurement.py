@@ -124,7 +124,7 @@ class SpeedRecordExtractor(threading.Thread):
         if limited_speed > 0:
             self.current_speed_limit = limited_speed
             if current_speed > self.current_speed_limit:
-                doc_ref = cameraCapture.camera_capturing(location=gps_info,speed=current_speed)
+                doc_ref = cameraCapture.camera_capturing(location=gps_info,speed=current_speed,speed_limit = self.current_speed_limit)
                 # capture a image
                 speed_record["overSpeed"] = True
                 speed_record["facialId"] = doc_ref.id

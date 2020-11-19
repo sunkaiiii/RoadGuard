@@ -132,7 +132,7 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         if #available(iOS 13.0, *){
-            // sense theme swtich
+            // sense theme swtich references on https://engineering.nodesagency.com/categories/ios/2019/07/03/Dark-Mode
             if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection){
                 setUpViewPager()
             }

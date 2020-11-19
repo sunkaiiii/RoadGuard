@@ -15,7 +15,7 @@ facial_collection = "facial"
 gps_extractor = GPSInformationExtractor()
 
 gps_info = gps_extractor.get_current_position()
-def camera_capturing(location = None, speed = -1, selectedRoadIds = None, record_id = None):
+def camera_capturing(location = None, speed = -1, selectedRoadIds = None, record_id = None, speed_limite = -1):
     if location is not None:
         gps_info = location
     else:
@@ -28,7 +28,7 @@ def camera_capturing(location = None, speed = -1, selectedRoadIds = None, record
         camera.capture(filename)
     full_path = os.getcwd()+"/"+filename
     compress_image(full_path)
-    doc_ref = analyse(full_path,speed,selectedRoadIds,record_id)
+    doc_ref = analyse(full_path,speed,selectedRoadIds,record_id,speed_limit)
     return doc_ref
 
 # compress captured image, references on https://sempioneer.com/python-for-seo/how-to-compress-images-in-python/
@@ -36,7 +36,7 @@ def compress_image(file_name):
     image = Image.open(file_name)
     image.save(file_name,quality=60,optimize=True)
 
-def analyse(filename,speed = -1,selectedRoadIds = None,record_id = None):
+def analyse(filename,speed = -1,selectedRoadIds = None,record_id = None,speed_limite = -1):
     print(filename)
     gps_information = gps_info
     uploadImageToS3.upload_image(filename,bucket_name)
@@ -45,6 +45,7 @@ def analyse(filename,speed = -1,selectedRoadIds = None,record_id = None):
     data['location_info']["latitude"] = gps_information.latitude
     data['location_info']["longitude"] = gps_information.longitude
     data['speed'] = speed
+    data['speedLiimt'] = speed_limit
     if selectedRoadIds != None:
         data['selectedRoadIds'] = selectedRoadIds
     if record_id != None:
