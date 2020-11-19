@@ -30,6 +30,7 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .clear
         table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.backgroundColor = .clear

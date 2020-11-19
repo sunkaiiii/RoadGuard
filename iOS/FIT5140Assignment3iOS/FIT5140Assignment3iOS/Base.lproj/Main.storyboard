@@ -252,7 +252,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="jAZ-zg-oVt">
-                                                    <rect key="frame" x="37.5" y="21.5" width="99.5" height="115"/>
+                                                    <rect key="frame" x="38" y="21.5" width="99.5" height="115"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Length" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19D-z6-FNT">
                                                             <rect key="frame" x="0.0" y="0.0" width="99.5" height="21.5"/>
@@ -292,7 +292,7 @@
                                                     <rect key="frame" x="61.5" y="21.5" width="51.5" height="115"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pass" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yvb-p9-vUA">
-                                                            <rect key="frame" x="7" y="0.0" width="38" height="21.5"/>
+                                                            <rect key="frame" x="6.5" y="0.0" width="38" height="21.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -474,13 +474,13 @@
         <scene sceneID="pQO-TD-dpm">
             <objects>
                 <viewController id="oAV-4E-AUv" customClass="RecordViewController" customModule="FIT5140Assignment3iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Pd2-EF-78X">
+                    <view key="view" contentMode="scaleToFill" id="Pd2-EF-78X" customClass="GradientView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PBX-xr-FNU" customClass="WormTabStrip" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Sp-ap-h1x"/>
@@ -491,6 +491,17 @@
                             <constraint firstItem="PBX-xr-FNU" firstAttribute="top" secondItem="8Sp-ap-h1x" secondAttribute="top" id="b7e-N1-zfx"/>
                             <constraint firstItem="PBX-xr-FNU" firstAttribute="leading" secondItem="8Sp-ap-h1x" secondAttribute="leading" id="vyp-aD-MTm"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                <color key="value" name="RecordViewFirstBackground"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                <color key="value" name="RecordViewSecondBackground"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                <integer key="value" value="45"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="Record" id="Yg0-I0-3mJ"/>
                     <connections>
@@ -506,7 +517,7 @@
         <scene sceneID="lsi-yt-L2o">
             <objects>
                 <viewController id="cXS-Aa-XqL" customClass="RecordDetailViewController" customModule="FIT5140Assignment3iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Xg4-Ob-vqQ">
+                    <view key="view" contentMode="scaleToFill" id="Xg4-Ob-vqQ" customClass="GradientView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -526,6 +537,17 @@
                             <constraint firstItem="idC-A4-9NG" firstAttribute="leading" secondItem="njP-bP-3wy" secondAttribute="leading" id="bAq-DL-1XB"/>
                             <constraint firstItem="njP-bP-3wy" firstAttribute="trailing" secondItem="idC-A4-9NG" secondAttribute="trailing" id="mRN-tg-4JE"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="firstColor">
+                                <color key="value" name="RecordDetailFirstBackgroundColour"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="secondColor">
+                                <color key="value" name="RecordDetailSecondBackgroundColour"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="angle">
+                                <integer key="value" value="45"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                     <navigationItem key="navigationItem" title="Record Detail" id="oTG-xm-Z5W"/>
                     <connections>
@@ -778,6 +800,18 @@
         <image name="safedriving" width="466" height="437"/>
         <image name="settings-black-24dp" width="24" height="24"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
+        <namedColor name="RecordDetailFirstBackgroundColour">
+            <color red="0.10196078431372549" green="0.27058823529411763" blue="0.3843137254901961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RecordDetailSecondBackgroundColour">
+            <color red="0.10196078431372549" green="0.27058823529411763" blue="0.3843137254901961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RecordViewFirstBackground">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RecordViewSecondBackground">
+            <color red="0.81176470588235294" green="0.85490196078431369" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="RoadDetailPageBackground">
             <color red="0.39215686274509803" green="0.32156862745098042" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
