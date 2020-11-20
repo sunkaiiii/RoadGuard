@@ -64,22 +64,6 @@
             </objects>
             <point key="canvasLocation" x="-107.24637681159422" y="1141.7410714285713"/>
         </scene>
-        <!--Setting-->
-        <scene sceneID="KCn-hM-ZsL">
-            <objects>
-                <viewController id="r8P-ME-GSv" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="RD2-NT-its">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="gFp-PZ-sA2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Setting" image="settings-black-24dp" id="eZ1-n9-vE1"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="he8-R4-loM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-919" y="1143"/>
-        </scene>
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -193,7 +177,6 @@
                         <segue destination="u3C-se-P31" kind="relationship" relationship="viewControllers" id="gw0-2E-rSH"/>
                         <segue destination="gsU-HZ-QvM" kind="relationship" relationship="viewControllers" id="71q-MC-f8g"/>
                         <segue destination="rdT-ma-8Dx" kind="relationship" relationship="viewControllers" id="BF8-p3-wUL"/>
-                        <segue destination="r8P-ME-GSv" kind="relationship" relationship="viewControllers" id="uDb-pL-a78"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2lK-M1-9mV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -253,7 +236,7 @@
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e4s-TA-NXN">
                                         <rect key="frame" x="0.0" y="0.0" width="174.5" height="203"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6j6-st-cPI">
-                                            <rect key="frame" x="0.0" y="0.0" width="175" height="203"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="174.5" height="203"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jAZ-zg-oVt">
@@ -266,7 +249,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LqJ-X3-bvR">
-                                                            <rect key="frame" x="29" y="41.5" width="31.5" height="40"/>
+                                                            <rect key="frame" x="29.5" y="41.5" width="31.5" height="40"/>
                                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="19"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -291,7 +274,7 @@
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vP-Ee-RrY">
                                         <rect key="frame" x="189.5" y="0.0" width="174.5" height="203"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="d4M-dL-qjn">
-                                            <rect key="frame" x="0.0" y="0.0" width="174" height="203"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="174.5" height="203"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Vu0-Fb-VG7">
@@ -580,7 +563,7 @@
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VfT-rW-EcM">
                                 <rect key="frame" x="20" y="482.5" width="374" height="310.5"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="iND-QL-vtd">
-                                    <rect key="frame" x="0.0" y="0.0" width="374" height="311"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="310.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="c9h-AO-tFU">
@@ -646,10 +629,10 @@
                                             </subviews>
                                         </stackView>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tE3-vP-iEE">
-                                            <rect key="frame" x="178.5" y="62" width="180.5" height="186.5"/>
+                                            <rect key="frame" x="178.5" y="62" width="180.5" height="187"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYa-OG-Cwm" customClass="DistractionSpeedLimitSuperView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
-                                                    <rect key="frame" x="114" y="129" width="58.5" height="49.5"/>
+                                                    <rect key="frame" x="114" y="129.5" width="58.5" height="49.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="lYa-OG-Cwm" secondAttribute="height" multiplier="59:50" id="foB-ht-MkP"/>
@@ -808,7 +791,6 @@
         <image name="navigation-black-24dp" width="24" height="24"/>
         <image name="pie_chart-black-24dp" width="24" height="24"/>
         <image name="safedriving" width="466" height="437"/>
-        <image name="settings-black-24dp" width="24" height="24"/>
         <image name="square.and.pencil" catalog="system" width="128" height="115"/>
         <namedColor name="AnalysisViewBackgroundColour">
             <color red="0.92941176470588238" green="0.94117647058823528" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

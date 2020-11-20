@@ -54,7 +54,7 @@ class RecordDetailMatrixCell: UITableViewCell {
         let speedList = databaseController.getSpeedRecordByRecordId(id)
         let sumSpeed = speedList.map({(speedInfo) in speedInfo.currentSpeed}).reduce(0.0,+)
         if speedList.count > 0{
-            avgSpeedLabel.text = "\(sumSpeed/Double(speedList.count))"
+            avgSpeedLabel.text = "\(Int(sumSpeed/Double(speedList.count)))"
         }else{
             avgSpeedLabel.text = "Unknown"
         }
