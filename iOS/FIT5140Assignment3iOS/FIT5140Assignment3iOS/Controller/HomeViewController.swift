@@ -90,9 +90,6 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
     }
     
     func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
-        if helper.restfulAPI is RaspberryPiApi{
-            startServiceItem.isEnabled = true
-        }
         switch helper.restfulAPI as? RaspberryPiApi{
         case .get_current_speed:
             let currentSpeedResponse:CurrentSpeedResponse = accessibleData.retriveData()
@@ -110,6 +107,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
             }
         case .get_current_server_status:
             let status:ServerStatusResponse = accessibleData.retriveData()
+            startServiceItem.isEnabled = true
             initItem(isRunning: status.isRunning)
         case .start_service:
             let response:StartServiceResponse = accessibleData.retriveData()
@@ -152,7 +150,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
 
 extension HomeViewController{
     func beforeExecution(helper: RequestHelper) {
-        if helper.restfulAPI is RaspberryPiApi{
+        if (helper.restfulAPI as? RaspberryPiApi) == RaspberryPiApi.get_current_server_status{
             startServiceItem.isEnabled = false
         }
     }
