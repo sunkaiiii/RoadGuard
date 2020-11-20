@@ -15,7 +15,7 @@ facial_collection = "facial"
 gps_extractor = GPSInformationExtractor()
 
 gps_info = gps_extractor.get_current_position()
-def camera_capturing(location = None, speed = -1, selectedRoadIds = None, record_id = None, speed_limite = -1):
+def camera_capturing(location = None, speed = -1, selectedRoadIds = None, record_id = None, speed_limit = -1):
     if location is not None:
         gps_info = location
     else:
@@ -36,7 +36,7 @@ def compress_image(file_name):
     image = Image.open(file_name)
     image.save(file_name,quality=60,optimize=True)
 
-def analyse(filename,speed = -1,selectedRoadIds = None,record_id = None,speed_limite = -1):
+def analyse(filename,speed = -1,selectedRoadIds = None,record_id = None,speed_limit = -1):
     print(filename)
     gps_information = gps_info
     uploadImageToS3.upload_image(filename,bucket_name)

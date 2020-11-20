@@ -9,6 +9,7 @@ import requests
 import cameraCapture
 from firebase_admin import firestore
 import time
+import sys
 
 gps_extractor = GPSInformationExtractor()
 
@@ -93,7 +94,7 @@ class SpeedRecordExtractor(threading.Thread):
 
     # https://route.ls.hereapi.com/routing/7.2/calculateroute.json?jsonAttributes=1&waypoint0=-33.86349415655294,151.21035053629208&waypoint1=-33.8634928,151.21036909999998&legattributes=li&mode=fastest;car;&apiKey=
     def _find_limited_speed(self,lat1,log1,lat2,log2):
-        api_key = "lhKFgFOIcw-WNlL9ykk3tzUUomMH1KCrFdzQD8Z4JBM"
+        api_key = "OA6INiK6jw1I5VxKkhGeaQUnvP_GyFu_Zp9R-Nl6oso"
         url = "https://route.ls.hereapi.com/routing/7.2/calculateroute.json?jsonAttributes=1&waypoint0={0},{1}&waypoint1={2},{3}&legattributes=li&mode=fastest;car;&apiKey={4}".format(lat1,log1,lat2,log2,api_key)
         try:
             print(url)
@@ -111,7 +112,9 @@ class SpeedRecordExtractor(threading.Thread):
         old_latitude = self.location.latitude
         old_longitude = self.location.longitude
         current_speed = OBD2Helper.get_current_speed()
-        limited_speed = self._find_limited_speed(old_latitude,old_longitude,self.location.latitude,self.location.longitude)
+        if current_speed == -sys.maxsize:
+            current_speed = self.get_current_gps_speed()
+        self.limited_speed = self._find_limited_speed(old_latitude,old_longitude,self.location.latitude,self.location.longitude)
         speed_record = {}
         speed_record["currentSpeed"] = current_speed
         speed_record["limitedSpeed"] = self.current_speed_limit
@@ -121,8 +124,8 @@ class SpeedRecordExtractor(threading.Thread):
         speed_record["recordId"] = self.document_id
         if len(place_ids) > 0:
             speed_record["selectedRoadIds"] = place_ids
-        if limited_speed > 0:
-            self.current_speed_limit = limited_speed
+        if self.limited_speed > 0:
+            self.current_speed_limit = self.limited_speed
             if current_speed > self.current_speed_limit:
                 doc_ref = cameraCapture.camera_capturing(location=gps_info,speed=current_speed,speed_limit = self.current_speed_limit)
                 # capture a image

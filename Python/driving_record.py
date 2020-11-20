@@ -13,8 +13,8 @@ class DrivingRecordRecorder:
         self.recorder = SpeedRecordExtractor(1,"SpeedRecordExtractorThread",1,self.document_id)
 
     def start_recording(self):
-        self.recorder = SpeedRecordExtractor(1,"SpeedRecordExtractorThread",1,self.document_id)
         self.document_id = str(uuid.uuid4())
+        self.recorder = SpeedRecordExtractor(1,"SpeedRecordExtractorThread",1,self.document_id)
         # get current date and time, references on https://www.programiz.com/python-programming/datetime/current-time
         self.record_data["startTime"] = datetime.now()
         self.record_data["startLocation"] = {}
