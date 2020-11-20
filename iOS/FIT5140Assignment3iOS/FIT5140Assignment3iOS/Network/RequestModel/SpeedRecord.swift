@@ -9,8 +9,8 @@ import UIKit
 
 class SpeedRecord: Codable {
     var id:String?
-    let currentSpeed:Int
-    let limitedSpeed:Int
+    let currentSpeed:Double
+    let limitedSpeed:Double
     let latitude:Double
     let longitude:Double
     let recordId:String?

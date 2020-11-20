@@ -99,7 +99,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
             if currentSpeedResponse.isError{
                 return
             }
-            speedAlertView.setCurrentSpeed(speed: String(format: "%d", currentSpeedResponse.speed))
+            speedAlertView.setCurrentSpeed(speed: "\(currentSpeedResponse.speed)")
             requestRestfulService(api: RaspberryPiApi.get_speed_limit, model: DefaultSimpleGetModel(), jsonType: SpeedLimitResponse.self)
         case .get_speed_limit:
             let speedLimitResponse:SpeedLimitResponse = accessibleData.retriveData()
