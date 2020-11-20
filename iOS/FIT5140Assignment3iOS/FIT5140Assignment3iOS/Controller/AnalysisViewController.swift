@@ -20,14 +20,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     let SECTION_LOWER = 1
     let DRIVINGSTATUS_CELL_ID = "DrivingStatusTableViewCell"
     let DRIVING_DISTANC_CELL_ID = "DrienDistanceTableViewCell"
-
-    var allGoodDataEntry = PieChartDataEntry(value: 0)
-    var likelyFocusDataEntry = PieChartDataEntry(value: 0)
-    var distractionDataEntry = PieChartDataEntry(value: 0)
-    var overSpeedDataEntry = PieChartDataEntry(value: 0)
-    var pieChartDataEnties = [PieChartDataEntry]()
-    var barChartDataEntries = [BarChartDataEntry]()
-
+    let DISTRACTION_PERIOD_CELL_ID = "DistractionTimePeriodTableViewCell"
 
     var facialInfoList:[FacialInfo] = []
     var drivingRecordList:[DrivingRecordResponse] = []
@@ -43,6 +36,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         analysisPageTableView.dataSource = self
         analysisPageTableView.register(DrivingStatusTableViewCell.nib(), forCellReuseIdentifier: DRIVINGSTATUS_CELL_ID)
         analysisPageTableView.register(DrienDistanceTableViewCell.nib(), forCellReuseIdentifier: DRIVING_DISTANC_CELL_ID)
+        analysisPageTableView.register(DistractionTimePeriodTableViewCell.nib(), forCellReuseIdentifier: DISTRACTION_PERIOD_CELL_ID)
 
     }
 
@@ -67,8 +61,12 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if segmentControl.selectedSegmentIndex == 0{
+            //segment 0 : upper section is a bar chart
             if indexPath.section == SECTION_UPPER {
                 let cell = tableView.dequeueReusableCell(withIdentifier: DRIVING_DISTANC_CELL_ID, for: indexPath) as! DrienDistanceTableViewCell
+
+                var barChartDataEntries = [BarChartDataEntry]()
+
                 let barChart = cell.barChart
                 barChart!.delegate = self
                 barChart!.chartDescription?.text = ""
@@ -96,7 +94,6 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                         arrayOfDayAndDistanceTuple.append((dateOfOneRecord,record.drivingDistance))
                     }
                 }
-        
 
                 var labels : [String] = []
 
@@ -135,42 +132,310 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 barChart?.animate(xAxisDuration: 1)
                 barChartDataEntries.removeAll()
                 return cell
-            } else {
+            }
+            //segment 0 : bottom section is a pie chart
+            else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: DRIVINGSTATUS_CELL_ID, for: indexPath) as! DrivingStatusTableViewCell
                 cell.pieChart.delegate = self
+
+                let allGoodDataEntry = PieChartDataEntry(value: 0)
+                let likelyFocusDataEntry = PieChartDataEntry(value: 0)
+                let distractionDataEntry = PieChartDataEntry(value: 0)
+                let overSpeedDataEntry = PieChartDataEntry(value: 0)
+
+                var calmFacials : [FacialInfo] = []
+                var happyFacials : [FacialInfo] = []
+                var distractionFacials : [FacialInfo] = []
+                var overSpeedRecords : [FacialInfo] = []
+
+                var pieChartDataEnties = [PieChartDataEntry]()
+
+                for element in facialInfoList {
+                    let facialDetails = element.faceDetails
+
+                    if element.speed > 0, element.limitedSpeed != nil, element.limitedSpeed! > 0, element
+                        .speed > element.limitedSpeed!{
+                        overSpeedRecords.append(element)
+                    } else if facialDetails.count > 0 {
+                        let emotions = facialDetails[0].emotions
+                        if emotions[0].type == "CALM"{
+                            calmFacials.append(element)
+                        } else if emotions[0].type == "HAPPY"{
+                            happyFacials.append(element)
+                        } else {
+                            distractionFacials.append(element)
+                        }
+                    }
+
+                }
+
                 cell.pieChart.chartDescription?.text = ""
-                allGoodDataEntry.value = 89
-                likelyFocusDataEntry.value = 4
-                distractionDataEntry.value = 1
-                overSpeedDataEntry.value = 6
-                pieChartDataEnties = [allGoodDataEntry,likelyFocusDataEntry,distractionDataEntry,overSpeedDataEntry]
-                updatePieChartData(pieChart: cell.pieChart)
+
+                func rounndPercent(top:Int, bottom:Int)->Double{
+                    return (Double(top)/Double(bottom)*100).rounded(.up)
+                }
+
+                var percent = rounndPercent(top: calmFacials.count, bottom: facialInfoList.count)
+                cell.allgoodPercentLabel.text = "\(percent)%"
+                allGoodDataEntry.value = Double(percent)
+                allGoodDataEntry.label = "All Good"
+
+                percent = rounndPercent(top: happyFacials.count, bottom: facialInfoList.count)
+                cell.likelyFocusPercentLabel.text = "\(percent)%"
+                likelyFocusDataEntry.value = Double(percent)
+                likelyFocusDataEntry.label = "Likely Focused"
+
+                percent = rounndPercent(top: distractionFacials.count, bottom: facialInfoList.count)
+                cell.distractionPercentLabel.text = "\(percent)%"
+                distractionDataEntry.value = Double(percent)
+                distractionDataEntry.label = "Distraction"
+
+                percent = rounndPercent(top: overSpeedRecords.count, bottom: facialInfoList.count)
+                cell.overspeedPercentLabel.text = "\(percent)%"
+                overSpeedDataEntry.value = Double(percent)
+                overSpeedDataEntry.label = "OverSpeed"
+
+                var colors : [NSUIColor] = []
+
+                if allGoodDataEntry.value > 0{
+                    pieChartDataEnties.append(allGoodDataEntry)
+                    let allGoodColor = NSUIColor(named: "analysis-allgood")
+                    colors.append(allGoodColor!)
+                }
+
+                if likelyFocusDataEntry.value > 0{
+                    pieChartDataEnties.append(likelyFocusDataEntry)
+                    let likelyFocusColor = NSUIColor(named: "analysis-likelyFocus")
+                    colors.append(likelyFocusColor!)
+                }
+
+                if distractionDataEntry.value > 0{
+                    pieChartDataEnties.append(distractionDataEntry)
+                    let distractionColor = NSUIColor(named: "analysis-distraction")
+                    colors.append(distractionColor!)
+                }
+
+                if overSpeedDataEntry.value > 0{
+                    pieChartDataEnties.append(overSpeedDataEntry)
+                    let overSpeedColor = NSUIColor(named: "analysis-overspeed")
+                    colors.append(overSpeedColor!)
+                }
+
+                let chartDataSet = PieChartDataSet(entries: pieChartDataEnties, label: nil)
+
+                chartDataSet.colors = colors
+                chartDataSet.valueLinePart1OffsetPercentage = 0.8
+                chartDataSet.valueLinePart1Length = 0.2
+                chartDataSet.valueLinePart2Length = 0.4
+                chartDataSet.xValuePosition = .outsideSlice
+                chartDataSet.yValuePosition = .outsideSlice
+
+                let chartData = PieChartData(dataSet: chartDataSet)
+
+                let pFormatter = NumberFormatter()
+                pFormatter.numberStyle = .percent
+                pFormatter.maximumFractionDigits = 1
+                pFormatter.multiplier = 1
+                pFormatter.percentSymbol = " %"
+                chartData.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+                chartData.setValueTextColor(.black)
+                chartData.setValueFont(.systemFont(ofSize: 8, weight: .light))
+
+                cell.pieChart.data = chartData
+                cell.pieChart.entryLabelColor = .black
+                cell.pieChart.entryLabelFont = .systemFont(ofSize: 10, weight: .light)
+                cell.pieChart.legend.enabled = false
+
                 return cell
             }
+        }
 
-        }  else if segmentControl.selectedSegmentIndex == 1{
-            //第二个segment,返回cell有待更新
+        else if segmentControl.selectedSegmentIndex == 1{
+            //segment 1 : upper section is a bar chart
+            //每天distraction的次数
+            if indexPath.section == SECTION_UPPER {
+                let cell = tableView.dequeueReusableCell(withIdentifier: DRIVING_DISTANC_CELL_ID, for: indexPath) as! DrienDistanceTableViewCell
+                cell.headerLaebl.text = "Distraction Times"
+                let barChart = cell.barChart
+                barChart!.delegate = self
+                barChart!.chartDescription?.text = ""
+                barChart?.legend.enabled = false
+                var barChartDataEntries = [BarChartDataEntry]()
+
+                let formatter = DateFormatter()
+                formatter.timeZone = .current
+                formatter.locale = .current
+                formatter.dateFormat = "dd-MM-yyyy"
+
+                var arrayOfDayAndCountTuple : [(String,Int)] = []
+                for record in facialInfoList{
+                    let facialDetails = record.faceDetails
+                    if record.speed > 0, record.limitedSpeed != nil, record.limitedSpeed! > 0, record                        .speed > record.limitedSpeed!{
+                    //do nothing when over speed
+                    } else if facialDetails.count > 0 {
+                        let emotions = facialDetails[0].emotions
+                        if emotions[0].type == "CALM"{
+                            //do nothing when all good
+
+                        } else if emotions[0].type == "HAPPY"{
+                            //do nothing when likely focusing
+                        } else {
+                            //face showing distraction
+                            let dateOfOneRecord = formatter.string(from: record.capturedTime)
+
+                            let indexOfMatchingRecord = arrayOfDayAndCountTuple.firstIndex(where: { (existingRecord:(String,Int)) ->Bool in return existingRecord.0 == dateOfOneRecord })
+
+                            if indexOfMatchingRecord != nil
+                            {
+                                //if already existing record in the same day, then sum the distance
+                                let originalCount = arrayOfDayAndCountTuple[indexOfMatchingRecord!].1
+                                arrayOfDayAndCountTuple[indexOfMatchingRecord!].1 = originalCount + 1
+                            } else {
+                                //if the date not in the array yet, then add new tuple into the array
+                                arrayOfDayAndCountTuple.append((dateOfOneRecord,1))
+                            }
+                        }
+                    }
+                }
+
+                var labels : [String] = []
+
+                var counter = 0
+                for element in arrayOfDayAndCountTuple {
+                    let dataEntry = BarChartDataEntry(x: Double(counter), y: Double(element.1))
+                    let dateComponents = element.0.split(separator: "-")
+                    let label = "\(dateComponents[0])/\(dateComponents[1])"
+                    labels.append(label)
+                    barChartDataEntries.append(dataEntry)
+                    //Todo: 这里需要Charts的ValueFormatter用以替换x轴坐标label
+                    counter += 1
+                }
+
+                let valueFormatterForXAxis = IndexAxisValueFormatter(values: labels)
+                valueFormatterForXAxis.values = labels
+
+                let set = BarChartDataSet(barChartDataEntries)
+                set.colors = [NSUIColor.blue]
+                let data = BarChartData(dataSet: set)
+                barChart!.data = data
+                barChart!.rightAxis.enabled = false
+
+                let yAxis = barChart!.leftAxis
+                yAxis.labelFont = .boldSystemFont(ofSize: 12)
+                yAxis.labelPosition = .outsideChart
+
+                let xAxis = barChart?.xAxis
+                xAxis?.drawGridLinesEnabled = false
+                xAxis?.labelPosition = .bottom
+                xAxis?.labelFont = .boldSystemFont(ofSize: 12)
+
+                xAxis?.valueFormatter = valueFormatterForXAxis
+                xAxis?.labelCount = labels.count
+                barChart?.animate(xAxisDuration: 1)
+                barChartDataEntries.removeAll()
+                return cell
+            }
+            //segment 1 : bottom section is xx chart
+            //distraction的时段
+            else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: DISTRACTION_PERIOD_CELL_ID, for: indexPath) as! DistractionTimePeriodTableViewCell
+
+                var distractionFacials : [FacialInfo] = []
+                distractionFacials = facialInfoList.filter({ (element) -> Bool in
+                    let facialDetails = element.faceDetails
+                    if element.speed > 0, element.limitedSpeed != nil, element.limitedSpeed! > 0, element
+                        .speed > element.limitedSpeed!{
+                        //return false when overspeed
+                        return false
+                    } else if facialDetails.count > 0 {
+                        let emotions = facialDetails[0].emotions
+                        if emotions[0].type == "CALM"{
+                            //return false when all good
+                            return false
+                        } else if emotions[0].type == "HAPPY"{
+                            //return false when all likely focus
+                            return false
+                        } else {
+                            //return true when distraction
+                            return true
+                        }
+                    } else {
+                        //return false when record not valid
+                        return false
+                    }
+                })
+
+                let formatter = DateFormatter()
+                formatter.timeZone = .current
+                formatter.locale = .current
+                formatter.dateFormat = "hh-a"
+
+                var arrayOfTimeAndCountTuple : [(String,Int)] = []
+                for record in distractionFacials{
+
+                    let timeOfOneRecord = formatter.string(from: record.capturedTime)
+
+                    let indexOfMatchingRecord = arrayOfTimeAndCountTuple.firstIndex(where: { (existingRecord:(String,Int)) ->Bool in return existingRecord.0 == timeOfOneRecord })
+
+                    if indexOfMatchingRecord != nil
+                    {
+                        //if already existing record in the same day, then sum the distance
+                        let originalCount = arrayOfTimeAndCountTuple[indexOfMatchingRecord!].1
+                        arrayOfTimeAndCountTuple[indexOfMatchingRecord!].1 = originalCount + 1
+                    } else {
+                        //if the date not in the array yet, then add new tuple into the array
+                        arrayOfTimeAndCountTuple.append((timeOfOneRecord,1))
+                    }
+                }
+
+                cell.pieChart.delegate = self
+                cell.pieChart.chartDescription?.text = ""
+
+                func rounndPercent(top:Int, bottom:Int)->Double{
+                    return (Double(top)/Double(bottom)*100).rounded(.up)
+                }
+
+                var pieChartDataEnties = [PieChartDataEntry]()
+                for tuple in arrayOfTimeAndCountTuple {
+                    let roundPercent = rounndPercent(top: tuple.1, bottom: arrayOfTimeAndCountTuple.count)
+                    let splitTIme = tuple.0.split(separator: "-")
+                    let timePeriodStart = Int(splitTIme[0])!
+                    let timePeriodEnd = timePeriodStart + 1
+                    pieChartDataEnties.append(PieChartDataEntry(value: roundPercent, label: "\(timePeriodStart)-\(timePeriodEnd) \(splitTIme[1])"))
+                }
+
+                let chartDataSet = PieChartDataSet(entries: pieChartDataEnties, label: nil)
+
+                chartDataSet.colors = ChartColorTemplates.material()
+                chartDataSet.valueLinePart1OffsetPercentage = 0.8
+                chartDataSet.valueLinePart1Length = 0.2
+                chartDataSet.valueLinePart2Length = 0.4
+                chartDataSet.xValuePosition = .outsideSlice
+                chartDataSet.yValuePosition = .outsideSlice
+
+                let chartData = PieChartData(dataSet: chartDataSet)
+
+                let pFormatter = NumberFormatter()
+                pFormatter.numberStyle = .percent
+                pFormatter.maximumFractionDigits = 1
+                pFormatter.multiplier = 1
+                pFormatter.percentSymbol = " %"
+                chartData.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+                chartData.setValueTextColor(.black)
+                chartData.setValueFont(.systemFont(ofSize: 8, weight: .light))
+
+                cell.pieChart.data = chartData
+                cell.pieChart.entryLabelColor = .black
+                cell.pieChart.entryLabelFont = .systemFont(ofSize: 10, weight: .light)
+                cell.pieChart.legend.enabled = false
+
+                return cell
+            }
+        }
+        //第3个segment,返回cell有待更新
+        else {
             let cell = tableView.dequeueReusableCell(withIdentifier: DRIVINGSTATUS_CELL_ID, for: indexPath) as! DrivingStatusTableViewCell
-            cell.pieChart.delegate = self
-            cell.pieChart.chartDescription?.text = ""
-            allGoodDataEntry.value = 89
-            likelyFocusDataEntry.value = 4
-            distractionDataEntry.value = 1
-            overSpeedDataEntry.value = 6
-            pieChartDataEnties = [allGoodDataEntry,likelyFocusDataEntry,distractionDataEntry,overSpeedDataEntry]
-            updatePieChartData(pieChart: cell.pieChart)
-            return cell
-        } else {
-            //第3个segment,返回cell有待更新
-            let cell = tableView.dequeueReusableCell(withIdentifier: DRIVINGSTATUS_CELL_ID, for: indexPath) as! DrivingStatusTableViewCell
-            cell.pieChart.delegate = self
-            cell.pieChart.chartDescription?.text = ""
-            allGoodDataEntry.value = 89
-            likelyFocusDataEntry.value = 4
-            distractionDataEntry.value = 1
-            overSpeedDataEntry.value = 6
-            pieChartDataEnties = [allGoodDataEntry,likelyFocusDataEntry,distractionDataEntry,overSpeedDataEntry]
-            updatePieChartData(pieChart: cell.pieChart)
+
             return cell
         }
     }
@@ -188,18 +453,6 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         return false
     }
 
-    // MARK: - Charts
-    func updatePieChartData(pieChart : PieChartView) {
-
-        let chartDataSet = PieChartDataSet(entries: pieChartDataEnties, label: nil)
-        let chartData = PieChartData(dataSet: chartDataSet)
-
-
-        let colors = [UIColor.red, UIColor.blue, UIColor.yellow, UIColor.black]
-        chartDataSet.colors = colors
-        pieChart.data = chartData
-    }
-
     // MARK: - IBAction
     @IBAction func segmentControlClicked(_ sender: Any) {
         analysisPageTableView.reloadData()
@@ -211,10 +464,8 @@ extension AnalysisViewController: DatabaseListener{
     func onSelectedRoadInfoChange(change: DatabaseChange, selectRoads: [UserSelectedRoadResponse]) {
         
     }
-    
 
     func onFacialInfoChange(change: DatabaseChange, facialInfos: [FacialInfo]) {
-        //Todo 需要写一个简单算法，在tableView刷新时，根据facialInfoList，归类出chart所需数据
         facialInfoList = facialInfos
         analysisPageTableView.reloadData()
     }

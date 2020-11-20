@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -178,10 +178,14 @@
             </constraints>
             <connections>
                 <outlet property="allGoodBackGroun" destination="BYC-de-GGG" id="jlW-lU-LET"/>
+                <outlet property="allgoodPercentLabel" destination="jBL-p9-UK9" id="LHU-Ka-O8W"/>
                 <outlet property="contentAreaBackground" destination="Z0a-Rm-88s" id="EUM-Lf-DEl"/>
                 <outlet property="distractionBackground" destination="See-aX-MLe" id="q1C-0h-sPk"/>
+                <outlet property="distractionPercentLabel" destination="cKJ-LO-l2d" id="x9b-IL-Sq6"/>
                 <outlet property="likelyFocusBackground" destination="2GU-lW-Bmh" id="nPV-TN-d97"/>
+                <outlet property="likelyFocusPercentLabel" destination="Ps1-gf-tbm" id="udd-Y6-A9a"/>
                 <outlet property="overSpeedBackground" destination="B8y-M1-hIL" id="XM4-e7-Xoa"/>
+                <outlet property="overspeedPercentLabel" destination="rpg-Kf-TPd" id="136-CQ-8du"/>
                 <outlet property="pieChart" destination="UNS-0Y-9gC" id="Toz-j4-PYp"/>
             </connections>
             <point key="canvasLocation" x="142.75362318840581" y="8.7053571428571423"/>
