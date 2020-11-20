@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B10185D42553D4B000A5A11A /* SearchPlaceRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10185D32553D4B000A5A11A /* SearchPlaceRequest.swift */; };
 		B10185D72553D6DF00A5A11A /* SearchPlaceResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10185D62553D6DF00A5A11A /* SearchPlaceResponse.swift */; };
+		B10B39DE2567DEBA0076317E /* OverSpeedAlert.xib in Resources */ = {isa = PBXBuildFile; fileRef = B10B39DD2567DEBA0076317E /* OverSpeedAlert.xib */; };
+		B10B39E12567E2D80076317E /* OverSpeedAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10B39E02567E2D80076317E /* OverSpeedAlert.swift */; };
 		B1139AC0255BD560002EA26E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1139ABF255BD560002EA26E /* AppDelegate.swift */; };
 		B1139AC6255C11B4002EA26E /* ImportantPatDetailViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1139AC5255C11B4002EA26E /* ImportantPatDetailViewControllerExtension.swift */; };
 		B13C25FB254936B1008EBDE3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */; };
@@ -123,6 +125,8 @@
 		80FBCD77DA47232EA3362492 /* Pods-FIT5140Assignment3iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FIT5140Assignment3iOS.release.xcconfig"; path = "Target Support Files/Pods-FIT5140Assignment3iOS/Pods-FIT5140Assignment3iOS.release.xcconfig"; sourceTree = "<group>"; };
 		B10185D32553D4B000A5A11A /* SearchPlaceRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceRequest.swift; sourceTree = "<group>"; };
 		B10185D62553D6DF00A5A11A /* SearchPlaceResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceResponse.swift; sourceTree = "<group>"; };
+		B10B39DD2567DEBA0076317E /* OverSpeedAlert.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverSpeedAlert.xib; sourceTree = "<group>"; };
+		B10B39E02567E2D80076317E /* OverSpeedAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverSpeedAlert.swift; sourceTree = "<group>"; };
 		B1139ABF255BD560002EA26E /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1139AC5255C11B4002EA26E /* ImportantPatDetailViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantPatDetailViewControllerExtension.swift; sourceTree = "<group>"; };
 		B13C25FA254936B1008EBDE3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -410,6 +414,8 @@
 				B13CF0092541A9B700957E84 /* SpeedAlertView.swift */,
 				B170FC73254290D00086F1D9 /* SpeedNotificationView.swift */,
 				B170FC76254290D90086F1D9 /* SpeedNotificationView.xib */,
+				B10B39DD2567DEBA0076317E /* OverSpeedAlert.xib */,
+				B10B39E02567E2D80076317E /* OverSpeedAlert.swift */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -640,6 +646,7 @@
 				E47D41DE255D83390079DE27 /* DistractionDetailCell.xib in Resources */,
 				E4AE1725255E3B15009B1DAA /* DistractionSpeedLimitInfoView.xib in Resources */,
 				E48F391E2562A158001A8C1F /* BarChartTableViewCell.xib in Resources */,
+				B10B39DE2567DEBA0076317E /* OverSpeedAlert.xib in Resources */,
 				B13CEFD12540FAFB00957E84 /* Assets.xcassets in Resources */,
 				E41FE641254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib in Resources */,
 				E410CD08255CEC600004B2D9 /* RecordDetailChartCell.xib in Resources */,
@@ -741,6 +748,7 @@
 				B1E9473225615618007C74AD /* CurrentSpeedResponse.swift in Sources */,
 				B1F7D00A2566159B001AFBFD /* GradientView.swift in Sources */,
 				B1560268255188E6003EF6B7 /* PlaceDetailResponse.swift in Sources */,
+				B10B39E12567E2D80076317E /* OverSpeedAlert.swift in Sources */,
 				B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */,
 				B14053462566AC5000327A09 /* StopServiceResponse.swift in Sources */,
 				E4BA6E7E25450307001D0CD7 /* BottomCardSpecifyCell.swift in Sources */,

@@ -136,8 +136,18 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
         }
         if currentSpeed > speedLimit{
             SoundHelper.shared.playOverSpeedSound()
+            showOverspeedAlertView(currentSpeed: currentSpeed, limitedSpeed: limitSpeed)
         }
     }
+    
+    func showOverspeedAlertView(currentSpeed:Int, limitedSpeed:Int){
+        guard let alertView = Bundle(for: self.classForCoder.class()).loadNibNamed("OverSpeedAlert", owner: self, options: nil)?.first as? OverSpeedAlert else {
+            return
+        }
+        
+        alertView.showAlertView(currentSpeed: currentSpeed, limitedSpeed: limitedSpeed)
+    }
+    
     @IBAction func requestActionToServer(_ sender: Any) {
         if isRunning{
             requestRestfulService(api: RaspberryPiApi.stop_service, model: DefaultSimpleGetModel(), jsonType: StopServiceResponse.self)

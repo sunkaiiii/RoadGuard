@@ -10,7 +10,7 @@ import AVFoundation
 
 class SoundHelper{
     static let shared = SoundHelper()
-    
+    private var player:AVAudioPlayer?
     private init(){
         
     }
@@ -20,8 +20,8 @@ class SoundHelper{
             return
         }
         do{
-            let player = try AVAudioPlayer(contentsOf: url)
-            player.play()
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
         }catch{
             print(error)
         }
