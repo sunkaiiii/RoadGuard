@@ -13,6 +13,7 @@ final class ImageLoader: NSObject {
 
     
     static let loaderDelegate = ImageLoaderDelegate()
+
     
     
     private override init() {
@@ -34,6 +35,8 @@ final class ImageLoader: NSObject {
 
     //To encapsulate and hide the interface of the implemented interfaces, using another delegate class.
     class ImageLoaderDelegate:NSObject,URLSessionTaskDelegate, URLSessionDownloadDelegate{
+        // Usage of lock, references on https://developer.apple.com/documentation/foundation/nslocking/1416318-lock
+        let lock = NSLock()
         private var taskMap = [URLSessionDownloadTask:ImageDownloadTask]()
         private var imageCache = NSCache<AnyObject, AnyObject>()
         private var session:URLSession?
@@ -88,10 +91,11 @@ final class ImageLoader: NSObject {
                 if let imageTask = taskMap[downloadTask]{
                     let renamedUrl =  imageTask.url.replacingOccurrences(of: "/", with: "_")
                     imageCache.setObject(data as AnyObject, forKey: renamedUrl as AnyObject)
+                    self.lock.lock()
                     if taskMap[downloadTask] != nil{
                         taskMap.removeValue(forKey: downloadTask)
                     }
-
+                    self.lock.unlock()
                     let image = UIImage(data: data)
                     if let image = image{
                         storeImage(image: image, forKey: renamedUrl, wtihStorageType: .fileSystem)

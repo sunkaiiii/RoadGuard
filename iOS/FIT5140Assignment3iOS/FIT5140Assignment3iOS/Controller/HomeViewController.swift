@@ -90,16 +90,13 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
     }
     
     func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
-        if helper.restfulAPI is RaspberryPiApi{
-            startServiceItem.isEnabled = true
-        }
         switch helper.restfulAPI as? RaspberryPiApi{
         case .get_current_speed:
             let currentSpeedResponse:CurrentSpeedResponse = accessibleData.retriveData()
             if currentSpeedResponse.isError{
                 return
             }
-            speedAlertView.setCurrentSpeed(speed: String(format: "%d", currentSpeedResponse.speed))
+            speedAlertView.setCurrentSpeed(speed: "\(currentSpeedResponse.speed)")
             requestRestfulService(api: RaspberryPiApi.get_speed_limit, model: DefaultSimpleGetModel(), jsonType: SpeedLimitResponse.self)
         case .get_speed_limit:
             let speedLimitResponse:SpeedLimitResponse = accessibleData.retriveData()
@@ -110,6 +107,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
             }
         case .get_current_server_status:
             let status:ServerStatusResponse = accessibleData.retriveData()
+            startServiceItem.isEnabled = true
             initItem(isRunning: status.isRunning)
         case .start_service:
             let response:StartServiceResponse = accessibleData.retriveData()
@@ -138,8 +136,18 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
         }
         if currentSpeed > speedLimit{
             SoundHelper.shared.playOverSpeedSound()
+            showOverspeedAlertView(currentSpeed: currentSpeed, limitedSpeed: limitSpeed)
         }
     }
+    
+    func showOverspeedAlertView(currentSpeed:Int, limitedSpeed:Int){
+        guard let alertView = Bundle(for: self.classForCoder.class()).loadNibNamed("OverSpeedAlert", owner: self, options: nil)?.first as? OverSpeedAlert else {
+            return
+        }
+        
+        alertView.showAlertView(currentSpeed: currentSpeed, limitedSpeed: limitedSpeed)
+    }
+    
     @IBAction func requestActionToServer(_ sender: Any) {
         if isRunning{
             requestRestfulService(api: RaspberryPiApi.stop_service, model: DefaultSimpleGetModel(), jsonType: StopServiceResponse.self)
@@ -152,7 +160,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
 
 extension HomeViewController{
     func beforeExecution(helper: RequestHelper) {
-        if helper.restfulAPI is RaspberryPiApi{
+        if (helper.restfulAPI as? RaspberryPiApi) == RaspberryPiApi.get_current_server_status{
             startServiceItem.isEnabled = false
         }
     }

@@ -115,11 +115,11 @@ class RecordDetailChartCell: UITableViewCell, ChartViewDelegate, UITableViewDele
                 return
             }
             var currentIndex = roads.snappedPoints[0].originalIndex
-            barChartTableViewDataSource.append((roads.snappedPoints[0].placeID,speedList[currentIndex].currentSpeed))
+            barChartTableViewDataSource.append((roads.snappedPoints[0].placeID,Int(speedList[currentIndex].currentSpeed)))
             roads.snappedPoints.forEach({(point) in
                 if currentIndex != point.originalIndex{
                     currentIndex = point.originalIndex
-                    barChartTableViewDataSource.append((point.placeID,speedList[currentIndex].currentSpeed))
+                    barChartTableViewDataSource.append((point.placeID,Int(speedList[currentIndex].currentSpeed)))
                 }
                 
             })

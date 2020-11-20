@@ -9,5 +9,5 @@ import Foundation
 
 struct CurrentSpeedResponse: Codable {
     let isError: Bool
-    let speed: Double
+    let speed: Int
 }

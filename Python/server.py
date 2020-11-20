@@ -46,7 +46,7 @@ def get_current_speed():
         speed = recorder.get_current_gps_speed()
         if speed == -sys.maxsize:
             result["isError"] = True
-    result["speed"] = speed
+    result["speed"] = int(speed)
     return json.dumps(result)
 
 @app.route('/api/get_current_speed_limit',methods = ['GET'])
@@ -58,6 +58,7 @@ def get_current_speed_limit():
         result["isError"] = False
     else:
         result["isError"] = True
+    print(result)
     return json.dumps(result)
     
 @app.route('/api/get_service_status',methods = ['GET'])

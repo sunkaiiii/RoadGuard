@@ -52,9 +52,9 @@ class RecordDetailMatrixCell: UITableViewCell {
         totalLengthLabel.text = String(format: "%.2f", drivingRecord.drivingDistance/1000.0)+"KM"
         drivingDurationLabel.text = String(format: "%.0f", drivingRecord.endTime.timeIntervalSince(drivingRecord.startTime)/60) + " min"
         let speedList = databaseController.getSpeedRecordByRecordId(id)
-        let sumSpeed = speedList.map({(speedInfo) in speedInfo.currentSpeed}).reduce(0,+)
+        let sumSpeed = speedList.map({(speedInfo) in speedInfo.currentSpeed}).reduce(0.0,+)
         if speedList.count > 0{
-            avgSpeedLabel.text = "\(sumSpeed/speedList.count)"
+            avgSpeedLabel.text = "\(Int(sumSpeed/Double(speedList.count)))"
         }else{
             avgSpeedLabel.text = "Unknown"
         }

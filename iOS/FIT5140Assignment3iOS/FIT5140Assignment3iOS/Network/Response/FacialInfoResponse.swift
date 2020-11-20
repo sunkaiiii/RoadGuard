@@ -11,12 +11,12 @@ struct FacialInfo: Codable {
     var id: String?
     let imageURL: String
     let faceDetails: [FaceDetail]
-    let speed: Int
+    let speed: Double
     let recordId:String?
     let locationInfo:FacialLocation?
     let selectedRoadIds:[String]?
     let capturedTime: Date
-    let limitedSpeed: Int?
+    let limitedSpeed: Double?
 
     enum CodingKeys: String, CodingKey {
         case imageURL = "ImageUrl"
