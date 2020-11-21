@@ -15,4 +15,6 @@ class SpeedRecord: Codable {
     let longitude:Double
     let recordId:String?
     let recordTime:Date
+    let overSpeed:Bool
+    let facialId:String?
 }

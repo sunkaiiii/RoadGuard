@@ -53,6 +53,10 @@
 		B170FC77254290D90086F1D9 /* SpeedNotificationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B170FC76254290D90086F1D9 /* SpeedNotificationView.xib */; };
 		B170FC7E254291B60086F1D9 /* CircleShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B170FC7D254291B60086F1D9 /* CircleShapeView.swift */; };
 		B170FC812542B40F0086F1D9 /* CurrentSpeedInformationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B170FC802542B40F0086F1D9 /* CurrentSpeedInformationView.xib */; };
+		B1887AEF2568E7570021FFC6 /* RecordDeailOverSpeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1887AED2568E7570021FFC6 /* RecordDeailOverSpeedTableViewCell.swift */; };
+		B1887AF02568E7570021FFC6 /* RecordDeailOverSpeedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1887AEE2568E7570021FFC6 /* RecordDeailOverSpeedTableViewCell.xib */; };
+		B1887AF42568E95E0021FFC6 /* RecordDetailOverspeedDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1887AF22568E95E0021FFC6 /* RecordDetailOverspeedDetailTableViewCell.swift */; };
+		B1887AF52568E95E0021FFC6 /* RecordDetailOverspeedDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1887AF32568E95E0021FFC6 /* RecordDetailOverspeedDetailTableViewCell.xib */; };
 		B190D3C825447029002249BA /* SpeedNotificationSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B190D3C725447029002249BA /* SpeedNotificationSuperView.swift */; };
 		B190D3CD25447113002249BA /* CurrentSpeedInformationSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B190D3CC25447113002249BA /* CurrentSpeedInformationSuperView.swift */; };
 		B1A5E47A2547C59A00D8CCB0 /* GoogleAPIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A5E4792547C59A00D8CCB0 /* GoogleAPIKey.swift */; };
@@ -174,6 +178,10 @@
 		B170FC76254290D90086F1D9 /* SpeedNotificationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpeedNotificationView.xib; sourceTree = "<group>"; };
 		B170FC7D254291B60086F1D9 /* CircleShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleShapeView.swift; sourceTree = "<group>"; };
 		B170FC802542B40F0086F1D9 /* CurrentSpeedInformationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentSpeedInformationView.xib; sourceTree = "<group>"; };
+		B1887AED2568E7570021FFC6 /* RecordDeailOverSpeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDeailOverSpeedTableViewCell.swift; sourceTree = "<group>"; };
+		B1887AEE2568E7570021FFC6 /* RecordDeailOverSpeedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordDeailOverSpeedTableViewCell.xib; sourceTree = "<group>"; };
+		B1887AF22568E95E0021FFC6 /* RecordDetailOverspeedDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailOverspeedDetailTableViewCell.swift; sourceTree = "<group>"; };
+		B1887AF32568E95E0021FFC6 /* RecordDetailOverspeedDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordDetailOverspeedDetailTableViewCell.xib; sourceTree = "<group>"; };
 		B190D3C725447029002249BA /* SpeedNotificationSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedNotificationSuperView.swift; sourceTree = "<group>"; };
 		B190D3CC25447113002249BA /* CurrentSpeedInformationSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSpeedInformationSuperView.swift; sourceTree = "<group>"; };
 		B1A5E4792547C59A00D8CCB0 /* GoogleAPIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPIKey.swift; sourceTree = "<group>"; };
@@ -503,6 +511,10 @@
 				E47D41DC255D83390079DE27 /* DistractionDetailCell.xib */,
 				E48F391B2562A158001A8C1F /* BarChartTableViewCell.swift */,
 				E48F391C2562A158001A8C1F /* BarChartTableViewCell.xib */,
+				B1887AED2568E7570021FFC6 /* RecordDeailOverSpeedTableViewCell.swift */,
+				B1887AEE2568E7570021FFC6 /* RecordDeailOverSpeedTableViewCell.xib */,
+				B1887AF22568E95E0021FFC6 /* RecordDetailOverspeedDetailTableViewCell.swift */,
+				B1887AF32568E95E0021FFC6 /* RecordDetailOverspeedDetailTableViewCell.xib */,
 			);
 			path = RecordDetailCellViews;
 			sourceTree = "<group>";
@@ -658,9 +670,11 @@
 				E410CD08255CEC600004B2D9 /* RecordDetailChartCell.xib in Resources */,
 				E410CD0D255CEC780004B2D9 /* RecordDetailDistractionSummaryCell.xib in Resources */,
 				E4D865E125458CB600465243 /* RoadInfoBottomCard.xib in Resources */,
+				B1887AF02568E7570021FFC6 /* RecordDeailOverSpeedTableViewCell.xib in Resources */,
 				E47A9E5C2556ECAF00A815B7 /* overspeed.wav in Resources */,
 				B170FC812542B40F0086F1D9 /* CurrentSpeedInformationView.xib in Resources */,
 				E4D865E9254591B600465243 /* BottomCardImportantRoadCell.xib in Resources */,
+				B1887AF52568E95E0021FFC6 /* RecordDetailOverspeedDetailTableViewCell.xib in Resources */,
 				E43F486A256803CA00254001 /* DistractionTimePeriodTableViewCell.xib in Resources */,
 				E45B487A254D023600692A2E /* RecordBkdTableViewCell.xib in Resources */,
 				E4BA6E7F25450307001D0CD7 /* BottomCardSpecifyCell.xib in Resources */,
@@ -819,6 +833,8 @@
 				E4E6FE872559711000DC8050 /* ImportantPathDetailViewController.swift in Sources */,
 				B13CEFCA2540FAF900957E84 /* SceneDelegate.swift in Sources */,
 				B13CF00A2541A9B700957E84 /* SpeedAlertView.swift in Sources */,
+				B1887AF42568E95E0021FFC6 /* RecordDetailOverspeedDetailTableViewCell.swift in Sources */,
+				B1887AEF2568E7570021FFC6 /* RecordDeailOverSpeedTableViewCell.swift in Sources */,
 				E494034725649619009042A5 /* PlaceDetailResponseRealmModel.swift in Sources */,
 				E4AE171C255E1281009B1DAA /* DistractionSpeedLimitInfoView.swift in Sources */,
 				B1AB3A7B2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift in Sources */,
@@ -973,7 +989,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YNQ45Z475P;
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -996,7 +1012,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = YNQ45Z475P;
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
