@@ -26,7 +26,6 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
     @IBOutlet weak var bottomSpacingConstraint: NSLayoutConstraint!
 
     var lastPosition:CLLocationCoordinate2D?
-    var limitSpeed:Int = -1
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,6 +95,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
             if currentSpeedResponse.isError{
                 return
             }
+            self.currentSpeed = currentSpeedResponse.speed
             speedAlertView.setCurrentSpeed(speed: "\(currentSpeedResponse.speed)")
             requestRestfulService(api: RaspberryPiApi.get_speed_limit, model: DefaultSimpleGetModel(), jsonType: SpeedLimitResponse.self)
         case .get_speed_limit:
@@ -136,7 +136,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
         }
         if currentSpeed > speedLimit{
             SoundHelper.shared.playOverSpeedSound()
-            showOverspeedAlertView(currentSpeed: currentSpeed, limitedSpeed: limitSpeed)
+            showOverspeedAlertView(currentSpeed: currentSpeed, limitedSpeed: speedLimit)
         }
     }
     
