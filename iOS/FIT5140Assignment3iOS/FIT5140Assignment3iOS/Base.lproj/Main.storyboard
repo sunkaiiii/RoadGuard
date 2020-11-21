@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -249,7 +249,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LqJ-X3-bvR">
-                                                            <rect key="frame" x="29.5" y="41.5" width="31.5" height="40"/>
+                                                            <rect key="frame" x="29" y="41.5" width="31.5" height="40"/>
                                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="19"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -454,11 +454,58 @@
                         <outlet property="totalLengthNumberLabel" destination="LqJ-X3-bvR" id="Aa7-YK-aBC"/>
                         <outlet property="totalLengthVisualEffectView" destination="e4s-TA-NXN" id="sKA-Jt-JbA"/>
                         <outlet property="visualEffectForTablViewBackground" destination="GOL-nF-pXh" id="Hgw-z7-udH"/>
+                        <segue destination="8j8-6p-p8x" kind="show" identifier="editRoads" id="JBR-t4-Fa2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UFd-Uq-MNT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2266.666666666667" y="-26.116071428571427"/>
+        </scene>
+        <!--Edit Road-->
+        <scene sceneID="v41-eO-yqQ">
+            <objects>
+                <viewController id="8j8-6p-p8x" customClass="EditRoadViewController" customModule="FIT5140Assignment3iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="j5Z-xP-tbb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2eN-fa-QdQ" customClass="GMSMapView">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="plT-qr-tcn"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="plT-qr-tcn" firstAttribute="bottom" secondItem="2eN-fa-QdQ" secondAttribute="bottom" id="aNT-uH-JQJ"/>
+                            <constraint firstItem="2eN-fa-QdQ" firstAttribute="leading" secondItem="plT-qr-tcn" secondAttribute="leading" id="bUR-bc-DxO"/>
+                            <constraint firstItem="plT-qr-tcn" firstAttribute="trailing" secondItem="2eN-fa-QdQ" secondAttribute="trailing" id="hfM-Yq-jaa"/>
+                            <constraint firstItem="2eN-fa-QdQ" firstAttribute="top" secondItem="plT-qr-tcn" secondAttribute="top" id="k91-sH-aOl"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Edit Road" id="gIe-x0-Dc9">
+                        <rightBarButtonItems>
+                            <barButtonItem title="Save" id="or0-K2-bTd">
+                                <connections>
+                                    <action selector="saveBtnAction:" destination="8j8-6p-p8x" id="wGq-qO-G0S"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Clear" id="oi6-zk-bjH">
+                                <connections>
+                                    <action selector="drawAction:" destination="8j8-6p-p8x" id="hNZ-pb-eAS"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="drawControlBtn" destination="oi6-zk-bjH" id="Dp4-Qj-s3T"/>
+                        <outlet property="mapView" destination="2eN-fa-QdQ" id="Lnh-C4-qh0"/>
+                        <outlet property="saveBtn" destination="or0-K2-bTd" id="gaZ-tC-r7o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZXX-0G-6Qb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3182" y="-27"/>
         </scene>
         <!--Record-->
         <scene sceneID="pQO-TD-dpm">

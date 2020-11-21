@@ -257,6 +257,20 @@ class FirebaseController: NSObject,DatabaseProtocol {
         selectedRoadRef?.document(id).delete()
     }
 
+    func editSelectedRoad(_ id: String, points: [SnappedPointResponse]) -> UserSelectedRoadResponse? {
+        guard var road = selectedRoadaList.first(where: {(r) in r.id == id}) else {
+            return nil
+        }
+        road.selectedRoads = points
+        road.placeIds = points.map({(points) in points.placeID})
+        do{
+            try selectedRoadRef?.document(id).setData(from: road)
+        }catch{
+            print(error)
+        }
+        
+        return road
+    }
 
     
     func findIndexAndModifySelectedRoad(_ selectedRoad:UserSelectedRoadResponse, _ type:DocumentChangeType){
@@ -300,6 +314,7 @@ protocol DatabaseProtocol:NSObject {
     func addSelectedeRoad(_ record:UserSelectedRoadResponse)->UserSelectedRoadResponse
     func getFacialRecordById(_ facialId:String)->FacialInfo?
     func deleteSelectedRoadById(_ id:String)
+    func editSelectedRoad(_ id:String, points:[SnappedPointResponse]) -> UserSelectedRoadResponse?
 }
 protocol DatabaseListener:AnyObject {
     var listenerType:[ListenerType]{get set}
