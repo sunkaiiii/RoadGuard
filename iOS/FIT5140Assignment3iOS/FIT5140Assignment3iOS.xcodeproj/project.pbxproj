@@ -84,6 +84,8 @@
 		E410CD0D255CEC780004B2D9 /* RecordDetailDistractionSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E410CD0B255CEC780004B2D9 /* RecordDetailDistractionSummaryCell.xib */; };
 		E41FE640254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E41FE63E254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift */; };
 		E41FE641254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E41FE63F254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib */; };
+		E43F4869256803CA00254001 /* DistractionTimePeriodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E43F4867256803CA00254001 /* DistractionTimePeriodTableViewCell.swift */; };
+		E43F486A256803CA00254001 /* DistractionTimePeriodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E43F4868256803CA00254001 /* DistractionTimePeriodTableViewCell.xib */; };
 		E45B486D254CF66E00692A2E /* WormTabStripButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B486B254CF66D00692A2E /* WormTabStripButton.swift */; };
 		E45B486E254CF66E00692A2E /* WormTabStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B486C254CF66E00692A2E /* WormTabStrip.swift */; };
 		E45B4875254CFF7600692A2E /* RecordBreakdownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45B4874254CFF7600692A2E /* RecordBreakdownViewController.swift */; };
@@ -203,6 +205,8 @@
 		E410CD0B255CEC780004B2D9 /* RecordDetailDistractionSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordDetailDistractionSummaryCell.xib; sourceTree = "<group>"; };
 		E41FE63E254E7A9C007FC19D /* RecordPageHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPageHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		E41FE63F254E7A9C007FC19D /* RecordPageHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordPageHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		E43F4867256803CA00254001 /* DistractionTimePeriodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistractionTimePeriodTableViewCell.swift; sourceTree = "<group>"; };
+		E43F4868256803CA00254001 /* DistractionTimePeriodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DistractionTimePeriodTableViewCell.xib; sourceTree = "<group>"; };
 		E45B486B254CF66D00692A2E /* WormTabStripButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WormTabStripButton.swift; sourceTree = "<group>"; };
 		E45B486C254CF66E00692A2E /* WormTabStrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WormTabStrip.swift; sourceTree = "<group>"; };
 		E45B4874254CFF7600692A2E /* RecordBreakdownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordBreakdownViewController.swift; sourceTree = "<group>"; };
@@ -574,6 +578,8 @@
 				E4FECFBD254FAEC90072555F /* DrienDistanceTableViewCell.xib */,
 				E4FECFC1254FAEE60072555F /* DrivingStatusTableViewCell.swift */,
 				E4FECFC2254FAEE60072555F /* DrivingStatusTableViewCell.xib */,
+				E43F4867256803CA00254001 /* DistractionTimePeriodTableViewCell.swift */,
+				E43F4868256803CA00254001 /* DistractionTimePeriodTableViewCell.xib */,
 			);
 			path = AnalysisPageCells;
 			sourceTree = "<group>";
@@ -655,6 +661,7 @@
 				E47A9E5C2556ECAF00A815B7 /* overspeed.wav in Resources */,
 				B170FC812542B40F0086F1D9 /* CurrentSpeedInformationView.xib in Resources */,
 				E4D865E9254591B600465243 /* BottomCardImportantRoadCell.xib in Resources */,
+				E43F486A256803CA00254001 /* DistractionTimePeriodTableViewCell.xib in Resources */,
 				E45B487A254D023600692A2E /* RecordBkdTableViewCell.xib in Resources */,
 				E4BA6E7F25450307001D0CD7 /* BottomCardSpecifyCell.xib in Resources */,
 				B13CEFCF2540FAF900957E84 /* Main.storyboard in Resources */,
@@ -736,6 +743,7 @@
 				E4FECFBE254FAEC90072555F /* DrienDistanceTableViewCell.swift in Sources */,
 				E45B486E254CF66E00692A2E /* WormTabStrip.swift in Sources */,
 				B10185D72553D6DF00A5A11A /* SearchPlaceResponse.swift in Sources */,
+				E43F4869256803CA00254001 /* DistractionTimePeriodTableViewCell.swift in Sources */,
 				E4EE85152554FBEF00208C71 /* RealmExtension.swift in Sources */,
 				E4AE1717255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift in Sources */,
 				B13C2609254AAA69008EBDE3 /* ScrollableViewController.swift in Sources */,
@@ -965,8 +973,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YNQ45Z475P;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -987,8 +996,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = FIT5140Assignment3iOS/FIT5140Assignment3iOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = YNQ45Z475P;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FIT5140Assignment3iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -11,7 +11,8 @@ import Charts
 class DrienDistanceTableViewCell: UITableViewCell {
     @IBOutlet weak var contentBackgroundview: UIView!
     @IBOutlet weak var barChart: BarChartView!
-
+    @IBOutlet weak var headerLaebl: UILabel!
+    
     static let identifier = "DrienDistanceTableViewCell"
     static func nib()->UINib{
         return UINib(nibName: "DrienDistanceTableViewCell", bundle: nil)

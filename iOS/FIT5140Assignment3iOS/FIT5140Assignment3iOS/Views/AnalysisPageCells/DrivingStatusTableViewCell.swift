@@ -21,6 +21,12 @@ class DrivingStatusTableViewCell: UITableViewCell {
     
     @IBOutlet weak var pieChart: PieChartView!
 
+    @IBOutlet weak var allgoodPercentLabel: UILabel!
+
+    @IBOutlet weak var likelyFocusPercentLabel: UILabel!
+    @IBOutlet weak var distractionPercentLabel: UILabel!
+    @IBOutlet weak var overspeedPercentLabel: UILabel!
+    
     static let identifier = "DrivingStatusTableViewCell"
     static func nib()->UINib{
         return UINib(nibName: "DrivingStatusTableViewCell", bundle: nil)
