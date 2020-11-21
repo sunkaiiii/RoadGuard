@@ -29,7 +29,7 @@ class GPSInformationExtractor:
                 print(nx)
                 latitude = getattr(nx,'lat', "Unknown")
                 longitude = getattr(nx,'lon', "Unknown")
-                speed = getattr(nx,'speed',-1)
+                speed = getattr(nx,'speed',-1) *3.6
                 result.latitude = latitude
                 result.longitude = longitude
                 result.speed = speed

@@ -34,9 +34,9 @@ class SpeedRecordExtractor(threading.Thread):
         self.current_place_id = ""
         self.current_speed_limit = -1
         self.location = self.Location()
-        gps_info = gps_extractor.get_current_position()
-        self.location.latitude = gps_info.latitude
-        self.location.longitude = gps_info.longitude
+        self.gps_info = gps_extractor.get_current_position()
+        self.location.latitude = self.gps_info.latitude
+        self.location.longitude = self.gps_info.longitude
         self.firebase = FileStoreUserSelectedRoad()
         # self._get_place_id_by_curent_place(self.location)
         print(self.location.latitude,",",self.location.longitude)
@@ -65,7 +65,8 @@ class SpeedRecordExtractor(threading.Thread):
         return distance*1000
     def run(self):
         while self.running:
-            gps_info = gps_extractor.get_current_position()
+            self.gps_info = gps_extractor.get_current_position()
+            gps_info = self.gps_info
             print(gps_info)
             if gps_info.latitude != "Unknown" and gps_info.longitude != "Unknown":
                 distance = self._calculate_distance(gps_info)
@@ -83,8 +84,11 @@ class SpeedRecordExtractor(threading.Thread):
                         cameraCapture.camera_capturing(gps_info,gps_info.speed,place_ids,self.document_id, self.current_speed_limit)
 
 
-    def get_current_gps_speed(self):
-        return gps_extractor.get_current_gps_speed()
+    def get_current_speed(self):
+        speed = OBD2Helper.get_current_speed()
+        if speed == -sys.maxsize:
+            speed = self.gps_info.speed
+        return speed
 
 
     def _find_selected_raods(self,gps_info):
@@ -132,8 +136,10 @@ class SpeedRecordExtractor(threading.Thread):
         if len(place_ids) > 0:
             speed_record["selectedRoadIds"] = place_ids
         if self.limited_speed > 0:
+            print("Current speed is:",current_speed,". Limited Speed is:",self.current_speed_limit )
             self.current_speed_limit = self.limited_speed
             if current_speed > self.current_speed_limit:
+                print("You have overspeed, capture a image")
                 doc_ref = cameraCapture.camera_capturing(location=gps_info,speed=current_speed,speed_limit = self.current_speed_limit)
                 # capture a image
                 speed_record["overSpeed"] = True
