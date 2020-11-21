@@ -103,6 +103,7 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
         }
         if indexPath.section == SECTION_CONTENT{
             delegateParent?.jumpToSelectedRowDetailPage(selectedRow: tableViewDataSource[indexPath.row])
+            tableView.deselectRow(at:indexPath,animated:true)
         }
     }
 

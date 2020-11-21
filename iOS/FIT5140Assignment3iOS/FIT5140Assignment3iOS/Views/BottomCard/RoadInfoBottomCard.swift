@@ -106,10 +106,11 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
 
     func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == SECTION_HEADER{
-            selectedRoadTableView.deselectRow(at:indexPath,animated:true)
+            tableView.deselectRow(at:indexPath,animated:true)
         }
         if indexPath.section == SECTION_CONTENT{
             self.delegateParent?.jumpToSelectedRowDetailPage(selectedRow: selectRoadDataSource[indexPath.row])
+            tableView.deselectRow(at:indexPath,animated:true)
         }
     }
 

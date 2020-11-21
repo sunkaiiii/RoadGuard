@@ -16,7 +16,7 @@ struct FacialInfo: Codable {
     let locationInfo:FacialLocation?
     let selectedRoadIds:[String]?
     let capturedTime: Date
-    let limitedSpeed: Double?
+    let speedLimit: Double?
 
     enum CodingKeys: String, CodingKey {
         case imageURL = "ImageUrl"
@@ -26,7 +26,7 @@ struct FacialInfo: Codable {
         case locationInfo = "location_info"
         case recordId
         case selectedRoadIds
-        case limitedSpeed
+        case speedLimit = "speedLimit"
     }
 }
 struct FacialLocation: Codable {

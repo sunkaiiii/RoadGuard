@@ -8,6 +8,7 @@
 import UIKit
 import Charts
 class DistractionTimePeriodTableViewCell: UITableViewCell {
+    @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var contentAreaBackground: UIView!
     @IBOutlet weak var pieChart: PieChartView!
     static let identifier = "DistractionTimePeriodTableViewCell"
