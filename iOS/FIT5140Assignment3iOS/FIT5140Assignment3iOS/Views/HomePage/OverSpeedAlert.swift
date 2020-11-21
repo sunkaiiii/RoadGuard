@@ -32,7 +32,6 @@ class OverSpeedAlert: UIView {
                 
             },completion: {(ok) in self.removeFromSuperview()})
             
-            
         })
         
     }

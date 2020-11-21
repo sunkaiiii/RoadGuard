@@ -80,7 +80,7 @@ class DistractionDetailViewController: UIViewController {
             //set current speed text
             let speed = selectedDistractionRecord!.speed
             if speed >= 0 {
-                let speedString = String(speed)
+                let speedString = String(Int(speed))
                 speedAlertView.setCurrentSpeed(speed: speedString)
             } else {
                 speedAlertView.setCurrentSpeed(speed: "N/A")
@@ -88,16 +88,16 @@ class DistractionDetailViewController: UIViewController {
 
 
             //set speed limit text
-            let limitedSpeed = selectedDistractionRecord?.speedLimit
-            if limitedSpeed != nil , limitedSpeed! >= 0 {
-                speedLimitView.setSpeedLimit(speed: String(limitedSpeed!))
+            let limitedSpeed = selectedDistractionRecord?.speedLimit ?? nil
+            if let limitedSpeed = limitedSpeed , limitedSpeed >= 0 {
+                speedLimitView.setSpeedLimit(speed: String(Int(limitedSpeed)))
             } else {
                 speedLimitView.setSpeedLimit(speed: "N/A")
             }
 
             //when overspeed, set the sign background as red; otherwise, green
-            if limitedSpeed != nil , limitedSpeed! >= 0, speed >= 0{
-                if speed > limitedSpeed!{
+            if let limitedSpeed = limitedSpeed,limitedSpeed >= 0, speed >= 0{
+                if speed > limitedSpeed{
                     speedAlertView.setSignBackgroundColor(situation: .overSpeed)
                 } else {
                     speedAlertView.setSignBackgroundColor(situation: .safeSpeed)
