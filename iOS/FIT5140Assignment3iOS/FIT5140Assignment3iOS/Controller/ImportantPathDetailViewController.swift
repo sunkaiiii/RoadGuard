@@ -19,7 +19,8 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
 
     @IBOutlet weak var totalLengthVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var passTimesVisualEffectView: UIVisualEffectView!
-    
+    var actionOptions: UIAlertController?
+    var deleteOption:UIAlertController?
 
     let SECTION_HEADER = 0
     let SECTION_CONTENT = 1
@@ -90,18 +91,35 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
     // MARK: - Gesture Action
     @objc func editIconOnClick(_ gestureRecognizer: UITapGestureRecognizer){
 
-        //TODO，icon触发事件有待更新，现在只是放个dummy的在这测试用
 
-        let actionOptions = UIAlertController(title: "Chose a User", message: "Chose a User", preferredStyle: .actionSheet)
-        //这里考虑写个循环 根据用户数量添加
-        actionOptions.addAction(UIAlertAction(title: "User1", style: .default, handler: { (action: UIAlertAction) in
+        actionOptions = UIAlertController(title: "Chose an Option", message: "", preferredStyle: .actionSheet)
+
+        actionOptions?.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (action: UIAlertAction) in
+            self.deleteOption = UIAlertController(title: "Do you want to delete?", message: "", preferredStyle: .actionSheet)
+            self.deleteOption?.addAction(UIAlertAction(title: "Delete", style: .default, handler: {(action) in
+                if let controller = (UIApplication.shared.delegate as? AppDelegate)?.firebaseController,let id = self.selectedRoad?.id{
+                    controller.deleteSelectedRoadById(id)
+                    self.showToast(message: "Delete a road successfully")
+                    self.navigationController?.popViewController(animated: true)
+                }
+
+            }))
+            self.deleteOption?.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {(action) in
+                
+            }))
+            if let delete = self.deleteOption{
+                self.present(delete, animated: true)
+            }
+            
+        }))
+        actionOptions?.addAction(UIAlertAction(title: "Edit", style: .default, handler: { (action: UIAlertAction) in
             //what to do after clicking
         }))
-        actionOptions.addAction(UIAlertAction(title: "User2", style: .default, handler: { (action: UIAlertAction) in
-            //what to do after clicking
-        }))
-        actionOptions.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        self.present(actionOptions,animated: true)
+        actionOptions?.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        if let action = actionOptions{
+            self.present(action,animated: true)
+        }
+        
     }
 
 }

@@ -37,23 +37,19 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        areaOutlet = roadInfoBottomCardHandleAreaOutlet
-        selectedRoadTableView.delegate = self
-        selectedRoadTableView.dataSource = self
-        selectedRoadTableView.register(UITableViewCell.self, forCellReuseIdentifier: DEFAULT_CELL_ID)
-        selectedRoadTableView.register(BottomCardImportantRoadCell.nib(), forCellReuseIdentifier: BOTTOM_CARD_CELL_ID)
-
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         databaseProtocol = appDelegate?.firebaseController
         databaseProtocol?.addListener(listener: self)
+        areaOutlet = roadInfoBottomCardHandleAreaOutlet
+        selectedRoadTableView.register(UITableViewCell.self, forCellReuseIdentifier: DEFAULT_CELL_ID)
+        selectedRoadTableView.register(BottomCardImportantRoadCell.nib(), forCellReuseIdentifier: BOTTOM_CARD_CELL_ID)
+        selectedRoadTableView.delegate = self
+        selectedRoadTableView.dataSource = self
     }
     
-
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func removeFromParent() {
+        super.removeFromParent()
         databaseProtocol?.removeListener(listener: self)
-        databaseProtocol = nil
-
     }
     
 
