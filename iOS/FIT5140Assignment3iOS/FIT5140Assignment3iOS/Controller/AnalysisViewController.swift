@@ -506,10 +506,119 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
             }
             
             //Todo
-            //segment 2 : bottom section is a xx chart - xx
+            //segment 2 : bottom section is a Pie chart - status when overspeed
             else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: DRIVINGSTATUS_CELL_ID, for: indexPath) as! DrivingStatusTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: DISTRACTION_PERIOD_CELL_ID, for: indexPath) as! DistractionTimePeriodTableViewCell
+
+                cell.headerLabel.text = "Overspeed Status"
+
+                var overSpeedRecords : [FacialInfo] = []
+                overSpeedRecords = facialInfoList.filter({ (element) -> Bool in
+                    if element.speed > 0, element.speedLimit != nil, element.speedLimit! > 0, element
+                        .speed > element.speedLimit!{
+                        //return false when overspeed
+                        return true
+                    } else {
+                        //return false for other situation
+                        return false
+                    }
+                })
+
+                let formatter = DateFormatter()
+                formatter.timeZone = .current
+                formatter.locale = .current
+                formatter.dateFormat = "hh-a"
+
+                var allgoodCount = 0
+                var likelyFoucsCount = 0
+                var distractionCount = 0
+
+                for element in overSpeedRecords{
+                    let facialDetails = element.faceDetails
+                    if facialDetails.count > 0 {
+                        let emotions = facialDetails[0].emotions
+                        if emotions[0].type == "CALM"{
+                            allgoodCount += 1
+                        } else if emotions[0].type == "HAPPY"{
+                             likelyFoucsCount += 1
+                        } else {
+                            distractionCount += 1
+                        }
+                    }
+                }
+
+                cell.pieChart.delegate = self
+                cell.pieChart.chartDescription?.text = ""
+
+                func rounndPercent(top:Int, bottom:Int)->Double{
+                    return (Double(top)/Double(bottom)*100).rounded(.up)
+                }
+
+                var pieChartDataEnties = [PieChartDataEntry]()
+                let allGoodDataEntry = PieChartDataEntry(value: 0)
+                let likelyFocusDataEntry = PieChartDataEntry(value: 0)
+                let distractionDataEntry = PieChartDataEntry(value: 0)
+
+                var percent = rounndPercent(top: allgoodCount, bottom: overSpeedRecords.count)
+                allGoodDataEntry.value = Double(percent)
+                allGoodDataEntry.label = "No Distraction"
+
+                percent = rounndPercent(top: likelyFoucsCount, bottom: overSpeedRecords.count)
+                likelyFocusDataEntry.value = Double(percent)
+                likelyFocusDataEntry.label = "Likely Focused"
+
+                percent = rounndPercent(top: distractionCount, bottom: overSpeedRecords.count)
+                distractionDataEntry.value = Double(percent)
+                distractionDataEntry.label = "Distraction"
+
+                var colors : [NSUIColor] = []
+
+                if allGoodDataEntry.value > 0{
+                    pieChartDataEnties.append(allGoodDataEntry)
+                    let allGoodColor = NSUIColor(named: "analysis-allgood")
+                    colors.append(allGoodColor!)
+                }
+
+                if likelyFocusDataEntry.value > 0{
+                    pieChartDataEnties.append(likelyFocusDataEntry)
+                    let likelyFocusColor = NSUIColor(named: "analysis-likelyFocus")
+                    colors.append(likelyFocusColor!)
+                }
+
+                if distractionDataEntry.value > 0{
+                    pieChartDataEnties.append(distractionDataEntry)
+                    let distractionColor = NSUIColor(named: "analysis-distraction")
+                    colors.append(distractionColor!)
+                }
+
+
+                let chartDataSet = PieChartDataSet(entries: pieChartDataEnties, label: nil)
+
+                chartDataSet.colors = colors
+                chartDataSet.valueLinePart1OffsetPercentage = 0.8
+                chartDataSet.valueLinePart1Length = 0.2
+                chartDataSet.valueLinePart2Length = 0.4
+                chartDataSet.xValuePosition = .outsideSlice
+                chartDataSet.yValuePosition = .outsideSlice
+
+                let chartData = PieChartData(dataSet: chartDataSet)
+
+                let pFormatter = NumberFormatter()
+                pFormatter.numberStyle = .percent
+                pFormatter.maximumFractionDigits = 0
+                pFormatter.multiplier = 1
+                pFormatter.percentSymbol = " %"
+                chartData.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+                chartData.setValueTextColor(.black)
+                chartData.setValueFont(.systemFont(ofSize: 8, weight: .light))
+
+                cell.pieChart.data = chartData
+                cell.pieChart.entryLabelColor = .black
+                cell.pieChart.entryLabelFont = .systemFont(ofSize: 10, weight: .light)
+                cell.pieChart.legend.enabled = false
+
                 return cell
+
             }
         }
     }

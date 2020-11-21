@@ -59,6 +59,7 @@
             </constraints>
             <connections>
                 <outlet property="contentAreaBackground" destination="Is7-Xa-86w" id="nLm-mU-zbL"/>
+                <outlet property="headerLabel" destination="N2c-th-EE5" id="FrD-mT-DJZ"/>
                 <outlet property="pieChart" destination="sig-hk-2H2" id="4O3-t2-ORq"/>
             </connections>
             <point key="canvasLocation" x="142.75362318840581" y="8.7053571428571423"/>
