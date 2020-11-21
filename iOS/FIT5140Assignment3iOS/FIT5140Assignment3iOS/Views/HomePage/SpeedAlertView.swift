@@ -33,6 +33,7 @@ class SpeedAlertView: UIView {
         speedLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(size))
         
         speedUnitLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(size - 3))
+
     }
 }
 
