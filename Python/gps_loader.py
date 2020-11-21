@@ -20,6 +20,7 @@ class GPSInformationExtractor:
         def __init__(self):
             self.latitude = 0
             self.longitude = 0
+            self.speed = -1
     def get_current_position(self):
         result = self.GPSInformationResult()
         while(result.latitude == 0):
@@ -28,8 +29,10 @@ class GPSInformationExtractor:
                 print(nx)
                 latitude = getattr(nx,'lat', "Unknown")
                 longitude = getattr(nx,'lon', "Unknown")
+                speed = getattr(nx,'speed',-1)
                 result.latitude = latitude
                 result.longitude = longitude
+                result.speed = speed
                 print("Your position: lon = " + str(longitude) + ", lat = " + str(latitude))
                 return result
         return result

@@ -53,7 +53,7 @@ def get_current_speed():
 def get_current_speed_limit():
     result = {}
     speed_limit = recorder.get_speed_limit()
-    result["speedLimit"] = speed_limit
+    result["speedLimit"] = int(speed_limit)
     if speed_limit > 0:
         result["isError"] = False
     else:
