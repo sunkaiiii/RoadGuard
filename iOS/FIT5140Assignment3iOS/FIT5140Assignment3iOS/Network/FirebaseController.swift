@@ -147,6 +147,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
                 ()
             }
         })
+        self.drivingRecordList.sort(by: {(r1,r2) in r1.startTime > r2.startTime})
         listeners.invoke(invocation: {(listener) in
             if listener.listenerType.contains(.drivingRecord) || listener.listenerType.contains(.all) {
                 listener.onDrivingRecordChange(change: .add, drivingRecord: drivingRecordList)
@@ -187,6 +188,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
                     }
             }
         })
+        self.speedInforList.sort(by: {(s1,s2) in return s1.recordTime > s2.recordTime})
     }
 
     func parseSelectedRoadData(querySnapshot:QuerySnapshot){
@@ -194,6 +196,7 @@ class FirebaseController: NSObject,DatabaseProtocol {
             var selectedRoadDocument:UserSelectedRoadResponse?
             do{
                 selectedRoadDocument = try document.document.data(as: UserSelectedRoadResponse.self)
+                selectedRoadDocument?.id = document.document.documentID
             }catch{
                 print("Unable to decode the selected road document")
                 return
@@ -206,9 +209,10 @@ class FirebaseController: NSObject,DatabaseProtocol {
                 case .added:
                     self.selectedRoadaList.append(selectRoad)
                 case .modified,.removed:
-                    self.findIndexAndModifySpeedList(selectRoad,document.type)
+                    self.findIndexAndModifySelectedRoad(selectRoad,document.type)
             }
         })
+        self.selectedRoadaList.sort(by: {(r1,r2) in return r1.createTime>r2.createTime})
         listeners.invoke(invocation: {(listener) in
             if listener.listenerType.contains(.selectedRoad) || listener.listenerType.contains(.all){
                 listener.onSelectedRoadInfoChange(change: .add, selectRoads:selectedRoadaList)
@@ -248,10 +252,14 @@ class FirebaseController: NSObject,DatabaseProtocol {
         }
         return record
     }
+    
+    func deleteSelectedRoadById(_ id: String) {
+        selectedRoadRef?.document(id).delete()
+    }
 
 
     
-    func findIndexAndModifySpeedList(_ selectedRoad:UserSelectedRoadResponse, _ type:DocumentChangeType){
+    func findIndexAndModifySelectedRoad(_ selectedRoad:UserSelectedRoadResponse, _ type:DocumentChangeType){
         guard let index = selectedRoadaList.firstIndex(where: {(road) in
             road.id == selectedRoad.id
         }) else {
@@ -291,6 +299,7 @@ protocol DatabaseProtocol:NSObject {
     func getFacialRecordByRecordId(_ recordId:String)->[FacialInfo]
     func addSelectedeRoad(_ record:UserSelectedRoadResponse)->UserSelectedRoadResponse
     func getFacialRecordById(_ facialId:String)->FacialInfo?
+    func deleteSelectedRoadById(_ id:String)
 }
 protocol DatabaseListener:AnyObject {
     var listenerType:[ListenerType]{get set}
