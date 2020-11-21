@@ -88,7 +88,7 @@ class DistractionDetailViewController: UIViewController {
 
 
             //set speed limit text
-            let limitedSpeed = selectedDistractionRecord?.limitedSpeed
+            let limitedSpeed = selectedDistractionRecord?.speedLimit
             if limitedSpeed != nil , limitedSpeed! >= 0 {
                 speedLimitView.setSpeedLimit(speed: String(limitedSpeed!))
             } else {

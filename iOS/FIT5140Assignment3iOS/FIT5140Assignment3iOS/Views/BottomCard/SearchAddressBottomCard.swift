@@ -150,7 +150,9 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             return 80
         }
     }
-
+    func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
+      tableView.deselectRow(at:indexPath,animated:true)
+    }
     // MARK: - Network Request
     //action after request execution 
     func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {

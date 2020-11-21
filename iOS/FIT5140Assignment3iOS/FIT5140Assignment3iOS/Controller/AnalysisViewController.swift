@@ -61,7 +61,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if segmentControl.selectedSegmentIndex == 0{
-            //segment 0 : upper section is a bar chart
+            //segment 0 : upper section is a bar chart - daily distance
             if indexPath.section == SECTION_UPPER {
                 let cell = tableView.dequeueReusableCell(withIdentifier: DRIVING_DISTANC_CELL_ID, for: indexPath) as! DrienDistanceTableViewCell
 
@@ -133,7 +133,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 barChartDataEntries.removeAll()
                 return cell
             }
-            //segment 0 : bottom section is a pie chart
+            //segment 0 : bottom section is a pie chart, general driving status percentage
             else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: DRIVINGSTATUS_CELL_ID, for: indexPath) as! DrivingStatusTableViewCell
                 cell.pieChart.delegate = self
@@ -153,8 +153,8 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 for element in facialInfoList {
                     let facialDetails = element.faceDetails
 
-                    if element.speed > 0, element.limitedSpeed != nil, element.limitedSpeed! > 0, element
-                        .speed > element.limitedSpeed!{
+                    if element.speed > 0, element.speedLimit != nil, element.speedLimit! > 0, element
+                        .speed > element.speedLimit!{
                         overSpeedRecords.append(element)
                     } else if facialDetails.count > 0 {
                         let emotions = facialDetails[0].emotions
@@ -251,8 +251,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         }
 
         else if segmentControl.selectedSegmentIndex == 1{
-            //segment 1 : upper section is a bar chart
-            //每天distraction的次数
+            //segment 1 : upper section is a bar chart - daily distraction times
             if indexPath.section == SECTION_UPPER {
                 let cell = tableView.dequeueReusableCell(withIdentifier: DRIVING_DISTANC_CELL_ID, for: indexPath) as! DrienDistanceTableViewCell
                 cell.headerLaebl.text = "Distraction Times"
@@ -270,7 +269,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 var arrayOfDayAndCountTuple : [(String,Int)] = []
                 for record in facialInfoList{
                     let facialDetails = record.faceDetails
-                    if record.speed > 0, record.limitedSpeed != nil, record.limitedSpeed! > 0, record                        .speed > record.limitedSpeed!{
+                    if record.speed > 0, record.speedLimit != nil, record.speedLimit! > 0, record                        .speed > record.speedLimit!{
                     //do nothing when over speed
                     } else if facialDetails.count > 0 {
                         let emotions = facialDetails[0].emotions
@@ -335,16 +334,15 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 barChartDataEntries.removeAll()
                 return cell
             }
-            //segment 1 : bottom section is xx chart
-            //distraction的时段
+            //segment 1 : bottom section is pie chart - distraction time period
             else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: DISTRACTION_PERIOD_CELL_ID, for: indexPath) as! DistractionTimePeriodTableViewCell
 
                 var distractionFacials : [FacialInfo] = []
                 distractionFacials = facialInfoList.filter({ (element) -> Bool in
                     let facialDetails = element.faceDetails
-                    if element.speed > 0, element.limitedSpeed != nil, element.limitedSpeed! > 0, element
-                        .speed > element.limitedSpeed!{
+                    if element.speed > 0, element.speedLimit != nil, element.speedLimit! > 0, element
+                        .speed > element.speedLimit!{
                         //return false when overspeed
                         return false
                     } else if facialDetails.count > 0 {
@@ -371,6 +369,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 formatter.dateFormat = "hh-a"
 
                 var arrayOfTimeAndCountTuple : [(String,Int)] = []
+
                 for record in distractionFacials{
 
                     let timeOfOneRecord = formatter.string(from: record.capturedTime)
@@ -397,7 +396,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
                 var pieChartDataEnties = [PieChartDataEntry]()
                 for tuple in arrayOfTimeAndCountTuple {
-                    let roundPercent = rounndPercent(top: tuple.1, bottom: arrayOfTimeAndCountTuple.count)
+                    let roundPercent = rounndPercent(top: tuple.1, bottom: distractionFacials.count)
                     let splitTIme = tuple.0.split(separator: "-")
                     let timePeriodStart = Int(splitTIme[0])!
                     let timePeriodEnd = timePeriodStart + 1
@@ -417,7 +416,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
                 let pFormatter = NumberFormatter()
                 pFormatter.numberStyle = .percent
-                pFormatter.maximumFractionDigits = 1
+                pFormatter.maximumFractionDigits = 0
                 pFormatter.multiplier = 1
                 pFormatter.percentSymbol = " %"
                 chartData.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
@@ -432,11 +431,86 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 return cell
             }
         }
-        //第3个segment,返回cell有待更新
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: DRIVINGSTATUS_CELL_ID, for: indexPath) as! DrivingStatusTableViewCell
+            //segment 2 : upper section is a bar chart - daily overspeed times
+            if indexPath.section == SECTION_UPPER {
+                let cell = tableView.dequeueReusableCell(withIdentifier: DRIVING_DISTANC_CELL_ID, for: indexPath) as! DrienDistanceTableViewCell
+                cell.headerLaebl.text = "OverSpeed Times"
+                let barChart = cell.barChart
+                barChart!.delegate = self
+                barChart!.chartDescription?.text = ""
+                barChart?.legend.enabled = false
 
-            return cell
+
+                let formatter = DateFormatter()
+                formatter.timeZone = .current
+                formatter.locale = .current
+                formatter.dateFormat = "dd-MM-yyyy"
+
+                var arrayOfDayAndCountTuple : [(String,Int)] = []
+                for record in facialInfoList{
+
+                    if record.speed > 0, record.speedLimit != nil, record.speedLimit! > 0, record                        .speed > record.speedLimit!{
+                        let dateOfOneRecord = formatter.string(from: record.capturedTime)
+
+                        let indexOfMatchingRecord = arrayOfDayAndCountTuple.firstIndex(where: { (existingRecord:(String,Int)) ->Bool in return existingRecord.0 == dateOfOneRecord })
+
+                        if indexOfMatchingRecord != nil
+                        {
+                            //if already existing record in the same day, then sum the distance
+                            let originalCount = arrayOfDayAndCountTuple[indexOfMatchingRecord!].1
+                            arrayOfDayAndCountTuple[indexOfMatchingRecord!].1 = originalCount + 1
+                        } else {
+                            //if the date not in the array yet, then add new tuple into the array
+                            arrayOfDayAndCountTuple.append((dateOfOneRecord,1))
+                        }
+                    }
+                }
+
+                var barChartDataEntries = [BarChartDataEntry]()
+                var labels : [String] = []
+
+                var counter = 0
+                for element in arrayOfDayAndCountTuple {
+                    let dataEntry = BarChartDataEntry(x: Double(counter), y: Double(element.1))
+                    let dateComponents = element.0.split(separator: "-")
+                    let label = "\(dateComponents[0])/\(dateComponents[1])"
+                    labels.append(label)
+                    barChartDataEntries.append(dataEntry)
+                      counter += 1
+                }
+
+                let valueFormatterForXAxis = IndexAxisValueFormatter(values: labels)
+                valueFormatterForXAxis.values = labels
+
+                let set = BarChartDataSet(barChartDataEntries)
+                set.colors = [NSUIColor.blue]
+                let data = BarChartData(dataSet: set)
+                barChart!.data = data
+                barChart!.rightAxis.enabled = false
+
+                let yAxis = barChart!.leftAxis
+                yAxis.labelFont = .boldSystemFont(ofSize: 12)
+                yAxis.labelPosition = .outsideChart
+
+                let xAxis = barChart?.xAxis
+                xAxis?.drawGridLinesEnabled = false
+                xAxis?.labelPosition = .bottom
+                xAxis?.labelFont = .boldSystemFont(ofSize: 12)
+
+                xAxis?.valueFormatter = valueFormatterForXAxis
+                xAxis?.labelCount = labels.count
+                barChart?.animate(xAxisDuration: 1)
+                barChartDataEntries.removeAll()
+                return cell
+            }
+            
+            //Todo
+            //segment 2 : bottom section is a xx chart - xx
+            else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: DRIVINGSTATUS_CELL_ID, for: indexPath) as! DrivingStatusTableViewCell
+                return cell
+            }
         }
     }
 
@@ -451,6 +525,10 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
+    }
+
+    func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at:indexPath,animated:true)
     }
 
     // MARK: - IBAction
