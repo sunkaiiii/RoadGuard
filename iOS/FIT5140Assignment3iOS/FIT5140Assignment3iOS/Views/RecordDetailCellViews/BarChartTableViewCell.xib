@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,9 +17,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jen-TA-asQ">
-                        <rect key="frame" x="10" y="10" width="100" height="61"/>
+                        <rect key="frame" x="10" y="8" width="100" height="65"/>
                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OyY-X4-SQN">
-                            <rect key="frame" x="0.0" y="0.0" width="100" height="61"/>
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="65"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </view>
                         <constraints>
@@ -48,9 +48,9 @@
                     <constraint firstItem="xh1-aC-XTb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="ak9-Wy-gWo"/>
                     <constraint firstAttribute="bottom" secondItem="xh1-aC-XTb" secondAttribute="bottom" constant="12" id="doA-Za-AO7"/>
                     <constraint firstItem="AWE-KV-rSk" firstAttribute="leading" secondItem="Jen-TA-asQ" secondAttribute="trailing" constant="6" id="enW-1Z-Lat"/>
-                    <constraint firstAttribute="bottom" secondItem="Jen-TA-asQ" secondAttribute="bottom" constant="10" id="hqQ-c9-PkM"/>
+                    <constraint firstAttribute="bottom" secondItem="Jen-TA-asQ" secondAttribute="bottom" constant="8" id="hqQ-c9-PkM"/>
                     <constraint firstItem="Jen-TA-asQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="pSe-Ns-aIi"/>
-                    <constraint firstItem="Jen-TA-asQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="xeC-ap-wKm"/>
+                    <constraint firstItem="Jen-TA-asQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="xeC-ap-wKm"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

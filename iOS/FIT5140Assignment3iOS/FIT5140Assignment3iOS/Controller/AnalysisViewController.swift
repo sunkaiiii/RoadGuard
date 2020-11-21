@@ -115,6 +115,12 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 let set = BarChartDataSet(barChartDataEntries)
                 set.colors = [NSUIColor.blue]
                 let data = BarChartData(dataSet: set)
+                let pFormatter = NumberFormatter()
+                pFormatter.numberStyle = .none
+                pFormatter.maximumFractionDigits = 0
+                pFormatter.multiplier = 1
+                data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+
                 barChart!.data = data
                 barChart!.rightAxis.enabled = false
 
@@ -301,12 +307,11 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
                 var counter = 0
                 for element in arrayOfDayAndCountTuple {
-                    let dataEntry = BarChartDataEntry(x: Double(counter), y: Double(element.1))
+                    let dataEntry = BarChartDataEntry(x: Double(counter), y: Double(element.1).rounded(.up))
                     let dateComponents = element.0.split(separator: "-")
                     let label = "\(dateComponents[0])/\(dateComponents[1])"
                     labels.append(label)
                     barChartDataEntries.append(dataEntry)
-                    //Todo: 这里需要Charts的ValueFormatter用以替换x轴坐标label
                     counter += 1
                 }
 
@@ -314,14 +319,23 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 valueFormatterForXAxis.values = labels
 
                 let set = BarChartDataSet(barChartDataEntries)
+
                 set.colors = [NSUIColor.blue]
                 let data = BarChartData(dataSet: set)
+
+                let pFormatter = NumberFormatter()
+                pFormatter.numberStyle = .none
+                pFormatter.maximumFractionDigits = 0
+                pFormatter.multiplier = 1
+                data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
+
                 barChart!.data = data
                 barChart!.rightAxis.enabled = false
 
                 let yAxis = barChart!.leftAxis
                 yAxis.labelFont = .boldSystemFont(ofSize: 12)
                 yAxis.labelPosition = .outsideChart
+                yAxis.granularity = 1
 
                 let xAxis = barChart?.xAxis
                 xAxis?.drawGridLinesEnabled = false
@@ -435,7 +449,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
             //segment 2 : upper section is a bar chart - daily overspeed times
             if indexPath.section == SECTION_UPPER {
                 let cell = tableView.dequeueReusableCell(withIdentifier: DRIVING_DISTANC_CELL_ID, for: indexPath) as! DrienDistanceTableViewCell
-                cell.headerLaebl.text = "OverSpeed Times"
+                cell.headerLaebl.text = "Overspeed Times"
                 let barChart = cell.barChart
                 barChart!.delegate = self
                 barChart!.chartDescription?.text = ""
@@ -492,6 +506,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 let yAxis = barChart!.leftAxis
                 yAxis.labelFont = .boldSystemFont(ofSize: 12)
                 yAxis.labelPosition = .outsideChart
+                yAxis.granularity = 1
 
                 let xAxis = barChart?.xAxis
                 xAxis?.drawGridLinesEnabled = false
