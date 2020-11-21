@@ -10,6 +10,9 @@ import cameraCapture
 from firebase_admin import firestore
 import time
 import sys
+from multiprocessing import Process
+import os
+
 
 gps_extractor = GPSInformationExtractor()
 
@@ -31,9 +34,9 @@ class SpeedRecordExtractor(threading.Thread):
         self.current_place_id = ""
         self.current_speed_limit = -1
         self.location = self.Location()
-        gps_info = gps_extractor.get_current_position()
-        self.location.latitude = gps_info.latitude
-        self.location.longitude = gps_info.longitude
+        self.gps_info = gps_extractor.get_current_position()
+        self.location.latitude = self.gps_info.latitude
+        self.location.longitude = self.gps_info.longitude
         self.firebase = FileStoreUserSelectedRoad()
         # self._get_place_id_by_curent_place(self.location)
         print(self.location.latitude,",",self.location.longitude)
@@ -62,7 +65,8 @@ class SpeedRecordExtractor(threading.Thread):
         return distance*1000
     def run(self):
         while self.running:
-            gps_info = gps_extractor.get_current_position()
+            self.gps_info = gps_extractor.get_current_position()
+            gps_info = self.gps_info
             print(gps_info)
             if gps_info.latitude != "Unknown" and gps_info.longitude != "Unknown":
                 distance = self._calculate_distance(gps_info)
@@ -74,12 +78,17 @@ class SpeedRecordExtractor(threading.Thread):
                     place_ids = self._find_selected_raods(gps_info)
                     self._save_speed_record(gps_info,place_ids)
                     if len(place_ids) > 0:
-                        # TODO get speed from obd
-                        cameraCapture.camera_capturing(location=gps_info,selectedRoadIds = place_ids, record_id=self.document_id, speed=80)
+                        speed = OBD2Helper.get_current_speed()
+                        if speed == -sys.maxsize:
+                            speed = gps_info.speed
+                        cameraCapture.camera_capturing(gps_info,gps_info.speed,place_ids,self.document_id, self.current_speed_limit)
 
 
-    def get_current_gps_speed(self):
-        return gps_extractor.get_current_gps_speed()
+    def get_current_speed(self):
+        speed = OBD2Helper.get_current_speed()
+        if speed == -sys.maxsize:
+            speed = self.gps_info.speed
+        return speed
 
 
     def _find_selected_raods(self,gps_info):
@@ -113,8 +122,10 @@ class SpeedRecordExtractor(threading.Thread):
         old_longitude = self.location.longitude
         current_speed = OBD2Helper.get_current_speed()
         if current_speed == -sys.maxsize:
-            current_speed = self.get_current_gps_speed()
-        self.limited_speed = self._find_limited_speed(old_latitude,old_longitude,self.location.latitude,self.location.longitude)
+            print("obd2 is not working, extract with gps speed")
+            current_speed = gps_info.speed
+        print("Current speed is ",current_speed)
+        self.limited_speed = self._find_limited_speed(old_latitude,old_longitude,self.location.latitude,self.location.longitude) * 3.6
         speed_record = {}
         speed_record["currentSpeed"] = current_speed
         speed_record["limitedSpeed"] = self.current_speed_limit
@@ -125,9 +136,11 @@ class SpeedRecordExtractor(threading.Thread):
         if len(place_ids) > 0:
             speed_record["selectedRoadIds"] = place_ids
         if self.limited_speed > 0:
+            print("Current speed is:",current_speed,". Limited Speed is:",self.current_speed_limit )
             self.current_speed_limit = self.limited_speed
             if current_speed > self.current_speed_limit:
-                doc_ref = cameraCapture.camera_capturing(location=gps_info,speed=current_speed,speed_limit = self.current_speed_limit)
+                print("You have overspeed, capture a image")
+                doc_ref = cameraCapture.camera_capturing(location=gps_info,speed=current_speed,speed_limit = self.current_speed_limit,record_id = self.document_id)
                 # capture a image
                 speed_record["overSpeed"] = True
                 speed_record["facialId"] = doc_ref.id
@@ -151,14 +164,20 @@ class SpeedRecordExtractor(threading.Thread):
             return response["snappedPoints"][0]["placeId"]
             
 if __name__=="__main__":
+    # gps = GPSInformationExtractor.GPSInformationResult()
+    # gps.latitude = -37.9419905
+    # gps.longitude = 145.12194
+    # p = Process(target=cameraCapture.camera_capturing,args=(gps,45,["1"],"12312412123", 23))
+    # p.start()
     thread = SpeedRecordExtractor(1,"SpeedRecordExtractorThread",1,"123")
+    # thread.get_current_gps_speed()
 
+    
 
-    gps = GPSInformationExtractor.GPSInformationResult()
-    gps.latitude = -37.9419905
-    gps.longitude = 145.12194
-    print(thread._calculate_distance(gps))
+    # print(thread._calculate_distance(gps))
     # place_ids = thread._find_selected_raods(gps)
     # thread._save_speed_record(gps,place_ids)
-    # thread.start()
+    thread.running = True
+    thread.start()
+    thread.join()
     # thread._find_limited_speed(-33.86349415655294,151.21035053629208,-33.8634928,151.21036909999998)

@@ -7,3 +7,28 @@ pip3 install obd
 
 # Downloading ELM327-emulator
 git clone https://github.com/ircama/ELM327-emulator.git
+
+
+My device is called "ttyACM0"
+
+Install the requisite packages.
+
+sudo apt-get install gpsd gpsd-clients python-gps
+Stop Daemons
+
+sudo systemctl stop gpsd.socket
+sudo systemctl disable gpsd.socket
+Expose Service to public ports and localhost
+
+vim /lib/systemd/system/gpsd.socket
+Change 127.0.0.1 to 0.0.0.0
+
+Stop GPSD services
+
+sudo killall gpsd
+Bind service to serial device
+
+sudo gpsd /dev/ttyACM0 -F /var/run/gpsd.sock
+Show GPS Data
+
+gpsmon

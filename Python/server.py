@@ -40,12 +40,10 @@ def get_running_status():
 @app.route('/api/get_current_speed', methods = ['GET'])
 def get_current_speed():
     result = {}
-    speed = OBD2Helper.get_current_speed()
+    speed = recorder.get_current_speed()
     result["isError"] = False
     if speed == -sys.maxsize:
-        speed = recorder.get_current_gps_speed()
-        if speed == -sys.maxsize:
-            result["isError"] = True
+        result["isError"] = True
     result["speed"] = int(speed)
     return json.dumps(result)
 
@@ -53,7 +51,7 @@ def get_current_speed():
 def get_current_speed_limit():
     result = {}
     speed_limit = recorder.get_speed_limit()
-    result["speedLimit"] = speed_limit
+    result["speedLimit"] = int(speed_limit)
     if speed_limit > 0:
         result["isError"] = False
     else:
