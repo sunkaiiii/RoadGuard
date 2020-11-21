@@ -140,7 +140,7 @@ class SpeedRecordExtractor(threading.Thread):
             self.current_speed_limit = self.limited_speed
             if current_speed > self.current_speed_limit:
                 print("You have overspeed, capture a image")
-                doc_ref = cameraCapture.camera_capturing(location=gps_info,speed=current_speed,speed_limit = self.current_speed_limit)
+                doc_ref = cameraCapture.camera_capturing(location=gps_info,speed=current_speed,speed_limit = self.current_speed_limit,record_id = self.document_id)
                 # capture a image
                 speed_record["overSpeed"] = True
                 speed_record["facialId"] = doc_ref.id
