@@ -9,7 +9,7 @@ import UIKit
 import GoogleMaps
 
 
-class ImportantPathDetailViewController: UIViewController , UITableViewDelegate, UITableViewDataSource{
+class ImportantPathDetailViewController: UIViewController , UITableViewDelegate, UITableViewDataSource,EditRoadDelegate{
 
     @IBOutlet weak var visualEffectForTablViewBackground: UIVisualEffectView!
     @IBOutlet weak var totalLengthNumberLabel: UILabel!
@@ -21,12 +21,13 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
     @IBOutlet weak var passTimesVisualEffectView: UIVisualEffectView!
     var actionOptions: UIAlertController?
     var deleteOption:UIAlertController?
+    var polyLine:GMSPolyline?
 
     let SECTION_HEADER = 0
     let SECTION_CONTENT = 1
     let HEADER_CELL_ID = "importantPathDetailTableViewHeaderCell"
     let CONTENT_CELL_ID = "importantPathDetailTableViewContentCell"
-
+    let editRoadSegue = "editRoads"
     
     var selectedRoad:UserSelectedRoadResponse?
     var roadsInfo:[RoadInformationDataSource] = []
@@ -113,13 +114,27 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
             
         }))
         actionOptions?.addAction(UIAlertAction(title: "Edit", style: .default, handler: { (action: UIAlertAction) in
-            //what to do after clicking
+            self.performSegue(withIdentifier: self.editRoadSegue, sender: nil)
         }))
         actionOptions?.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         if let action = actionOptions{
             self.present(action,animated: true)
         }
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == editRoadSegue, let controller = segue.destination as? EditRoadViewController{
+            controller.selectedRoad = self.selectedRoad
+            controller.delegate = self
+        }
+    }
+    
+    func roadDidEdited(newRoad: UserSelectedRoadResponse) {
+        self.selectedRoad = newRoad
+        initViews()
+        initTopTableData()
+        initGoogleMap()
+        self.importantPathTableView.reloadData()
     }
 
 }
