@@ -232,6 +232,10 @@ class FirebaseController: NSObject,DatabaseProtocol {
         return facialInfoList.filter({(facial) in facial.recordId == recordId})
     }
     
+    func getFacialRecordById(_ facialId: String) -> FacialInfo? {
+        return facialInfoList.first(where: {(face) in face.id == facialId})
+    }
+    
     
     func addSelectedeRoad(_ record: UserSelectedRoadResponse) -> UserSelectedRoadResponse {
         var record = record
@@ -286,6 +290,7 @@ protocol DatabaseProtocol:NSObject {
     func getSpeedRecordByRecordId(_ recordId:String)->[SpeedRecord]
     func getFacialRecordByRecordId(_ recordId:String)->[FacialInfo]
     func addSelectedeRoad(_ record:UserSelectedRoadResponse)->UserSelectedRoadResponse
+    func getFacialRecordById(_ facialId:String)->FacialInfo?
 }
 protocol DatabaseListener:AnyObject {
     var listenerType:[ListenerType]{get set}

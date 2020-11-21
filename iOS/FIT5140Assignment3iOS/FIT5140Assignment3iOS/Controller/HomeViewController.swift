@@ -131,7 +131,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
     func validateSpeed(){
         let currentSpeed = self.currentSpeed
         let speedLimit = self.speedLimit
-        if currentSpeed > 0 && speedLimit > 0  {
+        if currentSpeed < 0 || speedLimit < 0  {
             return
         }
         if currentSpeed > speedLimit{
@@ -167,5 +167,6 @@ extension HomeViewController{
     
     func executionFailed(helper: RequestHelper, message: String, error: Error) {
         startServiceItem.isEnabled = true
+        showToast(message: "Network error on \(helper.restfulAPI.getRequestName()), please try again...")
     }
 }

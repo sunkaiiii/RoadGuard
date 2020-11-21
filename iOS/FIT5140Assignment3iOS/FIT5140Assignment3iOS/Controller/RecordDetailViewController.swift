@@ -19,11 +19,13 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
     let SECTION_MATRIX = 1
     let SECTION_CHART = 2
     let SECTION_DISTRACTION_SUMMARY = 3
+    let SECTION_OVER_SPEED_SUMMARY = 4
     let DEFAULT_CELL_ID = "DefaultCell"
     let MAP_CELL_ID = RecordDetailMapCell.identifier
     let MATRIX_CELL_ID = RecordDetailMatrixCell.identifier
     let CHART_CELL_ID = RecordDetailChartCell.identifier
     let DISTRACTION_CELL_ID = RecordDetailDistractionSummaryCell.identifier
+    let OVER_SPEED_CELL_ID = RecordDeailOverSpeedTableViewCell.identifier
 
     let DISTRACTION_DETAIL_PAGE_SEGUE = "distractionDetailSegue"
 
@@ -35,6 +37,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
         recordDetailTableView.register(RecordDetailMatrixCell.nib(), forCellReuseIdentifier: MATRIX_CELL_ID)
         recordDetailTableView.register(RecordDetailChartCell.nib(), forCellReuseIdentifier: CHART_CELL_ID)
         recordDetailTableView.register(RecordDetailDistractionSummaryCell.nib(), forCellReuseIdentifier: DISTRACTION_CELL_ID)
+        recordDetailTableView.register(RecordDeailOverSpeedTableViewCell.nib(), forCellReuseIdentifier: OVER_SPEED_CELL_ID)
     
         // Do any additional setup after loading the view.
     }
@@ -42,7 +45,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
 
     // MARK: - TableView
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -64,7 +67,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
             cell.initBarChart(drivingRecord)
             return cell
 
-        } else {
+        } else if indexPath.section == SECTION_DISTRACTION_SUMMARY{
             //SECTION_DISTRACTION_SUMMARY
             let cell = tableView.dequeueReusableCell(withIdentifier: DISTRACTION_CELL_ID, for: indexPath) as! RecordDetailDistractionSummaryCell
             if let delegate = UIApplication.shared.delegate as? AppDelegate, let databaseController = delegate.firebaseController, let id = self.drivingRecord?.id{
@@ -83,7 +86,17 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
             }
             cell.delegateParent = self
             return cell
+        }else if indexPath.section == SECTION_OVER_SPEED_SUMMARY{
+            let cell = tableView.dequeueReusableCell(withIdentifier: OVER_SPEED_CELL_ID,for: indexPath) as! RecordDeailOverSpeedTableViewCell
+            guard let delegate = UIApplication.shared.delegate as? AppDelegate, let databaseController = delegate.firebaseController, let id = self.drivingRecord?.id else {
+                return cell
+            }
+            let data = databaseController.getSpeedRecordByRecordId(id).filter({(record) in record.overSpeed})
+            cell.dataSource = data
+            cell.delegate = self
+            return cell
         }
+        return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == SECTION_MAP {
