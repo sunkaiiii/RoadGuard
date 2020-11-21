@@ -151,7 +151,7 @@ class RecordDetailChartCell: UITableViewCell, ChartViewDelegate, UITableViewDele
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return self.barChartTableVIew.frame.height / 5
+        return self.barChartTableVIew.frame.height / 4
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

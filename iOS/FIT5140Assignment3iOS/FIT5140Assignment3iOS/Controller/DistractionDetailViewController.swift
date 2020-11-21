@@ -85,7 +85,7 @@ class DistractionDetailViewController: UIViewController {
             } else {
                 speedAlertView.setCurrentSpeed(speed: "N/A")
             }
-
+            speedAlertView.setLabelFontSize(size: 16)
 
             //set speed limit text
             let limitedSpeed = selectedDistractionRecord?.speedLimit ?? nil

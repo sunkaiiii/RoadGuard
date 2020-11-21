@@ -11,6 +11,8 @@ import UIKit
 class SpeedAlertView: UIView {
 
     @IBOutlet weak var speedLabel: UILabel!
+    @IBOutlet weak var speedUnitLabel: UILabel!
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = bounds.size.width/2
@@ -25,6 +27,12 @@ class SpeedAlertView: UIView {
         if situation == .overSpeed{
             self.backgroundColor = .red
         }
+    }
+
+    func setLabelFontSize(size:Int){
+        speedLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(size))
+        
+        speedUnitLabel.font = UIFont.boldSystemFont(ofSize: CGFloat(size - 3))
     }
 }
 

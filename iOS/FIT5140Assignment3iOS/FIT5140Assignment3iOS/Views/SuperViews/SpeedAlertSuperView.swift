@@ -19,5 +19,9 @@ import UIKit
     func setSignBackgroundColor(situation: SituationType){
         (childView as? SpeedAlertView)?.setBackgroundColorBasingOnSituation(situation: situation)
     }
+
+    func setLabelFontSize(size:Int){
+        (childView as? SpeedAlertView)?.setLabelFontSize(size: size)
+    }
 }
 

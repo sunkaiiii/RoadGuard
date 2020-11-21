@@ -14,32 +14,34 @@
             <rect key="frame" x="0.0" y="0.0" width="161" height="161"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hPh-ZF-jmV">
-                    <rect key="frame" x="12" y="43" width="137" height="43"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Km/h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SIX-YR-tSS">
-                    <rect key="frame" x="12" y="86.5" width="137" height="20"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="5jM-2c-G83">
+                    <rect key="frame" x="60" y="48.5" width="41" height="64.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="hPh-ZF-jmV">
+                            <rect key="frame" x="0.0" y="0.0" width="41" height="43"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Km/h" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SIX-YR-tSS">
+                            <rect key="frame" x="0.0" y="45" width="41" height="19.5"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </label>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="pi1-ok-vTn"/>
             <color key="backgroundColor" name="RoadViewSpeedAlertBackground"/>
             <constraints>
-                <constraint firstItem="pi1-ok-vTn" firstAttribute="trailing" secondItem="hPh-ZF-jmV" secondAttribute="trailing" constant="12" id="Cg7-k4-teB"/>
-                <constraint firstItem="hPh-ZF-jmV" firstAttribute="leading" secondItem="pi1-ok-vTn" secondAttribute="leading" constant="12" id="IWY-jS-eSe"/>
-                <constraint firstItem="SIX-YR-tSS" firstAttribute="centerY" secondItem="6Ip-Va-oU0" secondAttribute="centerY" constant="16" id="XTw-5j-O5n"/>
-                <constraint firstItem="SIX-YR-tSS" firstAttribute="leading" secondItem="pi1-ok-vTn" secondAttribute="leading" constant="12" id="YT7-L3-f4E"/>
-                <constraint firstItem="hPh-ZF-jmV" firstAttribute="centerY" secondItem="6Ip-Va-oU0" secondAttribute="centerY" constant="-16" id="dSb-qU-efc"/>
-                <constraint firstItem="pi1-ok-vTn" firstAttribute="trailing" secondItem="SIX-YR-tSS" secondAttribute="trailing" constant="12" id="vwe-n4-lMY"/>
+                <constraint firstItem="5jM-2c-G83" firstAttribute="centerY" secondItem="6Ip-Va-oU0" secondAttribute="centerY" id="Pvd-nW-sXM"/>
+                <constraint firstItem="5jM-2c-G83" firstAttribute="centerX" secondItem="6Ip-Va-oU0" secondAttribute="centerX" id="hxa-ff-fXx"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="speedLabel" destination="hPh-ZF-jmV" id="vCF-PO-izH"/>
+                <outlet property="speedUnitLabel" destination="SIX-YR-tSS" id="Iem-Ut-siq"/>
             </connections>
             <point key="canvasLocation" x="-84.782608695652186" y="440.29017857142856"/>
         </view>
