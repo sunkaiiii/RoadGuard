@@ -45,6 +45,7 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction ,
         bototmScrollableViewController.cardHeight =  self.view.frame.height / 4 * 3
         self.view.addSubview(bototmScrollableViewController)
         contentController.delegateParent = self
+        bototmScrollableViewController.tabBarHeight = (self.tabBarController?.tabBar.frame.height) ?? 0
         contentController.askDelegateToCalculateTotalNumberAndDistance()
     }
 

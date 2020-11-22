@@ -18,6 +18,8 @@ class BottomScrollableView: UIView {
     var contentViewController : ScrollableViewController!
     var visualEffectView : UIVisualEffectView!
 
+    var tabBarHeight : CGFloat = 0
+
     //will adjusted in the page which using the bottom card
     //whole card height
     var cardHeight:CGFloat = 680
@@ -59,7 +61,8 @@ class BottomScrollableView: UIView {
 
         contentViewController.view.clipsToBounds = true
         contentViewController.view.layer.cornerRadius = 32
-
+        self.contentViewController.view.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMinXMinYCorner]
+        
         let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(BottomScrollableView.handleCardPan(recognizer:)))
         contentViewController.areaOutlet?.addGestureRecognizer(panGestureRecognizer)
 
@@ -103,7 +106,7 @@ class BottomScrollableView: UIView {
             let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
                 switch state {
                     case .expanded:
-                        self.contentViewController.view.frame.origin.y = superview.frame.height - self.cardHeight
+                        self.contentViewController.view.frame.origin.y = superview.frame.height - self.cardHeight - self.tabBarHeight
                     case .collapsed:
                         self.contentViewController.view.frame.origin.y = superview.frame.height - self.cardHandleAreaHeight
                 }
@@ -121,9 +124,12 @@ class BottomScrollableView: UIView {
             let cornerRadiusAnimator = UIViewPropertyAnimator(duration: duration, curve: .linear) {
                 switch state {
                     case .expanded:
+
                         self.contentViewController.view.layer.cornerRadius = 32
+
                     case .collapsed:
                         self.contentViewController.view.layer.cornerRadius = 32
+
                 }
             }
 
