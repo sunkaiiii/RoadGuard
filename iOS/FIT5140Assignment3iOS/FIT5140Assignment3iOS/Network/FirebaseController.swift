@@ -11,11 +11,9 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
+///Controls all methods of interaction with the Firestore
 class FirebaseController: NSObject,DatabaseProtocol {
 
-    
-
-    
     var listeners = MulticastDelegate<DatabaseListener>()
 
     var authController:Auth
@@ -320,6 +318,15 @@ class FirebaseController: NSObject,DatabaseProtocol {
     }
 }
 
+/**
+ The implementation of this interface will be a must for data exchange with the programme
+ # The data are combined in the following ways
+ * The user can add the selectedRoad themselves, which will appear in FacialInfo
+ * A FacialInfo contains information about the person as well as the location and, if the location is on a road selected by the user, the id of the SelectedRoad.
+ * SpeedRecord is information about the speed, including current speed, position and speed limit.
+ * DrivingRecord is a complete driving record. There may be several FacialInfo and several SpeedRecords within it, and therefore within both FacialInfo and SpeedRecord, the id of the corresponding DrivingRecord is stored
+ *  The DrivingRecord's id can be used to get all its speedRecords as well as FacialInfo, and likewise a FacialInfo and speedRecord can be used to find the corresponding DrivingRecord.
+*/
 protocol DatabaseProtocol:NSObject {
     func addListener(listener: DatabaseListener)
     func removeListener(listener: DatabaseListener)
@@ -332,6 +339,12 @@ protocol DatabaseProtocol:NSObject {
     func editSelectedRoad(_ id:String, points:[SnappedPointResponse], customName:String,storedUrl:String)->UserSelectedRoadResponse?
     func getAllDrivingRecord()->[DrivingRecordResponse]
 }
+
+/**
+ An object that implements this interface will be able to listen for changes to the data.
+ ***
+ The best practice for monitoring data changes is to implement this interface so that when data changes, it is simple to pass to a tableView to retrieve his UIView to update the view.
+ */
 protocol DatabaseListener:AnyObject {
     var listenerType:[ListenerType]{get set}
     func onFacialInfoChange(change:DatabaseChange, facialInfos:[FacialInfo])
