@@ -12,7 +12,6 @@ class BottomCardSpecifyCell: UITableViewCell {
     @IBOutlet weak var iconImageView : UIImageView!
     @IBOutlet weak var headerLabel : UILabel!
     @IBOutlet weak var contentLabel : UILabel!
- 
     @IBOutlet weak var addRoadBtn: UIImageView!
     
     private var roadDetail:RoadInformation?
@@ -51,12 +50,10 @@ class BottomCardSpecifyCell: UITableViewCell {
         addRoadBtn.isUserInteractionEnabled = true
         addRoadBtn.addGestureRecognizer(tapGesture)
     }
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
         iconImageView.contentMode = .scaleAspectFit
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -18,7 +18,6 @@ class DistractionTimePeriodTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
         contentAreaBackground.layer.cornerRadius = 24
     }
 

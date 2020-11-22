@@ -26,7 +26,7 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
     let TABLE_CONTENT_CELL_ID = RecordBkdTableViewCell.identifier
     var monthIndex:Int = 0
     var tableViewDataSource:[DrivingRecordResponse] = []
-
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .clear
@@ -47,6 +47,7 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
         view.addConstraints([widthConstraint, topConstraint, bottomConstraint])
     }
 
+    // MARK: - TableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -108,6 +109,7 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
 
+    // MARK: - Gesture actions
     @objc func showFilterOptions(_ gestureRecognizer: UITapGestureRecognizer){
         let actionOptions = UIAlertController(title: "Chose a User", message: "Chose a User", preferredStyle: .actionSheet)
 

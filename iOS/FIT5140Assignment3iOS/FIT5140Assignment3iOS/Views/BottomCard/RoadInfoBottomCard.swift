@@ -15,23 +15,21 @@ protocol RoadInfoBottomCardDelegate: class {
 }
 
 class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController, DatabaseListener {
-    var listenerType: [ListenerType] = [ListenerType.selectedRoad]
-    
-    
-    var areaOutlet: UIView?
-    weak var delegateParent: RoadInfoBottomCardDelegate?
-    
+
     @IBOutlet weak var roadInfoBottomCardHandleAreaOutlet: UIView!
     @IBOutlet weak var selectedRoadTableView: UITableView!
 
+    var listenerType: [ListenerType] = [ListenerType.selectedRoad]
+    var areaOutlet: UIView?
+    weak var delegateParent: RoadInfoBottomCardDelegate?
     let SECTION_HEADER = 0
     let SECTION_CONTENT = 1
     let DEFAULT_CELL_ID = "DefaultCell"
     let BOTTOM_CARD_CELL_ID = BottomCardImportantRoadCell.identifier
-
     var selectRoadDataSource : [UserSelectedRoadResponse]  = []
     weak var databaseProtocol:DatabaseProtocol?
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -43,13 +41,11 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
         selectedRoadTableView.delegate = self
         selectedRoadTableView.dataSource = self
     }
-
     
     override func removeFromParent() {
         super.removeFromParent()
         databaseProtocol?.removeListener(listener: self)
     }
-    
 
     // MARK: - TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -66,7 +62,6 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
             default:
                 return 1
         }
-
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -108,6 +103,7 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 
+    // MARK: - Navigation
     func askDelegateToCalculateTotalNumberAndDistance(){
         self.delegateParent?.calculateTotalNumberAndDistance(roadRecords: self.selectRoadDataSource)
     }
@@ -117,8 +113,7 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
         self.selectRoadDataSource = selectRoads
         askDelegateToCalculateTotalNumberAndDistance()
         self.selectedRoadTableView.reloadSections([SECTION_CONTENT], with: .automatic)
-    }    
-
+    }
 }
 
 

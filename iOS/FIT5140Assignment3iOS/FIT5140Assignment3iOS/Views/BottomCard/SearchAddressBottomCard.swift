@@ -11,18 +11,14 @@ import MapKit
 import RealmSwift
 
 class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController,DefaultHttpRequestAction,CLLocationManagerDelegate,UISearchBarDelegate,UITextViewDelegate{
-    var areaOutlet: UIView?
 
     @IBOutlet weak var searchAddressBottomCardHandleAreaOutlet: UIView!
-
     @IBOutlet weak var searchAddressBottomCardTableViewOutlet: UITableView!
-    
     @IBOutlet weak var searchAddressBar: UISearchBar!
+    var areaOutlet: UIView?
     let locationManager = CLLocationManager.init()
-
     var searchAddressTimer:Timer?
     var currentSearchPlaceReqeust:SearchPlaceRequest?
-
     let SECTION_HEADER_SPECIFY = 0
     let SECTION_CONTENT_SPECIFY = 1
     let SECTION_HEADER_NEARBY = 2
@@ -31,9 +27,9 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
     let BOTTOM_CARD_CELL_ID = BottomCardSpecifyCell.identifier
     var tableViewDataSourceSpecify : [SearchPlaceDetail]  = []
     var tableViewDataSourceNearby : [PlaceDetail] =  []
-    
     var searchAddressDelegate:BottomCardSpeicifyCellDelegate?
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.areaOutlet = searchAddressBottomCardHandleAreaOutlet
@@ -53,12 +49,14 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
         searchAddressBar.delegate = self
         searchAddressBar.searchTextField.delegate = self
     }
-    
+
+    // MARK: - TextField Delegate
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             textField.resignFirstResponder()
             return true
     }
-    
+
+    // MARK: - search bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let timer = searchAddressTimer{
             if timer.isValid{
@@ -68,16 +66,13 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
         searchAddressTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats:false, block: {(timer) in
             self.requestSearchAddress(searchText)
         } )
-
     }
     
-    func requestSearchAddress(_ searchText:String)
-    {
+    func requestSearchAddress(_ searchText:String){
         let request = SearchPlaceRequest(query: searchText)
         self.currentSearchPlaceReqeust = request
         requestRestfulService(api: GoogleApi.searchPlace, model: request, jsonType: SearchPlaceResponse.self)
     }
-
 
     // MARK: - core location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -94,7 +89,6 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         switch section {
             case SECTION_HEADER_SPECIFY:
                 return 1
@@ -107,7 +101,6 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             default:
                 return 1
         }
-
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -137,6 +130,7 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             return cell
         }
     }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == SECTION_HEADER_SPECIFY {
             return 50
@@ -146,9 +140,11 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             return 80
         }
     }
+
     func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
       tableView.deselectRow(at:indexPath,animated:true)
     }
+
     // MARK: - Network Request
     //action after request execution 
     func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {

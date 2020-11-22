@@ -29,11 +29,7 @@ class OverSpeedAlert: UIView {
         Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: {(timer) in
             UIView.animate(withDuration: 1, animations: {() in
                 self.alpha = 0
-                
             },completion: {(ok) in self.removeFromSuperview()})
-            
         })
-        
     }
-    
 }

@@ -40,7 +40,6 @@ class DrivingStatusTableViewCell: UITableViewCell {
         distractionBackground.layer.cornerRadius = 24
         overSpeedBackground.layer.cornerRadius = 24
         contentAreaBackground.layer.cornerRadius = 24
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
