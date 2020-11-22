@@ -18,7 +18,11 @@ final class InMemoryDataCache:CacheController{
     
     public static let shared:CacheController = InMemoryDataCache()
     
-    /// NSCache is one of the candidate delegate classes, however, it is not suitable for data caching of non-class types.
+    /**
+     * NSCache is one of the candidate delegate classes, however, it is not suitable for data caching of non-class types.
+     * ***
+     * Note: After downloading from the pod, the visibility differs from today as it uses an older swift version. Therefore some members of the MemoryCache need to be added manually as public.
+     */
     private let cache:MemoryCache
     
     private init(){
