@@ -8,7 +8,18 @@
 import Foundation
 import UIKit
 
-//Load a image with cache and local storage
+/**
+ # Full-featured helper classes for loading pictures
+ ## Simultaneous use of local cache and memory cache
+ ## Support for named pictures in Assets folders
+ ***
+ ## Usage:
+ * ImageLoader.load(imageUrl).into(target)
+ ## Simple usage
+ * ImageLoader.simpleLoad(url,target)
+ ## or can try the full customise way
+ * ImageLoader.load(imageUrl).placeHolder(holderImage).onEmptyHolder(holderImage).onErrorHolder(errorImage).into(target)
+ */
 final class ImageLoader: NSObject {
 
     
@@ -20,20 +31,36 @@ final class ImageLoader: NSObject {
         
     }
 
+    /**
+     The load method will return an ImageProcess, which describes the complete loading process. Any I/O and network requests will not be initiated after the load has completed.
+     */
     static func load(_ imageUrl:String?)->ImageLoaderProcess{
         return ImageLoaderProcess(imageUrl: imageUrl,delegate: loaderDelegate)
     }
     
+    /**
+     # Provide default image loading processes and strategies
+     * When loading, the placeholder is the picture of the activityIndicator.
+     * If the load fails, a grey background image will be used.
+     */
     static func simpleLoad(_ imageUrl:String?, imageView:UIImageView){
         return ImageLoaderProcess(imageUrl: imageUrl, delegate: loaderDelegate).placeHolder(UIImage(named: "Loading")!).onEmptyHolder(UIImage(named: "PlaceHolder")!).into(imageView)
     }
     
+    /**
+     # Provide default image loading processes and strategies
+     * When loading, the placeholder is the picture of the activityIndicator.
+     * If the load fails, a grey background image will be used.
+     - parameter onComplete: To provide a closure for the method to be executed when the load is complete, which may be successful or fail. The picture may therefore be empty
+     */
     static func simpleLoad(_ imageUrl:String?, onComplete: @escaping(String, UIImage?)->Void){
         return ImageLoaderProcess(imageUrl: imageUrl, delegate: loaderDelegate).load(onComplete: onComplete)
     }
     
 
-    //To encapsulate and hide the interface of the implemented interfaces, using another delegate class.
+    /**
+     # To encapsulate and hide the interface of the implemented interfaces, using another delegate class.
+     */
     class ImageLoaderDelegate:NSObject,URLSessionTaskDelegate, URLSessionDownloadDelegate{
         // Usage of lock, references on https://developer.apple.com/documentation/foundation/nslocking/1416318-lock
         let lock = NSLock()
@@ -47,6 +74,12 @@ final class ImageLoader: NSObject {
             session = URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue())
         }
         
+        /**
+         # Loading pictures
+         ## The url of an image is the unique identification of the image and is used for image caching purposes
+         ## The incoming url can be a resource file, which can be a remote address
+         The load order is memory cache, local cache, resource file, remote file. If either one of these reads the UIImage object, the method ends.
+         */
         func loadImage(_ imageUrl:String, onComplete: @escaping(String, UIImage?)->Void){
             //TODO more string filter
             let renamedUrl =  imageUrl.replacingOccurrences(of: "/", with: "_")
@@ -69,6 +102,7 @@ final class ImageLoader: NSObject {
                     imageCache.setObject(data as AnyObject, forKey: renamedUrl as AnyObject)
                 }
                 onComplete(renamedUrl, uiImage)
+                return
             }
             
             guard let url = URL(string: imageUrl) else {
@@ -84,7 +118,10 @@ final class ImageLoader: NSObject {
             task.resume()
         }
         
-        
+        /**
+         # Finish loading remote pictures
+         After loading, the results are placed in the memory cache as well as in the local cache. After this, a delegate will be executed, which will normally display the image on the ImageView.
+         */
         func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
             do{
                 let data = try Data(contentsOf: location)
@@ -162,6 +199,10 @@ final class ImageLoader: NSObject {
         }
     }
     
+    /**
+     # All processes for a single image load
+     The loading pipeline is, set the loading placeholder, read the image (implementation is related to ImageLoaderDelegate), if it fails or is blank, set the blankPlaceholder.
+     */
     final class ImageLoaderProcess{
         var imageUrl:String?
         weak var placeHolder:UIView?
@@ -169,10 +210,12 @@ final class ImageLoader: NSObject {
         weak var onErrorHolder:UIView?
         weak var onEmptyHolder:UIView?
         weak var onEmptyImage:UIImage?
+        weak var onErrorHolderImage:UIImage?
         
         weak var loaderDelegate:ImageLoaderDelegate?
         private var placeHolderType:PlaceHolderType = .none
         private var emptyHolderType:PlaceHolderType = .none
+        private var errorHolderType:PlaceHolderType = .none
         private enum PlaceHolderType{
             case image
             case view
@@ -205,6 +248,12 @@ final class ImageLoader: NSObject {
         func onEmptyHolder(_ empty:UIImage)->ImageLoaderProcess{
             onEmptyImage = empty
             emptyHolderType = .image
+            return self
+        }
+        
+        func onErrorHolder(_ error:UIImage)->ImageLoaderProcess{
+            onErrorHolderImage = error
+            errorHolderType = .image
             return self
         }
         

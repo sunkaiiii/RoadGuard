@@ -8,11 +8,20 @@
 import Foundation
 import UIKit
 
+/**
+ # The protocol that must be implemented to interact with the alert
+ Whether this is selected from an album or taking a picture from your camera. A successful acquisition of the image results in the execution of the delegate method, which returns the location where the image is stored locally and the image object that was read.
+ */
 protocol ImagePickerDelegate:AnyObject{
     func didSelect(imageUrl:String,image:UIImage?)
 }
 
-//references on https://theswiftdev.com/picking-images-with-uiimagepickercontroller-in-swift-5/
+/**
+ # Image picking alert view
+ # Get pictures from an album or camera
+ ## As the life cycle of a delegate may not correspond to the order of execution, such settings are required for class members
+ references on https://theswiftdev.com/picking-images-with-uiimagepickercontroller-in-swift-5/
+ */
 class ImagePicker:NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     private let pickerController:UIImagePickerController
     private weak var presentationController:UIViewController?

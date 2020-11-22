@@ -14,6 +14,7 @@ extension UIImage {
     var breadth:     CGFloat { min(size.width, size.height) }
     var breadthSize: CGSize  { .init(width: breadth, height: breadth) }
     var breadthRect: CGRect  { .init(origin: .zero, size: breadthSize) }
+    /// Receive a picture and convert it to a circle
     var circleMasked: UIImage? {
         guard let cgImage = cgImage?
             .cropping(to: .init(origin: .init(x: isLandscape ? ((size.width-size.height)/2).rounded(.down) : 0,
@@ -28,7 +29,8 @@ extension UIImage {
         }
     }
     
-    //the resize method is referenced in https://stackoverflow.com/questions/31966885/resize-uiimage-to-200x200pt-px
+    /// Compressed image size, keep the scale
+    /// the resize method is referenced in https://stackoverflow.com/questions/31966885/resize-uiimage-to-200x200pt-px
     func resizeImage(newWidth:CGFloat)->UIImage?{
         let scale = newWidth/self.size.width
         let newHeight = self.size.height*scale
@@ -40,7 +42,8 @@ extension UIImage {
         return newImage
     }
     
-    //references on https://stackoverflow.com/questions/2936443/create-new-uiimage-by-adding-shadow-to-existing-uiimage
+    /// add shadow for a image
+    /// references on https://stackoverflow.com/questions/2936443/create-new-uiimage-by-adding-shadow-to-existing-uiimage
     func addShadow(blurSize: CGFloat = 6.0) -> UIImage {
 
         let shadowColor = UIColor(white:0.0, alpha:0.8).cgColor
