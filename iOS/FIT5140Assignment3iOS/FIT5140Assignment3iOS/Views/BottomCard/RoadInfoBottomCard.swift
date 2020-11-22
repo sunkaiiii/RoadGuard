@@ -12,6 +12,7 @@ import MapKit
 protocol RoadInfoBottomCardDelegate: class {
     //这里回头需要改下传值的类型
     func jumpToSelectedRowDetailPage(selectedRow: UserSelectedRoadResponse)
+    func calculateTotalNumberAndDistance(roadRecords: [UserSelectedRoadResponse])
 }
 
 class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDataSource,ScrollableViewController, DatabaseListener {
@@ -22,8 +23,6 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
     weak var delegateParent: RoadInfoBottomCardDelegate?
     
     @IBOutlet weak var roadInfoBottomCardHandleAreaOutlet: UIView!
-    
-
     @IBOutlet weak var selectedRoadTableView: UITableView!
 
     let SECTION_HEADER = 0
@@ -46,6 +45,7 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
         selectedRoadTableView.delegate = self
         selectedRoadTableView.dataSource = self
     }
+
     
     override func removeFromParent() {
         super.removeFromParent()
@@ -110,11 +110,17 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
 
+    func askDelegateToCalculateTotalNumberAndDistance(){
+        self.delegateParent?.calculateTotalNumberAndDistance(roadRecords: self.selectRoadDataSource)
+    }
+
     // MARK: - DB Listening
     func onSelectedRoadInfoChange(change: DatabaseChange, selectRoads: [UserSelectedRoadResponse]) {
         self.selectRoadDataSource = selectRoads
+        askDelegateToCalculateTotalNumberAndDistance()
         self.selectedRoadTableView.reloadSections([SECTION_CONTENT], with: .automatic)
-    }
+    }    
+
 }
 
 

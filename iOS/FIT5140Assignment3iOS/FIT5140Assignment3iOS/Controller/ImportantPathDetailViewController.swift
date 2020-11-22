@@ -143,6 +143,7 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
 }
 
 
+
 struct RoadInformationDataSource {
     let placeId:String
     let length:Double

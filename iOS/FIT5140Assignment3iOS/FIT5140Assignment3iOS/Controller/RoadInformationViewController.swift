@@ -6,9 +6,14 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class RoadInformationViewController: UIViewController,DefaultHttpRequestAction , RoadInfoBottomCardDelegate{
 
+ 
+    @IBOutlet weak var totalDistanceLabel: UILabel!
+    @IBOutlet weak var roadsCountLabel: UILabel!
+    
     let DETAIL_PAGE_SEGUE_ID = "importantPathsSegue"
     
     override func viewDidLoad() {
@@ -40,6 +45,7 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction ,
         bototmScrollableViewController.cardHeight =  self.view.frame.height / 4 * 3
         self.view.addSubview(bototmScrollableViewController)
         contentController.delegateParent = self
+        contentController.askDelegateToCalculateTotalNumberAndDistance()
     }
 
 
@@ -54,9 +60,35 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction ,
     }
 
 
+
     // MARK: - RoadInfoBottomCardDelegate
     func jumpToSelectedRowDetailPage(selectedRow: UserSelectedRoadResponse) {
         performSegue(withIdentifier: DETAIL_PAGE_SEGUE_ID, sender: selectedRow)
+    }
+
+    func calculateTotalNumberAndDistance(roadRecords: [UserSelectedRoadResponse]){
+
+        func calculatePathLength(roadRecord: UserSelectedRoadResponse)->Double{
+            var lastPlaceId:String = ""
+            let path = GMSMutablePath()
+            roadRecord.selectedRoads.forEach{(road) in
+                if road.placeID != lastPlaceId{
+                    path.add(CLLocationCoordinate2D(latitude: road.location.latitude, longitude: road.location.longitude))
+                }
+                lastPlaceId = road.placeID
+            }
+            return path.length(of: .geodesic)
+        }
+
+        var lengthTotal = 0.0
+        var selectedRoadsCount = 0
+        for record in roadRecords{
+            lengthTotal = lengthTotal + calculatePathLength(roadRecord: record)
+            selectedRoadsCount += record.selectedRoads.count
+        }
+        roadsCountLabel.text = "\(selectedRoadsCount)"
+        totalDistanceLabel.text = "Total Length: \((lengthTotal/1000).rounded(.up)) KM"
+        
     }
 
 }

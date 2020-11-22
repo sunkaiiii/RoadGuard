@@ -95,3 +95,5 @@ extension ImportantPathDetailViewController{
         passTimesLabel.text = "\(calculateSet.count)"
     }
 }
+
+
