@@ -17,6 +17,8 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
 
     var table:UITableView!
 
+    var parentViewTabBarHeight : CGFloat = 0
+
     let SECTION_HEADER = 0
     let SECTION_CONTENT = 1
     //这里需要换成customer cell 暂时先放default
@@ -24,7 +26,7 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
     let TABLE_HEADER_CELL_ID = RecordPageHeaderTableViewCell.identifier
     let TABLE_CONTENT_CELL_ID = RecordBkdTableViewCell.identifier
     var monthIndex:Int = 0
-    
+
     //根据需要展示的内容，更改数据类型和内容
     var tableViewDataSource:[DrivingRecordResponse] = []
 
@@ -42,8 +44,10 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
 
         self.view.addSubview(table)
         let widthConstraint  = NSLayoutConstraint(item: table!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: 0)
-        let heightConstraint = NSLayoutConstraint(item: table!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.height, multiplier: 1, constant: 0)
-        view.addConstraints([widthConstraint, heightConstraint])
+        let topConstraint = NSLayoutConstraint(item: table!, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
+        let bottomConstraint = NSLayoutConstraint(item: table!, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view.safeAreaLayoutGuide, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: -parentViewTabBarHeight)
+
+        view.addConstraints([widthConstraint, topConstraint, bottomConstraint])
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {

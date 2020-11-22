@@ -9,6 +9,5 @@ import UIKit
 
 
 protocol ScrollableViewController:UIViewController{
-    
     var areaOutlet:UIView? {get}
 }

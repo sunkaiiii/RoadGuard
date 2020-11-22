@@ -30,6 +30,7 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
             montlyRecords.append(Calendar.current.monthSymbols[index-1])
             let vc = RecordBreakdownViewController()
             vc.delegateParent = self
+            vc.parentViewTabBarHeight = tabBarController?.tabBar.frame.height ?? 0
             vc.monthIndex = index
             vc.tableViewDataSource = self.dataSource[index] ?? []
             tabContentViews.append(vc)
@@ -55,6 +56,7 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
         viewPager.eyStyle.tabItemSelectedFont = UIFont.boldSystemFont(ofSize: 16.0)
         viewPager.currentTabIndex = Calendar.current.component(.month, from: Date()) - 1 //get current month number refereces on https://stackoverflow.com/questions/55492003/how-can-i-find-current-month-name-and-current-month-number-in-swift
         viewPager.buildUI()
+//        self.viewPager.contentInset.bottom = self.tabBarController?.tabBar.frame.height ?? 0
     }
 
     func wtsNumberOfTabs() -> Int {
