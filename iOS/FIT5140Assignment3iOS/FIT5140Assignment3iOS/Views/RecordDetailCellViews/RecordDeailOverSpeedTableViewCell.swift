@@ -66,7 +66,4 @@ class RecordDeailOverSpeedTableViewCell: UITableViewCell,UITableViewDelegate,UIT
         tableView.deselectRow(at:indexPath,animated:true)
         delegate?.jumpToSelectedRowDetailPage(selectedRow: (placeName,facialInfo,.overspeed))
     }
-
-    
-    
 }
