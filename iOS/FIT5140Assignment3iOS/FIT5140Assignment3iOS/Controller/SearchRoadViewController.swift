@@ -94,12 +94,14 @@ class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMa
     }
     
     @IBAction func cancelSelection(_ sender: Any) {
+        if selectMapItem.title == DONE_TEXT{
+            setBottomContentViewHidden(false)
+        }
         selectMarkers.forEach({(markers) in markers.map = nil})
         selectMarkers = []
         selectedRoads = []
         snapPoints = []
         polyLine?.map = nil
-        setBottomContentViewHidden(false)
         selectMapItem.title = SELECT_TEXT
         cancelItem.isEnabled = false
     }
