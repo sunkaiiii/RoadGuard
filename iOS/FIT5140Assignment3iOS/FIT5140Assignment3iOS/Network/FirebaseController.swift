@@ -14,6 +14,8 @@ import FirebaseFirestoreSwift
 class FirebaseController: NSObject,DatabaseProtocol {
 
     
+
+    
     var listeners = MulticastDelegate<DatabaseListener>()
 
     var authController:Auth
@@ -261,11 +263,21 @@ class FirebaseController: NSObject,DatabaseProtocol {
     }
 
     func editSelectedRoad(_ id: String, points: [SnappedPointResponse]) -> UserSelectedRoadResponse? {
+        guard let road = selectedRoadaList.first(where: {(r) in r.id == id}) else {
+            return nil
+        }
+        return self.editSelectedRoad(id, points: points, customName: road.selectedRoadCustomName ?? "", storedUrl: road.userCustomImage ?? "")
+    }
+
+    
+    func editSelectedRoad(_ id: String, points: [SnappedPointResponse], customName: String, storedUrl: String) -> UserSelectedRoadResponse? {
         guard var road = selectedRoadaList.first(where: {(r) in r.id == id}) else {
             return nil
         }
         road.selectedRoads = points
         road.placeIds = points.map({(points) in points.placeID})
+        road.userCustomImage = storedUrl
+        road.selectedRoadCustomName = customName
         do{
             try selectedRoadRef?.document(id).setData(from: road)
         }catch{
@@ -274,7 +286,6 @@ class FirebaseController: NSObject,DatabaseProtocol {
         
         return road
     }
-
     
     func findIndexAndModifySelectedRoad(_ selectedRoad:UserSelectedRoadResponse, _ type:DocumentChangeType){
         guard let index = selectedRoadaList.firstIndex(where: {(road) in
@@ -318,6 +329,7 @@ protocol DatabaseProtocol:NSObject {
     func getFacialRecordById(_ facialId:String)->FacialInfo?
     func deleteSelectedRoadById(_ id:String)
     func editSelectedRoad(_ id:String, points:[SnappedPointResponse]) -> UserSelectedRoadResponse?
+    func editSelectedRoad(_ id:String, points:[SnappedPointResponse], customName:String,storedUrl:String)->UserSelectedRoadResponse?
     func getAllDrivingRecord()->[DrivingRecordResponse]
 }
 protocol DatabaseListener:AnyObject {

@@ -8,7 +8,8 @@
 import UIKit
 import GoogleMaps
 
-class EditRoadViewController: UIViewController,DefaultHttpRequestAction,GMSMapViewDelegate {
+class EditRoadViewController: UIViewController,DefaultHttpRequestAction,GMSMapViewDelegate,CustomRoadControllerDelegate {
+
 
     var selectedRoad:UserSelectedRoadResponse?
     
@@ -19,6 +20,7 @@ class EditRoadViewController: UIViewController,DefaultHttpRequestAction,GMSMapVi
     var polyLine:GMSPolyline?
     var snapPoints:[SnappedPointResponse]?
     var selectMarkers:[GMSMarker] = []
+    var editRoadAlert:AddRoadNameAlertViewController?
     
     private let DONE = "Done"
     private let CLEAR = "Clear"
@@ -92,13 +94,11 @@ class EditRoadViewController: UIViewController,DefaultHttpRequestAction,GMSMapVi
     }
     
     @IBAction func saveBtnAction(_ sender: Any) {
-        if let databaseController = (UIApplication.shared.delegate as? AppDelegate)?.firebaseController, let id = selectedRoad?.id, let points = snapPoints, points.count > 0{
-            if let newRoad = databaseController.editSelectedRoad(id, points: points){
-                delegate?.roadDidEdited(newRoad: newRoad)
-            }
-            
+        editRoadAlert = AddRoadNameAlertViewController(delegate: self)
+        editRoadAlert?.selectedRoad = self.selectedRoad
+        if let alert = editRoadAlert{
+            self.present(alert, animated: true, completion: nil)
         }
-        navigationController?.popViewController(animated: true)
     }
     
     
@@ -121,7 +121,16 @@ class EditRoadViewController: UIViewController,DefaultHttpRequestAction,GMSMapVi
         marker.map = mapView
         selectMarkers.append(marker)
     }
-
+    
+    func didCustomFinished(customName: String, storedUrl: String) {
+        if let databaseController = (UIApplication.shared.delegate as? AppDelegate)?.firebaseController, let id = selectedRoad?.id, let points = snapPoints, points.count > 0{
+            if let newRoad = databaseController.editSelectedRoad(id, points: points, customName: customName, storedUrl: storedUrl){
+                delegate?.roadDidEdited(newRoad: newRoad)
+            }
+            
+        }
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 protocol EditRoadDelegate {
