@@ -69,6 +69,7 @@
 		B1D3B8222569EB3500DB8781 /* AddRoadNameAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D3B8202569EB3500DB8781 /* AddRoadNameAlertViewController.swift */; };
 		B1D3B8232569EB3500DB8781 /* AddRoadNameAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1D3B8212569EB3500DB8781 /* AddRoadNameAlertViewController.xib */; };
 		B1D3B8452569F18000DB8781 /* AwsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D3B8442569F18000DB8781 /* AwsController.swift */; };
+		B1D3B84A256A16F800DB8781 /* NavigationBarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D3B849256A16F800DB8781 /* NavigationBarHelper.swift */; };
 		B1DFBC99255AD613000B7256 /* UserSelectedRoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DFBC98255AD613000B7256 /* UserSelectedRoad.swift */; };
 		B1E9473225615618007C74AD /* CurrentSpeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9473125615618007C74AD /* CurrentSpeedResponse.swift */; };
 		B1E947352561562C007C74AD /* DefaultSimpleGetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E947342561562C007C74AD /* DefaultSimpleGetModel.swift */; };
@@ -198,6 +199,7 @@
 		B1D3B8202569EB3500DB8781 /* AddRoadNameAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoadNameAlertViewController.swift; sourceTree = "<group>"; };
 		B1D3B8212569EB3500DB8781 /* AddRoadNameAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRoadNameAlertViewController.xib; sourceTree = "<group>"; };
 		B1D3B8442569F18000DB8781 /* AwsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsController.swift; sourceTree = "<group>"; };
+		B1D3B849256A16F800DB8781 /* NavigationBarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarHelper.swift; sourceTree = "<group>"; };
 		B1DFBC98255AD613000B7256 /* UserSelectedRoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectedRoad.swift; sourceTree = "<group>"; };
 		B1E9473125615618007C74AD /* CurrentSpeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSpeedResponse.swift; sourceTree = "<group>"; };
 		B1E947342561562C007C74AD /* DefaultSimpleGetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSimpleGetModel.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				B13CEFFE25410D9200957E84 /* AlertControllerHelper.swift */,
 				E4EE85142554FBEF00208C71 /* RealmExtension.swift */,
 				B14053322566884300327A09 /* GoogleMapExtension.swift */,
+				B1D3B849256A16F800DB8781 /* NavigationBarHelper.swift */,
 			);
 			path = FunctionHelper;
 			sourceTree = "<group>";
@@ -816,6 +819,7 @@
 				B1D3B8222569EB3500DB8781 /* AddRoadNameAlertViewController.swift in Sources */,
 				B13CEFF825410D5F00957E84 /* UITextFieldHelper.swift in Sources */,
 				B1F632512563FFE700787119 /* CachegableData.swift in Sources */,
+				B1D3B84A256A16F800DB8781 /* NavigationBarHelper.swift in Sources */,
 				E4F59EC72552DA8300286BE7 /* MulticastDelegate.swift in Sources */,
 				B1D3B8012569553300DB8781 /* EditRoadViewController.swift in Sources */,
 				E45B4875254CFF7600692A2E /* RecordBreakdownViewController.swift in Sources */,
