@@ -64,7 +64,7 @@ class RecordDeailOverSpeedTableViewCell: UITableViewCell,UITableViewDelegate,UIT
             return
         }
         
-        delegate?.jumpToSelectedRowDetailPage(selectedRow: (placeName,facialInfo))
+        delegate?.jumpToSelectedRowDetailPage(selectedRow: (placeName,facialInfo,.overspeed))
     }
 
     
