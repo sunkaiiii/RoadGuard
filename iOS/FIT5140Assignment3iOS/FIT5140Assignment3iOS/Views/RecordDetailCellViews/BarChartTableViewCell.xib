@@ -21,6 +21,19 @@
                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="OyY-X4-SQN">
                             <rect key="frame" x="0.0" y="0.0" width="100" height="65"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mamungkukumpurangkuntjunya" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="xh1-aC-XTb">
+                                    <rect key="frame" x="8" y="25.5" width="82" height="14.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="xh1-aC-XTb" secondAttribute="trailing" constant="10" id="4jR-pt-X9b"/>
+                                <constraint firstItem="xh1-aC-XTb" firstAttribute="leading" secondItem="OyY-X4-SQN" secondAttribute="leading" constant="8" id="G08-oZ-gvI"/>
+                                <constraint firstItem="xh1-aC-XTb" firstAttribute="centerY" secondItem="OyY-X4-SQN" secondAttribute="centerY" id="eTJ-OF-MdH"/>
+                            </constraints>
                         </view>
                         <constraints>
                             <constraint firstAttribute="width" constant="100" identifier="barWidthConstraint" id="ZnS-sj-XLZ"/>
@@ -33,20 +46,11 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mamungkukumpurangkuntjunya" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="xh1-aC-XTb">
-                        <rect key="frame" x="18" y="12" width="181" height="57"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="AWE-KV-rSk" secondAttribute="trailing" constant="15" id="0Rd-II-vDQ"/>
                     <constraint firstItem="AWE-KV-rSk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Hkx-fT-zdY"/>
-                    <constraint firstItem="xh1-aC-XTb" firstAttribute="leading" secondItem="Jen-TA-asQ" secondAttribute="leading" constant="8" id="PLQ-pQ-VCj"/>
-                    <constraint firstItem="xh1-aC-XTb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="ak9-Wy-gWo"/>
-                    <constraint firstAttribute="bottom" secondItem="xh1-aC-XTb" secondAttribute="bottom" constant="12" id="doA-Za-AO7"/>
                     <constraint firstItem="AWE-KV-rSk" firstAttribute="leading" secondItem="Jen-TA-asQ" secondAttribute="trailing" constant="6" id="enW-1Z-Lat"/>
                     <constraint firstAttribute="bottom" secondItem="Jen-TA-asQ" secondAttribute="bottom" constant="8" id="hqQ-c9-PkM"/>
                     <constraint firstItem="Jen-TA-asQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="pSe-Ns-aIi"/>

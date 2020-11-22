@@ -63,7 +63,7 @@ class RecordDeailOverSpeedTableViewCell: UITableViewCell,UITableViewDelegate,UIT
         guard let appdelegate = UIApplication.shared.delegate as? AppDelegate, let databaseController = appdelegate.firebaseController,let facialId = selectedRecord.facialId, let facialInfo = databaseController.getFacialRecordById(facialId) else {
             return
         }
-        
+        tableView.deselectRow(at:indexPath,animated:true)
         delegate?.jumpToSelectedRowDetailPage(selectedRow: (placeName,facialInfo,.overspeed))
     }
 

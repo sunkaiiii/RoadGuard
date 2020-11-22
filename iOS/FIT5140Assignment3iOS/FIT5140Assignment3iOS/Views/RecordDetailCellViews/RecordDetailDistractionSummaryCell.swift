@@ -7,7 +7,7 @@
 
 import UIKit
 protocol RecordDetailDistractionSummaryCellDelegate: class {
-    func jumpToSelectedRowDetailPage(selectedRow: (locationName: String, facialInfo: FacialInfo,type:DetailType))
+    func jumpToSelectedRowDetailPage(selectedRow: (locationName: String, facialInfo: FacialInfo, type:DetailType))
 }
 
 
@@ -78,7 +78,7 @@ class RecordDetailDistractionSummaryCell: UITableViewCell , UITableViewDelegate,
         let cell = tableView.cellForRow(at: indexPath) as! DistractionDetailCell
 
         let distractionPlaceName = cell.distractionPlaceName
-        delegateParent?.jumpToSelectedRowDetailPage(selectedRow:(locationName: distractionPlaceName!, facialInfo: dataSource[indexPath.row],.distraction) )
+        delegateParent?.jumpToSelectedRowDetailPage(selectedRow:(locationName: distractionPlaceName!, facialInfo: dataSource[indexPath.row], .distraction) )
         tableView.deselectRow(at:indexPath,animated:true)
     }
 

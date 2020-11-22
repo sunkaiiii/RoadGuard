@@ -36,8 +36,8 @@ class BarChartTableViewCell: UITableViewCell,DefaultHttpRequestAction {
         let speed = CGFloat(data.1)
         let widthRatio = speed/maxPossibleSpeed
         backgroundVisualEffect.layer.cornerRadius = (self.layer.bounds.height-16)/2
-        let baseWidth = CGFloat(130)
-        let totalGapWidth = CGFloat(110)
+        let baseWidth = CGFloat(60)
+        let totalGapWidth = CGFloat(85)
 
         if speed == CGFloat(0) {
             barWidthConstraint.constant = baseWidth
