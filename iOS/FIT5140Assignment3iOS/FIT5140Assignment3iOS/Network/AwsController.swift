@@ -9,7 +9,7 @@ import Foundation
 import AWSS3
 
 
-// upload image to s3 references on https://medium.com/@iamayushverma/uploading-photos-videos-files-to-aws-s3-using-swift-4-1241f690a993
+/// upload image to s3 references on https://medium.com/@iamayushverma/uploading-photos-videos-files-to-aws-s3-using-swift-4-1241f690a993
 class AwsController{
     let bucketName = "photo-collection-monash"
     

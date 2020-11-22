@@ -350,6 +350,7 @@
 		B13CEFDC2540FD4A00957E84 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */,
 				B1AB3A8B2544608D0082B004 /* Response */,
 				B1AB3A8625445FD50082B004 /* RequestModel */,
 				B13CEFDD2540FD5100957E84 /* Protocol */,
@@ -421,7 +422,6 @@
 			children = (
 				B1139AC4255C119A002EA26E /* ControllerHelpers */,
 				E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */,
-				B1AB3A7A2542BC4A0082B004 /* BaseNetworkRequestControllerProtocol.swift */,
 				E4AE1713255E0CDF009B1DAA /* DistractionDetailViewController.swift */,
 				B13CF00D2541AA2000957E84 /* HomeViewController.swift */,
 				E4E6FE862559711000DC8050 /* ImportantPathDetailViewController.swift */,
