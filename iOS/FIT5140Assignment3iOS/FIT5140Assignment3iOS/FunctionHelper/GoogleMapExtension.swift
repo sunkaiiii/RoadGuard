@@ -10,6 +10,12 @@ import GoogleMaps
 
 // dark mode style, referencces on https://developers.google.com/maps/documentation/ios-sdk/styling
 extension GMSMapView{
+    /**
+     # Dark Appearance Adaptation
+     ****
+     GMSMapView does not automatically follow the system's themes. The solution is to load a json file of its style.
+     The file will be stored in the project and the default implementation will ensure that all mapviews in the application respond to changes in the system theme.
+     */
     func changeToDarkMode(){
         do {
               // Set the map style by passing the URL of the local file.
