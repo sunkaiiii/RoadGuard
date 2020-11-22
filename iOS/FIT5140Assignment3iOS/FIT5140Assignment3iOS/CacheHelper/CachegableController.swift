@@ -7,6 +7,10 @@
 
 import Foundation
 
+/**
+ # Controller for the management of all cacheable objects
+Similarly to the Firebase Controller, all cacheable responses should interact with the class that implements this interface. This reduces direct coupling to other logic.
+ */
 protocol CacheController {
     func getPlaceDetailCacheData(_ placeId:String)->PlaceDetailResponse?
     func storePlaceDetailResponse(_ placeDetail:PlaceDetailResponse)

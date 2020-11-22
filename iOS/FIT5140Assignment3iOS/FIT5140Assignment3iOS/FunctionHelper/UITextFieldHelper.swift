@@ -8,7 +8,9 @@
 import Foundation
 import UIKit
 
+
 extension UIViewController:UITextFieldDelegate{
+    /// Provides a simple implementation of a retractable keyboard
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
     }

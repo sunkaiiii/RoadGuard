@@ -8,11 +8,17 @@
 import Foundation
 import MemoryCache
 
+/**
+ # Implementation of memory cache, not persistent
+ This is the first level of cache used for the fastest response to an already cached network request. cache access is thread-safe.
+ */
 final class InMemoryDataCache:CacheController{
 
 
     
     public static let shared:CacheController = InMemoryDataCache()
+    
+    /// NSCache is one of the candidate delegate classes, however, it is not suitable for data caching of non-class types.
     private let cache:MemoryCache
     
     private init(){

@@ -9,7 +9,8 @@ import Foundation
 import UIKit
 
 extension UIViewController{
-    //references on https://www.xspdf.com/help/50710991.html
+    /// In the lower part of the page, a text for a reminder is displayed
+    /// references on https://www.xspdf.com/help/50710991.html
     func showToast(message : String, font: UIFont = .systemFont(ofSize: 14.0)) {
 
         let toastLabel = UILabel(frame: CGRect(x: self.view.frame.size.width/2 - 150, y: self.view.frame.size.height-150, width: 300, height: heightForView(text: message, font: font, width: 300)))
