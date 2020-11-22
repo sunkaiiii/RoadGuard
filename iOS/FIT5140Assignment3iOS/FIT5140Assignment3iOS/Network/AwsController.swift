@@ -20,13 +20,13 @@ class AwsController{
         }
         AWSServiceManager.default()?.defaultServiceConfiguration = configuration
     }
-    func uploadFile(data:Data)->String {
+    func uploadFile(data:Data,block:AWSS3TransferUtilityUploadCompletionHandlerBlock? = nil)->String {
         let key = UUID().uuidString + ".jpg"
         let utility = AWSS3TransferUtility.default()
         let expression = AWSS3TransferUtilityUploadExpression()
         expression.setValue("public-read-write", forRequestHeader: "x-amz-acl")
         expression.setValue("public-read-write", forRequestParameter: "x-amz-acl")
-        utility.uploadData(data, bucket: bucketName,key: key, contentType: "image/jpg", expression: expression, completionHandler: nil).continueWith(block: {(task)->Any? in
+        utility.uploadData(data, bucket: bucketName,key: key, contentType: "image/jpg", expression: expression, completionHandler:block).continueWith(block: {(task)->Any? in
             if let res = task.result {
                 print("upload task result = \(res)")
             }

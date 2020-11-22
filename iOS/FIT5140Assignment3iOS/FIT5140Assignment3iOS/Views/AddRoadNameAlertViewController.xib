@@ -12,8 +12,9 @@
             <connections>
                 <outlet property="addImageLabel" destination="oju-Df-fQh" id="QUc-2B-4tU"/>
                 <outlet property="imageView" destination="P4L-0m-cQb" id="eQr-jx-7uY"/>
+                <outlet property="indicator" destination="dyz-15-IgU" id="Rg2-ZA-cqH"/>
                 <outlet property="nameField" destination="VcI-7e-4gl" id="JcC-2a-0jR"/>
-                <outlet property="saveBtn" destination="i5M-Pr-FkT" id="cyt-if-eNq"/>
+                <outlet property="saveBtn" destination="xsK-St-qUn" id="RmO-6u-J9o"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -36,16 +37,35 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsK-St-qUn">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gq7-JW-kLk">
                             <rect key="frame" x="0.0" y="90" width="390" height="30"/>
-                            <color key="backgroundColor" systemColor="linkColor"/>
-                            <state key="normal" title="Save">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="saveCustomInformation:" destination="-1" eventType="touchUpInside" id="8Bi-vY-Sa5"/>
-                            </connections>
-                        </button>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xsK-St-qUn">
+                                    <rect key="frame" x="0.0" y="0.0" width="390" height="30"/>
+                                    <color key="backgroundColor" systemColor="linkColor"/>
+                                    <state key="normal" title="Save">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="saveCustomInformation:" destination="-1" eventType="touchUpInside" id="8Bi-vY-Sa5"/>
+                                    </connections>
+                                </button>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="dyz-15-IgU">
+                                    <rect key="frame" x="185" y="5" width="20" height="20"/>
+                                    <color key="color" systemColor="systemBackgroundColor"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="dyz-15-IgU" firstAttribute="centerY" secondItem="gq7-JW-kLk" secondAttribute="centerY" id="2wy-96-BXy"/>
+                                <constraint firstItem="xsK-St-qUn" firstAttribute="leading" secondItem="gq7-JW-kLk" secondAttribute="leading" id="Aac-EO-JGd"/>
+                                <constraint firstAttribute="trailing" secondItem="xsK-St-qUn" secondAttribute="trailing" id="VSg-Of-o50"/>
+                                <constraint firstAttribute="bottom" secondItem="xsK-St-qUn" secondAttribute="bottom" id="Xxh-iS-zs8"/>
+                                <constraint firstItem="dyz-15-IgU" firstAttribute="centerX" secondItem="gq7-JW-kLk" secondAttribute="centerX" id="Zfw-O7-7jv"/>
+                                <constraint firstAttribute="height" constant="30" id="hs7-Qn-niw"/>
+                                <constraint firstItem="xsK-St-qUn" firstAttribute="top" secondItem="gq7-JW-kLk" secondAttribute="top" id="iAW-Lc-dF4"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="height" constant="120" id="GuT-Kr-asC"/>
