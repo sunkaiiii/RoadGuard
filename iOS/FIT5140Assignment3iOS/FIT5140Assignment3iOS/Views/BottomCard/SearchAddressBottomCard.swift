@@ -29,8 +29,6 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
     let SECTION_CONTENT_NEARBY = 3
     let DEFAULT_CELL_ID = "DefaultCell"
     let BOTTOM_CARD_CELL_ID = BottomCardSpecifyCell.identifier
-
-    //根据需要展示的内容，更改数据类型和内容
     var tableViewDataSourceSpecify : [SearchPlaceDetail]  = []
     var tableViewDataSourceNearby : [PlaceDetail] =  []
     
@@ -43,8 +41,6 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
         searchAddressBottomCardTableViewOutlet.dataSource = self
         searchAddressBottomCardTableViewOutlet.register(UITableViewCell.self, forCellReuseIdentifier: DEFAULT_CELL_ID)
         searchAddressBottomCardTableViewOutlet.register(BottomCardSpecifyCell.nib(), forCellReuseIdentifier: BOTTOM_CARD_CELL_ID)
-
-        
 
         locationManager.delegate = self
         locationManager.requestTemporaryFullAccuracyAuthorization(withPurposeKey: "wantAccurateLocation", completion: {
@@ -174,27 +170,14 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
     }
 
     func handleNearByRoadResponse(_ nearestRoads:NearestRoadResponse){
-        //TODO place id对比
         locationManager.stopUpdatingLocation()
-        //Todo 刷新位置按钮
         self.tableViewDataSourceNearby.removeAll()
-
-
         nearestRoads.snappedPoints.forEach({(points) in
             requestCachegableDataFromRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: points.placeID), jsonType: PlaceDetailResponse.self, cachegableHelper: PlaceDetailResponseCacheDataHelper())
         })
-
-        
-        //考虑for each循环完再reaload的话, case placeDetail 里是否还需要reaload,  以及这里会不会造成线程异步问题?
-        //这里要不要把更新UI明确放在主线程？（不太清楚现在是什么线程）
-        //after updating table view data source, reload table view
-//        searchAddressBottomCardTableViewOutlet.reloadData()
     }
     
     func handlePlaceDetailResponse(_ placeDetailResponse:PlaceDetailResponse){
-
-        //这里要不要把更新UI明确放在主线程？（不太清楚现在是什么线程）
-        //attach into tableView and reload view
         self.tableViewDataSourceNearby.append(placeDetailResponse.result)
         self.searchAddressBottomCardTableViewOutlet.reloadSections([SECTION_CONTENT_NEARBY], with: .automatic)
     }

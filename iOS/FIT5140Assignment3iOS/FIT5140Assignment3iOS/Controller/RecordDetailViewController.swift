@@ -11,8 +11,6 @@ import Charts
 class RecordDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
 
     @IBOutlet weak var recordDetailTableView: UITableView!
-
-    //需要更改数据类型
     var drivingRecord : DrivingRecordResponse?
     
     let SECTION_MAP = 0
@@ -38,8 +36,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
         recordDetailTableView.register(RecordDetailChartCell.nib(), forCellReuseIdentifier: CHART_CELL_ID)
         recordDetailTableView.register(RecordDetailDistractionSummaryCell.nib(), forCellReuseIdentifier: DISTRACTION_CELL_ID)
         recordDetailTableView.register(RecordDeailOverSpeedTableViewCell.nib(), forCellReuseIdentifier: OVER_SPEED_CELL_ID)
-    
-        // Do any additional setup after loading the view.
+
     }
     
 
@@ -124,7 +121,6 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == DISTRACTION_DETAIL_PAGE_SEGUE {
             if let des = segue.destination as? DistractionDetailViewController{
-                //需要改传值类型
                 let data = sender as? ((locationName: String, facialInfo: FacialInfo, type: DetailType))
                 des.selectedDistractionRecord = data?.1
                 des.selectedDistractionLocationName = data?.0

@@ -10,7 +10,6 @@ import UIKit
 import MapKit
 
 protocol RoadInfoBottomCardDelegate: class {
-    //这里回头需要改下传值的类型
     func jumpToSelectedRowDetailPage(selectedRow: UserSelectedRoadResponse)
     func calculateTotalNumberAndDistance(roadRecords: [UserSelectedRoadResponse])
 }
@@ -30,7 +29,6 @@ class RoadInfoBottomCard : UIViewController, UITableViewDelegate, UITableViewDat
     let DEFAULT_CELL_ID = "DefaultCell"
     let BOTTOM_CARD_CELL_ID = BottomCardImportantRoadCell.identifier
 
-    //根据需要展示的内容，更改数据类型和内容
     var selectRoadDataSource : [UserSelectedRoadResponse]  = []
     weak var databaseProtocol:DatabaseProtocol?
 

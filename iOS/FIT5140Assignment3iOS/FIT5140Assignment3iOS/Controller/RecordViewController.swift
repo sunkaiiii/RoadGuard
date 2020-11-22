@@ -18,8 +18,6 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
     
     // MARK: - Top Scroll Tab Bar Related Fields
     var tabContentViews:[UIViewController] = []
-    //这里需要根据传入的record数据，替换下这个数组
-    //需要传入带月份信息的 record对象
     var montlyRecords : [String]  = []
     var dataSource:[Int:[DrivingRecordResponse]] = [:]
 
@@ -54,9 +52,9 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
         viewPager.eyStyle.tabItemSelectedColor = .white
         viewPager.eyStyle.tabItemDefaultFont = UIFont.boldSystemFont(ofSize: 16.0)
         viewPager.eyStyle.tabItemSelectedFont = UIFont.boldSystemFont(ofSize: 16.0)
-        viewPager.currentTabIndex = Calendar.current.component(.month, from: Date()) - 1 //get current month number refereces on https://stackoverflow.com/questions/55492003/how-can-i-find-current-month-name-and-current-month-number-in-swift
+        viewPager.currentTabIndex = Calendar.current.component(.month, from: Date()) - 1
+        //get current month number refereces on https://stackoverflow.com/questions/55492003/how-can-i-find-current-month-name-and-current-month-number-in-swift
         viewPager.buildUI()
-//        self.viewPager.contentInset.bottom = self.tabBarController?.tabBar.frame.height ?? 0
     }
 
     func wtsNumberOfTabs() -> Int {
@@ -86,9 +84,6 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        setUpContentViewForEachTab()
-//        setUpViewPager()
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -108,7 +103,6 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == DETAIL_PAGE_SEGUE_ID {
             if let des = segue.destination as? RecordDetailViewController, let respone = sender as? DrivingRecordResponse{
-                //需要改传值类型
                 des.drivingRecord = respone
             }
 

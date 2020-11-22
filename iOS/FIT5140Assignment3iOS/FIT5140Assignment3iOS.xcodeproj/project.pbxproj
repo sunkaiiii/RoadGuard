@@ -120,7 +120,6 @@
 		E4DF3AE3255A140D004B96C5 /* ImportantPathTableViewContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF3AE2255A140D004B96C5 /* ImportantPathTableViewContentCell.swift */; };
 		E4DF3AE7255A141F004B96C5 /* ImportantPathTableViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF3AE6255A141F004B96C5 /* ImportantPathTableViewHeaderCell.swift */; };
 		E4E6FE872559711000DC8050 /* ImportantPathDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E6FE862559711000DC8050 /* ImportantPathDetailViewController.swift */; };
-		E4EE85152554FBEF00208C71 /* RealmExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EE85142554FBEF00208C71 /* RealmExtension.swift */; };
 		E4F59EC72552DA8300286BE7 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F59EC62552DA8300286BE7 /* MulticastDelegate.swift */; };
 		E4FECFB3254F9ECF0072555F /* AnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */; };
 		E4FECFBE254FAEC90072555F /* DrienDistanceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FECFBC254FAEC90072555F /* DrienDistanceTableViewCell.swift */; };
@@ -250,7 +249,6 @@
 		E4DF3AE2255A140D004B96C5 /* ImportantPathTableViewContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantPathTableViewContentCell.swift; sourceTree = "<group>"; };
 		E4DF3AE6255A141F004B96C5 /* ImportantPathTableViewHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantPathTableViewHeaderCell.swift; sourceTree = "<group>"; };
 		E4E6FE862559711000DC8050 /* ImportantPathDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportantPathDetailViewController.swift; sourceTree = "<group>"; };
-		E4EE85142554FBEF00208C71 /* RealmExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmExtension.swift; sourceTree = "<group>"; };
 		E4F59EC62552DA8300286BE7 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		E4FECFB2254F9ECF0072555F /* AnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalysisViewController.swift; sourceTree = "<group>"; };
 		E4FECFBC254FAEC90072555F /* DrienDistanceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrienDistanceTableViewCell.swift; sourceTree = "<group>"; };
@@ -387,7 +385,6 @@
 				B13CEFF725410D5F00957E84 /* UITextFieldHelper.swift */,
 				B13CEFFB25410D7400957E84 /* ToastHelper.swift */,
 				B13CEFFE25410D9200957E84 /* AlertControllerHelper.swift */,
-				E4EE85142554FBEF00208C71 /* RealmExtension.swift */,
 				B14053322566884300327A09 /* GoogleMapExtension.swift */,
 				B1D3B849256A16F800DB8781 /* NavigationBarHelper.swift */,
 			);
@@ -774,7 +771,6 @@
 				E45B486E254CF66E00692A2E /* WormTabStrip.swift in Sources */,
 				B10185D72553D6DF00A5A11A /* SearchPlaceResponse.swift in Sources */,
 				E43F4869256803CA00254001 /* DistractionTimePeriodTableViewCell.swift in Sources */,
-				E4EE85152554FBEF00208C71 /* RealmExtension.swift in Sources */,
 				E4AE1717255E1042009B1DAA /* DistractionSpeedLimitSuperView.swift in Sources */,
 				B13C2609254AAA69008EBDE3 /* ScrollableViewController.swift in Sources */,
 				B13CEFE32540FDC900957E84 /* RestfulModel.swift in Sources */,

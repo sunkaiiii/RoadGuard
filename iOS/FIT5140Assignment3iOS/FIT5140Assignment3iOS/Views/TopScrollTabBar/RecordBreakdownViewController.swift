@@ -21,13 +21,10 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
 
     let SECTION_HEADER = 0
     let SECTION_CONTENT = 1
-    //这里需要换成customer cell 暂时先放default
     let DEFAULT_CELL_ID = "DefaultCell"
     let TABLE_HEADER_CELL_ID = RecordPageHeaderTableViewCell.identifier
     let TABLE_CONTENT_CELL_ID = RecordBkdTableViewCell.identifier
     var monthIndex:Int = 0
-
-    //根据需要展示的内容，更改数据类型和内容
     var tableViewDataSource:[DrivingRecordResponse] = []
 
     override func viewDidLoad() {
@@ -80,7 +77,7 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
             let cell = tableView.dequeueReusableCell(withIdentifier: TABLE_CONTENT_CELL_ID, for: indexPath) as! RecordBkdTableViewCell
             let record = tableViewDataSource[indexPath.row]
             cell.initWithData(record)
-            //调用cell.configure给图片和label赋值
+
             cell.iconImageOutlet.image = UIImage(systemName: "person.crop.circle")
             return cell
         }
@@ -113,7 +110,7 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
 
     @objc func showFilterOptions(_ gestureRecognizer: UITapGestureRecognizer){
         let actionOptions = UIAlertController(title: "Chose a User", message: "Chose a User", preferredStyle: .actionSheet)
-        //这里考虑写个循环 根据用户数量添加
+
         actionOptions.addAction(UIAlertAction(title: "User1", style: .default, handler: { (action: UIAlertAction) in
             //what to do after clicking
         }))
