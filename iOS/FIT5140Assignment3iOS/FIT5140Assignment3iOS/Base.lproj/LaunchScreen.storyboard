@@ -14,46 +14,8 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yKf-XJ-NYm">
-                                <rect key="frame" x="166" y="346.5" width="82" height="203.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="711-bB-y6x">
-                                        <rect key="frame" x="8" y="0.0" width="66.5" height="143.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="120"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="VIC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rza-0x-WWc">
-                                        <rect key="frame" x="0.0" y="143.5" width="82" height="60"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="50"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Safty First" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hqo-AL-QQu">
-                                <rect key="frame" x="123.5" y="205.5" width="167" height="42"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="35"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1402709615-vectorcopy" translatesAutoresizingMaskIntoConstraints="NO" id="hoV-iF-mxE">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="917"/>
-                            </imageView>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="Hqo-AL-QQu" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.5" id="2Sh-nu-feL"/>
-                            <constraint firstItem="yKf-XJ-NYm" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="48w-4s-G4w"/>
-                            <constraint firstItem="Hqo-AL-QQu" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5Jt-qj-rXw"/>
-                            <constraint firstItem="yKf-XJ-NYm" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="B1g-qD-5RV"/>
-                            <constraint firstItem="hoV-iF-mxE" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="OwN-hH-cVu"/>
-                            <constraint firstItem="hoV-iF-mxE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="bEz-zC-ssB"/>
-                            <constraint firstItem="hoV-iF-mxE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="h7R-ci-KzY"/>
-                            <constraint firstAttribute="bottom" secondItem="hoV-iF-mxE" secondAttribute="bottom" constant="-21" id="qne-x8-Wl3"/>
-                        </constraints>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -61,7 +23,4 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="1402709615-vectorcopy" width="2020" height="1749"/>
-    </resources>
 </document>
