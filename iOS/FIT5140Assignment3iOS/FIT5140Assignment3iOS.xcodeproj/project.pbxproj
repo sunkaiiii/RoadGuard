@@ -66,6 +66,9 @@
 		B1AB3A9925446A580082B004 /* SpeedAlertSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AB3A9825446A580082B004 /* SpeedAlertSuperView.swift */; };
 		B1C10EBA25483C8B008BDC64 /* SpeedLimitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C10EB925483C8B008BDC64 /* SpeedLimitResponse.swift */; };
 		B1D3B8012569553300DB8781 /* EditRoadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D3B8002569553300DB8781 /* EditRoadViewController.swift */; };
+		B1D3B8222569EB3500DB8781 /* AddRoadNameAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D3B8202569EB3500DB8781 /* AddRoadNameAlertViewController.swift */; };
+		B1D3B8232569EB3500DB8781 /* AddRoadNameAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1D3B8212569EB3500DB8781 /* AddRoadNameAlertViewController.xib */; };
+		B1D3B8452569F18000DB8781 /* AwsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D3B8442569F18000DB8781 /* AwsController.swift */; };
 		B1DFBC99255AD613000B7256 /* UserSelectedRoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DFBC98255AD613000B7256 /* UserSelectedRoad.swift */; };
 		B1E9473225615618007C74AD /* CurrentSpeedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E9473125615618007C74AD /* CurrentSpeedResponse.swift */; };
 		B1E947352561562C007C74AD /* DefaultSimpleGetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E947342561562C007C74AD /* DefaultSimpleGetModel.swift */; };
@@ -192,6 +195,9 @@
 		B1AB3A9825446A580082B004 /* SpeedAlertSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedAlertSuperView.swift; sourceTree = "<group>"; };
 		B1C10EB925483C8B008BDC64 /* SpeedLimitResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedLimitResponse.swift; sourceTree = "<group>"; };
 		B1D3B8002569553300DB8781 /* EditRoadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRoadViewController.swift; sourceTree = "<group>"; };
+		B1D3B8202569EB3500DB8781 /* AddRoadNameAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoadNameAlertViewController.swift; sourceTree = "<group>"; };
+		B1D3B8212569EB3500DB8781 /* AddRoadNameAlertViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddRoadNameAlertViewController.xib; sourceTree = "<group>"; };
+		B1D3B8442569F18000DB8781 /* AwsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwsController.swift; sourceTree = "<group>"; };
 		B1DFBC98255AD613000B7256 /* UserSelectedRoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectedRoad.swift; sourceTree = "<group>"; };
 		B1E9473125615618007C74AD /* CurrentSpeedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSpeedResponse.swift; sourceTree = "<group>"; };
 		B1E947342561562C007C74AD /* DefaultSimpleGetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSimpleGetModel.swift; sourceTree = "<group>"; };
@@ -348,6 +354,7 @@
 				B13CEFE525410B6F00957E84 /* NetworkExtension.swift */,
 				B13CEFE825410BA100957E84 /* NetworkRequestTask.swift */,
 				B1466EA22548EEE1008ED039 /* FirebaseController.swift */,
+				B1D3B8442569F18000DB8781 /* AwsController.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -400,6 +407,8 @@
 				B1AB3AA025446D0B0082B004 /* SuperViews */,
 				E45B4869254CF5F400692A2E /* TopScrollTabBar */,
 				B1F7D0092566159B001AFBFD /* GradientView.swift */,
+				B1D3B8202569EB3500DB8781 /* AddRoadNameAlertViewController.swift */,
+				B1D3B8212569EB3500DB8781 /* AddRoadNameAlertViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -682,6 +691,7 @@
 				E45B487A254D023600692A2E /* RecordBkdTableViewCell.xib in Resources */,
 				E4BA6E7F25450307001D0CD7 /* BottomCardSpecifyCell.xib in Resources */,
 				B13CEFCF2540FAF900957E84 /* Main.storyboard in Resources */,
+				B1D3B8232569EB3500DB8781 /* AddRoadNameAlertViewController.xib in Resources */,
 				B13C25FB254936B1008EBDE3 /* GoogleService-Info.plist in Resources */,
 				E40D975C254437E90012DAB6 /* SearchAddressBottomCard.xib in Resources */,
 				B13CF0072541A8F200957E84 /* SpeedAlertView.xib in Resources */,
@@ -803,6 +813,7 @@
 				B190D3CD25447113002249BA /* CurrentSpeedInformationSuperView.swift in Sources */,
 				B1139AC6255C11B4002EA26E /* ImportantPatDetailViewControllerExtension.swift in Sources */,
 				B170FC74254290D00086F1D9 /* SpeedNotificationView.swift in Sources */,
+				B1D3B8222569EB3500DB8781 /* AddRoadNameAlertViewController.swift in Sources */,
 				B13CEFF825410D5F00957E84 /* UITextFieldHelper.swift in Sources */,
 				B1F632512563FFE700787119 /* CachegableData.swift in Sources */,
 				E4F59EC72552DA8300286BE7 /* MulticastDelegate.swift in Sources */,
@@ -826,6 +837,7 @@
 				B1E94743256248C2007C74AD /* DrivingRecordResponse.swift in Sources */,
 				B13CEFF425410D2B00957E84 /* ImagePicker.swift in Sources */,
 				E48F391D2562A158001A8C1F /* BarChartTableViewCell.swift in Sources */,
+				B1D3B8452569F18000DB8781 /* AwsController.swift in Sources */,
 				B10185D42553D4B000A5A11A /* SearchPlaceRequest.swift in Sources */,
 				B1466EA62548EF16008ED039 /* SpeedRecord.swift in Sources */,
 				B13CEFF125410D1500957E84 /* ImageExtension.swift in Sources */,

@@ -39,6 +39,7 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
         initViews()
         initTopTableData()
         initGoogleMap()
+        calculatePassedTime()
     }
 
     // MARK: - TableView
