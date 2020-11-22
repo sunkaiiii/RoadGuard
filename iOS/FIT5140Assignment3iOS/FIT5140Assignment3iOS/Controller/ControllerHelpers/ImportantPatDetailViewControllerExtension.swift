@@ -49,7 +49,6 @@ extension ImportantPathDetailViewController{
         var i = 0
         var j = 0
         var path = GMSMutablePath()
-        //TODO calculated by original index
         while(i<selectedRoad.selectedRoads.count){
             let point = selectedRoad.selectedRoads[i]
             if roads[j] == point.placeID{
@@ -78,5 +77,22 @@ extension ImportantPathDetailViewController{
         polyLine?.map = importantPathGoogleMapView
         //rendering 2 decimal places for a double, references on https://www.codegrepper.com/code-examples/swift/swift+double+2+decimal+places
         totalLengthNumberLabel.text = String(format: "%.2f", path.length(of: .geodesic)/1000.0)
+    }
+    
+    func calculatePassedTime(){
+        guard let selecterRoad = selectedRoad?.id, let firebaseController = (UIApplication.shared.delegate as? AppDelegate)?.firebaseController else {
+            return
+        }
+        var calculateSet:[String] = []
+        let drivingRecordList = firebaseController.getAllDrivingRecord()
+        drivingRecordList.forEach({(record) in
+            if let id = record.id{
+                let facialList = firebaseController.getFacialRecordByRecordId(id)
+                if facialList.contains(where: {(facial) in facial.selectedRoadIds?.contains(selecterRoad) ?? false}){
+                    calculateSet.append(id)
+                }
+            }
+        })
+        passTimesLabel.text = "\(calculateSet.count)"
     }
 }

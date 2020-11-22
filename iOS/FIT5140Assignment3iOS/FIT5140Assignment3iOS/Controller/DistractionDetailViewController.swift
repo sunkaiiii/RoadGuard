@@ -26,9 +26,11 @@ class DistractionDetailViewController: UIViewController {
     @IBOutlet weak var bottomCircleLabel: UILabel!
     
     var mapview:GMSMapView?
-    //需要改为传入的值
+    
+
     var selectedDistractionLocationName : String?
     var selectedDistractionRecord : FacialInfo?
+    var detailType:DetailType?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,8 +63,14 @@ class DistractionDetailViewController: UIViewController {
             })
 
             var counter = 0
+            let skipText:String
+            if detailType == DetailType.distraction{
+                skipText = "CALM"
+            }else{
+                skipText = ""
+            }
             for element in emotions!{
-                if element.type != "CALM" {
+                if element.type != skipText {
                     switch counter {
                         case 0:
                             topCircleLabel.text = element.type
@@ -131,4 +139,9 @@ class DistractionDetailViewController: UIViewController {
     }
     */
 
+}
+
+enum DetailType{
+    case distraction
+    case overspeed
 }

@@ -249,7 +249,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2.4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LqJ-X3-bvR">
-                                                            <rect key="frame" x="29" y="41.5" width="31.5" height="40"/>
+                                                            <rect key="frame" x="29.5" y="41.5" width="31.5" height="40"/>
                                                             <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="19"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -621,7 +621,7 @@
                                                     <subviews>
                                                         <view contentMode="scaleToFill" restorationIdentifier="osicon" translatesAutoresizingMaskIntoConstraints="NO" id="qH2-P2-PN5" userLabel="osicon">
                                                             <rect key="frame" x="0.0" y="0.0" width="15" height="16"/>
-                                                            <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                            <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="15" id="6JL-ry-kQo"/>
                                                                 <constraint firstAttribute="height" constant="16" id="fAU-jf-kD5"/>
@@ -630,7 +630,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OverSpeed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="nWb-fM-x3S">
                                                             <rect key="frame" x="28" y="0.0" width="120.5" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                            <color key="textColor" systemColor="systemRedColor"/>
+                                                            <color key="textColor" systemColor="systemYellowColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -676,10 +676,10 @@
                                             </subviews>
                                         </stackView>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tE3-vP-iEE">
-                                            <rect key="frame" x="178.5" y="62" width="180.5" height="187"/>
+                                            <rect key="frame" x="178.5" y="62" width="180.5" height="186.5"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYa-OG-Cwm" customClass="DistractionSpeedLimitSuperView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
-                                                    <rect key="frame" x="114" y="129.5" width="58.5" height="49.5"/>
+                                                    <rect key="frame" x="114" y="129" width="58.5" height="49.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="lYa-OG-Cwm" secondAttribute="height" multiplier="59:50" id="foB-ht-MkP"/>
@@ -869,8 +869,11 @@
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
