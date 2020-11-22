@@ -26,6 +26,12 @@ struct UserSelectedRoadResponse:Codable {
         case placeIds = "PlaceIds"
     }
     
+    init(customName:String, storedUrl:String,roadInformation:[SnappedPointResponse]) {
+        self.init(roadInformation: roadInformation)
+        self.selectedRoadCustomName = customName
+        self.userCustomImage = storedUrl
+    }
+    
     init(roadInformation:[SnappedPointResponse]) {
         self.createTime = Date.init()
         self.passedTime = nil

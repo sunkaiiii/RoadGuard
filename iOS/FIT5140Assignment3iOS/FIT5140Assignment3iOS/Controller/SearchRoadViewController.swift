@@ -8,9 +8,8 @@
 import UIKit
 import GoogleMaps
 
-class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMapViewDelegate,DefaultHttpRequestAction,BottomCardSpeicifyCellDelegate {
+class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMapViewDelegate,DefaultHttpRequestAction,BottomCardSpeicifyCellDelegate, CustomRoadControllerDelegate {
 
-    
     @IBOutlet weak var googleMapView: GMSMapView!
     @IBOutlet weak var selectMapItem: UIBarButtonItem!
     @IBOutlet weak var cancelItem: UIBarButtonItem!
@@ -85,11 +84,8 @@ class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMa
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate, snapPoints.count > 0 else {
                 return
             }
-            let firebaseController = appDelegate.firebaseController
-            let response = firebaseController?.addSelectedeRoad(UserSelectedRoadResponse(roadInformation:self.snapPoints))
-            print(response ?? "")
-            snapPoints = []
-            self.navigationController?.popViewController(animated: true)
+            let alertController = AddRoadNameAlertViewController(delegate: self)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -178,6 +174,17 @@ class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMa
         bototmScrollableViewController.cardHandleAreaHeight = self.view.frame.height / 5 + 15
         bototmScrollableViewController.cardHeight =  self.view.frame.height / 4 * 3
         self.view.addSubview(bototmScrollableViewController)
+    }
+    
+    func didCustomFinished(customName: String, storedUrl: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        let firebaseController = appDelegate.firebaseController
+        let response = firebaseController?.addSelectedeRoad(UserSelectedRoadResponse(customName: customName, storedUrl: storedUrl ,roadInformation:self.snapPoints))
+        print(response ?? "")
+        snapPoints = []
+        self.navigationController?.popViewController(animated: true)
     }
 
 }

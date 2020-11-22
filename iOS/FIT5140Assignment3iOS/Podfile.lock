@@ -212,6 +212,9 @@ PODS:
     - abseil/base/base_internal
     - abseil/base/config
     - abseil/meta/type_traits
+  - AWSCore (2.19.1)
+  - AWSS3 (2.19.1):
+    - AWSCore (= 2.19.1)
   - BoringSSL-GRPC (0.0.7):
     - BoringSSL-GRPC/Implementation (= 0.0.7)
     - BoringSSL-GRPC/Interface (= 0.0.7)
@@ -349,6 +352,8 @@ PODS:
   - TinyConstraints (4.0.1)
 
 DEPENDENCIES:
+  - AWSCore
+  - AWSS3
   - Charts
   - Firebase/Auth
   - Firebase/Core
@@ -363,6 +368,8 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - abseil
+    - AWSCore
+    - AWSS3
     - BoringSSL-GRPC
     - Charts
     - Firebase
@@ -391,6 +398,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
+  AWSCore: 55c154ae27efc5c98bdc30a0eeea5a35d10a2ab5
+  AWSS3: 2272253b098d07803af8dd20ce6ce7302bcffb47
   BoringSSL-GRPC: 8edf627ee524575e2f8d19d56f068b448eea3879
   Charts: b1e3a1f5a1c9ba5394438ca3b91bd8c9076310af
   Firebase: 8db6f2d1b2c5e2984efba4949a145875a8f65fe5
@@ -417,6 +426,6 @@ SPEC CHECKSUMS:
   RealmSwift: cc52fe0dcea56387274dff36e19219e055a3bb84
   TinyConstraints: 8dd91295e56797648c7bc335dd20e1d91ec4c192
 
-PODFILE CHECKSUM: 5fab73f8f75cac24d91692ef2aea2da183882094
+PODFILE CHECKSUM: 04410cb0fd76c52effb71fa0f9802460f236500d
 
 COCOAPODS: 1.10.0

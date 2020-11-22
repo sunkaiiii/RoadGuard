@@ -16,4 +16,6 @@ target 'FIT5140Assignment3iOS' do
   pod 'TinyConstraints'
   pod 'RealmSwift'
   pod 'MemoryCache'
+  pod 'AWSS3'
+  pod 'AWSCore'
 end

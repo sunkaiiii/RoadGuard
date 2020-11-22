@@ -9,22 +9,24 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 import MapKit
+import AWSCore
+import AWSS3
 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var firebaseController:DatabaseProtocol?
-
+    var awsController:AwsController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         GMSServices.provideAPIKey(GoogleMapAPIKey)
         GMSPlacesClient.provideAPIKey(GoogleMapAPIKey)
         firebaseController = FirebaseController()
-
+        awsController = AwsController()
         return true
     }
-
+    
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
