@@ -27,7 +27,32 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction ,
     override func viewWillDisappear(_ animated: Bool) {
         restoreNavigationBar()
     }
-    
+
+    func calculateTotalNumberAndDistance(roadRecords: [UserSelectedRoadResponse]){
+        //local func used to calculate the length of all the roads selected inside one record
+        func calculatePathLength(roadRecord: UserSelectedRoadResponse)->Double{
+            var lastPlaceId:String = ""
+            let path = GMSMutablePath()
+            roadRecord.selectedRoads.forEach{(road) in
+                if road.placeID != lastPlaceId{
+                    path.add(CLLocationCoordinate2D(latitude: road.location.latitude, longitude: road.location.longitude))
+                }
+                lastPlaceId = road.placeID
+            }
+            return path.length(of: .geodesic)
+        }
+
+        //calculate the totla length and count, assign the result to UI
+        var lengthTotal = 0.0
+        var selectedRoadsCount = 0
+        for record in roadRecords{
+            lengthTotal = lengthTotal + calculatePathLength(roadRecord: record)
+            selectedRoadsCount += record.selectedRoads.count
+        }
+        roadsCountLabel.text = "\(selectedRoadsCount)"
+        totalDistanceLabel.text = "Total Length: \((lengthTotal/1000).rounded(.up)) KM"
+    }
+
     // MARK: - Network Request
     func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
         
@@ -59,28 +84,5 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction ,
     // MARK: - RoadInfoBottomCardDelegate
     func jumpToSelectedRowDetailPage(selectedRow: UserSelectedRoadResponse) {
         performSegue(withIdentifier: DETAIL_PAGE_SEGUE_ID, sender: selectedRow)
-    }
-
-    func calculateTotalNumberAndDistance(roadRecords: [UserSelectedRoadResponse]){
-        func calculatePathLength(roadRecord: UserSelectedRoadResponse)->Double{
-            var lastPlaceId:String = ""
-            let path = GMSMutablePath()
-            roadRecord.selectedRoads.forEach{(road) in
-                if road.placeID != lastPlaceId{
-                    path.add(CLLocationCoordinate2D(latitude: road.location.latitude, longitude: road.location.longitude))
-                }
-                lastPlaceId = road.placeID
-            }
-            return path.length(of: .geodesic)
-        }
-
-        var lengthTotal = 0.0
-        var selectedRoadsCount = 0
-        for record in roadRecords{
-            lengthTotal = lengthTotal + calculatePathLength(roadRecord: record)
-            selectedRoadsCount += record.selectedRoads.count
-        }
-        roadsCountLabel.text = "\(selectedRoadsCount)"
-        totalDistanceLabel.text = "Total Length: \((lengthTotal/1000).rounded(.up)) KM"
     }
 }
