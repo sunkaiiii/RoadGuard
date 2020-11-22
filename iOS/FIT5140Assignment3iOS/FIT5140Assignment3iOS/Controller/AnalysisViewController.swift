@@ -106,7 +106,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 valueFormatterForXAxis.values = labels
 
                 let set = BarChartDataSet(barChartDataEntries)
-                set.colors = [NSUIColor.blue]
+                set.colors = [NSUIColor(named: "AnalyseBarSetColor") ?? .cyan]
                 let data = BarChartData(dataSet: set)
                 let pFormatter = NumberFormatter()
                 pFormatter.numberStyle = .none
@@ -236,11 +236,11 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 pFormatter.multiplier = 1
                 pFormatter.percentSymbol = " %"
                 chartData.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
-                chartData.setValueTextColor(.black)
+                chartData.setValueTextColor(.label)
                 chartData.setValueFont(.systemFont(ofSize: 8, weight: .light))
 
                 cell.pieChart.data = chartData
-                cell.pieChart.entryLabelColor = .black
+                cell.pieChart.entryLabelColor = .label
                 cell.pieChart.entryLabelFont = .systemFont(ofSize: 10, weight: .light)
                 cell.pieChart.legend.enabled = false
 
@@ -312,7 +312,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
                 let set = BarChartDataSet(barChartDataEntries)
 
-                set.colors = [NSUIColor.blue]
+                set.colors = [NSUIColor(named: "AnalyseBarSetColor") ?? .cyan]
                 let data = BarChartData(dataSet: set)
 
                 let pFormatter = NumberFormatter()
@@ -411,7 +411,14 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
                 let chartDataSet = PieChartDataSet(entries: pieChartDataEnties, label: nil)
 
-                chartDataSet.colors = ChartColorTemplates.material()
+                var colors : [NSUIColor] = []
+                let allGoodColor = NSUIColor(named: "analysis-allgood")
+                colors.append(allGoodColor!)
+                let likelyFocusColor = NSUIColor(named: "analysis-likelyFocus")
+                colors.append(likelyFocusColor!)
+                let distractionColor = NSUIColor(named: "analysis-distraction")
+                colors.append(distractionColor!)
+                chartDataSet.colors = colors
                 chartDataSet.valueLinePart1OffsetPercentage = 0.8
                 chartDataSet.valueLinePart1Length = 0.2
                 chartDataSet.valueLinePart2Length = 0.4
@@ -426,11 +433,11 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 pFormatter.multiplier = 1
                 pFormatter.percentSymbol = " %"
                 chartData.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
-                chartData.setValueTextColor(.black)
+                chartData.setValueTextColor(.label)
                 chartData.setValueFont(.systemFont(ofSize: 8, weight: .light))
 
                 cell.pieChart.data = chartData
-                cell.pieChart.entryLabelColor = .black
+                cell.pieChart.entryLabelColor = .label
                 cell.pieChart.entryLabelFont = .systemFont(ofSize: 10, weight: .light)
                 cell.pieChart.legend.enabled = false
 
@@ -488,21 +495,25 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
                 let valueFormatterForXAxis = IndexAxisValueFormatter(values: labels)
                 valueFormatterForXAxis.values = labels
+                
 
                 let set = BarChartDataSet(barChartDataEntries)
-                set.colors = [NSUIColor.blue]
+                set.colors = [NSUIColor(named: "AnalyseBarSetColor") ?? .cyan]
                 let data = BarChartData(dataSet: set)
                 barChart!.data = data
                 barChart!.rightAxis.enabled = false
+                
 
                 let yAxis = barChart!.leftAxis
                 yAxis.labelFont = .boldSystemFont(ofSize: 12)
+                yAxis.labelTextColor = .label
                 yAxis.labelPosition = .outsideChart
                 yAxis.granularity = 1
 
                 let xAxis = barChart?.xAxis
                 xAxis?.drawGridLinesEnabled = false
                 xAxis?.labelPosition = .bottom
+                xAxis?.labelTextColor = .label
                 xAxis?.labelFont = .boldSystemFont(ofSize: 12)
 
                 xAxis?.valueFormatter = valueFormatterForXAxis
@@ -616,11 +627,11 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 pFormatter.multiplier = 1
                 pFormatter.percentSymbol = " %"
                 chartData.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
-                chartData.setValueTextColor(.black)
+                chartData.setValueTextColor(.label)
                 chartData.setValueFont(.systemFont(ofSize: 8, weight: .light))
 
                 cell.pieChart.data = chartData
-                cell.pieChart.entryLabelColor = .black
+                cell.pieChart.entryLabelColor = .label
                 cell.pieChart.entryLabelFont = .systemFont(ofSize: 10, weight: .light)
                 cell.pieChart.legend.enabled = false
 

@@ -95,6 +95,8 @@ class SpeedRecordExtractor(threading.Thread):
                         cameraCapture.camera_capturing(gps_info,gps_info.speed,place_ids,self.document_id, self.current_speed_limit)
 
 
+    # 1. get speed from OBD2
+    # 2. if the OBD2 is not available, get the spped from the GPS
     def get_current_speed(self):
         speed = OBD2Helper.get_current_speed()
         if speed == -sys.maxsize:
