@@ -7,6 +7,13 @@
 
 import UIKit
 
+/**
+ Network requests will occur in this category
+ ***
+ All network processes will be invoked at once in the execution. In this order: buildCompleteUrl -> beforeExecution -> after(error)Execution
+ ***
+ The instantiated Task must pass a return value of type Decodable, the class of Decodable is usually response. e.g. Request GetNameRequest, the T in this case is usually the GetNameResponse class
+ */
 class NetworkRequestTask<T> : NSObject where T:Decodable{
     let requestHelper:RequestHelper
     let requestAction:HTTPRequestAction
@@ -24,6 +31,7 @@ class NetworkRequestTask<T> : NSObject where T:Decodable{
         self.onCompltedAction = onCompleted
     }
     
+    /// When this method is invoked, the network request is started. Simultaneous execution of all pipeline methods
     func fetchDataFromSever(){
         let urlAndComponents = requestHelper.buildUrlComponents()
         guard let url = urlAndComponents.0 else{
@@ -36,8 +44,7 @@ class NetworkRequestTask<T> : NSObject where T:Decodable{
                 switch result{
                 case .success(let (response,data)):
                     guard let statusCode = (response as? HTTPURLResponse)?.statusCode, 200..<299 ~= statusCode else {
-                        //TODO handle this
-//                        self.requestAction.executionFailed(helper: requestHelper, message: "InvalidResponse", error: )
+                        self.requestAction.executionFailed(helper: self.requestHelper, message: "InvalidResponse", error: NSError())
                         return
                     }
                     do{
