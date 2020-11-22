@@ -150,7 +150,11 @@ class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMa
         self.navigationController?.popViewController(animated: true)
     }
 
-    // MARK: - IBAction
+    /**
+     Hide the search when selecting a road.
+     At the end of the road selection, the search is displayed.
+     When saving, check whether the road has already been selected and display the naming pop-up.
+     */
     @IBAction func onSelectButtonClick(_ sender: Any) {
         if selectMapItem.title == SELECT_TEXT{
             selectMarkers.forEach({(markers) in markers.map = nil})
@@ -171,7 +175,7 @@ class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMa
                 requestRestfulService(api: GoogleApi.snapToRoads, model: SnapToRoadsRequest(points: points), jsonType: SnapToRoadsResponse.self)
             }
         }else if selectMapItem.title == SAVE_ROAD_TEXT{
-            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate, snapPoints.count > 0 else {
+            guard snapPoints.count > 0 else {
                 return
             }
             let alertController = AddRoadNameAlertViewController(delegate: self)

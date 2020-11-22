@@ -99,6 +99,7 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
     @objc func editIconOnClick(_ gestureRecognizer: UITapGestureRecognizer){
         actionOptions = UIAlertController(title: "Chose an Option", message: "", preferredStyle: .actionSheet)
         actionOptions?.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (action: UIAlertAction) in
+            // For deleted records, a second confirmation should be made
             self.deleteOption = UIAlertController(title: "Do you want to delete?", message: "", preferredStyle: .actionSheet)
             self.deleteOption?.addAction(UIAlertAction(title: "Delete", style: .default, handler: {(action) in
                 if let controller = (UIApplication.shared.delegate as? AppDelegate)?.firebaseController,let id = self.selectedRoad?.id{

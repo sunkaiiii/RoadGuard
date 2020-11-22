@@ -57,6 +57,7 @@ class RecordDetailMatrixCell: UITableViewCell {
         }
         
         let facialList = databaseController.getFacialRecordByRecordId(id)
+        //Calculate the number of times the distraction is applied in this record
         let time = facialList.filter({(facial) in
             let detail = facial.faceDetails
             if detail.count > 0{

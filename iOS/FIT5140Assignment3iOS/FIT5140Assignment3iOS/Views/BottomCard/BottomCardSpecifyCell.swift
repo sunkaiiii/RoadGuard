@@ -24,6 +24,7 @@ class BottomCardSpecifyCell: UITableViewCell {
         return UINib(nibName: "BottomCardSpecifyCell", bundle: nil)
     }
     
+    //The content of the search contains addresses and images loaded onto the cell
     func initWithPlaceDetail(_ placeDetail:PlaceDetail){
         headerLabel.text = placeDetail.name
         var subContent = ""
@@ -46,6 +47,7 @@ class BottomCardSpecifyCell: UITableViewCell {
         initImageClick()
     }
     
+    //When clicked on, the delete is triggered and the marker is set on the mapview of the main controller.
     func initImageClick(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(addButtonTapped(tapGesture:)))
         addRoadBtn.isUserInteractionEnabled = true

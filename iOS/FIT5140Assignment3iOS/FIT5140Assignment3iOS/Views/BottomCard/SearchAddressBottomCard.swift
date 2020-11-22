@@ -59,12 +59,14 @@ class SearchAddressBottomCard : UIViewController, UITableViewDelegate, UITableVi
             return true
     }
     
+    //When the user enters an address, it will automatically search for items for them.
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let timer = searchAddressTimer{
             if timer.isValid{
                 timer.invalidate()
             }
         }
+        //The trigger condition for the search is that the user has not entered any new content within 1 second.
         searchAddressTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats:false, block: {(timer) in
             self.requestSearchAddress(searchText)
         } )

@@ -45,6 +45,8 @@ extension ImportantPathDetailViewController{
         if roads.count == 0 || selectedRoad.selectedRoads.count == 0{
             return
         }
+        //The data exists as points in the firestore and may contain successive placeid, e.g. 1, 1, 1, 2, 2, 2, 3, 3
+        //The following operation removes all duplicate placeid and preserves the original order to ensure the accuracy of the calculations.
         var i = 0
         var j = 0
         var path = GMSMutablePath()
@@ -78,6 +80,7 @@ extension ImportantPathDetailViewController{
         totalLengthNumberLabel.text = String(format: "%.2f", path.length(of: .geodesic)/1000.0)
     }
     
+    //Each repeated crossing in a drivingRecord is considered to be 1, so passedtime will not be more than the current number of drivingRecords.
     func calculatePassedTime(){
         guard let selecterRoad = selectedRoad?.id, let firebaseController = (UIApplication.shared.delegate as? AppDelegate)?.firebaseController else {
             return

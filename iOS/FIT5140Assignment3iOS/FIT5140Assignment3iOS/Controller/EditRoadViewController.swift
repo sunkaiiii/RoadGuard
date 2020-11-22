@@ -70,6 +70,8 @@ class EditRoadViewController: UIViewController,DefaultHttpRequestAction,GMSMapVi
         selectMarkers.removeAll()
     }
     
+    //When adding roads, set a delegate for mapview.
+    //Set the delgate of the mapview to nil at the end of the add.
     @IBAction func drawAction(_ sender: Any) {
         hasAltered = true
         if drawControlBtn.title == DONE{

@@ -76,7 +76,8 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
         }
     }
 
-    // MARK: - Core Location
+    /// if the method is been called,The status of the server will be requested
+    /// If exceed the speed limit, this will be prompted full screen notification
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locationInformation = locations.last else {
             return
@@ -85,6 +86,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
         marker.position = locationInformation.coordinate
         let gmsCamera = GMSCameraPosition.camera(withLatitude: locationInformation.coordinate.latitude, longitude: locationInformation.coordinate.longitude, zoom: 19)
         mapview?.camera = gmsCamera
+        marker.map = mapview
         requestRestfulService(api: RaspberryPiApi.get_current_speed, model: DefaultSimpleGetModel(), jsonType: CurrentSpeedResponse.self)
     }
 
@@ -96,12 +98,14 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
             if currentSpeedResponse.isError{
                 return
             }
+            //After acquiring the current speed, acquire the speed limit
             self.currentSpeed = currentSpeedResponse.speed
             speedAlertView.setCurrentSpeed(speed: "\(currentSpeedResponse.speed)")
             requestRestfulService(api: RaspberryPiApi.get_speed_limit, model: DefaultSimpleGetModel(), jsonType: SpeedLimitResponse.self)
         case .get_speed_limit:
             let speedLimitResponse:SpeedLimitResponse = accessibleData.retriveData()
             if !speedLimitResponse.isError{
+                //Determine if you are speeding after obtaining the current speed and speed limit
                 self.speedLimit = speedLimitResponse.speedLimit
                 speedNotificationView.setSpeedNotification("\(self.speedLimit)")
                 validateSpeed()

@@ -31,12 +31,14 @@ class BottomCardImportantRoadCell: UITableViewCell,DefaultHttpRequestAction {
     func initWithSelectedRoadData(_ selectedRoad:UserSelectedRoadResponse){
         self.headerLabel.text = selectedRoad.selectedRoadCustomName
         self.imageUrl = selectedRoad.userCustomImage ?? ""
+        //Take the first and last points to form from and to
         if selectedRoad.selectedRoads.count > 0{
             firstPoint = selectedRoad.selectedRoads.first
             lastPoint = selectedRoad.selectedRoads.last
             guard let first = firstPoint, let last = lastPoint else {
                 return
             }
+            // Because the coordinates are accessed, the interface needs to be called to obtain the placeId
             requestCachegableDataFromRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: first.placeID), jsonType: PlaceDetailResponse.self, cachegableHelper: PlaceDetailResponseCacheDataHelper())
             requestCachegableDataFromRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: last.placeID), jsonType: PlaceDetailResponse.self, cachegableHelper: PlaceDetailResponseCacheDataHelper())
         }

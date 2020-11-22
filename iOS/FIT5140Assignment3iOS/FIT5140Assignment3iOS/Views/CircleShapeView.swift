@@ -7,6 +7,7 @@
 
 import UIKit
 
+///The bound of the view will be a circle
 @IBDesignable class CircleShapeView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
