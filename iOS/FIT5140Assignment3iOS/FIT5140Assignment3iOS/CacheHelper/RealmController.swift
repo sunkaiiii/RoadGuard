@@ -8,28 +8,17 @@
 import Foundation
 import RealmSwift
 
+/**
+ # Controller for the management of all Realm Db objects
+
+ */
 final class RealmController:CacheController{
     
     static let shared = RealmController()
     private var realm : Realm?
     
     private init(){
-        //realm 支持多用户时使用这段代码
-        //assign the db file path to by different user
-        //active this code when enabling account switch.
-        //but may move this code to somewhere else
-        //        func setDefaultRealmForUser(username: String) {
-        //            var config = Realm.Configuration()
-        //
-        //            // Use the default directory, but replace the filename with the username
-        //            config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("\(username).realm")
-        //
-        //            // Set this as the configuration used for the default Realm
-        //            Realm.Configuration.defaultConfiguration = config
-        //        }
-
         //https://realm.io/docs/swift/latest/#using-the-realm-framework
-        //continue using realm when the phone is locked
         do {
             //create realm db instance
             realm  = try Realm()
@@ -38,13 +27,11 @@ final class RealmController:CacheController{
             let folderPath = realm?.configuration.fileURL!.deletingLastPathComponent().path
             print("Below is Realm File Path: \(String(describing: folderPath))")
 
-            // Disable file protection for this directory
+            // Disable file protection for this directory to enable using realm when the phone is locked
             try! FileManager.default.setAttributes([FileAttributeKey(rawValue: FileAttributeKey.protectionKey.rawValue): FileProtectionType.none], ofItemAtPath: folderPath!)
         } catch let error as NSError{
             print(error)
-            //handle error
         }
-
     }
     
     func getPlaceDetailCacheData(_ placeId:String)->PlaceDetailResponse?{
@@ -111,7 +98,7 @@ final class RealmController:CacheController{
         let placeDetailResponseRealmModel = PlaceDetailResponseRealmModel()
         placeDetailResponseRealmModel.result = result
 
-        //store into realm
+        //store data into Realm DB
         do{
             try realm?.write{
                 realm?.add(placeDetailResponseRealmModel)
@@ -122,4 +109,3 @@ final class RealmController:CacheController{
         return
     }
 }
-

@@ -22,9 +22,6 @@ class RecordDetailMatrixCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-//        let blurEffect = UIBlurEffect(style: .light)
-//        backgroundVisualEffectView.effect = blurEffect
         backgroundVisualEffectView.layer.cornerRadius = 24
         backgroundVisualEffectView.contentView.layer.cornerRadius = 24
 

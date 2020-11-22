@@ -30,7 +30,6 @@ class EditRoadViewController: UIViewController,DefaultHttpRequestAction,GMSMapVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         initViews()
     }
     

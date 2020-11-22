@@ -14,22 +14,17 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var analysisPageTableView: UITableView!
 
     var listenerType: [ListenerType] = [.facial,.drivingRecord]
-
-
     let SECTION_UPPER = 0
     let SECTION_LOWER = 1
     let DRIVINGSTATUS_CELL_ID = "DrivingStatusTableViewCell"
     let DRIVING_DISTANC_CELL_ID = "DrienDistanceTableViewCell"
     let DISTRACTION_PERIOD_CELL_ID = "DistractionTimePeriodTableViewCell"
-
     var facialInfoList:[FacialInfo] = []
     var drivingRecordList:[DrivingRecordResponse] = []
-    
     weak var firebaseController: DatabaseProtocol?
 
     // MARK: - view lifecycle
     override func viewDidLoad() {
-
         super.viewDidLoad()
         firebaseController = (UIApplication.shared.delegate as! AppDelegate).firebaseController
         analysisPageTableView.delegate = self
@@ -37,7 +32,6 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
         analysisPageTableView.register(DrivingStatusTableViewCell.nib(), forCellReuseIdentifier: DRIVINGSTATUS_CELL_ID)
         analysisPageTableView.register(DrienDistanceTableViewCell.nib(), forCellReuseIdentifier: DRIVING_DISTANC_CELL_ID)
         analysisPageTableView.register(DistractionTimePeriodTableViewCell.nib(), forCellReuseIdentifier: DISTRACTION_PERIOD_CELL_ID)
-
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -105,7 +99,6 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                     let label = "\(dateComponents[0])/\(dateComponents[1])"
                     labels.append(label)
                     barChartDataEntries.append(dataEntry)
-                    //Todo: 这里需要Charts的ValueFormatter用以替换x轴坐标label
                     counter += 1
                 }
 
@@ -172,7 +165,6 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                             distractionFacials.append(element)
                         }
                     }
-
                 }
 
                 cell.pieChart.chartDescription?.text = ""

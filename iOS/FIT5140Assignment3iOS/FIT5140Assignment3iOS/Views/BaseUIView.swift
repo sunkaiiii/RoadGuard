@@ -20,8 +20,6 @@ open class BaseUIView:UIView{
     }
     
     func addXibView(){
-//        print(self.classForCoder.class())
-//        print("\(self.classForCoder.class())")
         if let view = Bundle(for: self.classForCoder.class()).loadNibNamed(XibName(), owner: nil, options: nil)?.first as? UIView{
             self.addSubview(view)
             view.frame=bounds

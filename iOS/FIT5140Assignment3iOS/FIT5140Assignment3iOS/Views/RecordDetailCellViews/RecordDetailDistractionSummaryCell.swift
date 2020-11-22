@@ -21,7 +21,6 @@ class RecordDetailDistractionSummaryCell: UITableViewCell , UITableViewDelegate,
 
     @IBOutlet weak var backgroundVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var distractionTableView: UITableView!
-    //需更改数据源
     var dataSource : [FacialInfo] = []
     let CELL_ID = DistractionDetailCell.identifier
 
@@ -60,9 +59,7 @@ class RecordDetailDistractionSummaryCell: UITableViewCell , UITableViewDelegate,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CELL_ID, for: indexPath) as! DistractionDetailCell
         let facialInfo = dataSource[indexPath.row]
-//        cell.delegate = self
         cell.initDistractionDetail(facialInfo)
-        //给cell传值
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -74,7 +71,6 @@ class RecordDetailDistractionSummaryCell: UITableViewCell , UITableViewDelegate,
     }
 
     func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
-        //跳转
         let cell = tableView.cellForRow(at: indexPath) as! DistractionDetailCell
 
         let distractionPlaceName = cell.distractionPlaceName

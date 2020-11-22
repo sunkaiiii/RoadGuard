@@ -46,7 +46,7 @@ class DistractionDetailViewController: UIViewController {
 
 
         if selectedDistractionRecord != nil{
-            //Todo, 路名还没传入? roadname label
+
             roadNameLabel.text = selectedDistractionLocationName
 
             //set time label
@@ -133,16 +133,6 @@ class DistractionDetailViewController: UIViewController {
             mapview.layer.zPosition = -.greatestFiniteMagnitude
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 enum DetailType{
