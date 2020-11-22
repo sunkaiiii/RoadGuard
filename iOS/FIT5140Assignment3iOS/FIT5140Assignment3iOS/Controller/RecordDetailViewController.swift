@@ -117,11 +117,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
     }
 
     func tableView(_ tableView: UITableView,didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == SECTION_DISTRACTION_SUMMARY{
-            recordDetailTableView.deselectRow(at:indexPath,animated:true)
-        } else{
-            recordDetailTableView.deselectRow(at:indexPath,animated:true)
-        }
+        recordDetailTableView.deselectRow(at:indexPath,animated:true)
     }
 
     // MARK: - Navigation

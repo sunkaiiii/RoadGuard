@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,31 +26,28 @@
                         <state key="normal" title="Button" image="chevron.right" catalog="system"/>
                     </button>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="n5k-IN-7os">
-                        <rect key="frame" x="8" y="40" width="284" height="60"/>
+                        <rect key="frame" x="8" y="49.5" width="160.5" height="41.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Time and location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ioa-au-z0v">
-                                <rect key="frame" x="0.0" y="0.0" width="284" height="36.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time and location" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ioa-au-z0v">
+                                <rect key="frame" x="0.0" y="0.0" width="160.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Speed an limited speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5BD-4W-Mq5">
-                                <rect key="frame" x="0.0" y="39.5" width="284" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Speed an limited speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="5BD-4W-Mq5">
+                                <rect key="frame" x="0.0" y="23.5" width="160.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="60" id="Yzj-w4-Elj"/>
-                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="n5k-IN-7os" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="8lg-aI-f7r"/>
                     <constraint firstItem="B0a-Yi-g53" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="8" id="FM5-zv-qc8"/>
                     <constraint firstItem="B0a-Yi-g53" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Gf1-9W-MMY"/>
-                    <constraint firstItem="B0a-Yi-g53" firstAttribute="leading" secondItem="n5k-IN-7os" secondAttribute="trailing" constant="8" id="Qgo-ev-ssy"/>
+                    <constraint firstItem="B0a-Yi-g53" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="n5k-IN-7os" secondAttribute="trailing" constant="8" id="Qgo-ev-ssy"/>
                     <constraint firstItem="n5k-IN-7os" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="uLI-Yc-pix"/>
                 </constraints>
             </tableViewCellContentView>

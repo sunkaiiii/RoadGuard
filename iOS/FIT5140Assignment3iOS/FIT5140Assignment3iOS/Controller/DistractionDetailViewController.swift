@@ -116,6 +116,10 @@ class DistractionDetailViewController: UIViewController {
             ImageLoader.simpleLoad(selectedDistractionRecord?.imageURL, imageView: topImage)
         }
 
+        if detailType != nil, detailType! == .overspeed{
+            self.navigationItem.title = "Overspeed Detail"
+        }
+
         initGoogleMap()
 
     }
