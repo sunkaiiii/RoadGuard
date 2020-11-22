@@ -12,7 +12,9 @@ import GoogleMaps
 class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttpRequestAction {
 
     @IBOutlet weak var startServiceItem: UIBarButtonItem!
-    
+    @IBOutlet weak var speedAlertView: SpeedAlertSuperView!
+    @IBOutlet weak var speedNotificationView: SpeedNotificationSuperView!
+    @IBOutlet weak var bottomSpacingConstraint: NSLayoutConstraint!
     var isRunning = false
     let manager = CLLocationManager.init()
     var mapview:GMSMapView?
@@ -20,12 +22,9 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
     var currentSpeed = -1
     var speedLimit = -1
     weak var firebaseController:DatabaseProtocol?
-    @IBOutlet weak var speedAlertView: SpeedAlertSuperView!
-    @IBOutlet weak var speedNotificationView: SpeedNotificationSuperView!
-    
-    @IBOutlet weak var bottomSpacingConstraint: NSLayoutConstraint!
-
     var lastPosition:CLLocationCoordinate2D?
+
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -76,7 +75,8 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
             mapview.layer.zPosition = -.greatestFiniteMagnitude
         }
     }
-    
+
+    // MARK: - Core Location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locationInformation = locations.last else {
             return
@@ -87,7 +87,8 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
         mapview?.camera = gmsCamera
         requestRestfulService(api: RaspberryPiApi.get_current_speed, model: DefaultSimpleGetModel(), jsonType: CurrentSpeedResponse.self)
     }
-    
+
+    // MARK: - Network Request
     func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
         switch helper.restfulAPI as? RaspberryPiApi{
         case .get_current_speed:
@@ -147,7 +148,8 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
         
         alertView.showAlertView(currentSpeed: currentSpeed, limitedSpeed: limitedSpeed)
     }
-    
+
+    // MARK: - IBAction
     @IBAction func requestActionToServer(_ sender: Any) {
         if isRunning{
             requestRestfulService(api: RaspberryPiApi.stop_service, model: DefaultSimpleGetModel(), jsonType: StopServiceResponse.self)
@@ -159,6 +161,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,DefaultHttp
 
 
 extension HomeViewController{
+    // MARK: - Network Request Handler
     func beforeExecution(helper: RequestHelper) {
         if (helper.restfulAPI as? RaspberryPiApi) == RaspberryPiApi.get_current_server_status{
             startServiceItem.isEnabled = false

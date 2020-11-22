@@ -12,7 +12,6 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
 
     @IBOutlet weak var recordDetailTableView: UITableView!
     var drivingRecord : DrivingRecordResponse?
-    
     let SECTION_MAP = 0
     let SECTION_MATRIX = 1
     let SECTION_CHART = 2
@@ -24,9 +23,9 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
     let CHART_CELL_ID = RecordDetailChartCell.identifier
     let DISTRACTION_CELL_ID = RecordDetailDistractionSummaryCell.identifier
     let OVER_SPEED_CELL_ID = RecordDeailOverSpeedTableViewCell.identifier
-
     let DISTRACTION_DETAIL_PAGE_SEGUE = "distractionDetailSegue"
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         recordDetailTableView.delegate = self
@@ -36,9 +35,7 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
         recordDetailTableView.register(RecordDetailChartCell.nib(), forCellReuseIdentifier: CHART_CELL_ID)
         recordDetailTableView.register(RecordDetailDistractionSummaryCell.nib(), forCellReuseIdentifier: DISTRACTION_CELL_ID)
         recordDetailTableView.register(RecordDeailOverSpeedTableViewCell.nib(), forCellReuseIdentifier: OVER_SPEED_CELL_ID)
-
     }
-    
 
     // MARK: - TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -98,7 +95,6 @@ class RecordDetailViewController: UIViewController, UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == SECTION_MAP {
             return self.view.frame.width - 20
-
         } else if indexPath.section == SECTION_MATRIX{
             return self.view.frame.height / 4 + 20
         } else if indexPath.section == SECTION_CHART{

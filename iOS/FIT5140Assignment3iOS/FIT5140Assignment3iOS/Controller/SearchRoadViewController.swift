@@ -25,6 +25,8 @@ class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMa
     var backItem:UINavigationItem?
     var bottomContentView:UIView?
     var polyLine:GMSPolyline?
+
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         backItem = navigationController?.navigationBar.backItem
@@ -35,11 +37,12 @@ class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMa
         //hiding the UIBarButtonItems, refrences on https://stackoverflow.com/questions/25492491/make-a-uibarbuttonitem-disappear-using-swift-ios
         cancelItem.isEnabled = false
     }
+
     func initGoogleMap(){
         marker.map = googleMapView
     }
+
     func initLocationManager(){
-        
         locationManager.requestTemporaryFullAccuracyAuthorization(withPurposeKey: "wantAccurateLocation", completion: {
             error in
             if let error = error{
@@ -48,8 +51,9 @@ class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMa
             self.locationManager.delegate = self
             self.locationManager.startUpdatingLocation()
         })
-
     }
+
+    // MARK: - Core Location
     //using snap to road API, references on https://developers.google.com/maps/documentation/roads/snap
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.first  else {
@@ -61,6 +65,92 @@ class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMa
         marker.position = location.coordinate
     }
 
+    // MARK: - Google Map
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        let marker = GMSMarker(position: coordinate)
+        marker.map = googleMapView
+        selectMarkers.append(marker)
+    }
+
+    //Hidden view with animition
+    //References on https://stackoverflow.com/questions/36340595/uiview-slide-in-animation
+    func setBottomContentViewHidden(_ isHidden:Bool){
+        guard let contentView = bottomContentView else {
+            return
+        }
+        UIView.transition(with: contentView, duration: 0.8, options: .curveLinear, animations: {
+            if isHidden{
+                contentView.frame.origin.y = contentView.frame.origin.y + 120
+            }else{
+                contentView.isHidden = isHidden
+                contentView.frame.origin.y = contentView.frame.origin.y - 120
+            }
+        }, completion: {(completed) in contentView.isHidden = isHidden})
+    }
+
+    //draw a line in the google map view, references on the usage of javescript api https://developers.google.com/maps/documentation/roads/snap
+    func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
+        switch helper.restfulAPI as? GoogleApi {
+            case .snapToRoads:
+                let response:SnapToRoadsResponse = accessibleData.retriveData()
+                let points = response.snappedPoints
+                drawPathIntoMap(points: points)
+                self.snapPoints = points
+            default:
+                return
+        }
+    }
+
+    func drawPathIntoMap(points:[SnappedPointResponse]){
+        let path = GMSMutablePath()
+        points.forEach({(point) in path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))})
+        polyLine = GMSPolyline(path: path)
+        polyLine?.map = googleMapView
+        selectMapItem.title = SAVE_ROAD_TEXT
+    }
+
+    func addRoad(roadInfo: RoadInformation) {
+        selectedRoads.append(roadInfo)
+        requestPathBySelectedRoads()
+    }
+
+    func removeRoad(roadInfo: RoadInformation) {
+        guard let index = selectedRoads.firstIndex(where: {(road) in road.placeID == roadInfo.placeID}) else {
+            return
+        }
+        selectedRoads.remove(at: index)
+        requestPathBySelectedRoads()
+    }
+
+    func requestPathBySelectedRoads(){
+        let points = selectedRoads.map({(road)->CLLocationCoordinate2D in CLLocationCoordinate2D(latitude: road.latitude, longitude: road.longitude)})
+        requestRestfulService(api: GoogleApi.snapToRoads, model: SnapToRoadsRequest(points: points), jsonType: SnapToRoadsResponse.self)
+    }
+
+    // MARK: - BottomCard/FloatPanel Related functions
+    func setupBottomCard(){
+        let contentView = SearchAddressBottomCard(nibName:"SearchAddressBottomCard", bundle:nil)
+        contentView.searchAddressDelegate = self
+        let bototmScrollableViewController = BottomScrollableView(contentViewController: contentView, superview: self.view)
+        bottomContentView = bototmScrollableViewController
+        bototmScrollableViewController.cardHandleAreaHeight = self.view.frame.height / 5 + 15
+        bototmScrollableViewController.cardHeight =  self.view.frame.height / 4 * 3
+        self.view.addSubview(bototmScrollableViewController)
+    }
+
+    // MARK: - FireBase
+    func didCustomFinished(customName: String, storedUrl: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        let firebaseController = appDelegate.firebaseController
+        let response = firebaseController?.addSelectedeRoad(UserSelectedRoadResponse(customName: customName, storedUrl: storedUrl ,roadInformation:self.snapPoints))
+        print(response ?? "")
+        snapPoints = []
+        self.navigationController?.popViewController(animated: true)
+    }
+
+    // MARK: - IBAction
     @IBAction func onSelectButtonClick(_ sender: Any) {
         if selectMapItem.title == SELECT_TEXT{
             selectMarkers.forEach({(markers) in markers.map = nil})
@@ -101,90 +191,4 @@ class SearchRoadViewController: UIViewController,CLLocationManagerDelegate,GMSMa
         selectMapItem.title = SELECT_TEXT
         cancelItem.isEnabled = false
     }
-    
-    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
-        let marker = GMSMarker(position: coordinate)
-        marker.map = googleMapView
-        selectMarkers.append(marker)
-    }
-    
-    //Hidden view with animition
-    //References on https://stackoverflow.com/questions/36340595/uiview-slide-in-animation
-    func setBottomContentViewHidden(_ isHidden:Bool){
-        guard let contentView = bottomContentView else {
-            return
-        }
-        UIView.transition(with: contentView, duration: 0.8, options: .curveLinear, animations: {
-            if isHidden{
-                contentView.frame.origin.y = contentView.frame.origin.y + 120
-            }else{
-                contentView.isHidden = isHidden
-                contentView.frame.origin.y = contentView.frame.origin.y - 120
-            }
-        }, completion: {(completed) in contentView.isHidden = isHidden})
-    }
-    
-    //draw a line in the google map view, references on the usage of javescript api https://developers.google.com/maps/documentation/roads/snap
-    func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
-        switch helper.restfulAPI as? GoogleApi {
-        case .snapToRoads:
-            let response:SnapToRoadsResponse = accessibleData.retriveData()
-            let points = response.snappedPoints
-            drawPathIntoMap(points: points)
-            self.snapPoints = points
-        default:
-            return
-        }
-    }
-    
-    
-    func drawPathIntoMap(points:[SnappedPointResponse]){
-        let path = GMSMutablePath()
-        points.forEach({(point) in path.add(CLLocationCoordinate2D(latitude: point.location.latitude, longitude: point.location.longitude))})
-        polyLine = GMSPolyline(path: path)
-        polyLine?.map = googleMapView
-        selectMapItem.title = SAVE_ROAD_TEXT
-    }
-    
-
-    func addRoad(roadInfo: RoadInformation) {
-        selectedRoads.append(roadInfo)
-        requestPathBySelectedRoads()
-    }
-    
-    func removeRoad(roadInfo: RoadInformation) {
-        guard let index = selectedRoads.firstIndex(where: {(road) in road.placeID == roadInfo.placeID}) else {
-            return
-        }
-        selectedRoads.remove(at: index)
-        requestPathBySelectedRoads()
-    }
-    
-    func requestPathBySelectedRoads(){
-        let points = selectedRoads.map({(road)->CLLocationCoordinate2D in CLLocationCoordinate2D(latitude: road.latitude, longitude: road.longitude)})
-        requestRestfulService(api: GoogleApi.snapToRoads, model: SnapToRoadsRequest(points: points), jsonType: SnapToRoadsResponse.self)
-    }
-
-    // MARK: - BottomCard/FloatPanel Related functions
-    func setupBottomCard(){
-        let contentView = SearchAddressBottomCard(nibName:"SearchAddressBottomCard", bundle:nil)
-        contentView.searchAddressDelegate = self
-        let bototmScrollableViewController = BottomScrollableView(contentViewController: contentView, superview: self.view)
-        bottomContentView = bototmScrollableViewController
-        bototmScrollableViewController.cardHandleAreaHeight = self.view.frame.height / 5 + 15
-        bototmScrollableViewController.cardHeight =  self.view.frame.height / 4 * 3
-        self.view.addSubview(bototmScrollableViewController)
-    }
-    
-    func didCustomFinished(customName: String, storedUrl: String) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
-            return
-        }
-        let firebaseController = appDelegate.firebaseController
-        let response = firebaseController?.addSelectedeRoad(UserSelectedRoadResponse(customName: customName, storedUrl: storedUrl ,roadInformation:self.snapPoints))
-        print(response ?? "")
-        snapPoints = []
-        self.navigationController?.popViewController(animated: true)
-    }
-
 }
