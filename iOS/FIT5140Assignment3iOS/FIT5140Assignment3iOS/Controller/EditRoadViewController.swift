@@ -121,14 +121,13 @@ class EditRoadViewController: UIViewController,DefaultHttpRequestAction,GMSMapVi
         marker.map = mapView
         selectMarkers.append(marker)
     }
-    
+
     // MARK: - Firebase
     func didCustomFinished(customName: String, storedUrl: String) {
         if let databaseController = (UIApplication.shared.delegate as? AppDelegate)?.firebaseController, let id = selectedRoad?.id, let points = snapPoints, points.count > 0{
             if let newRoad = databaseController.editSelectedRoad(id, points: points, customName: customName, storedUrl: storedUrl){
                 delegate?.roadDidEdited(newRoad: newRoad)
             }
-            
         }
         navigationController?.popViewController(animated: true)
     }

@@ -20,9 +20,7 @@ class DrienDistanceTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
         contentBackgroundview.layer.cornerRadius = 24
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

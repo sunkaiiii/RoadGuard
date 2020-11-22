@@ -7,10 +7,6 @@
 
 import UIKit
 
-//protocol DistractionDetailCellDelegate: class {
-//    var selectedDistractionInfo : (locationName: String, facialInfo: FacialInfo)?{get set}
-//}
-
 class DistractionDetailCell: UITableViewCell,DefaultHttpRequestAction {
     
     @IBOutlet weak var timeAndLocationLabel: UILabel!

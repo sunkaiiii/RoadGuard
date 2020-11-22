@@ -7,7 +7,7 @@
 
 import UIKit
 
-
+//This protocol is used for defining the bottom card handling area instance
 protocol ScrollableViewController:UIViewController{
     var areaOutlet:UIView? {get}
 }

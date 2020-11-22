@@ -9,10 +9,8 @@ import UIKit
 
 class RecordDetailMatrixCell: UITableViewCell {
     @IBOutlet weak var backgroundVisualEffectView: UIVisualEffectView!
-
     @IBOutlet weak var totalLengthLabel: UILabel!
     @IBOutlet weak var distractionTimesLabel: UILabel!
-    
     @IBOutlet weak var avgSpeedLabel: UILabel!
     @IBOutlet weak var drivingDurationLabel: UILabel!
     weak var databaseController:DatabaseProtocol?
