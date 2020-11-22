@@ -107,6 +107,7 @@ protocol RoadInformation {
 
 }
 
+//This protocol is used for passing data from BottomCardSpecifyCell to another view
 protocol BottomCardSpeicifyCellDelegate {
     func addRoad(roadInfo:RoadInformation)
     func removeRoad(roadInfo:RoadInformation)

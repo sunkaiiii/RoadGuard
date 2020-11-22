@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import MapKit
 
+//This protocol is used for passing data from RoadInfoBottomCard to another view
 protocol RoadInfoBottomCardDelegate: class {
     func jumpToSelectedRowDetailPage(selectedRow: UserSelectedRoadResponse)
     func calculateTotalNumberAndDistance(roadRecords: [UserSelectedRoadResponse])

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+
+//This protocol is used for passing data from RecordDetailDistractionSummaryCell to another View
 protocol RecordDetailDistractionSummaryCellDelegate: class {
     func jumpToSelectedRowDetailPage(selectedRow: (locationName: String, facialInfo: FacialInfo, type:DetailType))
 }

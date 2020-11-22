@@ -7,6 +7,7 @@
 
 import UIKit
 
+//This protocol is used for passing data from RecordBreakdownViewController to another view
 protocol RecordBreakdownDelegate: class {
     func jumpToSelectedRowDetailPage(selectedRow: DrivingRecordResponse)
 }
@@ -14,11 +15,8 @@ protocol RecordBreakdownDelegate: class {
 class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     weak var delegateParent: RecordBreakdownDelegate?
-
     var table:UITableView!
-
     var parentViewTabBarHeight : CGFloat = 0
-
     let SECTION_HEADER = 0
     let SECTION_CONTENT = 1
     let DEFAULT_CELL_ID = "DefaultCell"
@@ -26,6 +24,7 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
     let TABLE_CONTENT_CELL_ID = RecordBkdTableViewCell.identifier
     var monthIndex:Int = 0
     var tableViewDataSource:[DrivingRecordResponse] = []
+
     // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +32,14 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
         table = UITableView()
         table.translatesAutoresizingMaskIntoConstraints = false
         table.backgroundColor = .clear
-
         table.delegate = self
         table.dataSource = self
         table.register(RecordPageHeaderTableViewCell.nib(), forCellReuseIdentifier: TABLE_HEADER_CELL_ID)
         table.register(RecordBkdTableViewCell.nib(), forCellReuseIdentifier: TABLE_CONTENT_CELL_ID)
-
         self.view.addSubview(table)
         let widthConstraint  = NSLayoutConstraint(item: table!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: 0)
         let topConstraint = NSLayoutConstraint(item: table!, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
         let bottomConstraint = NSLayoutConstraint(item: table!, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view.safeAreaLayoutGuide, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: -parentViewTabBarHeight)
-
         view.addConstraints([widthConstraint, topConstraint, bottomConstraint])
     }
 

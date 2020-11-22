@@ -9,8 +9,6 @@ import UIKit
 
 class AddRoadNameAlertViewController: UIViewController,UIImagePickerControllerDelegate,ImagePickerDelegate {
 
-    
-
     var imagePicker:ImagePicker?
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet var saveBtn: UIButton!
