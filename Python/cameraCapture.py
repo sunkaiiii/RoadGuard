@@ -57,6 +57,8 @@ def analyse(filename,speed = -1,selectedRoadIds = None,record_id = None,speed_li
         data['recordId'] = record_id
     saver = FireStoreSaver(facial_collection)
     doc_ref = saver.save_to_firestore(data)
+    
+    # as the file has been uploaded to S3, delete the local file to save the space
     uploadImageToS3.delete_file(filename)
     return doc_ref
 
