@@ -5,16 +5,8 @@ import sys
 running = True
 gpsd = gps(mode=WATCH_ENABLE|WATCH_NEWSTYLE)
 
-# sudo apt-get update && sudo apt-get -y install gpsd gpsd-clients python-gps
-# sudo apt-get install gpsd gpsd-clients
-# sudo gpsd /dev/ttyACM0 -F /var/run/gpsd.sock
-# sudo systemctl restart gpsd.socket
-# sudo cgps -s
-# pip3 install gps
-
 # Extract GPS information from the GPS module.
 # References on https://maker.pro/raspberry-pi/tutorial/how-to-read-gps-data-with-python-on-a-raspberry-pi
-
 class GPSInformationExtractor:
     class GPSInformationResult():
         def __init__(self):

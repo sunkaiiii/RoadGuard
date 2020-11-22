@@ -7,6 +7,8 @@ cred = credentials.Certificate('/home/pi/Documents/FIT5140_Assignment3/Python/se
 firebase_admin.initialize_app(cred)
 
 db = firestore.client()
+# A helper class for Firestore.
+# A generic storage class for multiple Collection stores.
 class FireStoreSaver:
     def __init__(self,collection_name):
         self.collection_name = collection_name
