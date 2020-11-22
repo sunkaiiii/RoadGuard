@@ -10,7 +10,7 @@ import RealmSwift
 
 /**
  # Controller for the management of all Realm Db objects
-
+This is the controller class used to access Realm DB
  */
 final class RealmController:CacheController{
     
@@ -18,6 +18,7 @@ final class RealmController:CacheController{
     private var realm : Realm?
     
     private init(){
+        //Reference
         //https://realm.io/docs/swift/latest/#using-the-realm-framework
         do {
             //create realm db instance
@@ -34,24 +35,30 @@ final class RealmController:CacheController{
         }
     }
     
+    /**
+     Requesting restful services, after a successful request,handleResponseDataFromRestfulRequest will be executed
+     - parameter placeId: the id of the place
+     - returns:return the placeDetai sotred in Realm DB, if the place already in the Realm DB, otherwise return nil
+     */
     func getPlaceDetailCacheData(_ placeId:String)->PlaceDetailResponse?{
 
         let queryResults = realm?.objects(PlaceDetailResponseRealmModel.self)
 
-        //first fetch data from Realm DB
         if let noneEmptyQueryResults = queryResults {
             for queryResult in noneEmptyQueryResults {
                 if queryResult.result?.placeID == placeId{
                     let placeDetailResponse = PlaceDetailResponse(placeDetailResponseRealmModel: queryResult)
                     return placeDetailResponse
-                    //let predicate = NSPredicate(format: "placeID = %@", placeId)
-                    //let firstResultOfRealmModel = results!.filter(predicate).first
                 }
             }
         }
         return nil
     }
-    
+
+    /**
+     Requesting restful services, after a successful request,handleResponseDataFromRestfulRequest will be executed
+     - parameter placeDetail: the PlaceDetailResponse Object needs to be stored in to Realm DB
+     */
     func storePlaceDetailResponse(_ placeDetail: PlaceDetailResponse) {
         //converting placeDetail into Realm Model
         let location = PlaceDetailLocationRealmModel()
