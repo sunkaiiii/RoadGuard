@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -191,19 +191,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nCe-gB-aNr" customClass="CurrentSpeedInformationSuperView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
-                                <rect key="frame" x="129.5" y="108" width="155" height="155"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r2a-vE-9Js" customClass="CircleShapeView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
+                                <rect key="frame" x="137" y="138" width="140" height="140"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="mt3-Ow-IFU">
+                                        <rect key="frame" x="20" y="49.5" width="100.5" height="41.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N6C-rN-84l">
+                                                <rect key="frame" x="43" y="0.0" width="14.5" height="25.5"/>
+                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="21"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roads Selected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4K-gK-vNm">
+                                                <rect key="frame" x="0.0" y="25.5" width="100.5" height="16"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" name="RoadViewSpeedAlertBackground"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="155" id="gCk-u9-UMl"/>
-                                    <constraint firstAttribute="height" constant="155" id="sin-nf-f6U"/>
+                                    <constraint firstItem="mt3-Ow-IFU" firstAttribute="centerY" secondItem="r2a-vE-9Js" secondAttribute="centerY" id="E36-99-1Te"/>
+                                    <constraint firstItem="mt3-Ow-IFU" firstAttribute="centerX" secondItem="r2a-vE-9Js" secondAttribute="centerX" id="Iev-Gx-hUw"/>
+                                    <constraint firstAttribute="height" constant="140" id="wMv-kw-37X"/>
+                                    <constraint firstAttribute="width" constant="140" id="xEw-fR-NEE"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Length: 0 KM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IIp-N5-W09">
+                                <rect key="frame" x="146.5" y="293" width="121.5" height="16"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iRZ-DS-DPV"/>
                         <color key="backgroundColor" name="RpadViewBackgroundPurple"/>
                         <constraints>
-                            <constraint firstItem="nCe-gB-aNr" firstAttribute="centerX" secondItem="txg-qf-k6G" secondAttribute="centerX" id="8Jj-q1-HMA"/>
-                            <constraint firstItem="nCe-gB-aNr" firstAttribute="top" secondItem="iRZ-DS-DPV" secondAttribute="top" constant="20" id="vgI-hw-mMd"/>
+                            <constraint firstItem="IIp-N5-W09" firstAttribute="centerX" secondItem="txg-qf-k6G" secondAttribute="centerX" id="GlL-q1-ood"/>
+                            <constraint firstItem="r2a-vE-9Js" firstAttribute="top" secondItem="iRZ-DS-DPV" secondAttribute="top" constant="50" id="V5k-WW-v37"/>
+                            <constraint firstItem="IIp-N5-W09" firstAttribute="top" secondItem="r2a-vE-9Js" secondAttribute="bottom" constant="15" id="YLK-Mg-wvm"/>
+                            <constraint firstItem="r2a-vE-9Js" firstAttribute="centerX" secondItem="txg-qf-k6G" secondAttribute="centerX" id="k7l-IV-t7b"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6F2-DO-CZ2">
@@ -215,12 +245,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="roadsCountLabel" destination="N6C-rN-84l" id="ipu-C0-2Nv"/>
+                        <outlet property="totalDistanceLabel" destination="IIp-N5-W09" id="jem-2o-ddG"/>
                         <segue destination="ERA-1y-qER" kind="show" identifier="importantPathsSegue" id="lnc-pl-GGk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zm3-T1-leL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1164" y="-368"/>
+            <point key="canvasLocation" x="1163.768115942029" y="-368.30357142857139"/>
         </scene>
         <!--Important Path Detail View Controller-->
         <scene sceneID="MuT-SF-3ga">
@@ -859,6 +891,9 @@
         </namedColor>
         <namedColor name="RoadDetailViewSecondColorBackground">
             <color red="0.36470588235294116" green="0.51372549019607838" blue="0.60392156862745094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="RoadViewSpeedAlertBackground">
+            <color red="0.36470588235294116" green="0.29803921568627451" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="RpadViewBackgroundPurple">
             <color red="0.39215686274509803" green="0.32156862745098042" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
