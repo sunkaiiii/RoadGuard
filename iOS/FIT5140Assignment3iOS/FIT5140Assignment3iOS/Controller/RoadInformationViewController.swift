@@ -18,18 +18,19 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction ,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initNavigationBar()
         setupBottomCard()
     }
     
-    //let the navigation bar fully transparent, references on https://stackoverflow.com/questions/25845855/transparent-navigation-bar-ios
-    func initNavigationBar(){
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        self.navigationController?.view.backgroundColor = .clear
-
+    override func viewWillAppear(_ animated: Bool) {
+        initNavigationBar()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        restoreNavigationBar()
+    }
+    
+
+    
     
     func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
         

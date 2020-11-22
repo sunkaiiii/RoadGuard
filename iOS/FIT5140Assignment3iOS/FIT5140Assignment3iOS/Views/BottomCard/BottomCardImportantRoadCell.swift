@@ -22,6 +22,7 @@ class BottomCardImportantRoadCell: UITableViewCell,DefaultHttpRequestAction {
     var lastPoint:SnappedPointResponse?
     var startName:String?
     var endName:String?
+    private var imageUrl:String = ""
     static let identifier = "BottomCardImportantRoadCell"
     static func nib()->UINib{
         return UINib(nibName: "BottomCardImportantRoadCell", bundle: nil)
@@ -29,6 +30,7 @@ class BottomCardImportantRoadCell: UITableViewCell,DefaultHttpRequestAction {
     
     func initWithSelectedRoadData(_ selectedRoad:UserSelectedRoadResponse){
         self.headerLabel.text = selectedRoad.selectedRoadCustomName
+        self.imageUrl = selectedRoad.userCustomImage ?? ""
         if selectedRoad.selectedRoads.count > 0{
             firstPoint = selectedRoad.selectedRoads.first
             lastPoint = selectedRoad.selectedRoads.last
@@ -37,6 +39,11 @@ class BottomCardImportantRoadCell: UITableViewCell,DefaultHttpRequestAction {
             }
             requestCachegableDataFromRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: first.placeID), jsonType: PlaceDetailResponse.self, cachegableHelper: PlaceDetailResponseCacheDataHelper())
             requestCachegableDataFromRestfulService(api: GoogleApi.placeDetail, model: PlaceDetailRequest(placeId: last.placeID), jsonType: PlaceDetailResponse.self, cachegableHelper: PlaceDetailResponseCacheDataHelper())
+        }
+        if self.imageUrl.count>0{
+            ImageLoader.simpleLoad(self.imageUrl, onComplete: {(url,image) in
+                self.iconImageView.image = image?.circleMasked
+            })
         }
     }
     
@@ -72,7 +79,10 @@ class BottomCardImportantRoadCell: UITableViewCell,DefaultHttpRequestAction {
         }
         if placeDetail.result.placeID == firstPoint?.placeID{
             startName = placeDetail.result.name
-            ImageLoader.simpleLoad(placeDetail.result.icon, imageView: iconImageView)
+            if self.imageUrl.count == 0{
+                self.imageUrl = placeDetail.result.icon
+                ImageLoader.simpleLoad(placeDetail.result.icon, imageView: iconImageView)
+            }
             refreshContentLabel()
         }else if placeDetail.result.placeID == lastPoint?.placeID{
             endName = placeDetail.result.name

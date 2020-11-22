@@ -41,6 +41,8 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
         initGoogleMap()
         calculatePassedTime()
     }
+    
+    
 
     // MARK: - TableView
     func numberOfSections(in tableView: UITableView) -> Int {

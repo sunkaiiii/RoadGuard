@@ -28,7 +28,6 @@ extension ImportantPathDetailViewController{
         passTimesVisualEffectView.contentView.layer.cornerRadius = 24
         passTimesVisualEffectView.clipsToBounds = true
         passTimesVisualEffectView.contentView.clipsToBounds = true
-        self.navigationController?.navigationBar.tintColor = .white
     }
     
     func initTopTableData(){

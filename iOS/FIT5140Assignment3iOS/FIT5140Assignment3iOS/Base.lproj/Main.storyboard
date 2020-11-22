@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqt-wA-kKl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17502"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -369,28 +369,32 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="374" height="44"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="pJf-No-9ca">
-                                                                <rect key="frame" x="15" y="10" width="202" height="24"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Named Road" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76H-xf-4J0">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="169.5" height="24"/>
-                                                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
-                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HzO-MA-eUL">
-                                                                        <rect key="frame" x="181.5" y="2" width="20.5" height="18.5"/>
-                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <color key="tintColor" red="0.92941176469999998" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    </imageView>
-                                                                </subviews>
-                                                            </stackView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Test Named Road" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="76H-xf-4J0">
+                                                                <rect key="frame" x="12" y="8" width="322" height="28"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square.and.pencil" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="HzO-MA-eUL">
+                                                                <rect key="frame" x="342" y="12" width="20" height="18.5"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <color key="tintColor" red="0.92941176469999998" green="0.94117647059999998" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="20" id="K08-xR-qAP"/>
+                                                                    <constraint firstAttribute="height" constant="20" id="gKa-4Z-Qnb"/>
+                                                                </constraints>
+                                                            </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
-                                                            <constraint firstItem="pJf-No-9ca" firstAttribute="leading" secondItem="8bH-4J-pg4" secondAttribute="leading" constant="15" id="h5o-Ne-Xxk"/>
-                                                            <constraint firstItem="pJf-No-9ca" firstAttribute="centerY" secondItem="8bH-4J-pg4" secondAttribute="centerY" id="tIe-mG-ddy"/>
+                                                            <constraint firstItem="HzO-MA-eUL" firstAttribute="leading" secondItem="76H-xf-4J0" secondAttribute="trailing" constant="8" id="4kS-fb-1CX"/>
+                                                            <constraint firstAttribute="bottom" secondItem="HzO-MA-eUL" secondAttribute="bottom" constant="12" id="MO7-b3-7ox"/>
+                                                            <constraint firstItem="76H-xf-4J0" firstAttribute="leading" secondItem="8bH-4J-pg4" secondAttribute="leading" constant="12" id="OS1-h2-9ho"/>
+                                                            <constraint firstItem="HzO-MA-eUL" firstAttribute="top" secondItem="8bH-4J-pg4" secondAttribute="top" constant="12" id="Y98-TV-5YC"/>
+                                                            <constraint firstAttribute="trailing" secondItem="HzO-MA-eUL" secondAttribute="trailing" constant="12" id="fcy-eF-LOs"/>
+                                                            <constraint firstItem="76H-xf-4J0" firstAttribute="top" secondItem="8bH-4J-pg4" secondAttribute="top" constant="8" id="lpD-4D-gk4"/>
+                                                            <constraint firstAttribute="bottom" secondItem="76H-xf-4J0" secondAttribute="bottom" constant="8" id="ppe-8l-5n4"/>
                                                         </constraints>
                                                     </tableViewCellContentView>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -708,10 +712,10 @@
                                             </subviews>
                                         </stackView>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tE3-vP-iEE">
-                                            <rect key="frame" x="178.5" y="62" width="180.5" height="186.5"/>
+                                            <rect key="frame" x="178.5" y="62" width="180.5" height="187"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYa-OG-Cwm" customClass="DistractionSpeedLimitSuperView" customModule="FIT5140Assignment3iOS" customModuleProvider="target">
-                                                    <rect key="frame" x="114" y="129" width="58.5" height="49.5"/>
+                                                    <rect key="frame" x="114" y="129.5" width="58.5" height="49.5"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="lYa-OG-Cwm" secondAttribute="height" multiplier="59:50" id="foB-ht-MkP"/>
