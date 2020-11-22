@@ -20,18 +20,16 @@ class DistractionDetailViewController: UIViewController {
     @IBOutlet weak var bottomCicrle: UIView!
     @IBOutlet weak var speedAlertView: SpeedAlertSuperView!
     @IBOutlet weak var speedLimitView: DistractionSpeedLimitSuperView!
-
     @IBOutlet weak var topCircleLabel: UILabel!
     @IBOutlet weak var middleCircleLabel: UILabel!
     @IBOutlet weak var bottomCircleLabel: UILabel!
-    
     var mapview:GMSMapView?
-    
 
     var selectedDistractionLocationName : String?
     var selectedDistractionRecord : FacialInfo?
     var detailType:DetailType?
-    
+
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         mapViewContainer.layer.cornerRadius = 24
@@ -44,11 +42,8 @@ class DistractionDetailViewController: UIViewController {
         midlleCircle.layer.masksToBounds = true
         bottomCicrle.layer.masksToBounds = true
 
-
         if selectedDistractionRecord != nil{
-
             roadNameLabel.text = selectedDistractionLocationName
-
             //set time label
             let formatter = DateFormatter()
             formatter.timeZone = .current
@@ -56,7 +51,7 @@ class DistractionDetailViewController: UIViewController {
             formatter.dateFormat = "hh:mm a dd-MMM-yyyy"
             distractionTimeLabel.text = formatter.string(from: selectedDistractionRecord!.capturedTime)
 
-            //set three label
+            //set three facial feature label
             var emotions = selectedDistractionRecord?.faceDetails.first?.emotions
             emotions?.sort(by: { (thisEmotion: Emotion, thatEmotion: Emotion) -> Bool in
                 return thisEmotion.confidence > thatEmotion.confidence
@@ -120,11 +115,11 @@ class DistractionDetailViewController: UIViewController {
             self.navigationItem.title = "Overspeed Detail"
         }
 
+        // set up google map
         initGoogleMap()
-
     }
     
-
+    // MARK: - Google map
     func initGoogleMap(){
         let gmsCamera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
         mapview = GMSMapView.map(withFrame: self.view.frame, camera: gmsCamera)

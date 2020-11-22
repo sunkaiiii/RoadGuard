@@ -9,19 +9,32 @@ import UIKit
 
 
 class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseListener{
-    var listenerType: [ListenerType] = [ListenerType.drivingRecord]
-    
-
-    let DETAIL_PAGE_SEGUE_ID = "recordDetailSegue"
-
     @IBOutlet weak var viewPager: WormTabStrip!
-    
-    // MARK: - Top Scroll Tab Bar Related Fields
+    var listenerType: [ListenerType] = [ListenerType.drivingRecord]
+    let DETAIL_PAGE_SEGUE_ID = "recordDetailSegue"
     var tabContentViews:[UIViewController] = []
     var montlyRecords : [String]  = []
     var dataSource:[Int:[DrivingRecordResponse]] = [:]
 
+    // MARK: - Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        delegate?.firebaseController?.addListener(listener: self)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        delegate?.firebaseController?.removeListener(listener: self)
+    }
+
     // MARK: - Top Scroll Tab Bar Related functions
+    //This is from https://github.com/EzimetYusup/WormTabStrip
     func setUpContentViewForEachTab(){
         montlyRecords.removeAll()
         for index in 1...12 {
@@ -35,7 +48,6 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
         }
     }
 
-    //This is from https://github.com/EzimetYusup/WormTabStrip
     func setUpViewPager(){
         let topColour = UIColor(named: "RecordViewTopColour") ?? .black
         navigationController?.navigationBar.backgroundColor = topColour
@@ -81,24 +93,6 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
         //
     }
 
-    // MARK: - View Life Cycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let delegate = UIApplication.shared.delegate as? AppDelegate
-        delegate?.firebaseController?.addListener(listener: self)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        let delegate = UIApplication.shared.delegate as? AppDelegate
-        delegate?.firebaseController?.removeListener(listener: self)
-    }
-
-
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == DETAIL_PAGE_SEGUE_ID {
@@ -124,7 +118,6 @@ class RecordViewController: UIViewController, WormTabStripDelegate, DatabaseList
         setUpContentViewForEachTab()
         setUpViewPager()
     }
-    
 }
 
 // MARK: - RecordBreakdownDelegate
@@ -132,5 +125,4 @@ extension RecordViewController: RecordBreakdownDelegate {
     func jumpToSelectedRowDetailPage(selectedRow: DrivingRecordResponse) {
         performSegue(withIdentifier: DETAIL_PAGE_SEGUE_ID, sender: selectedRow)
     }
-
 }

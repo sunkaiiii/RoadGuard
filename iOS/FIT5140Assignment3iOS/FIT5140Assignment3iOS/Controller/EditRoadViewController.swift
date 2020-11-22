@@ -10,24 +10,21 @@ import GoogleMaps
 
 class EditRoadViewController: UIViewController,DefaultHttpRequestAction,GMSMapViewDelegate,CustomRoadControllerDelegate {
 
-
-    var selectedRoad:UserSelectedRoadResponse?
-    
     @IBOutlet weak var mapView: GMSMapView!
     @IBOutlet weak var saveBtn: UIBarButtonItem!
     @IBOutlet weak var drawControlBtn: UIBarButtonItem!
-    
+
+    var selectedRoad:UserSelectedRoadResponse?
     var polyLine:GMSPolyline?
     var snapPoints:[SnappedPointResponse]?
     var selectMarkers:[GMSMarker] = []
     var editRoadAlert:AddRoadNameAlertViewController?
-    
     private let DONE = "Done"
     private let CLEAR = "Clear"
-    
     private var hasAltered = false
     var delegate:EditRoadDelegate?
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         initViews()
@@ -91,7 +88,8 @@ class EditRoadViewController: UIViewController,DefaultHttpRequestAction,GMSMapVi
             initBtnStatus()
         }
     }
-    
+
+    // MARK: - IBAction
     @IBAction func saveBtnAction(_ sender: Any) {
         editRoadAlert = AddRoadNameAlertViewController(delegate: self)
         editRoadAlert?.selectedRoad = self.selectedRoad
@@ -100,7 +98,7 @@ class EditRoadViewController: UIViewController,DefaultHttpRequestAction,GMSMapVi
         }
     }
     
-    
+    // MARK: - Network Request Handler
     func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
         switch helper.restfulAPI as? GoogleApi{
         case .snapToRoads:
@@ -115,12 +113,14 @@ class EditRoadViewController: UIViewController,DefaultHttpRequestAction,GMSMapVi
         }
     }
 
+    // MARK: - Google Map
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         let marker = GMSMarker(position: coordinate)
         marker.map = mapView
         selectMarkers.append(marker)
     }
     
+    // MARK: - Firebase
     func didCustomFinished(customName: String, storedUrl: String) {
         if let databaseController = (UIApplication.shared.delegate as? AppDelegate)?.firebaseController, let id = selectedRoad?.id, let points = snapPoints, points.count > 0{
             if let newRoad = databaseController.editSelectedRoad(id, points: points, customName: customName, storedUrl: storedUrl){

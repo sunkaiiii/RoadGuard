@@ -12,7 +12,6 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var analysisPageTableView: UITableView!
-
     var listenerType: [ListenerType] = [.facial,.drivingRecord]
     let SECTION_UPPER = 0
     let SECTION_LOWER = 1
@@ -151,7 +150,6 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
 
                 for element in facialInfoList {
                     let facialDetails = element.faceDetails
-
                     if element.speed > 0, element.speedLimit != nil, element.speedLimit! > 0, element
                         .speed > element.speedLimit!{
                         overSpeedRecords.append(element)
@@ -247,7 +245,6 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 return cell
             }
         }
-
         else if segmentControl.selectedSegmentIndex == 1{
             //segment 1 : upper section is a bar chart - daily distraction times
             if indexPath.section == SECTION_UPPER {
@@ -454,7 +451,6 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 barChart!.chartDescription?.text = ""
                 barChart?.legend.enabled = false
 
-
                 let formatter = DateFormatter()
                 formatter.timeZone = .current
                 formatter.locale = .current
@@ -522,8 +518,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 barChartDataEntries.removeAll()
                 return cell
             }
-            
-            //Todo
+
             //segment 2 : bottom section is a Pie chart - status when overspeed
             else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: DISTRACTION_PERIOD_CELL_ID, for: indexPath) as! DistractionTimePeriodTableViewCell
@@ -534,7 +529,7 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 overSpeedRecords = facialInfoList.filter({ (element) -> Bool in
                     if element.speed > 0, element.speedLimit != nil, element.speedLimit! > 0, element
                         .speed > element.speedLimit!{
-                        //return false when overspeed
+                        //return true when overspeed
                         return true
                     } else {
                         //return false for other situation
@@ -609,7 +604,6 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                     colors.append(distractionColor!)
                 }
 
-
                 let chartDataSet = PieChartDataSet(entries: pieChartDataEnties, label: nil)
 
                 chartDataSet.colors = colors
@@ -636,18 +630,13 @@ class AnalysisViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.pieChart.legend.enabled = false
 
                 return cell
-
             }
         }
     }
 
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == SECTION_UPPER{
             return self.view.frame.width
-        } else {
-            return self.view.frame.width
-        }
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

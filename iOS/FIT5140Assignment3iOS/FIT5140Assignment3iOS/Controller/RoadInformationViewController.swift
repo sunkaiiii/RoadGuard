@@ -10,12 +10,11 @@ import GoogleMaps
 
 class RoadInformationViewController: UIViewController,DefaultHttpRequestAction , RoadInfoBottomCardDelegate{
 
- 
     @IBOutlet weak var totalDistanceLabel: UILabel!
     @IBOutlet weak var roadsCountLabel: UILabel!
-    
     let DETAIL_PAGE_SEGUE_ID = "importantPathsSegue"
-    
+
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBottomCard()
@@ -29,9 +28,7 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction ,
         restoreNavigationBar()
     }
     
-
-    
-    
+    // MARK: - Network Request
     func handleResponseDataFromRestfulRequest(helper: RequestHelper, url: URLComponents, accessibleData: AccessibleNetworkData) {
         
     }
@@ -49,7 +46,6 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction ,
         contentController.askDelegateToCalculateTotalNumberAndDistance()
     }
 
-
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == DETAIL_PAGE_SEGUE_ID {
@@ -60,15 +56,12 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction ,
         }
     }
 
-
-
     // MARK: - RoadInfoBottomCardDelegate
     func jumpToSelectedRowDetailPage(selectedRow: UserSelectedRoadResponse) {
         performSegue(withIdentifier: DETAIL_PAGE_SEGUE_ID, sender: selectedRow)
     }
 
     func calculateTotalNumberAndDistance(roadRecords: [UserSelectedRoadResponse]){
-
         func calculatePathLength(roadRecord: UserSelectedRoadResponse)->Double{
             var lastPlaceId:String = ""
             let path = GMSMutablePath()
@@ -89,7 +82,5 @@ class RoadInformationViewController: UIViewController,DefaultHttpRequestAction ,
         }
         roadsCountLabel.text = "\(selectedRoadsCount)"
         totalDistanceLabel.text = "Total Length: \((lengthTotal/1000).rounded(.up)) KM"
-        
     }
-
 }

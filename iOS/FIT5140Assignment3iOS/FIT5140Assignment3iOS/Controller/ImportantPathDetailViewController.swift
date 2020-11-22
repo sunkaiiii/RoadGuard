@@ -16,22 +16,20 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
     @IBOutlet weak var passTimesLabel: UILabel!
     @IBOutlet weak var importantPathTableView: UITableView!
     @IBOutlet weak var importantPathGoogleMapView: GMSMapView!
-
     @IBOutlet weak var totalLengthVisualEffectView: UIVisualEffectView!
     @IBOutlet weak var passTimesVisualEffectView: UIVisualEffectView!
     var actionOptions: UIAlertController?
     var deleteOption:UIAlertController?
     var polyLine:GMSPolyline?
-
     let SECTION_HEADER = 0
     let SECTION_CONTENT = 1
     let HEADER_CELL_ID = "importantPathDetailTableViewHeaderCell"
     let CONTENT_CELL_ID = "importantPathDetailTableViewContentCell"
     let editRoadSegue = "editRoads"
-    
     var selectedRoad:UserSelectedRoadResponse?
     var roadsInfo:[RoadInformationDataSource] = []
 
+    // MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         importantPathTableView.delegate = self
@@ -41,8 +39,14 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
         initGoogleMap()
         calculatePassedTime()
     }
-    
-    
+
+    func roadDidEdited(newRoad: UserSelectedRoadResponse) {
+        self.selectedRoad = newRoad
+        initViews()
+        initTopTableData()
+        initGoogleMap()
+        self.importantPathTableView.reloadData()
+    }
 
     // MARK: - TableView
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,7 +63,6 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
                 return 1
         }
     }
-
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
@@ -94,10 +97,7 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
 
     // MARK: - Gesture Action
     @objc func editIconOnClick(_ gestureRecognizer: UITapGestureRecognizer){
-
-
         actionOptions = UIAlertController(title: "Chose an Option", message: "", preferredStyle: .actionSheet)
-
         actionOptions?.addAction(UIAlertAction(title: "Delete", style: .default, handler: { (action: UIAlertAction) in
             self.deleteOption = UIAlertController(title: "Do you want to delete?", message: "", preferredStyle: .actionSheet)
             self.deleteOption?.addAction(UIAlertAction(title: "Delete", style: .default, handler: {(action) in
@@ -114,7 +114,6 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
             if let delete = self.deleteOption{
                 self.present(delete, animated: true)
             }
-            
         }))
         actionOptions?.addAction(UIAlertAction(title: "Edit", style: .default, handler: { (action: UIAlertAction) in
             self.performSegue(withIdentifier: self.editRoadSegue, sender: nil)
@@ -124,25 +123,15 @@ class ImportantPathDetailViewController: UIViewController , UITableViewDelegate,
             self.present(action,animated: true)
         }
     }
-    
+
+    // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == editRoadSegue, let controller = segue.destination as? EditRoadViewController{
             controller.selectedRoad = self.selectedRoad
             controller.delegate = self
         }
     }
-    
-    func roadDidEdited(newRoad: UserSelectedRoadResponse) {
-        self.selectedRoad = newRoad
-        initViews()
-        initTopTableData()
-        initGoogleMap()
-        self.importantPathTableView.reloadData()
-    }
-
 }
-
-
 
 struct RoadInformationDataSource {
     let placeId:String
