@@ -22,3 +22,5 @@ pip3 install picamera
 Enable function of Raspberry pi camera  
 Put aws credentials information on ~/.aws  
 
+## Starting service
+python3 server.py

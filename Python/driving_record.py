@@ -3,6 +3,7 @@ from datetime import datetime
 from firebase import FireStoreSaver
 import uuid
 
+# Each time the service is started, a new drivingRecord is generated. id is the amount of id stored on the firestore.
 class DrivingRecordRecorder:
     def __init__(self):
        
@@ -23,6 +24,8 @@ class DrivingRecordRecorder:
         self.recorder.running = True
         self.recorder.start()
         print("Recording start")
+
+    # Save the recorded results on the firestore when you end the service    
     def end_recording(self):
         self.record_data["path"] = self.recorder.path
         self.record_data["endTime"] = datetime.now()

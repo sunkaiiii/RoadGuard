@@ -13,9 +13,6 @@ connection = obd.OBD(portstr="/dev/tty4",fast=False,baudrate=9600,timeout=30)
 def get_current_speed():
     try:
         queryResult = connection.query(obd.commands.SPEED)
-    # print(queryResult.value)
-    # print(queryResult.value.magnitude)
-    # print(type(queryResult.value.magnitude))
     # get exactly value of the spped, referenes on https://pint.readthedocs.io/en/stable/tutorial.html
         if queryResult is not None and queryResult.value is not None:
             return int(queryResult.value.magnitude)

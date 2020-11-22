@@ -18,6 +18,8 @@ gps_extractor = GPSInformationExtractor()
 
 print(gps_extractor.get_current_position().latitude)
 exitFlag = 0
+
+# Key class for recording driving conditions
 class SpeedRecordExtractor(threading.Thread):
     class Location:
         def __init__(self):
@@ -63,6 +65,11 @@ class SpeedRecordExtractor(threading.Thread):
         distance = R * c
         print("Distance: ",distance*1000)
         return distance*1000
+
+    # 1.Every distance travelled (defined here as 80m) will be written to the firestore  
+    # 2.While recording, find out if current is on a user-defined road section  
+    # 3. If so, the person is captured and analysed
+    # 4. If speeding is exceeded, a snap fen'xi is also taken.
     def run(self):
         while self.running:
             self.gps_info = gps_extractor.get_current_position()
@@ -75,12 +82,16 @@ class SpeedRecordExtractor(threading.Thread):
                     self.location.latitude = gps_info.latitude
                     self.location.longitude = gps_info.longitude
                     self.path.append({"latitude":gps_info.latitude,"longitude":gps_info.longitude})
+                    # find selected road
                     place_ids = self._find_selected_raods(gps_info)
+
+                    # save the current speed record
                     self._save_speed_record(gps_info,place_ids)
                     if len(place_ids) > 0:
                         speed = OBD2Helper.get_current_speed()
                         if speed == -sys.maxsize:
                             speed = gps_info.speed
+                        # if over speed, capture a photo
                         cameraCapture.camera_capturing(gps_info,gps_info.speed,place_ids,self.document_id, self.current_speed_limit)
 
 

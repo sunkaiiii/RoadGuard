@@ -14,6 +14,10 @@ database_name = "FIT5140Ass3"
 facial_collection = "facial"
 gps_extractor = GPSInformationExtractor()
 
+
+# 1. Grabbing photos
+# 2.aws carries out the analysis
+# 3. The results are combined with position and information written to the firestore
 def camera_capturing(location = None, speed = -1, selectedRoadIds = None, record_id = None, speed_limit = -1):
     if location is not None:
         gps_info = location
