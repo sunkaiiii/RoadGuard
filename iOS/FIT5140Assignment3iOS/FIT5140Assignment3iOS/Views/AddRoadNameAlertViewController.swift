@@ -72,7 +72,7 @@ class AddRoadNameAlertViewController: UIViewController,UIImagePickerControllerDe
     }
 
     @IBAction func saveCustomInformation(_ sender: Any) {
-        var storedUrl = ""
+        var storedUrl = self.selectedRoad?.userCustomImage ?? ""
         guard let name = self.nameField.text,name.count != 0 else{
             showToast(message: "Custom name cannot be empty")
             return

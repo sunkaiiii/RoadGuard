@@ -39,7 +39,7 @@ class RecordBreakdownViewController: UIViewController, UITableViewDelegate, UITa
         self.view.addSubview(table)
         let widthConstraint  = NSLayoutConstraint(item: table!, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.width, multiplier: 1, constant: 0)
         let topConstraint = NSLayoutConstraint(item: table!, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
-        let bottomConstraint = NSLayoutConstraint(item: table!, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view.safeAreaLayoutGuide, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: -parentViewTabBarHeight)
+        let bottomConstraint = NSLayoutConstraint(item: table!, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view.safeAreaLayoutGuide, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
         view.addConstraints([widthConstraint, topConstraint, bottomConstraint])
     }
 

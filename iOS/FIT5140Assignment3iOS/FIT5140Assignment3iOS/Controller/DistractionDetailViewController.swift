@@ -121,7 +121,7 @@ class DistractionDetailViewController: UIViewController {
     
     // MARK: - Google map
     func initGoogleMap(){
-        let gmsCamera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
+        let gmsCamera = GMSCameraPosition.camera(withLatitude: selectedDistractionRecord?.locationInfo?.latitude ?? 0, longitude: selectedDistractionRecord?.locationInfo?.longitude ?? 0, zoom: 16.0)
         mapview = GMSMapView.map(withFrame: self.view.frame, camera: gmsCamera)
         if let mapview = mapview{
             self.mapViewContainer.addSubview(mapview)
