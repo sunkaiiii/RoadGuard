@@ -11,10 +11,14 @@ import AWSS3
 
 /// upload image to s3 references on https://medium.com/@iamayushverma/uploading-photos-videos-files-to-aws-s3-using-swift-4-1241f690a993
 class AwsController{
-    let bucketName = "photo-collection-monash"
+    let bucketName = ""
+
+    //TODO need to fill up the aws key
+    let accessKey = ""
+    let secretKey = ""
     
     init() {
-        let provider = AWSStaticCredentialsProvider(accessKey: "AKIAI6EMYBCVDJG4FCMQ", secretKey: "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")
+        let provider = AWSStaticCredentialsProvider(accessKey: accessKey, secretKey: secretKey)
         guard let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider: provider) else{
             return
         }
@@ -36,6 +40,6 @@ class AwsController{
             }
             return nil
         })
-        return "https://photo-collection-monash.s3.amazonaws.com/"+key
+        return "https://"+bucketName+".s3.amazonaws.com/"+key
     }
 }
